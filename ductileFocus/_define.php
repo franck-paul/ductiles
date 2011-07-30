@@ -11,8 +11,8 @@
 if (!defined('DC_RC_PATH')) { return; }
 
 $this->registerModule(
-	/* Name */				"Ductile Magazine",
-	/* Description*/		"Variation de Ductile pour un magazine",
+	/* Name */				"Ductile Focus",
+	/* Description*/		"Variation de Ductile pour un blog mixte de textes et photos",
 	/* Author */			"Kozlika et Franck Paul",
 	/* Version */			'0.1'
 	/* Properties (uncomment for 2.4 compliance only : add a / at the end of this line -> ) *
