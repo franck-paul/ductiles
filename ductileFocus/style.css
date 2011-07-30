@@ -1074,6 +1074,8 @@ hr.hidden {background: #fff; color: #fff; border-color: #fff; }
 #wrapper {
 	position: relative;
 	}
+
+/* --------------------------------------------  Test nav */
 .navlinks.topnl {
 	position: absolute;
 	top: 0;
@@ -1082,3 +1084,45 @@ hr.hidden {background: #fff; color: #fff; border-color: #fff; }
 	border: none;
 	left: 32px;
 	}
+
+
+/* --------------------------------------------  Test fontes */
+body,
+.supranav li a span,
+.comment-info, 
+#comments .me, 
+.comment-number { 
+	font-family: "New Century Schoolbook","Century Schoolbook", "Century Schoolbook L", Georgia, serif;
+	}
+#blogdesc,
+.supranav, 
+#prelude,
+#submenu,
+#content-info,
+#subcategories,
+p.post-date,
+#comments, 
+#ping-url, 
+#comment-form,
+#comments-feed,
+.field input, 
+.field textarea,
+#sidebar,
+#sidebar h2,
+#footer p,
+.arch-block h4 {
+	font-family: "DejaVu Sans","helvetica neue",helvetica,sans-serif;
+	}
+
+h1, h2, h3, h4, h5, h6, .focus1-headline {
+	font-family: "Century Gothic","Trebuchet MS",Arial,Helvetica,sans-serif;
+	}
+.post-title a {
+	font-style: normal;
+	}
+	
+@media only screen and (max-width:480px) {
+	.post-title {
+		font-family: "Century Gothic","Trebuchet MS",Arial,Helvetica,sans-serif;
+		}
+}
