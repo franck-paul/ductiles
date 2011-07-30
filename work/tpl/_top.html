@@ -1,0 +1,30 @@
+<div id="top">
+  <h1><span><a href="{{tpl:BlogURL}}">{{tpl:BlogName encode_html="1"}}</a></span></h1>
+  
+  <!-- # --BEHAVIOR-- publicTopAfterContent -->
+  {{tpl:SysBehavior behavior="publicTopAfterContent"}}
+</div>
+
+<div id="nav">
+
+	<!-- Anne: via CSS ces items n'apparaissent qu'à la tabulation -->
+	<p id="prelude"><a href="#main">{{tpl:lang To content}}</a> |
+	<a href="#blognav">{{tpl:lang To menu}}</a> |
+	<a href="#search">{{tpl:lang To search}}</a></p>
+
+	<!-- Franck: si on est à l'accueil, supprimer le lien et ne conserver que le texte -->
+	<p id="homelink"><a href="{{tpl:BlogURL}}">{{tpl:lang Home}}</a></p>
+
+	<ul id="supranav">
+		<li><a href="">Item 1</a></li>
+		<li><a href="">Truc 2</a></li>
+		<li><a href="">Bidule</a></li>
+		<li><a href="">Machin</a></li>
+	</ul>
+
+</div>
+
+<!-- Anne: ce paragraphe est supprimé via CSS quand le menu est visible dès le haut de page
+		(layout > 640px)
+-->
+<p id="menulink"><a href="#sidebar">{{tpl:lang Menu}}</a></p>

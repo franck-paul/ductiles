@@ -1,0 +1,12 @@
+/* perso */
+
+	#header {
+		background: #fff url(img/var2_bg.png) no-repeat 91% bottom;
+		}
+	#supranav li a {color: #000;}
+	#supranav #li1 a {background: #ddd;}	
+	#supranav #li2 a {background: #cf6498;}	
+	#supranav #li4 a {background: #fcce00;}	
+	#supranav #li3 a {background: #98cb00;}	
+		
+/* end perso */

@@ -1,0 +1,17 @@
+@charset "UTF-8";
+
+body {
+	background: #fff;
+	color: #222;
+	}
+/* ----------------------------------------------- liens */
+a {
+	color: #666;
+	}
+a:hover, a:focus {
+	background: #eee;
+	text-decoration: none;
+	}
+h1 a, h2 a, .post-info-co a {
+	text-decoration: none;
+	}

@@ -1,0 +1,1 @@
+<a href="{{tpl:BlogURL}}"><img id="logo" src="{{tpl:BlogThemeURL}}/img/logo.png" alt="{{tpl:BlogName encode_html="1"}}" style="float:left;margin: 24px 24px 0 24px" /></a>

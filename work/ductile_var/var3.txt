@@ -1,0 +1,10 @@
+/* perso */
+
+	#header {
+		background: #fff url(img/bg.png) repeat-x left bottom;
+		}
+	#supranav li a:link, #supranav li a:visited {
+		color: #000;
+		}
+
+/* end perso */

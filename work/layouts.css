@@ -1,0 +1,81 @@
+@charset "UTF-8";
+/* pour le head - a réflechir : <meta name="viewport" content="width=device-width" /> */
+
+/* petit ours */
+@media only screen and (max-width:640px) {
+html {
+	-webkit-text-size-adjust: none;
+	}
+#page {
+	/*background: transparent url(img/until480.png) no-repeat;*/
+	color: #000;
+	}
+#prelude {
+	display: none;
+	}
+h1 {
+	padding-left: 3%;
+	}
+#wrapper {
+	padding: 0 3%;
+	}
+img, object, table {
+	max-width: 100%;
+	height: auto;
+	width: auto\9; /* ie8 */
+	}
+#nav li {
+	margin: 0 1em;
+	}
+}
+
+/* regles communes au-delà de 640px */
+@media only screen and (min-width: 641px) {
+p#menulink {
+	display: none;
+	}
+#nav {
+	border-bottom: 1px solid #999;
+	}	
+}
+
+/* moyen ours */
+@media only screen 
+and (min-width: 641px)
+and (max-width: 960px) {
+#wrapper {
+	padding: 0 10%;
+	}
+}
+
+/* grand ours */
+@media only screen 
+and (min-width: 961px)
+and (max-width: 1420px) {
+#wrapper {
+	padding: 0 15%;
+	}
+}
+
+/* yeti */
+@media screen 
+and (min-width: 1421px) {
+#wrapper {
+	padding: 0 15%;
+	}
+}
+
+@media only screen and (max-width:480px) {
+h1 {
+	font-size: 1.8em;
+	}
+#nav li {
+	margin: 0 .5em;
+	}
+}
+
+@media only screen and (min-width:481px) {
+#nav li {
+	margin: 0 2em;
+	}
+}

@@ -1,0 +1,13 @@
+/* perso */
+
+	#header {
+		background: #fff url(img/var1_bg.png);
+		}
+	h1 a:link, h1 a:visited, p#blogdesc {
+		color: #000;
+		}
+	#supranav li a {
+		background: #f5f3eb;
+		}			
+
+/* end perso */

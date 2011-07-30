@@ -1,0 +1,9 @@
+/* perso
+(credit image : Peter17 http://commons.wikimedia.org/wiki/File:Bateau.svg) */
+	#header {
+		background: #fff url(img/var4_bg.png) no-repeat 47em bottom;
+		}
+	#supranav li.active a:link, #supranav li.active a:visited {
+		background-color: #fcef3c;
+		}
+/* end perso */

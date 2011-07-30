@@ -1,0 +1,86 @@
+@charset "UTF-8";
+
+/* Ductile
+Dotclear theme by Dotclear Team
+Version de chantier
+Start: 19 mai 2011
+last change: */
+
+/* ------------------------------------------------------- 
+	THIS FILE CONTENTS COMMON RULES FOR ALL LAYOUTS
+/* ------------------------------------------------------- */
+
+/* ------------------------------------------------------- imports */
+
+@import url(rebase.css);
+@import url(colors.css);
+@import url(layouts.css);
+
+#page {
+	position: relative;
+	}
+
+/* ------------------------------------------------------- generic classes */
+.hidden {
+	left: -4000px;
+	}
+
+/* ------------------------------------------------------- top (top.html) */
+#top {
+	padding: 12px 0;
+	}
+#prelude {
+	position: absolute;
+	top: 0;
+	left: 3%;
+	font-size: .875em;
+	color: #fff;
+	}
+#prelude a {
+	color: #fff;
+	}
+#prelude a:focus {
+	color: #333;
+	}
+#nav p, #nav ul {
+	margin: 0;
+	padding: 0;
+	}
+#nav {
+	text-align: center;
+	line-height: 2em;
+	border-bottom: 1px solid #999;
+	}
+#nav li {
+	display: inline;
+	}
+p#menulink {
+	text-align: right;
+	padding: 0 3% 1em 0;
+	margin: 0;
+	}
+p#menulink a {
+	padding: 0 24px 0 24px;
+	background: #fff url(img/down.png) right center no-repeat;
+	}
+.dc-home p#homelink {
+	display: none;
+	}
+.dc-home #nav {
+	border-top: 1px solid #999;
+	}
+/* ------------------------------------------------------- billets */
+.day-date {
+	display: none;
+	}
+h2.post-title {
+	font-weight: normal;
+	font-style: italic;
+	margin-bottom: 0;
+	}
+p.post-info {
+	font-size: .875em;
+	font-style: italic;
+	margin-top: 0;
+	line-height: 1.2;
+	}
