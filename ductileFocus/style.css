@@ -93,13 +93,13 @@ ul ul {
 	4. HAUT DE PAGE
 ------------------------------------------------------------- */
 #header {
+	position: relative;
 	text-shadow: 0 1px 1px rgba(0,0,0,.2);
 	line-height: 1;
-	position: relative;
 	}
 #logo a img, #stickers a img {
 	border: none;
-}
+	}
 h1 {
 	font-variant: small-caps;
 	}
@@ -136,7 +136,7 @@ h1 a {
 	-moz-border-radius-bottomleft: 7px;
 	border-bottom-left-radius: 7px;	
 	background: transparent url(img/menu.png) no-repeat right top;
- }
+	}
 .supranav li a:hover, 
 .supranav li a:active, 
 .supranav li a:focus {
@@ -216,12 +216,11 @@ a#bc-home {
 ------------------------------------------------------------- */
 
 #wrapper {
-	padding: 1em 2em 2em; 
 	clear:both;
+	padding: 1em 2em 2em; 
 	border-top: 1px solid #ccc;
 	}
-#main { 
-	}
+#main { }
 #content { 
 	padding-bottom: 2em; 
 	}
@@ -245,15 +244,20 @@ a#bc-home {
 	font-size: 1.1em;
 	font-variant: small-caps;
 	}
-#subcategories li {
-	margin: 0;
-	}
 #content-info p, 
 #content-info ul, 
 #subcategories ul { 
 	margin: .5em 0;
 	padding: 0;
 	list-style-type: none;
+	}
+#subcategories li { 
+	margin: 0;
+	display: inline; 
+	padding-right: 1em;
+	}
+.feed-info {
+	color: #fff;
 	}
 
 /* ------------------------------------------------------- pagination, navlinks */
@@ -337,7 +341,7 @@ p.post-date {
 	}
 .short .post-content p {
 	margin-top: 0;
-	}	
+	}
 .post h3,
 .post h4, 
 .post h5,
@@ -351,8 +355,7 @@ p.post-date {
 .post-info, 
 .post-tags, 
 .post-info-co, 
-.read-it, 
-.page-info {
+.read-it {
 	margin: .33em 0;
 	}
 .post-attr {
@@ -404,8 +407,7 @@ p.post-date {
 	color: #ab164d;
 	padding-left: .5em;
 	}
-.post-info-co, 
-.page-info {
+.post-info-co {
 	margin: 0;
 	font-size: 0.875em;
 	font-style: italic;
@@ -494,19 +496,13 @@ p.post-date {
 	border-top: 1px solid #bbb;
 	}
 .comment-info { 
-	clear: left;
-	float: left;
 	padding-bottom: .2em;
-	margin-top: 1em;
 	line-height: 1.25;
-	width: 10em;
 	color: #666;
-	font-family: "New Century Schoolbook","Century Schoolbook", "Century Schoolbook L", Georgia, serif;
+	font-family: "New Century Schoolbook","Century Schoolbook", "Century Schoolbook L", Georgia, serif;	
 	}
-#comments .first { }
-#comments .odd { }
 #comments .me { 
-	font-family: "Century Schoolbook", "Century Schoolbook L", Georgia, serif;
+	font-family: "New Century Schoolbook","Century Schoolbook", "Century Schoolbook L", Georgia, serif;
 	color: #14709e;
 	}
 .comment-number {
@@ -514,7 +510,7 @@ p.post-date {
 	font-weight: normal;
 	font-style: italic;
 	text-decoration: none;
-	font-family: "Century Schoolbook", "Century Schoolbook L", Georgia, serif;
+	font-family: "New Century Schoolbook","Century Schoolbook", "Century Schoolbook L", Georgia, serif;
 	color: #ab164d;
 	display: block;
 	width: 2em;
@@ -524,9 +520,6 @@ p.post-date {
 	}
 .ping .comment-number {
 	background: transparent url(img/tb.png) right center no-repeat;
-	}
-.comment-content {
-	margin-left: 11.5em;
 	}
 #comments-feed {
 	border-top: 1px solid #bbb;
@@ -623,14 +616,6 @@ p.post-date {
 	font-size: 0.875em;
 	font-family: "Franklin gothic medium","arial narrow","DejaVu Sans Condensed","helvetica neue",helvetica,sans-serif;
 	}
-#blognav, #blogextra {
-	clear: both;
-	margin: 0;
-	}
-#blogextra > div, #blognav div {
-	margin: 2em 0;
-	padding: 0;
-	}
 #sidebar img {
 	max-width: 100%;
 	}
@@ -639,18 +624,18 @@ p.post-date {
 	margin: 0;
 	font-weight: normal;
 	font-family: "Franklin gothic medium","arial narrow","DejaVu Sans Condensed","helvetica neue",helvetica,sans-serif;
+	color: #333;
 	}
 #sidebar h2.toggle {
-	background-image: url(img/plus.png);
-	background-repeat: no-repeat;
-	padding-left: 20px;
-}
+	background: url(img/plus.png) no-repeat left center;
+	padding-left: 16px;
+	}
 #sidebar h2.expanded {
 	background-image: url(img/minus.png);
-}
+	}
 #sidebar h2.toggle a {
 	text-decoration: none;
-}
+	}
 #sidebar h3 {
 	font-size: 1em;
 	margin-bottom: 0;
@@ -735,6 +720,7 @@ p.post-date {
 /* ------------------------------------------------------------
 	9. FOOTER
 ------------------------------------------------------------- */
+
 #footer {
 	clear: both;
 	background: #686867;
@@ -765,7 +751,7 @@ p.post-date {
 
 /* ------------------------------------------------------- RSS */
 .feed { 
-	padding-left: 24px;
+	padding-left: 20px;
 	background : transparent url(img/feed.png) no-repeat left center;
 	}
 
@@ -842,7 +828,7 @@ hr.hidden {background: #fff; color: #fff; border-color: #fff; }
 	}
 .dc-home #sidebar {
 	margin-top: 2em;
-}
+	}
 #content-focus { 
 	padding-bottom: 2em; 
 	}
@@ -950,7 +936,7 @@ hr.hidden {background: #fff; color: #fff; border-color: #fff; }
 	overflow: hidden;
 	display: inline-block;
 	vertical-align: top;
-}
+	}
 
 /* ---------------------------------------------------------------- archives */
 .dc-archive {}
@@ -1034,7 +1020,7 @@ hr.hidden {background: #fff; color: #fff; border-color: #fff; }
 #by-tag ul li {
 	display: inline;
 	padding-right: 1em;
-}
+	}
 #by-tag .tag0 { color: #909090; font-size: 90%; }
 #by-tag .tag10 { color: #828282; font-size: 92%; }
 #by-tag .tag20 { color: #737373; font-size: 94%; }
@@ -1078,19 +1064,22 @@ hr.hidden {background: #fff; color: #fff; border-color: #fff; }
 	font-size: 1.1em;
 	font-variant: small-caps;
 	}
-.dc-search #content-info em { color: #14709e; }
+.dc-search #content-info em { 
+	color: #14709e; 
+	}
 
 
 /* ---------------------------------------------------
   12. ET POUR FINIR NE PAS OUBLIER LES CLEARERS
 --------------------------------------------------- */
+
 .pagination,
 .navlinks,
 .footnotes, 
 #attachments,
 .read-it, 
 .post-info-co, 
-#comments, #footer
+#comments, #footer,
 .clearer {
 	clear:both;
 	}
