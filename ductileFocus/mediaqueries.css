@@ -277,7 +277,7 @@
 	.short {
 		width: 47%;
 		}
-	.odd {
+	.post.odd {
 		margin-right: 0;
 		border-left: 1px solid #bbb;
 		padding: 0 0 0 1em;
@@ -299,6 +299,9 @@
 /* ------------------------------------------------------ règles 760px à 1060px */
 @media only screen and (min-width:760px) and (max-width: 1060px) {
 	#wrapper {
+		padding: 2em 6em;
+		}
+	.dc-home #wrapper {
 		padding: 2em;
 		}
 	.focus1 {

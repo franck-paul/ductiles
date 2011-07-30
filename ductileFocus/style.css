@@ -119,6 +119,7 @@ h1 a {
 	list-style-type: none;
 	line-height: 1.25;
 	font-size: .875em;
+	padding: 0 0 0 4px;
 	}
 .supranav li, #prelude li {
 	text-transform: uppercase;
@@ -156,7 +157,7 @@ h1 a {
 #submenu {
 	clear: both;
 	font-family: "Franklin gothic medium","arial narrow","DejaVu Sans Condensed","helvetica neue",helvetica,sans-serif;
-	padding: 3px 2.3em 3px 68px;
+	padding: 3px 2.3em 3px 32px;
 	font-size: .875em;
 	line-height: 1.5;
 	}
@@ -265,24 +266,18 @@ a#bc-home {
 	text-align: center;
 	font-size: .875em;
 	color: #000;
-	background: rgb(244,244,245);
-	background: -moz-linear-gradient(top, rgba(244,244,245,1) 0%, rgba(215,215,220,1) 100%);
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(244,244,245,1)), color-stop(100%,rgba(215,215,220,1)));
-	background: -webkit-linear-gradient(top, rgba(244,244,245,1) 0%,rgba(215,215,220,1) 100%);
-	background: -o-linear-gradient(top, rgba(244,244,245,1) 0%,rgba(215,215,220,1) 100%);
-	background: -ms-linear-gradient(top, rgba(244,244,245,1) 0%,rgba(215,215,220,1) 100%);
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f4f4f5', endColorstr='#d7d7dc',GradientType=0 );
-	background: linear-gradient(top, rgba(244,244,245,1) 0%,rgba(215,215,220,1) 100%);
 	-moz-border-radius: 4px;
 	-webkit-border-radius: 4px;
 	border-radius: 4px;
-	border-right: 1px solid #aaa;
+	border-right: 1px solid #ccc;
 	border-bottom: 1px solid #ccc;
+	background: #f2eee3;
 	}
 .navlinks a, 
 .pagination a {
 	padding: 0 1em;
 	white-space: nowrap;
+	color: #333;
 	}
 
 /* ------------------------------------------------------------
@@ -454,7 +449,7 @@ p.post-date {
 #comment-form, #ping-url {
 	padding: 1em;
 	background: #eef;
-	margin-top: 1em;
+	margin-bottom: 1em;
 	color: #333;
 	border: 1px solid #ddf;
 	}
@@ -1025,21 +1020,6 @@ hr.hidden {background: #fff; color: #fff; border-color: #fff; }
 #by-tag .tag80 { color: #0E0E0E; font-size: 106%; }
 #by-tag .tag90 { color: #030303; font-size: 108%; }
 #by-tag .tag100 { color: #000; font-size: 110%;}
-
-
-.dc-archive #blogextra div {
-	background-color: transparent;
-	margin-bottom: 1em;
-	padding: 4px;
-	border: 1px solid #ccc;
-	-webkit-box-shadow: none;
-	-moz-box-shadow: none;
-	-o-box-shadow: none;
-	box-shadow: none;
-	}
-.dc-archive #blogextra h2 {
-	margin-bottom: .33em;
-	}	
 	
 .dc-tags { }
 .dc-tag { }
@@ -1089,4 +1069,16 @@ hr.hidden {background: #fff; color: #fff; border-color: #fff; }
 ================================================ */
 .post-content img, .post-excerpt img {
 	border: 1px solid #ccc;
+	}
+
+#wrapper {
+	position: relative;
+	}
+.navlinks.topnl {
+	position: absolute;
+	top: 0;
+	border-radius: 0;
+	background: #f7f7ff;
+	border: none;
+	left: 32px;
 	}
