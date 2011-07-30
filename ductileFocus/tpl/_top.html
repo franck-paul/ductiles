@@ -19,7 +19,7 @@
 
 </div>
 <div id="submenu">
-	<form id="searchform" action="http://localhost/kozeries-2.2/index.php?" method="get"><p><label for="sf">{{tpl:lang Search}}</label> <input type="text" size="10" maxlength="255" id="sf" name="sf" value="" /> <input class="search-submit" type="submit" value="{{tpl:lang Search}}" title="{{tpl:lang Search}}" /></p></form>
+	<form id="searchform" action="{{tpl:BlogURL}}" method="get"><p><label for="sf">{{tpl:lang Search}}</label> <input type="text" size="10" maxlength="255" id="sf" name="q" value="" /> <input class="search-submit" type="submit" value="{{tpl:lang Search}}" title="{{tpl:lang Search}}" /></p></form>
 	<tpl:SysIf current_mode="!default">
 	<p id="breadcrumb" class="nosmall">{{tpl:Breadcrumb separator="&nbsp;›&nbsp;"}}</p>
 	</tpl:SysIf>

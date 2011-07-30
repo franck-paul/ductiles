@@ -1,8 +1,8 @@
 @charset "UTF-8";
 /* -- BEGIN LICENSE BLOCK ---------------------------------------
-# This file is part of Ductile, a theme for Dotclear
+# This file is part of Ductile Focus, a theme for Dotclear
 #
-# Copyright (c) 2011 - Association Dotclear
+# Copyright (c) 2011 - Kozlika & Franck Paul
 # Licensed under the GPL version 2.0 license.
 # See LICENSE file or
 # http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
@@ -70,7 +70,6 @@
 		background: transparent url(img/menumobile.png) no-repeat right -150px;
 		}
 	.post-title {
-		font-size: 1.5em;
 		font-weight: bold;
 		font-family: "Franklin gothic medium","arial narrow","DejaVu Sans Condensed","helvetica neue",helvetica,sans-serif;
 		}
@@ -147,7 +146,7 @@
 	#top {
 		padding-top: 24px;
 		}
- #logo {
+ 	#logo {
 		float:left; 
 		margin:0 1.5em 0 1em;	
 		}
@@ -184,8 +183,10 @@
 		display: block;
 		}
 	.post-title {
-		font-size: 2.5em;
 		font-weight: normal;
+		}
+	.simple .post-title {
+		font-size: 2.33em;
 		}
 	.post-title a {
 		font-style: italic;
@@ -231,9 +232,9 @@
 
 /* ------------------------------------------------------ special redimensionnement paysage */
 @media screen and (max-width:640px) and (orientation: landscape) { 
-  body { 
-   -webkit-text-size-adjust: 70%; 
-  } 
+	body { 
+		-webkit-text-size-adjust: 70%; 
+		}
 }
 
 /* ------------------------------------------------------ règles communes < 640px */
@@ -241,10 +242,16 @@
 	body {
 		-webkit-text-size-adjust: none;
 		}
+	#wrapper {
+		padding: 3%;
+		}
 	img {
-		max-width: 100%;
+		max-width: 97%;
 		height: auto;
 		width: auto\9; /* pour ie8 */
+		}
+	.focus3 img {
+		max-width: none;
 		}
 	.photo .post-title, .focus3 {
 		clear: both;
@@ -254,12 +261,30 @@
 		display: inline-block;
 		text-align: center;
 		max-width: 100%;
+		}	
+	.post:before, .post:after {
+		content: "";
+		display: table;
 		}
-	
+	.post:after {
+		clear:both;
+		}
 }
-/* ------------------------------------------------------ règles 640px à 1024px */
-@media only screen and (min-width:639px) and (max-width: 1060px) {
-		.photo .focus1-icon {
+
+@media only screen and (min-width:640px) {
+	#wrapper {
+		padding: 1em;
+		border-top: 1px solid #ccc;
+		}
+	.short {
+		width: 47%;
+		}
+	.odd {
+		margin-right: 0;
+		border-left: 1px solid #bbb;
+		padding: 0 0 0 1em;
+		}
+	.photo .focus1-icon {
 		float: none;
 		display: inline-block;
 		text-align: center;
@@ -270,6 +295,13 @@
 		}
 	.photo.focus1 img {
 		max-width: 98%;
+		}
+}
+
+/* ------------------------------------------------------ règles 760px à 1060px */
+@media only screen and (min-width:760px) and (max-width: 1060px) {
+	#wrapper {
+		padding: 2em;
 		}
 	.focus1 {
 		width: 62%;
@@ -286,8 +318,11 @@
 		}
 }
 
-/* ------------------------------------------------------ règles communes > 1024px */
+/* ------------------------------------------------------ règles communes > 1060px */
 @media only screen and (min-width: 1060px) {
+	#wrapper {
+		padding: 2em;
+		}
 	#main, #main-focus {
 		width : 100%;
 		margin : 0 -260px 0 0;
@@ -304,13 +339,34 @@
 		min-height: 438px;
 		}
 	.focus2 { 
-		width: 28%;
+		width: 29%;
 		float: left;
 		margin-left : 4%;
 		}
 	.focus3, #sidebar {
 		width : 234px;
 		float : right;
+		}
+	.categories h2 {
+		display: none;
+		}
+	.dc-post #content, .dc-page #content {
+		padding-right: 4em;
+		padding-left: 4em;
+		}
+	.simple .post-content, .simple .post-excerpt,
+	#comments ul, #comment-form fieldset, #ping-url p {
+		margin-left: 260px !important;
+		}
+	.simple .post-attr {
+		width: 234px;
+		float: left;
+		padding-top: .5em;
+		}
+	.short {
+		width: 30%;
+		border-left: 1px solid #bbb;
+		padding: 0 0 0 1.5%;
 		}
 }
 
@@ -326,7 +382,7 @@
 /* ------------------------------------------------------ au-delà de 1600px */
 @media only screen and (min-width: 1600px) {
 	#wrapper {
-		padding: 0 10%;
+		padding: 2em 10%;
 		}
 	#stickers {
 		padding-right: 10%;
