@@ -80,15 +80,13 @@
 	#stickers {
 		margin: 0;
 		padding: 0;
-		border-bottom: 8px solid #fff;
 		}
 	#stickers li {
 		position: relative;
 		padding: .5em 0;
 		margin-left: 0;
 		border-style: solid;
-		border-color: #fff;
-		border-width: 2px 6px;
+		border-width: 2px 0;
 		overflow: hidden;
 		}
 	#stickers img {
@@ -346,6 +344,9 @@
 	.focus3, #sidebar {
 		width : 234px;
 		float : right;
+		}
+	#blognav > div, #blogextra div {
+		margin-bottom: 2em !important;
 		}
 	.categories h2 {
 		display: none;

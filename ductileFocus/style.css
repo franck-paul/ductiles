@@ -116,7 +116,6 @@ h1 a {
 	}
 .supranav, #prelude {
 	font-family: "Franklin gothic medium","arial narrow","DejaVu Sans Condensed","helvetica neue",helvetica,sans-serif;
-	padding: 0 0 0 4px;
 	list-style-type: none;
 	line-height: 1.25;
 	font-size: .875em;
@@ -157,7 +156,7 @@ h1 a {
 #submenu {
 	clear: both;
 	font-family: "Franklin gothic medium","arial narrow","DejaVu Sans Condensed","helvetica neue",helvetica,sans-serif;
-	padding: 3px 2.3em 3px;
+	padding: 3px 2.3em 3px 68px;
 	font-size: .875em;
 	line-height: 1.5;
 	}
@@ -606,7 +605,7 @@ p.post-date {
 	font-family: "Franklin gothic medium","arial narrow","DejaVu Sans Condensed","helvetica neue",helvetica,sans-serif;
 	}
 #blognav > div, #blogextra div {
-	margin-bottom: 2em;
+	margin-bottom: .5em;
 	}
 #sidebar img {
 	max-width: 100%;
@@ -621,12 +620,14 @@ p.post-date {
 #sidebar h2.toggle {
 	background: url(img/plus.png) no-repeat left center;
 	padding-left: 16px;
+	background-color: #fff;
 	}
 #sidebar h2.expanded {
 	background-image: url(img/minus.png);
 	}
 #sidebar h2.toggle a {
 	text-decoration: none;
+	color: #666;
 	}
 #sidebar h3 {
 	font-size: 1em;
@@ -663,7 +664,11 @@ p.post-date {
 	border-radius: 4px;
 	background-color: #686867;
 	}
+.categories h2 a {
+	color: #fff;
+	}
 #sidebar .categories ul, #sidebar .categories ul ul {
+	line-height: 2;
 	margin: 0;
 	}
 #sidebar .categories ul li {
@@ -677,24 +682,23 @@ p.post-date {
 #sidebar .categories li ul li {
 	border-bottom: none;
 	}
-.categories a {
+.categories ul a {
 	display: block;
-	padding-top: .3em;
-	padding-bottom: .3em;
 	background: transparent url(img/folder.png) 4px center no-repeat;
 	color: #fff; 
 	text-decoration: none;
 	padding-left: 24px;
 	}
 .categories ul ul a {
-	padding-top: .1em;
-	padding-bottom: .2em;
 	padding-left: 48px;
 	background-position: 24px;
 	}
 #sidebar .category-current {
 	font-weight: normal;
 	background-color: #14709e;
+	}
+ul ul .category-current {
+	border-top: 1px solid #fff;
 	}
 .categories a:hover, .categories a:focus {
 	font-weight: normal;
