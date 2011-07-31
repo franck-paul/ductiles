@@ -955,7 +955,7 @@ hr.hidden {background: #fff; color: #fff; border-color: #fff; }
 	width: 75px;
 	height: 75px;
 	overflow: hidden;
-	_display: inline-block;
+	display: inline-block;
 	vertical-align: top;
 	margin-bottom: 4px;
 	}
