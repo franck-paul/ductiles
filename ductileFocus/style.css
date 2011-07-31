@@ -80,6 +80,10 @@ a:hover, a:focus {
 ul ul {
 	margin-top: 0;
 	}
+h2, h2 a {
+	font-weight: normal;
+	margin-top: .75em;
+	}
 
 /* ------------------------------------------------------------
 	3. PAGE
@@ -217,6 +221,7 @@ a#bc-home {
 
 #wrapper {
 	clear:both;
+	position: relative;
 	}
 #main { }
 #content { 
@@ -230,8 +235,6 @@ a#bc-home {
 	margin-bottom: 3em;
 	}
 #content-info h2 {
-	margin-top: 0;
-	font-size: 1.8em;
 	color: #14709e;
 	}
 #subcategories {
@@ -278,6 +281,9 @@ a#bc-home {
 	padding: 0 1em;
 	white-space: nowrap;
 	color: #333;
+	}
+.navlinks.topnl {
+	background: #f2f2ff;
 	}
 
 /* ------------------------------------------------------------
@@ -602,14 +608,12 @@ p.post-date {
 #blognav > div, #blogextra div {
 	margin-bottom: .5em;
 	}
-#sidebar img {
-	max-width: 100%;
+#sidebar h2, #sidebar h3 {
+	font-weight: bold;
+	margin-bottom: 0;
 	}
 #sidebar h2 {
 	font-size: 1.1em;
-	margin: 0;
-	font-weight: normal;
-	font-family: "Franklin gothic medium","arial narrow","DejaVu Sans Condensed","helvetica neue",helvetica,sans-serif;
 	color: #333;
 	}
 #sidebar h2.toggle {
@@ -628,6 +632,9 @@ p.post-date {
 	font-size: 1em;
 	margin-bottom: 0;
 	font-weight: normal;
+	}
+#sidebar img {
+	max-width: 100%;
 	}
 #sidebar ul {
 	margin: .75em 0 .5em 4px;
@@ -659,8 +666,9 @@ p.post-date {
 	border-radius: 4px;
 	background-color: #686867;
 	}
-.categories h2 a {
+#sidebar .categories h2, #sidebar .categories h2 a {
 	color: #fff;
+	padding: .5em;
 	}
 #sidebar .categories ul, #sidebar .categories ul ul {
 	line-height: 2;
@@ -689,13 +697,12 @@ p.post-date {
 	background-position: 24px;
 	}
 #sidebar .category-current {
-	font-weight: normal;
 	background-color: #14709e;
 	}
 ul ul .category-current {
 	border-top: 1px solid #fff;
 	}
-.categories a:hover, .categories a:focus {
+.categories ul a:hover, .categories ul a:focus {
 	font-weight: normal;
 	background-color: #14709e;
 	}
@@ -814,9 +821,6 @@ hr.hidden {background: #fff; color: #fff; border-color: #fff; }
 	clear: both;
 	margin-top: 2em;
 	}
-.dc-home #sidebar {
-	margin-top: 2em;
-	}
 #content-focus { 
 	padding-bottom: 2em; 
 	}
@@ -882,7 +886,6 @@ hr.hidden {background: #fff; color: #fff; border-color: #fff; }
 	.focus2 h2, .focus3 h2 {
 		font-size: 1.2em;
 		text-transform: uppercase;
-		font-weight: normal;
 		margin-top: 0;
 		}
 	.focus3 h2 {
@@ -913,17 +916,17 @@ hr.hidden {background: #fff; color: #fff; border-color: #fff; }
 		font-size: .875em;
 		margin-top: 0;
 		}
-.landscape {
-	width: 75px;
-	overflow: hidden;
-	display: inline-block;
-	vertical-align: top;
+.listimages-widget {
+	font-size: 18px;
 	}
-.portrait {
+.landscape, .portrait {
+	background: #ccc;
+	width: 75px;
 	height: 75px;
 	overflow: hidden;
 	display: inline-block;
 	vertical-align: top;
+	margin-bottom: 4px;
 	}
 
 /* ---------------------------------------------------------------- archives */
@@ -1071,20 +1074,6 @@ hr.hidden {background: #fff; color: #fff; border-color: #fff; }
 	border: 1px solid #ccc;
 	}
 
-#wrapper {
-	position: relative;
-	}
-
-/* --------------------------------------------  Test nav */
-.navlinks.topnl {
-	position: absolute;
-	top: 0;
-	border-radius: 0;
-	background: #f7f7ff;
-	border: none;
-	left: 32px;
-	}
-
 
 /* --------------------------------------------  Test fontes */
 body,
@@ -1108,7 +1097,6 @@ p.post-date,
 .field input, 
 .field textarea,
 #sidebar,
-#sidebar h2,
 #footer p,
 .arch-block h4 {
 	font-family: "DejaVu Sans","helvetica neue",helvetica,sans-serif;
@@ -1116,9 +1104,6 @@ p.post-date,
 
 h1, h2, h3, h4, h5, h6, .focus1-headline {
 	font-family: "Century Gothic","Trebuchet MS",Arial,Helvetica,sans-serif;
-	}
-.post-title a {
-	font-style: normal;
 	}
 	
 @media only screen and (max-width:480px) {

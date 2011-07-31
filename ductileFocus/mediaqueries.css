@@ -70,12 +70,10 @@
 		background: transparent url(img/menumobile.png) no-repeat right -150px;
 		}
 	.post-title {
-		font-weight: bold;
-		font-family: "Franklin gothic medium","arial narrow","DejaVu Sans Condensed","helvetica neue",helvetica,sans-serif;
+		font-size: 1.75em !important;
 		}
 	.post-title a {
 		font-style: normal;
-		font-weight: bold;
 		}
 	#stickers {
 		margin: 0;
@@ -146,7 +144,7 @@
 		}
  	#logo {
 		float:left; 
-		margin:0 1.5em 0 1em;	
+		margin: 0 32px 0 24px;	
 		}
 	#logo a {
 		border: none;
@@ -180,15 +178,8 @@
 	.supranav li a span {
 		display: block;
 		}
-	.post-title {
-		font-weight: normal;
-		}
-	.simple .post-title {
+	.simple .post-title, #content-info h2 {
 		font-size: 2.33em;
-		}
-	.post-title a {
-		font-style: italic;
-		font-weight: normal;
 		}
 	#stickers {
 		position: absolute;
@@ -217,6 +208,14 @@
 		color: #666;
 		position: static;
 		top: 0;
+		}
+	.navlinks.topnl {
+		position: absolute;
+		top: 0;
+		border-radius: 0;
+		background: #f2f2ff;
+		border: none;
+		left: 32px;
 		}
 	.comment-info { 
 		clear: left;
@@ -259,6 +258,7 @@
 		display: inline-block;
 		text-align: center;
 		max-width: 100%;
+		margin-right: 0 !important;
 		}	
 	.post:before, .post:after {
 		content: "";
@@ -276,14 +276,21 @@
 		}
 	.short {
 		width: 47%;
+		display: inline-block;
+		vertical-align: top;
 		}
 	.post.odd {
+		margin-left: 0;
+		border-right: 1px solid #bbb;
+		padding: 0 1em 0 0;
+		}
+	.dc-home .post.odd {
 		margin-right: 0;
 		border-left: 1px solid #bbb;
-		padding: 0 0 0 1em;
+		border-right: none;
+		padding: 0 0 0 1em;	
 		}
 	.photo .focus1-icon {
-		float: none;
 		display: inline-block;
 		text-align: center;
 		max-width: 100%;
@@ -293,6 +300,13 @@
 		}
 	.photo.focus1 img {
 		max-width: 98%;
+		}
+	.post:before, .post:after {
+		content: "";
+		display: table;
+		}
+	.post:after {
+		clear:both;
 		}
 }
 
@@ -345,10 +359,11 @@
 		margin-left : 4%;
 		}
 	.focus3, #sidebar {
-		width : 234px;
+		width : 236px;
 		float : right;
 		}
 	#blognav > div, #blogextra div {
+		margin-top: 2em;
 		margin-bottom: 2em !important;
 		}
 	.categories h2 {
