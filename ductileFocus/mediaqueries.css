@@ -10,12 +10,13 @@
 # -- END LICENSE BLOCK ----------------------------------------- */
 
 /* seuils retenus :
-< 480px: tout en une colonne, sidebar et stickers en bas
-> 480px: stickers en haut
-> 640px: sidebar toujours en bas mais divisé en deux colonnes
-> 1024px: passage à deux colonnes, sidebar à droite
-> 1280px: décalage du post-info vers la gauche
-> 1600px: marges plus grandes */
+
+480px
+640px
+760px
+1060px
+1280px
+1600px
 
 /* --------------------------------------------------------------------
 	Moins de 480px (téléphones)
@@ -216,27 +217,18 @@
 		background: #f2f2ff;
 		left: 32px;
 		}
-	.comment-info { 
-		clear: left;
-		float: left;
-		width: 10em;
-		}
-	.comment-content {
-		margin-left: 11.5em;
-		}
 }
 
-/* ------------------------------------------------------ special redimensionnement paysage */
-@media screen and (max-width:640px) and (orientation: landscape) { 
-	body { 
-		-webkit-text-size-adjust: 70%; 
-		}
-}
-
-/* ------------------------------------------------------ règles communes < 640px */
-@media only screen and (max-width:639px) {
+/* --------------------------------------------------------------------
+	Moins de 640px
+-------------------------------------------------------------------- */
+@media only screen and (max-width:640px) {
 	body {
 		-webkit-text-size-adjust: none;
+		}
+	#searchform, #breadcrumb {
+		float: none !important;
+		margin: 1em 0 !important;
 		}
 	#wrapper {
 		padding: 3%;
@@ -268,29 +260,12 @@
 		}
 }
 
-@media only screen and (min-width:640px) {
+/* ------------------------------------------------------ règles communes > 640px */
+@media only screen and (min-width:641px) {
 	#wrapper {
 		padding: 1em;
 		border-top: 1px solid #ccc;
 		}
-	/*.short {
-		width: 47%;
-		display: inline-block;
-		vertical-align: top;
-		padding: 0 0 0 2%;
-		}
-	.short.odd {
-		border-right: 1px solid #bbb;
-		padding: 0 2% 0 0;
-		}
-	.dc-home-first .short {
-		padding: 0 2% 0 0;
-		}
-	.dc-home-first .short.odd {
-		border-left: 1px solid #bbb;
-		border-right: none;
-		padding: 0 0 0 2%;
-		}*/
 	.photo .focus1-icon {
 		display: inline-block;
 		text-align: center;
@@ -309,12 +284,20 @@
 	.post:after {
 		clear:both;
 		}
+	.comment-info { 
+		clear: left;
+		float: left;
+		width: 10em;
+		}
+	.comment-content {
+		margin-left: 11.5em;
+		}
 }
 
 /* ------------------------------------------------------ règles 760px à 1060px */
-@media only screen and (min-width:760px) and (max-width: 1060px) {
+@media only screen and (min-width:761px) and (max-width: 1060px) {
 	#wrapper {
-		padding: 2em 6em;
+		padding: 2em 8em;
 		}
 	.dc-home #wrapper {
 		padding: 2em;
@@ -332,10 +315,19 @@
 	.focus3 {
 		clear:both;
 		}
+	.post.short {
+		width: 47%;
+		padding: 0 1.2% 0 0;
+		margin: 0 1.2% 3em 0;
+		border-right: 1px solid #bbb;
+		}
+	.post.short:nth-child(2n) {
+  		border-right: none;
+		}
 }
 
 /* ------------------------------------------------------ règles communes > 1060px */
-@media only screen and (min-width: 1060px) {
+@media only screen and (min-width: 1061px) {
 	#wrapper {
 		padding: 2em;
 		}
@@ -383,13 +375,13 @@
 		float: left;
 		padding-top: .5em;
 		}
-	.short {
+	.post.short {
 		width: 30%;
 		padding: 0 1.3% 0 0;
 		margin: 0 1.3% 3em 0;
 		border-right: 1px solid #bbb;
 		}
-	.short:nth-child(3n+3) {
+	.post.short:nth-child(3n) {
   		border-right: none;
 		}
 }
@@ -410,5 +402,12 @@
 		}
 	#stickers {
 		padding-right: 10%;
+		}
+}
+
+/* ------------------------------------------------------ special redimensionnement paysage */
+@media screen and (max-width:640px) and (orientation: landscape) { 
+	body { 
+		-webkit-text-size-adjust: 70%; 
 		}
 }
