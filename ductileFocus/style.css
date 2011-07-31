@@ -37,7 +37,7 @@ Micro clearfix by Nicolas Gallagher http://nicolasgallagher.com/
 */
 
 /* -----------------------------------------------------------------
-	1. STRUCTURE - IMPORTS
+	1. STRUCTURE - IMPORTS - TYPO
 ------------------------------------------------------------------ */
 
 @import url(rebase.css);
@@ -50,6 +50,42 @@ body {
 	color: #222;
 	}
 
+/* --------------------------------------------  Font-families */
+body,
+.supranav li a span,
+.comment-info, 
+#comments .me, 
+.comment-number { 
+	font-family: "New Century Schoolbook","Century Schoolbook", "Century Schoolbook L", Georgia, serif;
+	}
+#blogdesc,
+.supranav, 
+#prelude,
+#submenu,
+#content-info,
+#subcategories,
+p.post-date,
+#comments, 
+#ping-url, 
+#comment-form,
+#comments-feed,
+.field input, 
+.field textarea,
+#sidebar,
+#footer p,
+.arch-block h4 {
+	font-family: "DejaVu Sans","helvetica neue",helvetica,sans-serif;
+	}
+
+h1, h2, h3, h4, h5, h6, .focus1-headline {
+	font-family: "Century Gothic","Trebuchet MS",Arial,Helvetica,sans-serif;
+	}
+	
+@media only screen and (max-width:480px) {
+	.post-title {
+		font-family: "Century Gothic","Trebuchet MS",Arial,Helvetica,sans-serif;
+		}
+}
 /* ------------------------------------------------------------
 	2. LIENS & Complément balises HTML
 ------------------------------------------------------------- */
@@ -113,13 +149,11 @@ h1 a {
 	}
 #blogdesc {
 	margin: 0 0 0 32px;
-	font-family: "Franklin gothic medium","arial narrow","DejaVu Sans Condensed","helvetica neue",helvetica,sans-serif;
 	font-style: italic;
 	color: #888;
 	text-shadow: none;
 	}
 .supranav, #prelude {
-	font-family: "Franklin gothic medium","arial narrow","DejaVu Sans Condensed","helvetica neue",helvetica,sans-serif;
 	list-style-type: none;
 	line-height: 1.25;
 	font-size: .875em;
@@ -155,12 +189,10 @@ h1 a {
 	display: block;
 	text-transform: none;
 	text-shadow: none;
-	font-family: "New Century Schoolbook","Century Schoolbook", "Century Schoolbook L", Georgia, serif;
 	font-style:italic;
 	}
 #submenu {
 	clear: both;
-	font-family: "Franklin gothic medium","arial narrow","DejaVu Sans Condensed","helvetica neue",helvetica,sans-serif;
 	padding: 3px 2.3em 3px 32px;
 	font-size: .875em;
 	line-height: 1.5;
@@ -231,7 +263,6 @@ a#bc-home {
 /* ------------------------------------------------------- content-info */
 #content-info {
 	font-size: .875em;
-	font-family: "Franklin gothic medium","arial narrow","DejaVu Sans Condensed","helvetica neue",helvetica,sans-serif;
 	margin-bottom: 3em;
 	}
 #content-info h2 {
@@ -239,7 +270,6 @@ a#bc-home {
 	}
 #subcategories {
 	font-size: .875em;
-	font-family: "Franklin gothic medium","arial narrow","DejaVu Sans Condensed","helvetica neue",helvetica,sans-serif;
 	}
 #subcategories h3 { 
 	font-size: 1.1em;
@@ -278,8 +308,6 @@ a#bc-home {
 	}
 .navlinks a, 
 .pagination a {
-	padding: 0 1em;
-	white-space: nowrap;
 	color: #333;
 	}
 .navlinks.topnl {
@@ -295,7 +323,6 @@ a#bc-home {
 p.post-date {
 	font-size: .875em;
 	color: #14709e;
-	font-family: "Franklin gothic medium","arial narrow","DejaVu Sans Condensed","helvetica neue",helvetica,sans-serif;
 	margin: 0;
 	-moz-border-radius: 3px;
 	-webkit-border-radius: 3px;
@@ -312,8 +339,6 @@ p.post-date {
 	text-decoration: none;
 	color: #ab164d;
 	}
-
-/* short entries styles */
 .post-icon {
 	background: #fff;
 	display: block;
@@ -343,6 +368,9 @@ p.post-date {
 	}
 .post h3, .post h5 {
 	font-variant: small-caps;
+	}
+.post-content img, .post-excerpt img {
+	border: 1px solid #ccc;
 	}
 .post-info, 
 .post-tags, 
@@ -451,7 +479,6 @@ p.post-date {
 #comment-form,
 #comments-feed { 
 	color: #333;
-	font-family: "Franklin gothic medium","arial narrow","DejaVu Sans Condensed","helvetica neue",helvetica,sans-serif;
 	font-size: .875em;
 	clear: both;
 	}
@@ -491,10 +518,8 @@ p.post-date {
 	padding-bottom: .2em;
 	line-height: 1.25;
 	color: #666;
-	font-family: "New Century Schoolbook","Century Schoolbook", "Century Schoolbook L", Georgia, serif;	
 	}
 #comments .me { 
-	font-family: "New Century Schoolbook","Century Schoolbook", "Century Schoolbook L", Georgia, serif;
 	color: #14709e;
 	}
 .comment-number {
@@ -502,7 +527,6 @@ p.post-date {
 	font-weight: normal;
 	font-style: italic;
 	text-decoration: none;
-	font-family: "New Century Schoolbook","Century Schoolbook", "Century Schoolbook L", Georgia, serif;
 	color: #ab164d;
 	display: block;
 	width: 2em;
@@ -540,7 +564,6 @@ p.post-date {
 	-webkit-border-radius: 3px; 
 	-moz-border-radius: 3px;
 	border-radius: 3px;
-	font-family: "Franklin gothic medium","arial narrow","DejaVu Sans Condensed","helvetica neue",helvetica,sans-serif;
 	}
 .field textarea { 
 	padding: .5em 1em;	
@@ -606,7 +629,6 @@ p.post-date {
 
 #sidebar {
 	font-size: 0.875em;
-	font-family: "Franklin gothic medium","arial narrow","DejaVu Sans Condensed","helvetica neue",helvetica,sans-serif;
 	}
 #blognav > div, #blogextra > div {
 	margin-bottom: .5em;
@@ -723,7 +745,6 @@ ul ul .category-current {
 	clear: both;
 	background: #686867;
 	color: #fff;
-	font-family: "Franklin gothic medium","arial narrow","DejaVu Sans Condensed","helvetica neue",helvetica,sans-serif;
 	font-size: .875em;
 	}
 #footer p {
@@ -860,7 +881,6 @@ hr.hidden {background: #fff; color: #fff; border-color: #fff; }
 		text-transform: uppercase;
 		}
 	.focus1 .post-title {
-		font-size: 2.33em;
 		margin-top: 0;
 		}
 	.focus1-icon {
@@ -884,9 +904,6 @@ hr.hidden {background: #fff; color: #fff; border-color: #fff; }
 	.focus1-top a:link, .focus1-top a:visited {
 		color: #fff;
 		background-color: transparent;
-		}
-	.photo .post-title {
-		font-size: 1.33em;
 		}
 	.kozlika .focus1-icon {
 		background: #fff url(img/authors/kozlika.png) no-repeat center center;
@@ -963,7 +980,6 @@ hr.hidden {background: #fff; color: #fff; border-color: #fff; }
 	color: #14709e;
 	}
 .arch-block h4 {
-	font-family: "Franklin gothic medium","arial narrow","DejaVu Sans Condensed","helvetica neue",helvetica,sans-serif;
 	font-weight: normal;
 	font-size: 1.1em;
 	margin-bottom: 0;
@@ -1078,48 +1094,3 @@ hr.hidden {background: #fff; color: #fff; border-color: #fff; }
 .post-content:after {
 	clear:both;
 	}
-
-/* ================================================ 
-	personnalisations blog chantier
-================================================ */
-.post-content img, .post-excerpt img {
-	border: 1px solid #ccc;
-	}
-
-
-/* --------------------------------------------  Test fontes */
-body,
-.supranav li a span,
-.comment-info, 
-#comments .me, 
-.comment-number { 
-	font-family: "New Century Schoolbook","Century Schoolbook", "Century Schoolbook L", Georgia, serif;
-	}
-#blogdesc,
-.supranav, 
-#prelude,
-#submenu,
-#content-info,
-#subcategories,
-p.post-date,
-#comments, 
-#ping-url, 
-#comment-form,
-#comments-feed,
-.field input, 
-.field textarea,
-#sidebar,
-#footer p,
-.arch-block h4 {
-	font-family: "DejaVu Sans","helvetica neue",helvetica,sans-serif;
-	}
-
-h1, h2, h3, h4, h5, h6, .focus1-headline {
-	font-family: "Century Gothic","Trebuchet MS",Arial,Helvetica,sans-serif;
-	}
-	
-@media only screen and (max-width:480px) {
-	.post-title {
-		font-family: "Century Gothic","Trebuchet MS",Arial,Helvetica,sans-serif;
-		}
-}

@@ -70,8 +70,9 @@
 	#gotop li a {
 		background: transparent url(img/menumobile.png) no-repeat right -150px;
 		}
-	.post-title {
-		font-size: 1.75em !important;
+	#content-info h2 {
+		font-size: 1.25em;
+		margin-top: 0;
 		}
 	.post-title a {
 		font-style: normal;
@@ -119,7 +120,6 @@
 		top: 0;
 		left: 3px;
 		color: #fff;
-		font-size: .875em;
 		list-style-type: none;
 		}
 	#prelude li {
@@ -179,7 +179,7 @@
 	.supranav li a span {
 		display: block;
 		}
-	.simple .post-title, #content-info h2 {
+	.simple .post-title, #content-info h2, .focus1 .post-title {
 		font-size: 2.33em;
 		}
 	#stickers {
@@ -210,12 +210,25 @@
 		position: static;
 		top: 0;
 		}
+	.navlinks a, 
+	.pagination a {
+		padding: 0 1em;
+		white-space: nowrap;
+		color: #333;
+		}
 	.navlinks.topnl {
 		position: absolute;
 		top: 0;
 		border-radius: 0;
 		background: #f2f2ff;
 		left: 32px;
+		}
+	.focus1 .post-title,
+	.simple .post-title {
+		font-size: 2.33em;
+		}
+	.focus1 .photo .post-title {
+		font-size: 1.33em;
 		}
 }
 
