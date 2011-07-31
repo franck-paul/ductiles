@@ -54,7 +54,7 @@
 
 		<!-- focus 2 -->
 		<div class="focus2">
-		<tpl:Entries selected="1" no-content="1">
+		<tpl:Entries selected="1" no-content="1" category="!Photographie">
 			<tpl:EntriesHeader>
 				<h2>Focus <span>{{tpl:lang textes}}</span></h2>
 				<ol>
@@ -87,30 +87,14 @@
 <!-- focus 3 -->
 <div class="focus3">
 	<h2>Focus <span>{{tpl:lang images}}</span></h2>
-		<tpl:Widget id="EntryImages">
-			<setting name="title"></setting>
-			<setting name="limit">8</setting>
-			<setting name="length">50</setting>
-			<setting name="link">entry</setting>
-			<setting name="img_dim">1</setting>
-			<setting name="html_tag">div</setting>
-		</tpl:Widget>
-		<!--Liste d'images de billets (Identifiant du widget : EntryImages)
-		        Nom du paramètre : title (text)
-		        Nom du paramètre : limit (text)
-		        Nom du paramètre : category (text)
-		        Nom du paramètre : selected (0|1)
-		        Nom du paramètre : homeonly (0|1)
-		        Nom du paramètre : size (t|sq|s|m|o)
-		        Nom du paramètre : html_tag (span|li|div|none)
-		        Nom du paramètre : link (image|entry|none)
-		        Nom du paramètre : from (full|excerpt|content)
-		        Nom du paramètre : legend (none|image|entry)
-		        Nom du paramètre : bubble (none|image|entry)
-		        Nom du paramètre : class (text)
-		        Nom du paramètre : alt (inherit|none)
-		        Nom du paramètre : img_dim (0|1)
-		        Nom du paramètre : start (text)
-		        Nom du paramètre : length (text) -->
+	<tpl:Entries category="Photographie" no-context="1" ignore_pagination="1" lastn="15">
+		<tpl:EntriesHeader>
+			<ul>
+		</tpl:EntriesHeader>
+			<li><a href="{{tpl:EntryURL}}">{{tpl:EntryFirstImage size="t"}}</a></li>
+		<tpl:EntriesFooter>
+			</ul>
+		</tpl:EntriesFooter>		
+	</tpl:Entries>
 </div>
 <hr class="hidden" style="clear:both" />

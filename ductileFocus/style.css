@@ -945,22 +945,23 @@ hr.hidden {background: #fff; color: #fff; border-color: #fff; }
 		font-size: .875em;
 		margin-top: 0;
 		}
-.listimages-widget {
-	font-size: 18px;
+.focus3 ul {
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
 	}
-.landscape, .portrait {
+.focus3 ul li {
 	background: #ccc;
 	width: 75px;
 	height: 75px;
 	overflow: hidden;
-	display: inline-block;
+	_display: inline-block;
 	vertical-align: top;
 	margin-bottom: 4px;
 	}
 
 /* ---------------------------------------------------------------- archives */
 .dc-archive {}
-#time-criteria {}
 #other-criteria {}
 #more-arch {}
 .arch-block {
@@ -994,6 +995,9 @@ hr.hidden {background: #fff; color: #fff; border-color: #fff; }
 	margin-left: 20px;
 	}
 
+#time-criteria h3:first-child { 
+	margin-top: 0;
+	}
 #by-date {
 	margin-right: 0;
 	margin-bottom: 1em;
