@@ -283,6 +283,9 @@ a#bc-home {
 	color: #333;
 	}
 .navlinks.topnl {
+	border-left: 1px solid #eee;
+	border-right: 1px solid #eee;
+	border-bottom: 1px solid #eee;
 	background: #f2f2ff;
 	}
 
@@ -324,7 +327,7 @@ p.post-date {
 	box-shadow: 2px 2px 3px #ccc;
 	}
 .short {
-	margin: 0 1% 3em 0;
+	margin-bottom: 3em;
 	display: inline-block;
 	vertical-align: top;
 	}
@@ -605,7 +608,7 @@ p.post-date {
 	font-size: 0.875em;
 	font-family: "Franklin gothic medium","arial narrow","DejaVu Sans Condensed","helvetica neue",helvetica,sans-serif;
 	}
-#blognav > div, #blogextra div {
+#blognav > div, #blogextra > div {
 	margin-bottom: .5em;
 	}
 #sidebar h2, #sidebar h3 {
@@ -645,7 +648,7 @@ p.post-date {
 	margin-top: 0;
 	margin-bottom: 0;
 	}
-#sidebar ul li {
+#sidebar li {
 	padding-left: 16px;
 	background: transparent url(img/square.png) no-repeat 0 .5em;
 	}
@@ -655,7 +658,7 @@ p.post-date {
 #sidebar ul li ul li ul li {
 	background-image: url(img/square3.png);
 	}
-#sidebar .syndicate ul li {
+#sidebar .syndicate li {
 	background-image: none;
 	padding-left: 0;
 	}
@@ -666,15 +669,14 @@ p.post-date {
 	border-radius: 4px;
 	background-color: #686867;
 	}
-#sidebar .categories h2, #sidebar .categories h2 a {
+#sidebar .categories h2 {
 	color: #fff;
-	padding: .5em;
 	}
 #sidebar .categories ul, #sidebar .categories ul ul {
-	line-height: 2;
 	margin: 0;
 	}
 #sidebar .categories ul li {
+	line-height: 2;
 	border-bottom: 1px solid #fff;
 	padding: 0;
 	background-image: none;
@@ -683,6 +685,7 @@ p.post-date {
 	border-bottom: none;
 	}
 #sidebar .categories li ul li {
+	line-height: 1.75;
 	border-bottom: none;
 	}
 .categories ul a {
@@ -720,20 +723,30 @@ ul ul .category-current {
 	clear: both;
 	background: #686867;
 	color: #fff;
+	font-family: "Franklin gothic medium","arial narrow","DejaVu Sans Condensed","helvetica neue",helvetica,sans-serif;
+	font-size: .875em;
 	}
 #footer p {
 	padding: .66em 2em;
 	margin: 0;
 	text-align: right;
-	font-size: .875em;
-	font-family: "Franklin gothic medium","arial narrow","DejaVu Sans Condensed","helvetica neue",helvetica,sans-serif;
+	}
+#blogcustom > div {
+	display: inline-block;
+	}
+#blogcustom .syndicate ul {
+	padding: .66em 1em 0;
+	margin: 0;
+	text-align: left;
+	line-height: 1.75;
+	list-style-type: none;
 	}
 #footer a {
 	color: #fff;
 	}
 #footer a:hover, 
 #footer a:focus {
-	background: #686867;
+	background-color: #686867;
 	}
 #stickers {
 	list-style-type: none;
@@ -746,7 +759,7 @@ ul ul .category-current {
 
 /* ------------------------------------------------------- RSS */
 .feed { 
-	padding-left: 20px;
+	padding-left: 22px;
 	background : transparent url(img/feed.png) no-repeat left center;
 	}
 
@@ -874,7 +887,6 @@ hr.hidden {background: #fff; color: #fff; border-color: #fff; }
 		}
 	.photo .post-title {
 		font-size: 1.33em;
-		margin-top: 2em;
 		}
 	.kozlika .focus1-icon {
 		background: #fff url(img/authors/kozlika.png) no-repeat center center;

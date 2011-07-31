@@ -214,7 +214,6 @@
 		top: 0;
 		border-radius: 0;
 		background: #f2f2ff;
-		border: none;
 		left: 32px;
 		}
 	.comment-info { 
@@ -274,22 +273,24 @@
 		padding: 1em;
 		border-top: 1px solid #ccc;
 		}
-	.short {
+	/*.short {
 		width: 47%;
 		display: inline-block;
 		vertical-align: top;
+		padding: 0 0 0 2%;
 		}
-	.post.odd {
-		margin-left: 0;
+	.short.odd {
 		border-right: 1px solid #bbb;
-		padding: 0 1em 0 0;
+		padding: 0 2% 0 0;
 		}
-	.dc-home .post.odd {
-		margin-right: 0;
+	.dc-home-first .short {
+		padding: 0 2% 0 0;
+		}
+	.dc-home-first .short.odd {
 		border-left: 1px solid #bbb;
 		border-right: none;
-		padding: 0 0 0 1em;	
-		}
+		padding: 0 0 0 2%;
+		}*/
 	.photo .focus1-icon {
 		display: inline-block;
 		text-align: center;
@@ -384,8 +385,12 @@
 		}
 	.short {
 		width: 30%;
-		border-left: 1px solid #bbb;
-		padding: 0 0 0 1.5%;
+		padding: 0 1.3% 0 0;
+		margin: 0 1.3% 3em 0;
+		border-right: 1px solid #bbb;
+		}
+	.short:nth-child(3n+3) {
+  		border-right: none;
 		}
 }
 
