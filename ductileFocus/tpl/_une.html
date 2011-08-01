@@ -66,12 +66,6 @@
 						<p class="post-info">
 							{{tpl:EntryDate format="%e %b %Y"}} |
 							<span class="post-author">{{tpl:lang by}} {{tpl:EntryAuthorDisplayName}} </span>
-							<tpl:EntryIf has_category="1">
-								<tpl:EntryCategoriesBreadcrumb>
-									<span class="post-breadcrumb-cat"><a href="{{tpl:CategoryURL}}">{{tpl:CategoryTitle encode_html="1"}}</a></span> ›
-								</tpl:EntryCategoriesBreadcrumb>
-								<span class="post-cat"><a href="{{tpl:EntryCategoryURL}}">{{tpl:EntryCategory encode_html="1"}}</a></span>
-							</tpl:EntryIf>
 						</p>
 					</li>
 				</tpl:LoopPosition>
@@ -86,9 +80,9 @@
 
 <!-- focus 3 -->
 <div class="focus3">
-	<h2>Focus <span>{{tpl:lang images}}</span></h2>
 	<tpl:Entries category="Photographie" no-context="1" ignore_pagination="1" lastn="15">
 		<tpl:EntriesHeader>
+		<h2>Focus <span>{{tpl:lang images}}</span></h2>
 			<ul>
 		</tpl:EntriesHeader>
 			<li><a href="{{tpl:EntryURL}}">{{tpl:EntryFirstImage size="t"}}</a></li>

@@ -9,14 +9,7 @@
 #
 # -- END LICENSE BLOCK ----------------------------------------- */
 
-/* seuils retenus :
-
-480px
-640px
-760px
-1060px
-1280px
-1600px
+/* seuils importants : 480px, 640px, 760px, 1060px, 1600px */
 
 /* --------------------------------------------------------------------
 	Moins de 480px (téléphones)
@@ -307,8 +300,8 @@
 		}
 }
 
-/* ------------------------------------------------------ règles 760px à 1060px */
-@media only screen and (min-width:761px) and (max-width: 1060px) {
+/* ------------------------------------------------------ règles 768px à 1060px */
+@media only screen and (min-width:768px) and (max-width: 1060px) {
 	#wrapper {
 		padding: 2em 8em;
 		}
@@ -397,15 +390,6 @@
 	.post.short:nth-child(3n) {
   		border-right: none;
 		}
-}
-
-/* ------------------------------------------------------ 
-	au-delà de 1280px
-------------------------------------------------------- */
-@media only screen and (min-width: 1280px) {
-	#content-info a.feed { 
-		white-space: nowrap;
-		}	
 }
 
 /* ------------------------------------------------------ au-delà de 1600px */

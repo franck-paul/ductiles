@@ -339,17 +339,20 @@ p.post-date {
 	text-decoration: none;
 	color: #ab164d;
 	}
-.post-icon {
-	background: #fff;
-	display: block;
-	float: left;
-	margin: .33em 1em .66em 0;
+.post-icon, .photo-icon {
+	margin: .33em 0 .66em;
 	padding: 4px;
 	border: 1px solid #999;
 	-moz-box-shadow: 2px 2px 3px #ccc;
 	-webkit-box-shadow: 2px 2px 3px #ccc;
 	-o-box-shadow: 2px 2px 3px #ccc;
 	box-shadow: 2px 2px 3px #ccc;
+	}
+.post-icon {
+	margin-right: 1em;
+	background: #fff;
+	display: block;
+	float: left;
 	}
 .short {
 	margin-bottom: 3em;
@@ -358,6 +361,14 @@ p.post-date {
 	}
 .short .post-content p {
 	margin-top: 0;
+	}
+.short-photo {
+	max-width: 100%;
+	margin-bottom: 0;
+	}
+.short-photo img {
+	max-width: 96%;
+	margin-bottom: 0;
 	}
 .post h3,
 .post h4, 
@@ -374,13 +385,15 @@ p.post-date {
 	}
 .post-info, 
 .post-tags, 
-.post-info-co, 
-.read-it {
-	margin: .33em 0;
+.post-info-co {
+	margin: 0 0 .33em 0;
 	}
 .post-attr {
 	font-size: .875em;
 	margin: .5em 0;
+	}
+.post-attr p {
+	margin-top: 0;
 	}
 .post-info span + span {
 	padding-left: .5em;
@@ -436,17 +449,23 @@ p.post-date {
 .post-info-co a {
 	text-decoration: none;
 	padding-right: 1em;
+	}
+a.comment_count {
 	padding-left: 20px;
+	background-image: url(img/comments.png);
 	background-repeat: no-repeat;
 	background-position: left center;
 	}
-.post-info-co a.comment_count {
-	background-image: url(img/comments.png);
-	}
-.post-info-co a.ping_count {
+a.ping_count {
+	padding-left: 20px;
+	background-repeat: no-repeat;
+	background-position: left center;
 	background-image: url(img/ping.png);
 	}
-.post-info-co a.attach_count {
+a.attach_count {
+	padding-left: 20px;
+	background-repeat: no-repeat;
+	background-position: left center;
 	background-image: url(img/attach.png);	
 	}
 #attachments {
