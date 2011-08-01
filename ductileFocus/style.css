@@ -936,8 +936,8 @@ hr.hidden {background: #fff; color: #fff; border-color: #fff; }
 		margin-top: 0;
 		}
 	.focus1-icon {
-		min-width: 148px;
-		min-height: 148px;
+		min-width: 100px;
+		min-height: 100px;
 		display: block;
 		float: left;
 		line-height: .7em;
@@ -1150,3 +1150,16 @@ hr.hidden {background: #fff; color: #fff; border-color: #fff; }
 .post-content:after {
 	clear:both;
 	}
+
+.focus1 h2 {
+	margin-bottom: 0;
+}
+.focus1 p.post-author {
+	margin-top: 0;
+}
+.focus1 .focus1-icon {
+	margin-bottom: 0;
+}
+.focus1 .post-content p {
+	margin-bottom: 0;
+}
