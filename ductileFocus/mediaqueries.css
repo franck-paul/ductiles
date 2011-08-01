@@ -211,10 +211,21 @@
 		}
 	.navlinks.topnl {
 		position: absolute;
+		text-align: center;
 		top: 0;
-		border-radius: 0;
+		right: 0;
+		width : 236px;
+		margin-right: 2.2em;
 		background: #f2f2ff;
-		left: 32px;
+		-webkit-border-bottom-right-radius: 12px;
+		-moz-border-radius-bottomright: 12px;
+		border-bottom-right-radius: 12px;	
+		-webkit-border-bottom-left-radius: 12px;
+		-moz-border-radius-bottomleft: 12px;
+		border-bottom-left-radius: 12px;	
+		}
+	.topnl a {
+		padding: 0;
 		}
 	.focus1 .post-title,
 	.simple .post-title {
@@ -309,7 +320,7 @@
 		padding: 2em;
 		}
 	.focus1 {
-		width: 62%;
+		width: 61%;
 		float: left;
 		min-height: 430px;
 		}
@@ -348,7 +359,7 @@
 		padding : 0 0 2em 0;
 		}
 	.focus1 {
-		width: 62%;
+		width: 61%;
 		float: left;
 		min-height: 430px;
 		}

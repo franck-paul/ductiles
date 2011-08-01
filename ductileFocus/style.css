@@ -267,9 +267,16 @@ a#bc-home {
 	}
 #content-info h2 {
 	color: #14709e;
+	margin-top: 0;
+	margin-bottom: .33em;
 	}
 #subcategories {
+	padding-top: 1em;
 	font-size: .875em;
+	}
+#subcategories h3, #subcategories ul {
+	display: inline;
+	padding-right: 1em;
 	}
 #subcategories h3 { 
 	font-size: 1.1em;
@@ -290,6 +297,11 @@ a#bc-home {
 .feed-info {
 	color: #fff;
 	}
+.feed-info a {
+	font-size: .875em;
+	padding-top: .1em;
+	padding-bottom: .1em;
+	}
 
 /* ------------------------------------------------------- pagination, navlinks */
 .navlinks, 
@@ -304,7 +316,7 @@ a#bc-home {
 	border-radius: 4px;
 	border-right: 1px solid #ccc;
 	border-bottom: 1px solid #ccc;
-	background: #f2eee3;
+	background: #F1F0EB;
 	}
 .navlinks a, 
 .pagination a {
@@ -314,7 +326,8 @@ a#bc-home {
 	border-left: 1px solid #eee;
 	border-right: 1px solid #eee;
 	border-bottom: 1px solid #eee;
-	background: #f2f2ff;
+	background: #F1F0EB;
+	padding: 2px 0;
 	}
 
 /* ------------------------------------------------------------
@@ -771,15 +784,35 @@ ul ul .category-current {
 	margin: 0;
 	text-align: right;
 	}
+#blogcustom {
+	border-bottom: 1px solid #999;
+	}
 #blogcustom > div {
 	display: inline-block;
+	vertical-align: top;
+	width: 300px;
+	padding: 12px;
 	}
-#blogcustom .syndicate ul {
+#blogcustom div.feed {
+	background-image: none;
+	padding: 8px;
+	}
+#blogcustom img {
+	max-width: 96%;
+	}
+#blogcustom ul {
 	padding: .66em 1em 0;
 	margin: 0;
 	text-align: left;
 	line-height: 1.75;
+	}
+#blogcustom li {
+	padding-left: 0;
+	margin-left: 0;
+	}
+#blogcustom .syndicate ul {
 	list-style-type: none;
+	padding-left: 0;
 	}
 #footer a {
 	color: #fff;
@@ -880,7 +913,7 @@ hr.hidden {background: #fff; color: #fff; border-color: #fff; }
 /* focus1 */
 	.focus1 {
 		padding: 0 1em .2em 1em;
-		background: #ededee;
+		background: #efefee;
 		-moz-box-shadow: 2px 2px 3px #ccc;
 		-webkit-box-shadow: 2px 2px 3px #ccc;
 		-o-box-shadow: 2px 2px 3px #ccc;
@@ -946,7 +979,7 @@ hr.hidden {background: #fff; color: #fff; border-color: #fff; }
 	.focus2 h3 {
 		font-size: 1em;
 		font-variant: small-caps;
-		margin-bottom: .3em;	
+		margin-bottom: .2em;	
 		}	
 	.focus2 a {
 		text-decoration: none;
