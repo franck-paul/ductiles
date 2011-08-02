@@ -389,15 +389,6 @@
 		padding-right: 4em;
 		padding-left: 4em;
 		}
-	.simple .post-content, .simple .post-excerpt,
-	#comments ul, #comment-form fieldset, #ping-url p {
-		margin-left: 260px !important;
-		}
-	.simple .post-attr {
-		width: 234px;
-		float: left;
-		padding-top: .5em;
-		}
 	.post.short {
 		width: 30%;
 		padding: 0 1.3% 0 0;
@@ -406,6 +397,22 @@
 		}
 	.post.short:nth-child(3n) {
   		border-right: none;
+		}
+}
+
+/* ------------------------------------------------------ au-delà de 1280px */
+@media only screen and (min-width: 1280px) {
+	.simple .post-content, .simple .post-excerpt,
+	#comments > ul, #comment-form fieldset, #ping-url p {
+		margin-left: 260px !important;
+		}
+	#comments ul ul {
+		margin-left: 0;
+		}
+	.simple .post-attr {
+		width: 234px;
+		float: left;
+		padding-top: .5em;
 		}
 }
 

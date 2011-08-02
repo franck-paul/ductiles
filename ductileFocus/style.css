@@ -93,8 +93,16 @@ del {
 	color: #800000;
 	}
 blockquote {
-	border: 2px solid #eef;
+	border-left: 4px solid #ccc;
 	padding: 1px 1em .5em;
+	background: #f9f9f9;
+	}
+blockquote:before {
+	color:#ccc;
+	content:open-quote;
+	font-size:4em;
+	display: block;
+	float: left;
 	}
 code, pre {
 	background: #efefef;
@@ -395,6 +403,8 @@ p.post-date {
 	}
 .post-content img, .post-excerpt img {
 	border: 1px solid #ccc;
+	max-width: 96%;
+	padding: 4px;
 	}
 .post-info, 
 .post-tags, 
@@ -437,6 +447,10 @@ p.post-date {
 	}
 .post ul {
 	list-style-type: square;
+	margin-left: 0;
+	}
+.post ol {
+	margin-left: 0;
 	}
 .footnotes {
 	font-size: .875em;
@@ -790,15 +804,14 @@ ul ul .category-current {
 #blogcustom > div {
 	display: inline-block;
 	vertical-align: top;
-	width: 300px;
+	width: 294px;
 	padding: 12px;
 	}
 #blogcustom div.feed {
 	background-image: none;
-	padding: 8px;
 	}
 #blogcustom img {
-	max-width: 96%;
+	max-width: 100%;
 	}
 #blogcustom ul {
 	padding: .66em 1em 0;
@@ -1010,6 +1023,20 @@ hr.hidden {background: #fff; color: #fff; border-color: #fff; }
 	display: inline-block;
 	vertical-align: top;
 	margin-bottom: 4px;
+	}
+.focus3 img {
+	opacity: 1;
+	-moz-transition-property: opacity;
+	-moz-transition-duration: .66s;
+	-webkit-transition-property: opacity;
+	-webkit-transition-duration: .66s;
+	-o-transition-property: opacity;
+	-o-transition-duration: .66s;
+	transition-property: opacity;
+	transition-duration: .66s;
+	}
+.focus3 img:hover {
+	opacity: .5;
 	}
 
 /* ---------------------------------------------------------------- archives */
