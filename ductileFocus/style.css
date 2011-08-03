@@ -23,6 +23,7 @@ Plan de cette feuille :
 10. Classes communes
 11. Pages spécifiques
 12. Clearers
+13. Ductile Focus Goodies
 
 Couleurs :
 Typo: #222 courant, #4c4c85 commentaires
@@ -934,8 +935,8 @@ hr.hidden {background: #fff; color: #fff; border-color: #fff; }
 		margin-bottom: 2em;
 		}
 	.focus1-top {
-		background: #ab164d;
-		color: #fff;
+		background: #a1bbc5;
+		color: #333;
 		margin: 0 -1em 1.5em;
 		padding: .3em 1em;
 		line-height: 1.1;
@@ -946,7 +947,7 @@ hr.hidden {background: #fff; color: #fff; border-color: #fff; }
 		text-transform: uppercase;
 		}
 	.focus1 .post-title {
-		margin-top: 0;
+		margin: 0;
 		}
 	.focus1-icon {
 		min-width: 100px;
@@ -954,7 +955,7 @@ hr.hidden {background: #fff; color: #fff; border-color: #fff; }
 		display: block;
 		float: left;
 		line-height: .7em;
-		margin: .33em 1em .66em 0;
+		margin: .4em 1em 0 0;
 		padding: 0;
 		border: 1px solid #999;
 		-moz-box-shadow: 2px 2px 3px #ccc;
@@ -967,12 +968,15 @@ hr.hidden {background: #fff; color: #fff; border-color: #fff; }
 		background: #fff;
 		}
 	.focus1-top a:link, .focus1-top a:visited {
-		color: #fff;
+		color: #333;
 		background-color: transparent;
 		}
-	.kozlika .focus1-icon {
-		background: #fff url(img/authors/kozlika.png) no-repeat center center;
-		}	
+	.focus1 .post-content p {
+		margin-bottom: 0;
+		}
+	.focus1 p.post-author {
+		margin-top: 0;
+		}
 	.post-author {
 		font-style: italic;
 		}
@@ -1178,15 +1182,10 @@ hr.hidden {background: #fff; color: #fff; border-color: #fff; }
 	clear:both;
 	}
 
-.focus1 h2 {
-	margin-bottom: 0;
-}
-.focus1 p.post-author {
-	margin-top: 0;
-}
-.focus1 .focus1-icon {
-	margin-bottom: 0;
-}
-.focus1 .post-content p {
-	margin-bottom: 0;
-}
+/* ---------------------------------------------------
+13. SPECIAL ICONE AUTEUR 
+	modèle à adapter à chaque auteur !
+--------------------------------------------------- */
+	.kozlika .focus1-icon {
+		background: #fff url(img/authors/kozlika.png) no-repeat center center;
+		}	
