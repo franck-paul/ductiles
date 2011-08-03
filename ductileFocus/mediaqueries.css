@@ -293,13 +293,14 @@
 		display: inline-block;
 		text-align: center;
 		max-width: 100%;
+		margin-bottom: .33em;
 		}
 	.photo .post-title {
 		margin-top: .5em !important;
 		}
 	.photo.focus1 img {
 		max-width: 98%;
-		}
+x		}
 	.post:before, .post:after {
 		content: "";
 		display: table;

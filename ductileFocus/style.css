@@ -26,7 +26,7 @@ Plan de cette feuille :
 13. Ductile Focus Goodies
 
 Couleurs :
-Typo: #222 courant, #4c4c85 commentaires
+Typo: #222 courant
 Titres non cliquables: #14709e
 Liens: #666 courant, #ab164d titre billet et Lire la suite
 Fond formulaire comm: #eef
@@ -323,9 +323,9 @@ a#bc-home {
 	-moz-border-radius: 4px;
 	-webkit-border-radius: 4px;
 	border-radius: 4px;
-	border-right: 1px solid #ccc;
-	border-bottom: 1px solid #ccc;
-	background: #F1F0EB;
+	border-right: 1px solid #ddd;
+	border-bottom: 1px solid #ddd;
+	background: #f2f2f0;
 	}
 .navlinks a, 
 .pagination a {
@@ -335,7 +335,7 @@ a#bc-home {
 	border-left: 1px solid #eee;
 	border-right: 1px solid #eee;
 	border-bottom: 1px solid #eee;
-	background: #F1F0EB;
+	background: #f2f2f0;
 	padding: 2px 0;
 	}
 
@@ -531,7 +531,7 @@ a.attach_count {
 	}
 #comment-form, #ping-url {
 	padding: 1em;
-	background: #eef;
+	background: #eafcff;
 	margin-bottom: 1em;
 	color: #333;
 	border: 1px solid #ddf;
@@ -927,7 +927,7 @@ hr.hidden {background: #fff; color: #fff; border-color: #fff; }
 /* focus1 */
 	.focus1 {
 		padding: 0 1em .2em 1em;
-		background: #efefee;
+		background: #f2f2f0;
 		-moz-box-shadow: 2px 2px 3px #ccc;
 		-webkit-box-shadow: 2px 2px 3px #ccc;
 		-o-box-shadow: 2px 2px 3px #ccc;
@@ -935,7 +935,7 @@ hr.hidden {background: #fff; color: #fff; border-color: #fff; }
 		margin-bottom: 2em;
 		}
 	.focus1-top {
-		background: #a1bbc5;
+		background: #b2d5de;
 		color: #333;
 		margin: 0 -1em 1.5em;
 		padding: .3em 1em;
@@ -947,7 +947,7 @@ hr.hidden {background: #fff; color: #fff; border-color: #fff; }
 		text-transform: uppercase;
 		}
 	.focus1 .post-title {
-		margin: 0;
+		margin: .1em 0 0;
 		}
 	.focus1-icon {
 		min-width: 100px;
@@ -955,7 +955,7 @@ hr.hidden {background: #fff; color: #fff; border-color: #fff; }
 		display: block;
 		float: left;
 		line-height: .7em;
-		margin: .4em 1em 0 0;
+		margin: .4em 1em .3em 0;
 		padding: 0;
 		border: 1px solid #999;
 		-moz-box-shadow: 2px 2px 3px #ccc;
