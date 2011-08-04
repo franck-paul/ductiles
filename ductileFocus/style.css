@@ -26,7 +26,7 @@ Plan de cette feuille :
 13. Ductile Focus Goodies
 
 Couleurs :
-Typo: #222 courant
+Typo: #333 courant
 Titres non cliquables: #14709e
 Liens: #666 courant, #ab164d titre billet et Lire la suite
 Fond formulaire comm: #eef
@@ -48,7 +48,7 @@ Micro clearfix by Nicolas Gallagher http://nicolasgallagher.com/
 body {
 	background: #fff;
 	font-family: "New Century Schoolbook","Century Schoolbook", "Century Schoolbook L", Georgia, serif;
-	color: #222;
+	color: #333;
 	}
 
 /* --------------------------------------------  Font-families */
@@ -119,7 +119,7 @@ a {
 	color: #666;
 	}
 a:hover, a:focus {
-	background-color: #ebebee;
+	background-color: #eceded;
 	text-decoration: none;
 	}
 ul ul {
@@ -187,7 +187,7 @@ h1 a {
 .supranav li a:hover, 
 .supranav li a:active, 
 .supranav li a:focus {
-	background-color: #ebebee;
+	background-color: #eceded;
 	background-position: right -150px;
 	}
 .supranav li.active a {
@@ -531,10 +531,10 @@ a.attach_count {
 	}
 #comment-form, #ping-url {
 	padding: 1em;
-	background: #eafcff;
+	background: #dce6e9;
 	margin-bottom: 1em;
 	color: #333;
-	border: 1px solid #ddf;
+	border: 1px solid #ddd;
 	}
 #pr {
 	padding: 1em;
@@ -907,7 +907,7 @@ ul ul .category-current {
 .center-text { text-align : center; }
 .little-text { font-size : .875em;}
 .little-upper-text { font-size : .875em; text-transform : uppercase; }
-hr.hidden {background: #fff; color: #fff; border-color: #fff; }
+hr.hidden {background: #fff; color: #fff; border-color: #fff; margin: 0; }
 
 
 /* ------------------------------------------------------------
@@ -919,7 +919,7 @@ hr.hidden {background: #fff; color: #fff; border-color: #fff; }
 /* ---------------------------------------------------------------- home */
 .dc-home #content {
 	clear: both;
-	margin-top: 2em;
+	margin-top: 1.66em;
 	}
 #content-focus { 
 	padding-bottom: 2em; 
@@ -955,7 +955,7 @@ hr.hidden {background: #fff; color: #fff; border-color: #fff; }
 		display: block;
 		float: left;
 		line-height: .7em;
-		margin: .4em 1em .3em 0;
+		margin: .4em 1em 0 0;
 		padding: 0;
 		border: 1px solid #999;
 		-moz-box-shadow: 2px 2px 3px #ccc;
@@ -1188,4 +1188,17 @@ hr.hidden {background: #fff; color: #fff; border-color: #fff; }
 --------------------------------------------------- */
 	.kozlika .focus1-icon {
 		background: #fff url(img/authors/kozlika.png) no-repeat center center;
-		}	
+		}
+		
+		
+#blogcustom {
+	text-align: center;
+	background-color: #b2d5de;
+	color: #333;
+	}
+#blogcustom > div {
+	text-align: left;
+	}
+#blogcustom a:link, #blogcustom a:visited {
+	color: #444;
+	}

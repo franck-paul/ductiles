@@ -67,6 +67,9 @@
 		font-size: 1.25em;
 		margin-top: 0;
 		}
+	#other-criteria .arch-block, #more-criteria .arch-block {
+		margin-left: 0 !important;
+		}
 	.post-title a {
 		font-style: normal;
 		}
