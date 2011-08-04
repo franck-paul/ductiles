@@ -531,7 +531,7 @@ a.attach_count {
 	}
 #comment-form, #ping-url {
 	padding: 1em;
-	background: #dce6e9;
+	background: #dce1e1;
 	margin-bottom: 1em;
 	color: #333;
 	border: 1px solid #ddd;
@@ -546,7 +546,6 @@ a.attach_count {
 #pr h3, 
 #comment-form h3 { 
 	margin-top: 2em;
-	color: #666;
 	}
 #comment-form h3, #ping-url h3 {
 	margin-top: 0;
@@ -598,7 +597,7 @@ a.attach_count {
 .field label { 
 	display: block;
 	font-size: .875em;
-	color: #666;
+	color: #555;
 	text-indent: 6px;
 	}
 .field input, 
