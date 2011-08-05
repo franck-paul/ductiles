@@ -19,48 +19,6 @@ msgstr "Étiquettes"
 msgid "Stickers (footer)"
 msgstr "Étiquettes (pied de page)"
 
-msgid "Entries list types and limits"
-msgstr "Types et limites des listes de billets"
-
-msgid "Entries lists"
-msgstr "Listes de billets"
-
-msgid "Context"
-msgstr "Contexte"
-
-msgid "Entries list type"
-msgstr "Type de liste de billets"
-
-msgid "Number of entries"
-msgstr "Nombre de billets"
-
-msgid "Home (first page)"
-msgstr "Page d'accueil (première page)"
-
-msgid "Home (other pages)"
-msgstr "Page d'accueil (pages suivantes)"
-
-msgid "Entries for a category"
-msgstr "Billets d'une catégorie"
-
-msgid "Entries for a tag"
-msgstr "Billets pour un mot-clé"
-
-msgid "Search result entries"
-msgstr "Billets résultants d'une recherche"
-
-msgid "Month archive entries"
-msgstr "Billets d'une archive mensuelle"
-
-msgid "Title"
-msgstr "Titre"
-
-msgid "Short"
-msgstr "Court"
-
-msgid "Full"
-msgstr "Complet"
-
 msgid "Presentation"
 msgstr "Présentation"
 
@@ -106,11 +64,11 @@ msgstr "Principale :"
 msgid "Secondary:"
 msgstr "Secondaire :"
 
-msgid "Ductile primary"
-msgstr "Principale de Ductile"
+msgid "Ductile Focus primary"
+msgstr "Principale de Ductile Focus"
 
-msgid "Ductile secondary"
-msgstr "Secondaire de Ductile"
+msgid "Ductile Focus secondary"
+msgstr "Secondaire de Ductile Focus"
 
 msgid "Times New Roman"
 msgstr "Times New Roman"

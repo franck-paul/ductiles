@@ -16,45 +16,12 @@ $img_url = $core->blog->settings->system->themes_url.'/'.$core->blog->settings->
 $img_url = http::concatURL($core->blog->url,$img_url);
 $img_path = dirname(__FILE__).'/img/';
 
-$tpl_path = dirname(__FILE__).'/tpl/';
-
 $standalone_config = (boolean) $core->themes->moduleInfo($core->blog->settings->system->theme,'standalone_config');
-
-$list_types = array(
-	__('Title') => 'title',
-	__('Short') => 'short',
-	__('Full') => 'full'
-);
-// Get all _entry-*.html in tpl folder of theme
-$list_types_templates = files::scandir($tpl_path);
-if (is_array($list_types_templates)) {
-	foreach ($list_types_templates as $v) {
-		if (preg_match('/^_entry\-(.*)\.html$/',$v,$m)) {
-			if (isset($m[1])) {
-				if (!in_array($m[1],$list_types)) {
-					// template not already in full list
-					$list_types[__($m[1])] = $m[1];
-				}
-			}
-		}
-	}
-}
-
-
-
-$contexts = array(
-	'default' => __('Home (first page)'),
-	'default-page' => __('Home (other pages)'),
-	'category' => __('Entries for a category'),
-	'tag' => __('Entries for a tag'),
-	'search' => __('Search result entries'),
-	'archive' => __('Month archive entries')
-);
 
 $fonts = array(
 	__('default') => '',
-	__('Ductile primary') => 'Ductile body',
-	__('Ductile secondary') => 'Ductile alternate',
+	__('Ductile Focus primary') => 'Ductile Focus body',
+	__('Ductile Focus secondary') => 'Ductile Focus alternate',
 	__('Times New Roman') => 'Times New Roman',
 	__('Georgia') => 'Georgia',
 	__('Garamond') => 'Garamond',
@@ -79,8 +46,8 @@ function adjustFontSize($s)
 
 $font_families = array(
 	// Theme standard
-	'Ductile body' => '"Century Schoolbook", "Century Schoolbook L", Georgia, serif',
-	'Ductile alternate' => '"Franklin gothic medium", "arial narrow", "DejaVu Sans Condensed", "helvetica neue", helvetica, sans-serif',
+	'Ductile Focus body' => '"New Century Schoolbook", "Century Schoolbook", "Century Schoolbook L", Georgia, serif',
+	'Ductile Focus alternate' => '"DejaVu Sans", "helvetica neue", helvetica, sans-serif',
 
 	// Serif families
 	'Times New Roman' => 'Cambria, "Hoefler Text", Utopia, "Liberation Serif", "Nimbus Roman No9 L Regular", Times, "Times New Roman", serif',
@@ -241,40 +208,12 @@ $ductile_base = array(
 	'post_simple_title_c' => null
 );
 
-$ductile_lists_base = array(
-	'default' => 'short',
-	'default-page' => 'short',
-	'category' => 'short',
-	'tag' => 'short',
-	'search' => 'short',
-	'archive' => 'title'
-);
-
-$ductile_counts_base = array(
-	'default' => null,
-	'category' => null,
-	'tag' => null,
-	'search' => null
-);
-
 $ductile_user = $core->blog->settings->themes->get($core->blog->settings->system->theme.'_style');
 $ductile_user = @unserialize($ductile_user);
 if (!is_array($ductile_user)) {
 	$ductile_user = array();
 }
 $ductile_user = array_merge($ductile_base,$ductile_user);
-
-$ductile_lists = $core->blog->settings->themes->get($core->blog->settings->system->theme.'_entries_lists');
-$ductile_lists = @unserialize($ductile_lists);
-if (!is_array($ductile_lists)) {
-	$ductile_lists = $ductile_lists_base;
-}
-
-$ductile_counts = $core->blog->settings->themes->get($core->blog->settings->system->theme.'_entries_counts');
-$ductile_counts = @unserialize($ductile_counts);
-if (!is_array($ductile_counts)) {
-	$ductile_counts = $ductile_counts_base;
-}
 
 $ductile_stickers = $core->blog->settings->themes->get($core->blog->settings->system->theme.'_stickers');
 $ductile_stickers = @unserialize($ductile_stickers);
@@ -347,15 +286,6 @@ if (!empty($_POST))
 				}
 				$ductile_stickers = $new_ductile_stickers;
 			}
-			
-			for ($i = 0; $i < count($_POST['list_type']); $i++) {
-				$ductile_lists[$_POST['list_ctx'][$i]] = $_POST['list_type'][$i];
-			}
-	 		
-			for ($i = 0; $i < count($_POST['count_nb']); $i++) {
-				$ductile_counts[$_POST['count_ctx'][$i]] = $_POST['count_nb'][$i];
-			}
-	 		
 		}
 		
 		# CSS
@@ -389,8 +319,6 @@ if (!empty($_POST))
 		$core->blog->settings->addNamespace('themes');
 		$core->blog->settings->themes->put($core->blog->settings->system->theme.'_style',serialize($ductile_user));
 		$core->blog->settings->themes->put($core->blog->settings->system->theme.'_stickers',serialize($ductile_stickers));
-		$core->blog->settings->themes->put($core->blog->settings->system->theme.'_entries_lists',serialize($ductile_lists));
-		$core->blog->settings->themes->put($core->blog->settings->system->theme.'_entries_counts',serialize($ductile_counts));
 
 		// Blog refresh
 		$core->blog->triggerBlog();
@@ -450,36 +378,6 @@ foreach ($ductile_stickers as $i => $v) {
 	'<td scope="raw">'.form::field(array('sticker_label[]','dsl-'.$i),20,255,$v['label']).'</td>'.
 	'<td>'.form::field(array('sticker_url[]','dsu-'.$i),40,255,$v['url']).'</td>'.
 	'</tr>';
-}
-echo
-'</tbody>'.
-'</table>';
-
-echo '</fieldset>';
-
-echo '<fieldset><legend>'.__('Entries list types and limits').'</legend>';
-
-echo '<table id="entrieslist">'.'<caption>'.__('Entries lists').'</caption>'.
-'<thead>'.
-'<tr>'.
-'<th scope="col">'.__('Context').'</th>'.
-'<th scope="col">'.__('Entries list type').'</th>'.
-'<th scope="col">'.__('Number of entries').'</th>'.
-'</tr>'.
-'</thead>'.
-'<tbody>';
-foreach ($ductile_lists as $k => $v) {
-	echo 
-		'<tr>'.
-		'<td scope="raw">'.$contexts[$k].'</td>'.
-		'<td>'.form::hidden(array('list_ctx[]'),$k).form::combo(array('list_type[]'),$list_types,$v).'</td>';
-	if (array_key_exists($k,$ductile_counts)) {
-		echo '<td>'.form::hidden(array('count_ctx[]'),$k).form::field(array('count_nb[]'),2,3,$ductile_counts[$k]).'</td>';
-	} else {
-		echo '<td></td>';
-	}
-	echo
-		'</tr>';
 }
 echo
 '</tbody>'.

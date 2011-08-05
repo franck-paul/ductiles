@@ -14,48 +14,14 @@ if (!defined('DC_RC_PATH')) { return; }
 l10n::set(dirname(__FILE__).'/locales/'.$_lang.'/main');
 
 # Behaviors
-$core->addBehavior('publicHeadContent',array('tplDuctileTheme','publicHeadContent'));
-$core->addBehavior('publicInsideFooter',array('tplDuctileTheme','publicInsideFooter'));
+$core->addBehavior('publicHeadContent',array('tplDuctileFocusTheme','publicHeadContent'));
+$core->addBehavior('publicInsideFooter',array('tplDuctileFocusTheme','publicInsideFooter'));
 
 # Templates
-$core->tpl->addValue('ductileEntriesList',array('tplDuctileTheme','ductileEntriesList'));
-$core->tpl->addBlock('EntryIfContentIsCut',array('tplDuctileTheme','EntryIfContentIsCut'));
-$core->tpl->addValue('ductileNbEntryPerPage',array('tplDuctileTheme','ductileNbEntryPerPage'));
+$core->tpl->addBlock('EntryIfContentIsCut',array('tplDuctileFocusTheme','EntryIfContentIsCut'));
 
-class tplDuctileTheme
+class tplDuctileFocusTheme
 {
-	public static function ductileNbEntryPerPage($attr)
-	{
-		global $core;
-
-		$nb = 0;
-		$s = $core->blog->settings->themes->get($core->blog->settings->system->theme.'_entries_counts');
-		if ($s !== null) {
-			$s = @unserialize($s);
-			if (is_array($s)) {
-				if (isset($s[$core->url->type])) {
-					// Nb de billets par page défini par la config du thème
-					$nb = (integer) $s[$core->url->type];
-				} else {
-					if (($core->url->type == 'default-page') && (isset($s['default']))) {
-						// Les pages 2 et suivantes de la home ont le même nombre de billet que la première page
-						$nb = (integer) $s['default'];
-					}
-				}
-			}
-		}
-
-		if ($nb == 0) {
-			if (!empty($attr['nb'])) {
-				// Nb de billets par page défini par défaut dans le template
-				$nb = (integer) $attr['nb'];
-			}
-		}
-
-		if ($nb > 0)
-			return '<?php $_ctx->nb_entry_per_page = '.$nb.' ; ?>';
-	}
-	
 	public static function EntryIfContentIsCut($attr,$content)
 	{
 		global $core;
@@ -81,26 +47,6 @@ class tplDuctileTheme
 			'<?php endif; ?>';
 	}	
 	
-	public static function ductileEntriesList($attr)
-	{
-		global $core;
-		$default = isset($attr['default']) ? trim($attr['default']) : 'short';
-
-		$model = '';
-		$s = $core->blog->settings->themes->get($core->blog->settings->system->theme.'_entries_lists');
-		if ($s !== null) {
-			$s = @unserialize($s);
-			if (is_array($s)) {
-				if (isset($s[$core->url->type])) {
-					$model = $s[$core->url->type];
-				}
-			}
-		}
-
-		$local_attr = array('src' => '_entry-'.($model ? $model : $default).'.html');
-		return $core->tpl->includeFile($local_attr);
-	}
-
 	public static function publicInsideFooter($core)
 	{
 		$res = '';
@@ -116,7 +62,7 @@ class tplDuctileTheme
 			if (!is_array($s)) {
 				$default = true;
 			} else {
-				$s = array_filter($s,"tplDuctileTheme::cleanStickers");
+				$s = array_filter($s,"tplDuctileFocusTheme::cleanStickers");
 				if (count($s) == 0) {
 					$default = true;
 				} else {
@@ -197,11 +143,12 @@ class tplDuctileTheme
 		if (isset($s['subtitle_hidden'])) self::prop($css,$selectors,'display',($s['subtitle_hidden'] ? 'none' : null));
 
 		# Main font
-		$selectors = 'body, .supranav li a span, #comments.me, a.comment-number';
+		$selectors = 'body, .supranav li a span, .comment-info, #comments .me, .comment-number';
 		if (isset($s['body_font'])) self::prop($css,$selectors,'font-family',self::fontDef($s['body_font']));
 
 		# Secondary font
-		$selectors = '#blogdesc, .supranav, #content-info, #subcategories, #comments-feed, #sidebar h2, #sidebar h3, #footer p';
+		$selectors = '#blogdesc, .supranav, #prelude, #submenu, #content-info, #subcategories, p.post-date, #comments, #ping-url, #comment-form, #comments-feed, '.
+			'.field input, .field textarea, #sidebar, #footer p, .arch-block h4';
 		if (isset($s['alternate_font'])) self::prop($css,$selectors,'font-family',self::fontDef($s['alternate_font']));
 		
 		# Inside posts links font weight
@@ -315,8 +262,8 @@ class tplDuctileTheme
 
 	protected static $fonts = array(
 		// Theme standard
-		'Ductile body' => '"Century Schoolbook", "Century Schoolbook L", Georgia, serif',
-		'Ductile alternate' => '"Franklin gothic medium", "arial narrow", "DejaVu Sans Condensed", "helvetica neue", helvetica, sans-serif',
+		'Ductile Focus body' => '"New Century Schoolbook", "Century Schoolbook", "Century Schoolbook L", Georgia, serif',
+		'Ductile Focus alternate' => '"DejaVu Sans", "helvetica neue", helvetica, sans-serif',
 
 		// Serif families
 		'Times New Roman' => 'Cambria, "Hoefler Text", Utopia, "Liberation Serif", "Nimbus Roman No9 L Regular", Times, "Times New Roman", serif',

@@ -10,9 +10,9 @@
 #
 # -- END LICENSE BLOCK -----------------------------------------
 
-if (!isset($__resources['help']['ductile']))
+if (!isset($__resources['help']['ductileFocus']))
 {
-	$__resources['help']['ductile'] = dirname(__FILE__).'/help/help.html';
+	$__resources['help']['ductileFocus'] = dirname(__FILE__).'/help/help.html';
 }
 
 ?>
