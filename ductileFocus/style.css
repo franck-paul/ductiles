@@ -28,7 +28,7 @@ Plan de cette feuille :
 Couleurs :
 Typo: #333 courant
 Titres non cliquables: #14709e
-Liens: #666 courant, #ab164d titre billet et Lire la suite
+Liens: #686867 courant, #ab164d titre billet et Lire la suite
 Fond formulaire comm: #eef
 Fond sidebar: #ededed
 
@@ -116,7 +116,7 @@ pre {
 	}
 
 a {
-	color: #666;
+	color: #686867;
 	}
 a:hover, a:focus {
 	background-color: #eceded;
@@ -159,14 +159,13 @@ h1 a {
 #blogdesc {
 	margin: 0 0 0 32px;
 	font-style: italic;
-	color: #888;
+	color: #686867;
 	text-shadow: none;
 	}
 .supranav, #prelude {
 	list-style-type: none;
 	line-height: 1.25;
 	font-size: .875em;
-	padding: 0 0 0 4px;
 	}
 .supranav li, #prelude li {
 	text-transform: uppercase;
@@ -179,9 +178,6 @@ h1 a {
 	text-decoration: none;
 	white-space: nowrap;
 	margin-bottom: 4px;
-	-webkit-border-bottom-left-radius: 7px;
-	-moz-border-radius-bottomleft: 7px;
-	border-bottom-left-radius: 7px;	
 	background: transparent url(img/menu.png) no-repeat right top;
 	}
 .supranav li a:hover, 
@@ -504,7 +500,7 @@ a.attach_count {
 #attachments h3 {
 	font-variant: small-caps;
 	font-weight: normal;
-	color: #666;
+	color: #686867;
 	}
 #attachments ul {
 	list-style-type: none;
@@ -563,7 +559,7 @@ a.attach_count {
 .comment-info { 
 	padding-bottom: .2em;
 	line-height: 1.25;
-	color: #666;
+	color: #686867;
 	}
 #comments .me { 
 	color: #14709e;
@@ -597,7 +593,7 @@ a.attach_count {
 .field label { 
 	display: block;
 	font-size: .875em;
-	color: #555;
+	color: #444;
 	text-indent: 6px;
 	}
 .field input, 
@@ -630,7 +626,7 @@ a.attach_count {
 	-webkit-border-radius: 5px; 
 	-moz-border-radius: 5px;
 	border-radius: 5px;
-	border: solid 1px #777;
+	border: solid 1px #686867;
 	-webkit-box-shadow: 0 1px 2px rgba(0,0,0,.2);
 	-moz-box-shadow: 0 1px 2px rgba(0,0,0,.2);
 	box-shadow: 0 1px 2px rgba(0,0,0,.2);
@@ -640,7 +636,7 @@ a.attach_count {
 	background: -webkit-linear-gradient(top, rgba(119,119,119,1) 0%,rgba(85,85,85,1) 100%);
 	background: -o-linear-gradient(top, rgba(119,119,119,1) 0%,rgba(85,85,85,1) 100%);
 	background: -ms-linear-gradient(top, rgba(119,119,119,1) 0%,rgba(85,85,85,1) 100%);
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#777777', endColorstr='#555555',GradientType=0 );
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6868677', endColorstr='#444444',GradientType=0 );
 	color: #eee;
 	}
 #comment-form input[type=submit]:hover, #comment-form input[type=submit]:focus,
@@ -652,7 +648,7 @@ a.attach_count {
 	background: -webkit-linear-gradient(top, rgba(85,85,85,1) 0%,rgba(119,119,119,1) 100%);
 	background: -o-linear-gradient(top, rgba(85,85,85,1) 0%,rgba(119,119,119,1) 100%);
 	background: -ms-linear-gradient(top, rgba(85,85,85,1) 0%,rgba(119,119,119,1) 100%);
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#555555', endColorstr='#777777',GradientType=0 );
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#444444', endColorstr='#6868677',GradientType=0 );
 	background: linear-gradient(top, rgba(85,85,85,1) 0%,rgba(119,119,119,1) 100%);
 	text-decoration: none;
 	}
@@ -686,6 +682,8 @@ a.attach_count {
 #sidebar h2 {
 	font-size: 1.1em;
 	color: #333;
+	background: #cbc8be;
+	padding: 2px .5em;
 	}
 #sidebar h2.toggle {
 	background: url(img/plus.png) no-repeat left center;
@@ -697,7 +695,7 @@ a.attach_count {
 	}
 #sidebar h2.toggle a {
 	text-decoration: none;
-	color: #666;
+	color: #686867;
 	}
 #sidebar h3 {
 	font-size: 1em;
@@ -1191,6 +1189,7 @@ hr.hidden {background: #fff; color: #fff; border-color: #fff; margin: 0; }
 		
 		
 #blogcustom {
+	clear: both;
 	text-align: center;
 	background-color: #b2d5de;
 	color: #333;
@@ -1200,4 +1199,8 @@ hr.hidden {background: #fff; color: #fff; border-color: #fff; margin: 0; }
 	}
 #blogcustom a:link, #blogcustom a:visited {
 	color: #444;
+	}
+	
+body {
+	_background: #fff url(img/vline.png) repeat-y 320px 0;
 	}
