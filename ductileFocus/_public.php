@@ -16,12 +16,29 @@ l10n::set(dirname(__FILE__).'/locales/'.$_lang.'/main');
 # Behaviors
 $core->addBehavior('publicHeadContent',array('tplDuctileFocusTheme','publicHeadContent'));
 $core->addBehavior('publicInsideFooter',array('tplDuctileFocusTheme','publicInsideFooter'));
+$core->addBehavior('tplIfConditions',array('tplDuctileFocusTheme','tplIfConditions'));
 
 # Templates
 $core->tpl->addBlock('EntryIfContentIsCut',array('tplDuctileFocusTheme','EntryIfContentIsCut'));
 
 class tplDuctileFocusTheme
 {
+	public static function tplIfConditions($tag,$attr,$content,$if)
+	{
+		if ($tag == 'EntryIf' && isset($attr['has_img'])) {
+			$sign = (boolean) $attr['has_img'] ? '' : '!';
+			$with_category = !empty($attr['with_category']) ? 'true' : 'false';
+			$if[] = $sign.'(tplDuctileFocusTheme::tplIfConditionsHelper('.$with_category.'))';
+		}
+	}
+
+	public static function tplIfConditionsHelper($with_category = false)
+	{
+		$ret = '';
+		$ret = context::EntryFirstImageHelper('s',$with_category);
+		return ($ret != '');
+	}
+	
 	public static function EntryIfContentIsCut($attr,$content)
 	{
 		global $core;
