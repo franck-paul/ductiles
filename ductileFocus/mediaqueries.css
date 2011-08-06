@@ -25,13 +25,17 @@
 		display: block;
 		padding: 6px 8px;
 		background: #f4f4f5;
-		background: -webkit-gradient(linear, left top, left bottom, from(#f4f4f5), to(#d7d7dC));
+		background-image: -webkit-gradient(linear, left top, left bottom, from( #f4f4f5), to(#d7d7dC));
+		background: -webkit-linear-gradient(top,  #f4f4f5,  #d7d7dC);
 		background: -moz-linear-gradient(top,  #f4f4f5,  #d7d7dC);
+		background: -o-linear-gradient(top,  #f4f4f5,  #d7d7dC);
+		background: -ms-linear-gradient(top,  #f4f4f5,  #d7d7dC);
+		background: linear-gradient(top,  #f4f4f5,  #d7d7dC);
 		border-right: 1px solid #aaa;
 		border-bottom: 1px solid #ccc;
 		}
 	.supranav, #prelude {
-		border:none;
+		border: none;
 		margin: 8px 0 0;
 		background: #fff;
 		padding-left: 0;
@@ -105,7 +109,6 @@
 /* --------------------------------------------------------------------
 	Autres (plus de 480px)
 -------------------------------------------------------------------- */
-
 @media only screen and (min-width: 481px) {
 	.nobig {
 		display: none;
@@ -173,9 +176,9 @@
 		padding: 8px 32px 8px 28px;
 		border-right: 1px solid #ccc;
 		min-height: 2.5em;
-		-webkit-border-bottom-left-radius: 7px;
-		-moz-border-radius-bottomleft: 7px;
-		border-bottom-left-radius: 7px;
+		-moz-border-radius: 0 0 0 7px;
+		-webkit-border-radius: 0 0 0 7px;
+		border-radius: 0 0 0 7px;
 	 	}
 	.supranav li a span {
 		display: block;
@@ -225,18 +228,9 @@
 		width : 236px;
 		margin-right: 2.2em;
 		background: #f2f2ff;
-		-webkit-border-bottom-right-radius: 12px;
-		-moz-border-radius-bottomright: 12px;
-		border-bottom-right-radius: 12px;	
-		-webkit-border-bottom-left-radius: 12px;
-		-moz-border-radius-bottomleft: 12px;
-		border-bottom-left-radius: 12px;	
-		-webkit-border-top-right-radius: 0;
-		-moz-border-radius-topright: 0;
-		border-top-right-radius: 0;	
-		-webkit-border-top-left-radius: 0;
-		-moz-border-radius-topleft: 0;
-		border-top-left-radius: 0;	
+		-moz-border-radius: 0 0 12px 12px;
+		-webkit-border-radius: 0 0 12px 12px;
+		border-radius: 0 0 12px 12px;
 		}
 	.topnl a {
 		padding: 0;
@@ -326,7 +320,7 @@ x		}
 		}
 }
 
-/* ------------------------------------------------------ règles 768px à 1060px */
+/* ------------------------------------------------------ 768px à 1060px */
 @media only screen and (min-width:768px) and (max-width: 1060px) {
 	#wrapper {
 		padding: 2em 8em;
