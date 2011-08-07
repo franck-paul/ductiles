@@ -4,7 +4,7 @@
 		<!-- #div.focus 1 -->
 		<tpl:Entries lastn="1">
 			<tpl:SysIf current_mode="default">
-				<div id="p{{tpl:EntryID}}" class="post focus1 {{tpl:EntryAuthorID}} <tpl:EntryIf category="Photographie">photo</tpl:EntryIf>" 
+				<div id="p{{tpl:EntryID}}" class="post focus1 {{tpl:EntryAuthorID}} <tpl:EntryIf category="Photos">photo</tpl:EntryIf>" 
 					lang="{{tpl:EntryLang}}" xml:lang="{{tpl:EntryLang}}">
 					<p class="focus1-top"><span class="focus1-headline">À la une | </span>{{tpl:EntryDate format="%e %b %Y"}} |
 					<tpl:EntryIf has_category="1">
@@ -12,8 +12,18 @@
 					</tpl:EntryIf>
 					</p>
 
-					<tpl:EntryIf category="!Photographie">
-					<p class="focus1-icon">{{tpl:EntryFirstImage size="s"}}</p>	
+					<tpl:EntryIf category="!Photos">
+					<p class="focus1-icon">
+						{{tpl:EntryFirstImage size="s"}}
+						<tpl:EntryIf has_img="0"><img class="author-icon" src="{{tpl:BlogThemeURL}}/img/authors/default.png" alt="" /></tpl:EntryIf>
+					</p>	
+					<!--
+					<p class="focus1-icon">
+						{{tpl:EntryFirstImage size="s"}}
+						<tpl:EntryIf has_img="0">{{tpl:AuthorIcon with_default="1" class="author-icon"}}</tpl:EntryIf>
+						// AuthorIcon=BlogThemeURL/img/authors/EntryAuthorID.png|jpg ; with_default=BlogThemeURL/img/authors/default.png
+					</p>	
+					-->
 					<h2 class="post-title"><a href="{{tpl:EntryURL}}">{{tpl:EntryTitle encode_html="1"}}</a></h2>
 					<p class="post-author">{{tpl:lang By}} {{tpl:EntryAuthorLink}}</p>	
 					<!-- # --BEHAVIOR-- publicEntryBeforeContent -->
@@ -29,7 +39,7 @@
 					</div>
 					</tpl:EntryIf>
 
-					<tpl:EntryIf category="Photographie">
+					<tpl:EntryIf category="Photos">
 					<p class="focus1-icon">{{tpl:EntryFirstImage size="m"}}</p>	
 					<h2 class="post-title"><a href="{{tpl:EntryURL}}">{{tpl:EntryTitle encode_html="1"}}</a></h2>
 					<p class="post-author">{{tpl:lang By}} {{tpl:EntryAuthorLink}}</p>	
@@ -54,7 +64,7 @@
 
 		<!-- focus 2 -->
 		<div class="focus2">
-		<tpl:Entries selected="1" no-content="1" category="!Photographie">
+		<tpl:Entries selected="1" no-content="1" category="!Photos">
 			<tpl:EntriesHeader>
 				<h2>Focus <span>{{tpl:lang textes}}</span></h2>
 				<ol>
@@ -65,7 +75,7 @@
 						<h3><a href="{{tpl:EntryURL}}">{{tpl:EntryTitle encode_html="1"}}</a></h3>
 						<p class="post-info">
 							{{tpl:EntryDate format="%e %b %Y"}} |
-							<span class="post-author">{{tpl:lang by}} {{tpl:EntryAuthorDisplayName}} </span>
+							<span class="post-author">{{tpl:lang by}} {{tpl:EntryAuthorCommonName}} </span>
 						</p>
 					</li>
 				</tpl:LoopPosition>
@@ -80,7 +90,7 @@
 
 <!-- focus 3 -->
 <div class="focus3">
-	<tpl:Entries category="Photographie" no-context="1" ignore_pagination="1" lastn="15">
+	<tpl:Entries category="Photos" no-context="1" ignore_pagination="1" lastn="15">
 		<tpl:EntriesHeader>
 		<h2>Focus <span>{{tpl:lang images}}</span></h2>
 			<ul>

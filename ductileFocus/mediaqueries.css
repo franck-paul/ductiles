@@ -104,6 +104,9 @@
 	ul, ol, dd {
 		padding: 0;
 		}
+	.post ul, .post ol, .post dd {
+		margin-left: 1em !important;
+		}
 }
 
 /* --------------------------------------------------------------------
@@ -355,10 +358,14 @@ x		}
 		display: inline-block;
 		vertical-align: top;
 		margin-right: 20px;
+		margin-bottom: 2em;
 		}
 	#blognav {
 		float: left;
 		}
+	#blognav h2, #blogextra h2 {
+		margin-top: 0;
+	}
 }
 
 /* ------------------------------------------------------ règles communes > 1060px */
