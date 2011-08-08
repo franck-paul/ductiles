@@ -323,9 +323,9 @@ if (!empty($_POST))
 			
 			$ductile_focuses = array();
 			$ductile_focuses[] = array(
-				'cat' => $_POST['focus1_cat'],
-				'selected' => (integer) !empty($_POST['focus1_selected']),
-				'subcat' => (integer) !empty($_POST['focus1_subcat'])
+				'cat' => '',
+				'selected' => (integer) false,
+				'subcat' => (integer) false
 			);
 			$ductile_focuses[] = array(
 				'cat' => $_POST['focus2_cat'],
@@ -435,16 +435,6 @@ echo
 '</tbody>'.
 '</table>';
 
-echo '</fieldset>';
-
-echo '<fieldset><legend>'.__('Breaking news').'</legend>';
-echo '<p class="field"><label for="focus1_cat">'.__('Category').' '.
-form::combo('focus1_cat',$categories_combo_all,$ductile_focuses[0]['cat']).
-'</label>'.'</p>'.
-'<p class="field"><label for="focus1_subcat">'.__('Including sub-categories:').' '.
-form::checkbox('focus1_subcat',1,$ductile_focuses[0]['subcat']).'</label>'.'</p>'.
-'<p class="field"><label for="focus1_selected">'.__('Only selected posts:').' '.
-form::checkbox('focus1_selected',1,$ductile_focuses[0]['selected']).'</label>'.'</p>';
 echo '</fieldset>';
 
 echo '<fieldset><legend>'.__('Focus on text').'</legend>';
