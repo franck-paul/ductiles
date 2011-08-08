@@ -2,6 +2,7 @@
 	<div id="content-focus">
 
 		<!-- #div.focus 1 -->
+		{{tpl:focusEntries focus="1"}}
 		<tpl:Entries lastn="1">
 			<tpl:SysIf current_mode="default">
 				<div id="p{{tpl:EntryID}}" class="post focus1 {{tpl:EntryAuthorID}} <tpl:EntryIf category="Photos">photo</tpl:EntryIf>" 
@@ -64,7 +65,8 @@
 
 		<!-- focus 2 -->
 		<div class="focus2">
-		<tpl:Entries selected="1" no-content="1" category="!Photos">
+		{{tpl:focusEntries focus="2"}}
+		<tpl:Entries no-content="1">
 			<tpl:EntriesHeader>
 				<h2>Focus <span>{{tpl:lang textes}}</span></h2>
 				<ol>
@@ -90,7 +92,8 @@
 
 <!-- focus 3 -->
 <div class="focus3">
-	<tpl:Entries category="Photos" no-context="1" ignore_pagination="1" lastn="15">
+	{{tpl:focusEntries focus="3"}}
+	<tpl:Entries no-context="1" ignore_pagination="1" lastn="15">
 		<tpl:EntriesHeader>
 		<h2>Focus <span>{{tpl:lang images}}</span></h2>
 			<ul>

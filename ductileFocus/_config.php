@@ -250,6 +250,40 @@ if (is_array($ductile_stickers_images)) {
 	}
 }
 
+$ductile_focuses = $core->blog->settings->themes->get($core->blog->settings->system->theme.'_focus');
+$ductile_focuses = @unserialize($ductile_focuses);
+if (!is_array($ductile_focuses)) {
+	$ductile_focuses = array(
+		array(
+			'cat' => '',
+			'selected' => false,
+			'subcat' => false),
+		array(
+			'cat' => '',
+			'selected' => true,
+			'subcat' => false),
+		array(
+			'cat' => '',
+			'selected' => false,
+			'subcat' => false),
+	);
+}
+
+// Categories list
+$categories_combo = array();
+$categories_combo_all = array(
+	__('All categories') => ''
+);
+try {
+	$rs = $core->blog->getCategories(array('post_type'=>'post'));
+	while ($rs->fetch()) {
+		$categories_combo[] = $categories_combo_all[] = new formSelectOption(
+			str_repeat('&nbsp;&nbsp;',$rs->level-1).($rs->level-1 == 0 ? '' : '&bull; ').html::escapeHTML($rs->cat_title),
+			$rs->cat_url
+		);
+	}
+} catch (Exception $e) { }
+
 $conf_tab = isset($_POST['conf_tab']) ? $_POST['conf_tab'] : 'html';
 
 if (!empty($_POST))
@@ -286,6 +320,23 @@ if (!empty($_POST))
 				}
 				$ductile_stickers = $new_ductile_stickers;
 			}
+			
+			$ductile_focuses = array();
+			$ductile_focuses[] = array(
+				'cat' => $_POST['focus1_cat'],
+				'selected' => (integer) !empty($_POST['focus1_selected']),
+				'subcat' => (integer) !empty($_POST['focus1_subcat'])
+			);
+			$ductile_focuses[] = array(
+				'cat' => $_POST['focus2_cat'],
+				'selected' => (integer) !empty($_POST['focus2_selected']),
+				'subcat' => (integer) !empty($_POST['focus2_subcat'])
+			);
+			$ductile_focuses[] = array(
+				'cat' => $_POST['focus3_cat'],
+				'selected' => (integer) !empty($_POST['focus3_selected']),
+				'subcat' => (integer) !empty($_POST['focus3_subcat'])
+			);
 		}
 		
 		# CSS
@@ -319,6 +370,7 @@ if (!empty($_POST))
 		$core->blog->settings->addNamespace('themes');
 		$core->blog->settings->themes->put($core->blog->settings->system->theme.'_style',serialize($ductile_user));
 		$core->blog->settings->themes->put($core->blog->settings->system->theme.'_stickers',serialize($ductile_stickers));
+		$core->blog->settings->themes->put($core->blog->settings->system->theme.'_focus',serialize($ductile_focuses));
 
 		// Blog refresh
 		$core->blog->triggerBlog();
@@ -383,6 +435,36 @@ echo
 '</tbody>'.
 '</table>';
 
+echo '</fieldset>';
+
+echo '<fieldset><legend>'.__('Breaking news').'</legend>';
+echo '<p class="field"><label for="focus1_cat">'.__('Category').' '.
+form::combo('focus1_cat',$categories_combo_all,$ductile_focuses[0]['cat']).
+'</label>'.'</p>'.
+'<p class="field"><label for="focus1_subcat">'.__('Including sub-categories:').' '.
+form::checkbox('focus1_subcat',1,$ductile_focuses[0]['subcat']).'</label>'.'</p>'.
+'<p class="field"><label for="focus1_selected">'.__('Only selected posts:').' '.
+form::checkbox('focus1_selected',1,$ductile_focuses[0]['selected']).'</label>'.'</p>';
+echo '</fieldset>';
+
+echo '<fieldset><legend>'.__('Focus on text').'</legend>';
+echo '<p class="field"><label for="focus2_cat">'.__('Category').' '.
+form::combo('focus2_cat',$categories_combo_all,$ductile_focuses[1]['cat']).
+'</label>'.'</p>'.
+'<p class="field"><label for="focus2_subcat">'.__('Including sub-categories:').' '.
+form::checkbox('focus2_subcat',1,$ductile_focuses[1]['subcat']).'</label>'.'</p>'.
+'<p class="field"><label for="focus2_selected">'.__('Only selected posts:').' '.
+form::checkbox('focus2_selected',1,$ductile_focuses[1]['selected']).'</label>'.'</p>';
+echo '</fieldset>';
+
+echo '<fieldset><legend>'.__('Focus on picture').'</legend>';
+echo '<p class="field"><label for="focus3_cat">'.__('Category').' '.
+form::combo('focus3_cat',$categories_combo,$ductile_focuses[2]['cat']).
+'</label>'.'</p>'.
+'<p class="field"><label for="focus3_subcat">'.__('Including sub-categories:').' '.
+form::checkbox('focus3_subcat',1,$ductile_focuses[2]['subcat']).'</label>'.'</p>'.
+'<p class="field"><label for="focus3_selected">'.__('Only selected posts:').' '.
+form::checkbox('focus3_selected',1,$ductile_focuses[2]['selected']).'</label>'.'</p>';
 echo '</fieldset>';
 
 echo '<input type="hidden" name="conf_tab" value="html">';

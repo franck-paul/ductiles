@@ -20,9 +20,44 @@ $core->addBehavior('tplIfConditions',array('tplDuctileFocusTheme','tplIfConditio
 
 # Templates
 $core->tpl->addBlock('EntryIfContentIsCut',array('tplDuctileFocusTheme','EntryIfContentIsCut'));
+$core->tpl->addValue('focusEntries',array('tplDuctileFocusTheme','focusEntries'));
 
 class tplDuctileFocusTheme
 {
+	public static function focusEntries($attr)
+	{
+		global $core;
+		
+		$case = !empty($attr['focus']) ? (integer) $attr['focus'] : 1;
+		$case--;
+		if ($case < 0) $case++;
+		
+		$s = $core->blog->settings->themes->get($core->blog->settings->system->theme.'_focus');
+		$s = @unserialize($s);
+		if (is_array($s)) {
+			if (isset($s[$case])) {
+				$f = $s[$case];
+				if (is_array($f)) {
+					$cat = (isset($f['cat']) ? $f['cat'] : '');
+					$selected = (isset($f['selected']) ? (boolean) $f['selected'] : false);
+					$subcat = (isset($f['subcat']) ? (boolean) $f['subcat'] : false);
+					$ret = '';
+					if ($cat != '') {
+						$ret .= "\$params['cat_url'] = '".$cat;
+						if ($subcat) {
+							$ret .= " ?sub";
+						}
+						$ret .= "';\n";
+					}
+					if ($selected) {
+						$ret .= "\$params['post_selected'] = 1;\n";
+					}
+					return "<?php ".$ret." ?>\n";
+				}
+			}
+		}
+	}
+
 	public static function tplIfConditions($tag,$attr,$content,$if)
 	{
 		if ($tag == 'EntryIf' && isset($attr['has_img'])) {
