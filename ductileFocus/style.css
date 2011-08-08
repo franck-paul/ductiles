@@ -417,6 +417,10 @@ p.post-date {
 	max-width: 96%;
 	padding: 4px;
 	}
+img.smiley {
+	border: none;
+	padding: 0;
+	}
 .post-info, 
 .post-tags, 
 .post-info-co {
@@ -688,9 +692,6 @@ a.attach_count {
 #sidebar {
 	font-size: 0.875em;
 	}
-#blognav > div, #blogextra > div {
-	margin-bottom: .5em;
-	}
 #sidebar h2, #sidebar h3 {
 	font-weight: bold;
 	margin-bottom: 0;
@@ -752,9 +753,6 @@ a.attach_count {
 	-khtml-border-radius: 4px;
 	border-radius: 4px;
 	background-color: #686867;
-	}
-#sidebar .categories h2 {
-	color: #fff;
 	}
 #sidebar .categories ul, #sidebar .categories ul ul {
 	margin: 0;
@@ -953,7 +951,7 @@ mini-galeries
 	overflow: hidden;
 	}
 .expo_m p {
-	padding: 12px 8px 32px;
+	padding: 8px 2px 32px;
 	font-size: .875em;
 	margin: 1em;
 	}
@@ -965,13 +963,13 @@ mini-galeries
 	font-size: .875em;
 	}
 .expo_t p {
-	padding-top: 6px;
-	width: 116px;
+	padding-top: 4px;
+	width: 112px;
 	height: 132px;
 	margin: 6px 4px;
 	font-size: .75em;
 	}
-.expo p img {
+.expo img {
 	display: inline-block;
 	margin: auto;
 	border: none;
@@ -986,14 +984,16 @@ mini-galeries
 	content : attr(title); 
 	display: block; 
 	position: absolute; 
-	padding: 3px 0;
+	padding: 2px 0;
 	left: 0;
 	bottom: 0;
 	width: 100%;
 	background-color: #e3e3df;
 	}
-.expo p a:hover, .expo p a:focus {
-	color: #ab164d;
+.expo a:hover, .expo a:focus {
+	zoom: 1;
+	filter: alpha(opacity=50);
+	opacity: 0.5;
 	}
 /* autres classes */
 .left {
