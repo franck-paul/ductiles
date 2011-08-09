@@ -19,6 +19,18 @@ msgstr "Étiquettes"
 msgid "Stickers (footer)"
 msgstr "Étiquettes (pied de page)"
 
+msgid "Focus on text"
+msgstr "Focus textes"
+
+msgid "Focus on picture"
+msgstr "Focus images"
+
+msgid "Including sub-categories:"
+msgstr "Inclure les sous-catégories :"
+
+msgid "Only selected posts:"
+msgstr "Seulement les billets sélectionnés :"
+
 msgid "Presentation"
 msgstr "Présentation"
 

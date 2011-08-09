@@ -437,6 +437,9 @@ echo
 
 echo '</fieldset>';
 
+echo '<div class="two-cols">';
+echo '<div class="col">';
+
 echo '<fieldset><legend>'.__('Focus on text').'</legend>';
 echo '<p class="field"><label for="focus2_cat">'.__('Category').' '.
 form::combo('focus2_cat',$categories_combo_all,$ductile_focuses[1]['cat']).
@@ -447,6 +450,9 @@ form::checkbox('focus2_subcat',1,$ductile_focuses[1]['subcat']).'</label>'.'</p>
 form::checkbox('focus2_selected',1,$ductile_focuses[1]['selected']).'</label>'.'</p>';
 echo '</fieldset>';
 
+echo '</div>';
+echo '<div class="col">';
+
 echo '<fieldset><legend>'.__('Focus on picture').'</legend>';
 echo '<p class="field"><label for="focus3_cat">'.__('Category').' '.
 form::combo('focus3_cat',$categories_combo,$ductile_focuses[2]['cat']).
@@ -456,6 +462,9 @@ form::checkbox('focus3_subcat',1,$ductile_focuses[2]['subcat']).'</label>'.'</p>
 '<p class="field"><label for="focus3_selected">'.__('Only selected posts:').' '.
 form::checkbox('focus3_selected',1,$ductile_focuses[2]['selected']).'</label>'.'</p>';
 echo '</fieldset>';
+
+echo '</div>';
+echo '</div>';
 
 echo '<input type="hidden" name="conf_tab" value="html">';
 echo '<p class="clear">'.form::hidden('ds_order','').'<input type="submit" value="'.__('Save').'" />'.$core->formNonce().'</p>';
