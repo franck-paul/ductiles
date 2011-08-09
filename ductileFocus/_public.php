@@ -77,7 +77,17 @@ class tplDuctileFocusTheme
 			if (!is_array($s)) return;
 			if (!isset($s[2])) return;
 			if (!isset($s[2]['cat'])) return;
-			$if[] = $sign.'($_ctx->posts->cat_url == \''.$s[2]['cat'].'\')';
+
+			$c = $core->blog->getCategories(array('cat_url' => $s[2]['cat']));
+			$cc = $core->blog->getCategoryFirstChildren($c->cat_id);
+			$ret = 'in_array($_ctx->posts->cat_id,array('.$c->cat_id;
+			if ($cc) {
+				while ($cc->fetch()) {
+					$ret .= ','.$cc->cat_id;
+				}
+			}
+			$ret .= '))';
+			$if[] = $sign.$ret;
 		}
 	}
 
