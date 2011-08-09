@@ -5,7 +5,7 @@
 		{{tpl:focusEntries focus="1"}}
 		<tpl:Entries lastn="1">
 			<tpl:SysIf current_mode="default">
-				<div id="p{{tpl:EntryID}}" class="post focus1 {{tpl:EntryAuthorID}} <tpl:EntryIf category="Photos">photo</tpl:EntryIf>" 
+				<div id="p{{tpl:EntryID}}" class="post focus1 {{tpl:EntryAuthorID}} <tpl:EntryIf focus_cat_image="1">photo</tpl:EntryIf>" 
 					lang="{{tpl:EntryLang}}" xml:lang="{{tpl:EntryLang}}">
 					<p class="focus1-top"><span class="focus1-headline">À la une | </span>{{tpl:EntryDate format="%e %b %Y"}} |
 					<tpl:EntryIf has_category="1">
@@ -13,7 +13,7 @@
 					</tpl:EntryIf>
 					</p>
 
-					<tpl:EntryIf category="!Photos">
+					<tpl:EntryIf focus_cat_image="0">
 					<p class="focus1-icon">
 						{{tpl:EntryFirstImage size="s"}}
 						<tpl:EntryIf has_img="0"><img class="author-icon" src="{{tpl:BlogThemeURL}}/img/authors/default.png" alt="" /></tpl:EntryIf>
@@ -40,7 +40,7 @@
 					</div>
 					</tpl:EntryIf>
 
-					<tpl:EntryIf category="Photos">
+					<tpl:EntryIf focus_cat_image="1">
 					<p class="focus1-icon">{{tpl:EntryFirstImage size="m"}}</p>	
 					<h2 class="post-title"><a href="{{tpl:EntryURL}}">{{tpl:EntryTitle encode_html="1"}}</a></h2>
 					<p class="post-author">{{tpl:lang By}} {{tpl:EntryAuthorLink}}</p>	

@@ -60,10 +60,24 @@ class tplDuctileFocusTheme
 
 	public static function tplIfConditions($tag,$attr,$content,$if)
 	{
+		global $core;
+
 		if ($tag == 'EntryIf' && isset($attr['has_img'])) {
+
 			$sign = (boolean) $attr['has_img'] ? '' : '!';
 			$with_category = !empty($attr['with_category']) ? 'true' : 'false';
 			$if[] = $sign.'(tplDuctileFocusTheme::tplIfConditionsHelper('.$with_category.'))';
+
+		} elseif ($tag == 'EntryIf' && isset($attr['focus_cat_image'])) {
+
+			$sign = (boolean) $attr['focus_cat_image'] ? '' : '!';
+			$s = $core->blog->settings->themes->get($core->blog->settings->system->theme.'_focus');
+			if ($s === null) return;
+			$s = @unserialize($s);
+			if (!is_array($s)) return;
+			if (!isset($s[2])) return;
+			if (!isset($s[2]['cat'])) return;
+			$if[] = $sign.'($_ctx->posts->cat_url == \''.$s[2]['cat'].'\')';
 		}
 	}
 

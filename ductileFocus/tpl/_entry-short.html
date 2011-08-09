@@ -8,7 +8,7 @@
 	{{tpl:SysBehavior behavior="publicEntryBeforeContent"}}
 	
 		<div class="post-content">
-			<tpl:EntryIf category="!Photos">
+			<tpl:EntryIf focus_cat_image="0">
 			{{tpl:EntryFirstImage size="t" class="post-icon"}}
 			<p>
 				{{tpl:EntryContent full="1" encode_html="1" remove_html="1" cut_string="300"}}<tpl:EntryIfContentIsCut encode_html="1" remove_html="1" cut_string="300">&nbsp;[…]</tpl:EntryIfContentIsCut>
@@ -20,7 +20,7 @@
 		</tpl:EntryIfContentIsCut>
 		</tpl:EntryIf>
 		
-		<tpl:EntryIf category="Photos">
+		<tpl:EntryIf  focus_cat_image="1">
 			<p class="short-photo">{{tpl:EntryFirstImage size="s" class="photo-icon"}}</p>
 			</div>
 		</tpl:EntryIf>
