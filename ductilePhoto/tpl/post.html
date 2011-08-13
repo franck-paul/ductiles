@@ -50,25 +50,9 @@
 			
 			<div id="main">
 				<div id="content">
-					
-					<p class="navlinks topnl">
-						<tpl:EntryPrevious><a href="{{tpl:EntryURL}}"
-						 title="{{tpl:EntryTitle encode_html="1"}}" class="prev">&#171; {{tpl:lang Previous entry}}</a></tpl:EntryPrevious>
-						<tpl:EntryNext> <span>-</span> <a href="{{tpl:EntryURL}}"
-						 title="{{tpl:EntryTitle encode_html="1"}}" class="next">{{tpl:lang Next entry}} &#187;</a></tpl:EntryNext>
-					</p>
-					
+
 					{{tpl:include src="_simple-entry.html"}}
-					
-					<p class="navlinks">
-						<tpl:EntryPrevious><a href="{{tpl:EntryURL}}"
-						 title="{{tpl:EntryTitle encode_html="1"}}" class="prev">&#171; {{tpl:EntryTitle encode_html="1"
-						 cut_string="50"}}</a></tpl:EntryPrevious>
-						<tpl:EntryNext> <span>-</span> <a href="{{tpl:EntryURL}}"
-						 title="{{tpl:EntryTitle encode_html="1"}}" class="next">{{tpl:EntryTitle encode_html="1"
-						 cut_string="50"}} &#187;</a></tpl:EntryNext>
-					</p>
-					
+
 				</div>
 			</div> <!-- End #main -->
 			

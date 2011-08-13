@@ -48,7 +48,7 @@ Micro clearfix by Nicolas Gallagher http://nicolasgallagher.com/
 body {
 	background: #efefef;
 	background: #fff;
-	_background: #333;
+	_background: #3c3c3c;
 	color: #333;
 	font-family: Frutiger, "Frutiger Linotype", Univers, Calibri, "Gill Sans", "Gill Sans MT", "Myriad Pro", Myriad, "DejaVu Sans Condensed", "Liberation Sans", "Nimbus Sans L", Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif;	}
 	}
@@ -75,7 +75,7 @@ pre {
 	white-space: normal;
 	}
 a {
-	color: #686867;
+	color: #606060;
 	}
 a:hover, a:focus {
 	background-color: #eceded;
@@ -288,6 +288,10 @@ h1 a {
 	display: inline-block;
 	vertical-align: top;
 	}
+.entry-content img {
+	background: #e5e5e5;
+	box-shadow: 2px 2px 3px #999;
+	}
 .post-attr h2 {
 	margin: 0;
 	font-size: 2em;
@@ -489,7 +493,7 @@ a.attach_count {
 	padding: 1em;
 	margin: 1em 0;
 	color: #333;
-	border: 1px solid #14709e;
+	border: 1px solid #aaa;
 	}
 #pr {
 	padding: 1em;
@@ -749,20 +753,21 @@ ul ul .category-current {
 #footer {
 	position: relative;
 	clear: both;
-	background: #efefef;
+	background: #d5d5d5;
 	font-size: .875em;
 	}
 #footer p {
-	padding: .66em 2em;
+	padding: .33em 2em;
 	margin: 0;
 	text-align: right;
 	}
 #blogcustom {
 	clear: both;
 	text-align: center;
-	background-color: #b2d5de;
+	background-color: #e5e5e5;
 	color: #333;
-	border-bottom: 1px solid #999;
+	border-top: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
 	}
 #blogcustom a:link, #blogcustom a:visited {
 	color: #444;
@@ -790,7 +795,8 @@ ul ul .category-current {
 	padding-left: 0;
 	margin-left: 0;
 	}
-#blogcustom .syndicate ul {
+#blogcustom .syndicate ul,
+#blogcustom .tags ul {
 	list-style-type: none;
 	padding-left: 0;
 	}
@@ -810,13 +816,13 @@ ul ul .category-current {
 	display: block;
 	margin: 0;
 	text-indent: -9999px;
-	background: #b2d5de;
+	background: #e5e5e5;
 	}
 #stickers a img, #stickers a:hover img {
-	background: #b2d5de;	
+	background: #e5e5e5;	
 }
 #stickers a:hover span, #stickers a:focus span {
-	background: #b2d5de;
+	background: #e5e5e5;
 	color: #000;
 	text-indent: 0;
 	}
@@ -838,7 +844,9 @@ ul ul .category-current {
 	}
 .dc-tags #content ul li, 
 .dc-tags #content ul li a, 
-#sidebar .tags ul li, 
+#blogcustom .tags ul li, 
+#blogcustom .tags ul li a, 
+#sidebar .tags ul li,
 #sidebar .tags ul li a {
 	display: inline;
 	width: auto;
@@ -1158,11 +1166,3 @@ hr.hidden {
 .post-content:after {
 	clear: both;
 	}
-
-/* pour les copies d'écran 
-body {
-	background: url(img/vline.png) repeat-y 320px 0;
-	}
-*/
-	
-	

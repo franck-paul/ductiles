@@ -82,6 +82,7 @@
 	#top {
 		background: #e5e5e5;
 		padding: 6px 0 4px 0;
+		border-bottom: 1px solid #ddd;
 		}
 	h1, .supranav {
 		display: inline-block;
@@ -97,11 +98,11 @@
 		right: 16px;
 		}
 	.une {
-		margin-top: 20px !important;
-		line-height: 640px;
+		margin-top: 24px !important;
+		line-height: 620px;
 		}
 	.une h2 {
-		margin-top: -10px;
+		margin-top: 0 !important;
 		}
 	.supranav, #prelude {
 		list-style-type: none;
@@ -170,13 +171,26 @@
 		height:auto;
 		}
 	.entry-content, .entry-aside {
-		width: 46%;
 		margin: 2em 1.5%;
+		}
+	.entry-content {
+		width: 56%;
+		}
+	.entry-aside {
+		width: 36%;
 		}
 }
 
 /* ------------------------------------------------------ règles communes > 640px */
 @media only screen and (min-width:641px) {
+}
+
+/* ------------------------------------------------------ 768px à 1023px */
+@media only screen and (min-width:768px) and (max-width: 1023px) {
+}
+
+/* ------------------------------------------------------ règles communes > 1024px */
+@media only screen and (min-width: 1024px) {
 	.comment-info { 
 		clear: left;
 		float: left;
@@ -186,14 +200,6 @@
 	.comment-content {
 		margin-left: 11.5em;
 		}
-}
-
-/* ------------------------------------------------------ 768px à 1060px */
-@media only screen and (min-width:768px) and (max-width: 1060px) {
-}
-
-/* ------------------------------------------------------ règles communes > 1060px */
-@media only screen and (min-width: 1061px) {
 }
 
 /* ------------------------------------------------------ au-delà de 1280px */

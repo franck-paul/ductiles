@@ -1,13 +1,14 @@
 <div id="p{{tpl:EntryID}}" class="post simple">
 	
 	<div class="entry-content">
+		<p class="navlinks topnl">
+			<tpl:EntryPrevious><a href="{{tpl:EntryURL}}"
+			 title="{{tpl:EntryTitle encode_html="1"}}" class="prev">&#171; {{tpl:lang Previous entry}}</a></tpl:EntryPrevious>
+			<tpl:EntryNext> <span>-</span> <a href="{{tpl:EntryURL}}"
+			 title="{{tpl:EntryTitle encode_html="1"}}" class="next">{{tpl:lang Next entry}} &#187;</a></tpl:EntryNext>
+		</p>
 	<!-- # --BEHAVIOR-- publicEntryBeforeContent -->
 	{{tpl:SysBehavior behavior="publicEntryBeforeContent"}}
-	
-	<!-- # Entry with an excerpt -->
-	<tpl:EntryIf extended="1">
-		<div class="post-excerpt">{{tpl:EntryExcerpt}}</div>
-	</tpl:EntryIf>
 	
 	<div class="post-content">{{tpl:EntryContent}}</div>
 	
@@ -19,6 +20,11 @@
 	
 	<div class="post-attr">
 		<h2 class="post-title">{{tpl:EntryTitle encode_html="1"}}</h2>
+		<!-- # Entry with an excerpt -->
+		<tpl:EntryIf extended="1">
+			<div class="post-excerpt">{{tpl:EntryExcerpt}}</div>
+		</tpl:EntryIf>
+
 		<p class="post-info">
 			<span class="post-author">{{tpl:lang By}} {{tpl:EntryAuthorLink}}, </span>
 			<span class="post-date">{{tpl:EntryDate}}. </span>
@@ -183,5 +189,14 @@
 		<p>{{tpl:lang Trackback URL}}&nbsp;: {{tpl:EntryPingLink}}</p>
 	</div>
 </tpl:EntryIf>
+<p class="navlinks">
+	<tpl:EntryPrevious><a href="{{tpl:EntryURL}}"
+	 title="{{tpl:EntryTitle encode_html="1"}}" class="prev">&#171; {{tpl:EntryTitle encode_html="1"
+	 cut_string="50"}}</a><span> • </span></tpl:EntryPrevious>
+	 {{tpl:EntryTitle encode_html="1"}}
+	<tpl:EntryNext> <span>•</span> <a href="{{tpl:EntryURL}}"
+	 title="{{tpl:EntryTitle encode_html="1"}}" class="next">{{tpl:EntryTitle encode_html="1"
+	 cut_string="50"}} &#187;</a></tpl:EntryNext>
+</p>
 
 </div>
