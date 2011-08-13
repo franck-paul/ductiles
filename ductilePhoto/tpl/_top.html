@@ -1,0 +1,18 @@
+<div id="header">
+	
+	<div id="top">		
+	<h1><span><a href="{{tpl:BlogURL}}">{{tpl:BlogName encode_html="1"}}</a></span></h1>
+	{{tpl:SimpleMenu id="sn-top" class="nosmall supranav" description="title"}}
+	<form class="nosmall" id="searchform" action="{{tpl:BlogURL}}" method="get"><p><label for="sf">{{tpl:lang Search}}</label> <input type="text" size="10" maxlength="255" id="sf" name="q" value="" /> <input class="search-submit" type="submit" value="{{tpl:lang Search}}" title="{{tpl:lang Search}}" /></p></form>
+	</div>
+	
+	<ul id="prelude" class="nosmall">
+		<li><a href="#main">{{tpl:lang To content}}</a></li>
+		<li><a href="#blognav">{{tpl:lang To menu}}</a></li>
+		<li class="nosmall"><a href="#searchform">{{tpl:lang To search}}</a></li>
+	</ul>
+	
+	<!-- # --BEHAVIOR-- publicTopAfterContent -->
+	{{tpl:SysBehavior behavior="publicTopAfterContent"}}
+
+</div>

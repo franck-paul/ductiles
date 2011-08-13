@@ -1,0 +1,202 @@
+@charset "UTF-8";
+/* -- BEGIN LICENSE BLOCK ---------------------------------------
+# This file is part of Ductile Focus, a theme for Dotclear
+#
+# Copyright (c) 2011 - Kozlika & Franck Paul
+# Licensed under the GPL version 2.0 license.
+# See LICENSE file or
+# http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
+#
+# -- END LICENSE BLOCK ----------------------------------------- */
+
+/* seuils importants : 480px, 640px, 760px, 1060px, 1600px */
+
+/* --------------------------------------------------------------------
+	Moins de 480px (téléphones)
+-------------------------------------------------------------------- */
+@media only screen and (max-width:480px) {
+	.nosmall {
+		display: none !important;
+		}
+	h1 {
+		font-size: 1.8em !important;
+		padding: 6px 16px;
+		background: #efefef;
+		margin-bottom: 16px !important;
+		background-image: -webkit-gradient(linear, left top, left bottom, from( #f4f4f5), to(#d7d7dC));
+		background: -webkit-linear-gradient(top,  #f4f4f5,  #d7d7dC);
+		background: -moz-linear-gradient(top,  #f4f4f5,  #d7d7dC);
+		background: -o-linear-gradient(top,  #f4f4f5,  #d7d7dC);
+		background: -ms-linear-gradient(top,  #f4f4f5,  #d7d7dC);
+		background: linear-gradient(top,  #f4f4f5,  #d7d7dC);
+		border-bottom: 1px solid #ccc;
+		}
+		.supranav, #prelude, #stickers {
+			border: none;
+			margin: 8px 0 0;
+			padding-left: 0;
+			}
+		.supranav li a, #prelude li a {
+			border-right: 0;
+			display: block;
+			padding: 4px 8px;
+			border-bottom: 1px solid #ccc;
+			text-decoration: none;
+			white-space: nowrap;
+			margin-bottom: 4px;
+			}
+		#gotop li {
+			border-top: 1px solid #ccc;
+			text-transform: none;
+			padding-top: 6px;
+			}
+		#prelude {
+			margin: .5em 0 !important;
+			}
+		#prelude li a {
+			background: transparent url(img/menumobile.png) no-repeat right center;
+			 }
+		#sn-bottom li a {
+			background: transparent url(img/menumobile.png) no-repeat right top;
+			}
+		#gotop li a {
+			background: transparent url(img/menumobile.png) no-repeat right -150px;
+			}
+		.comment-content p {
+			margin-top: .5em;
+			}
+}
+
+/* --------------------------------------------------------------------
+	Autres (plus de 480px)
+-------------------------------------------------------------------- */
+@media only screen and (min-width: 481px) {
+	.nobig {
+		display: none !important;
+		}
+	#top {
+		background: #efefef;
+		padding: 6px 0;
+		}
+	h1, .supranav {
+		display: inline-block;
+		vertical-align: middle;
+		}
+	h1 {
+		padding: 0 16px;
+		border-right: 1px solid #ccc;
+		}
+	#searchform {
+		position: absolute;
+		top: 4px;
+		right: 16px;
+		}
+	.une {
+		line-height: 640px;
+		}
+	.supranav, #prelude {
+		list-style-type: none;
+		line-height: 1.25;
+		font-size: .875em;
+		}
+	.supranav li, #prelude li {
+		text-transform: uppercase;
+		vertical-align: top;
+		display: inline;
+		padding: 0;
+		margin: 0;
+		}
+	.supranav {
+		clear: both;
+		margin: 0;
+		padding: 0;
+		}
+	.supranav li a {
+		display: inline-block;
+		padding: 2px 32px 2px 16px;
+		border-right: 1px solid #ccc;
+		-moz-border-radius: 0 0 0 7px;
+		-webkit-border-radius: 0 0 0 7px;
+		border-radius: 0 0 0 7px;
+		text-decoration: none;
+		white-space: nowrap;
+		margin-left: 4px;
+		background: transparent url(img/menu.png) no-repeat right top;
+		}
+	.supranav li a:hover, 
+	.supranav li a:active, 
+	.supranav li a:focus {
+		background-color: #ddd;
+		background-position: right -150px;
+		}
+	.supranav li.active a {
+		background-position: right -150px;
+		color: #14709e;
+		}
+	#prelude {
+		position: absolute;
+		margin: 0;
+		padding: 0 0 0 4px;
+		top: 2.5em;
+		left: 3px;
+		color: #fff;
+		list-style-type: none;
+		}
+	#prelude li {
+		display: inline;
+		text-transform: none !important;
+		}
+	#prelude a, #prelude a:hover, #prelude a:visited {
+		position:absolute;
+		left:0;
+		top:-500px;
+		width:1px;
+		height:1px;
+		overflow:hidden;
+		background-image: none !important;
+		}
+	#prelude a:active, #prelude a:focus {
+		position:static;
+		width:auto;
+		height:auto;
+		}
+	.entry-content, .entry-aside {
+		width: 46%;;
+		}
+}
+
+/* ------------------------------------------------------ règles communes > 640px */
+@media only screen and (min-width:641px) {
+	.comment-info { 
+		clear: left;
+		float: left;
+		width: 10em;
+		margin: 0;
+		}
+	.comment-content {
+		margin-left: 11.5em;
+		}
+}
+
+/* ------------------------------------------------------ 768px à 1060px */
+@media only screen and (min-width:768px) and (max-width: 1060px) {
+}
+
+/* ------------------------------------------------------ règles communes > 1060px */
+@media only screen and (min-width: 1061px) {
+}
+
+/* ------------------------------------------------------ au-delà de 1280px */
+@media only screen and (min-width: 1280px) {
+}
+
+/* ------------------------------------------------------ au-delà de 1600px */
+@media only screen and (min-width: 1600px) {
+}
+
+/* ------------------------------------------------------ special redimensionnement paysage */
+@media screen and (max-width:640px) and (orientation: landscape) { 
+	body { 
+		-webkit-text-size-adjust: 70%; 
+		}
+}
