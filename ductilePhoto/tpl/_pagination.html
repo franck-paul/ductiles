@@ -2,12 +2,12 @@
 	<p class="pagination">
 		<tpl:PaginationIf end="0">
 			<a href="{{tpl:PaginationURL offset="+1"}}" class="prev">&#171;
-			{{tpl:lang previous}}</a>
+			{{tpl:lang previous}}</a> • 
 		</tpl:PaginationIf>
 		
 		{{tpl:PaginationCurrent}} / {{tpl:PaginationCounter}}
 		
-		<tpl:PaginationIf start="0"><a href="{{tpl:PaginationURL offset="-1"}}" class="next">
+		<tpl:PaginationIf start="0"> • <a href="{{tpl:PaginationURL offset="-1"}}" class="next">
 			{{tpl:lang next}} &#187;</a>
 		</tpl:PaginationIf>
 	</p>

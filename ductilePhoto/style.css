@@ -118,12 +118,13 @@ table caption {
 ------------------------------------------------------------- */
 #page {
 	position: relative;
+	width: 100%;
 	}
 #top {
 	line-height: 1;
 	}
 h1 {
-	font-size: 1.2em;
+	font-size: 1.33em;
 	margin: 0;
 	}
 #searchform p {
@@ -171,8 +172,8 @@ h1 {
 	}
 .une img {
 	padding: 6px;
-	background: #fff;
-	border: 1px solid #999;
+	background: #e5e5e5;
+	border: 1px solid #bbb;
 	max-width: 90%;
 	max-height: 600px;
 	vertical-align: middle;
@@ -183,7 +184,6 @@ h1 {
 	opacity: 0.8;
 	}
 .une h2 {
-	margin-top: 0;
 	color: #666;
 	}
 
@@ -287,7 +287,6 @@ h1 a {
 	max-width: 100%;
 	display: inline-block;
 	vertical-align: top;
-	margin: 0 1%;
 	}
 .post-attr h2 {
 	margin: 0;
