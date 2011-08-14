@@ -28,14 +28,6 @@ Plan de cette feuille :
 12. Clearers
 13. Ductile Focus Goodies
 
-Couleurs :
-Typo: #333 courant
-Titres non cliquables: #14709e
-Liens: #686867 courant, #ab164d titre billet et Lire la suite
-Fond formulaire comm: #dce1e1
-Fond blogcustom: #b2d5de
-Fond titres sidebar: #cbc8be
-
 Thanks to:
 Colorzilla wysiwyg gradient editor http://www.colorzilla.com/gradient-editor/
 Micro clearfix by Nicolas Gallagher http://nicolasgallagher.com/
@@ -46,9 +38,7 @@ Micro clearfix by Nicolas Gallagher http://nicolasgallagher.com/
 ------------------------------------------------------------------ */
 /* ------------------------------------------------------- body */
 body {
-	background: #efefef;
 	background: #fff;
-	_background: #3c3c3c;
 	color: #333;
 	font-family: Frutiger, "Frutiger Linotype", Univers, Calibri, "Gill Sans", "Gill Sans MT", "Myriad Pro", Myriad, "DejaVu Sans Condensed", "Liberation Sans", "Nimbus Sans L", Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif;	}
 	}
@@ -139,6 +129,7 @@ h1 a {
 	position: absolute;
 	left: -10000px;
 	}
+/* recherche */
 #sf {
 	width: 14em;
 	border: 1px solid #999;
@@ -168,29 +159,6 @@ h1 a {
 .search-submit:hover, .search-submit:focus {
 	background-image: url(img/search-hover.png);
 	}
-#main, #content, .une {
-	margin: 0;
-	padding: 0;
-	}
-.une {
-	text-align: center;
-	}
-.une img {
-	padding: 6px;
-	background: #e5e5e5;
-	border: 1px solid #bbb;
-	max-width: 90%;
-	max-height: 600px;
-	vertical-align: middle;
-	}
-.une a:hover, .une a:focus {
-	zoom: 1;
-	filter: alpha(opacity=80);
-	opacity: 0.8;
-	}
-.une h2 {
-	color: #666;
-	}
 
 /* ------------------------------------------------------------
 	4. HAUT DE PAGE
@@ -201,9 +169,6 @@ h1 a {
 	text-shadow: 0 1px 1px rgba(0,0,0,.2);
 	line-height: 1;
 	}
-#logo a img, #stickers a img {
-	border: none;
-	}
 h1 {
 	font-variant: small-caps;
 	}
@@ -212,10 +177,15 @@ h1 a {
 	color: #333;
 	}
 #blogdesc {
-	margin: 0 0 0 32px;
+	display: none;
+	}
+.dc-home #blogdesc {
+	display: block;
+	position: absolute;
+	top: 3.5em;
+	left: 16px;
+	margin: 0;
 	font-style: italic;
-	color: #686867;
-	text-shadow: none;
 	}
 	
 /* ------------------------------------------------------------
@@ -312,52 +282,6 @@ h1 a {
 	text-decoration: none;
 	color: #ab164d;
 	}
-.short {
-	margin-bottom: 1.5em;
-	display: inline-block;
-	vertical-align: top;
-	width: 260px;
-	}
-.short h2 {
-	margin: 0;
-	color: #666;
-	font-size: 1em;
-	margin-left: .25em;
-}
-.short .post-content p {
-	margin-top: .5em;
-	}
-.short-photo {
-	max-width: 100%;
-	margin-bottom: 0;
-	}
-.short-photo img {
-	max-width: 96%;
-	margin-bottom: 0;
-	}
-.thumb {
-	display: inline-block;
-	}
-.thumb p {
-	margin: 0;
-	}
-.thumb a {
-	display: block;
-	width: 98px;
-	height: 98px;
-	overflow: hidden;
-	position: relative;
-	}
-.thumb a:link img {
-	position: absolute;
-	top: 0;
-	left: 0;
-	padding: 0;
-	}
-.thumb a:hover img {
-	top: -100px;
-	}
-
 .post h3,
 .post h4, 
 .post h5,
@@ -368,7 +292,7 @@ h1 a {
 .post h3, .post h5 {
 	font-variant: small-caps;
 	}
-.post-content img, .post-excerpt img {
+.post-content img {
 	border: 1px solid #ccc;
 	max-width: 96%;
 	padding: 4px;
@@ -380,9 +304,11 @@ img.smiley {
 .post-excerpt {
 	margin: 1em 0 1.5em;
 	}
+.post-excerpt img {
+	max-width: 100%;
+	}
 .post-info, 
-.post-tags, 
-.post-info-co {
+.post-tags {
 	margin: 0 0 .33em 0;
 	line-height: 1.2;
 	}
@@ -416,42 +342,6 @@ img.smiley {
 	font-variant: normal;
 	font-weight: bold;
 	}
-.read-it {
-	text-align: right;
-	margin: 0 0 .25em 0;
-	}
-.read-it a {
-	color: #ab164d;
-	padding-left: .5em;
-	}
-.post-info-co {
-	margin: 0;
-	font-size: 0.875em;
-	font-style: italic;
-	padding-right: .5em;
-	}
-.post-info-co a {
-	text-decoration: none;
-	padding-right: 1em;
-	}
-a.comment_count {
-	padding-left: 20px;
-	background-image: url(img/comments.png);
-	background-repeat: no-repeat;
-	background-position: left center;
-	}
-a.ping_count {
-	padding-left: 20px;
-	background-repeat: no-repeat;
-	background-position: left center;
-	background-image: url(img/ping.png);
-	}
-a.attach_count {
-	padding-left: 20px;
-	background-repeat: no-repeat;
-	background-position: left center;
-	background-image: url(img/attach.png);
-	}
 #attachments {
 	font-size: .875em;
 	border-bottom: 1px solid #999;
@@ -471,6 +361,30 @@ a.attach_count {
 	padding-left: 24px;
 	background: transparent url(img/download.png) no-repeat left .3em;
 	}
+/* billets en liste */
+.thumb {
+	display: inline-block;
+	}
+.thumb p {
+	margin: 0;
+	}
+.thumb a {
+	display: block;
+	width: 98px;
+	height: 98px;
+	overflow: hidden;
+	position: relative;
+	}
+.thumb a:link img {
+	position: absolute;
+	top: 0;
+	left: 0;
+	padding: 0;
+	}
+.thumb a:hover img {
+	top: -100px;
+	}
+
 /* ------------------------------------------------------------
 	7. COMMENTAIRES, PINGS
 ------------------------------------------------------------- */
@@ -479,20 +393,16 @@ a.attach_count {
 #ping-url, 
 #comment-form,
 #comments-feed {
-	color: #333;
 	font-size: .875em;
 	clear: both;
 	}
-#comment-form, #ping-url {
+#comment-form, #ping-url, #pr {
 	padding: 1em;
 	margin: 2em 0;
-	color: #333;
 	border: 1px solid #aaa;
 	}
 #pr {
-	padding: 1em;
 	border: 1px dashed #14709e;
-	margin-bottom: 1em;
 	}
 #comments h3, 
 #ping-url h3, 
@@ -510,7 +420,7 @@ a.attach_count {
 	}
 #comments li {
 	border-top: 1px solid #ddd;
-}
+	}
 .comment, .ping {
 	clear: left;
 	margin-left: 0;
@@ -546,9 +456,6 @@ a.attach_count {
 	padding-top: 1em;
 	}
 /* ------------------------------------------------------- formulaire des commentaires */
-#comment-form fieldset {
-	
-	}
 .field {
 	margin-bottom: 1em;
 	}
@@ -574,10 +481,6 @@ a.attach_count {
 	}
 .field textarea {
 	padding: .5em 1em;
-	}
-.field input:focus, 
-.field textarea:focus {
-	background: #fff;
 	}
 #comment-form input[type=submit], 
 #comment-form input[type=reset] {
@@ -631,126 +534,24 @@ a.attach_count {
 #comments-feed {
 	margin-top: 2em;
 	}
-/* ------------------------------------------------------------
-	8. SIDEBAR
-------------------------------------------------------------- */
-#sidebar {
-	font-size: 0.875em;
-	}
-#sidebar h2, #sidebar h3 {
-	font-weight: bold;
-	margin-bottom: 0;
-	}
-#sidebar h2 {
-	font-size: 1.1em;
-	color: #333;
-	background: #cbc8be;
-	padding: 2px .5em;
-	}
-#sidebar h2.toggle {
-	background: url(img/plus.png) no-repeat left center;
-	padding-left: 16px;
-	background-color: #fff;
-	}
-#sidebar h2.expanded {
-	background-image: url(img/minus.png);
-	}
-#sidebar h2.toggle a {
-	text-decoration: none;
-	color: #686867;
-	}
-#sidebar h3 {
-	font-size: 1em;
-	margin-bottom: 0;
-	font-weight: normal;
-	}
-#sidebar img {
-	max-width: 100%;
-	}
-#sidebar ul {
-	margin: .75em 0 .5em 4px;
-	list-style-type: none;
-	padding: 0;
-	}
-#sidebar ul li ul {
-	margin-top: 0;
-	margin-bottom: 0;
-	}
-#sidebar li {
-	padding-left: 16px;
-	background: transparent url(img/square.png) no-repeat 0 .5em;
-	}
-#sidebar ul li ul li {
-	background-image: url(img/square2.png);
-	}
-#sidebar ul li ul li ul li {
-	background-image: url(img/square3.png);
-	}
-#sidebar .syndicate li {
-	background-image: none;
-	padding-left: 0;
-	}
-.categories {
-	-webkit-border-radius: 4px;
-	-moz-border-radius: 4px;
-	-o-border-radius: 4px;
-	-ms-border-radius: 4px;
-	-khtml-border-radius: 4px;
-	border-radius: 4px;
-	background-color: #686867;
-	}
-#sidebar .categories ul, #sidebar .categories ul ul {
-	margin: 0;
-	}
-#sidebar .categories ul li {
-	line-height: 2;
-	border-bottom: 1px solid #fff;
-	padding: 0;
-	background-image: none;
-	}
-#sidebar .categories > ul li:last-child {
-	border-bottom: none;
-	}
-#sidebar .categories li ul li {
-	line-height: 1.75;
-	border-bottom: none;
-	}
-.categories ul a {
-	display: block;
-	background: transparent url(img/folder.png) 4px center no-repeat;
-	color: #fff;
-	text-decoration: none;
-	padding-left: 24px;
-	}
-.categories ul ul a {
-	padding-left: 48px;
-	background-position: 24px;
-	}
-#sidebar .category-current {
-	background-color: #14709e;
-	}
-ul ul .category-current {
-	border-top: 1px solid #fff;
-	}
-.categories ul a:hover, .categories ul a:focus {
-	font-weight: normal;
-	background-color: #14709e;
-	}
-/* ------------------------------------------------------- 
-widgets déjà traités (search dans le head, accueil et archives dans le menu)
-*/
 
+/* ------------------------------------------------------------
+	9. FOOTER - Tous les widgets sont dans #blogcustom
+------------------------------------------------------------- */
+/* ------------------------------------------------------- 
+widgets déjà traités (search dans le head, accueil et archives dans le menu) */
 #footer #search, #footer #topnav {
 	display: none;
 	}
-/* ------------------------------------------------------------
-	9. FOOTER
-------------------------------------------------------------- */
+
 #footer {
 	position: relative;
 	clear: both;
 	background: #d5d5d5;
 	font-size: .875em;
+	}
+#footer img {
+	max-width: 100%;
 	}
 #footer p {
 	padding: .33em 2em;
@@ -814,8 +615,10 @@ widgets déjà traités (search dans le head, accueil et archives dans le menu)
 	text-indent: -9999px;
 	font-size: .875em;
 	}
-#stickers a img, #stickers a:hover img {
+#stickers a img, #stickers a:hover img, #stickers a:focus img {
 	background: #e5e5e5;	
+	border: none;
+	}
 }
 #stickers a:hover span, #stickers a:focus span {
 	background: #e5e5e5;
@@ -902,68 +705,6 @@ widgets déjà traités (search dans le head, accueil et archives dans le menu)
 	list-style: square;
 	}
 /* ------------------------------------------------------- class à dispo pour billets */
-/*
-mini-galeries
-*/	
-.expo {
-	text-align: center;
-	line-height: 1.2;
-	}
-.expo p {
-	border: 1px solid #ccc;
-	background: #f2f2f0;
-	text-align: center;
-	display: inline-block;
-	vertical-align: middle;
-	position: relative;
-	overflow: hidden;
-	}
-.expo_m p {
-	padding: 8px 2px 32px;
-	font-size: .875em;
-	margin: 1em;
-	}
-.expo_s p {
-	padding-top: 8px;
-	width: 260px;
-	height: 280px;
-	margin: 6px 4px;
-	font-size: .875em;
-	}
-.expo_t p {
-	padding-top: 4px;
-	width: 112px;
-	height: 132px;
-	margin: 6px 4px;
-	font-size: .75em;
-	}
-.expo img {
-	display: inline-block;
-	margin: auto;
-	border: none;
-	padding: 0;
-	border: 1px solid #fff;
-	}
-.expo a {
-	text-decoration: none;
-	color: #000;
-	}
-.expo a:after { 
-	content : attr(title); 
-	display: block; 
-	position: absolute; 
-	padding: 2px 0;
-	left: 0;
-	bottom: 0;
-	width: 100%;
-	background-color: #e3e3df;
-	}
-.expo a:hover, .expo a:focus {
-	zoom: 1;
-	filter: alpha(opacity=50);
-	opacity: 0.5;
-	}
-/* autres classes */
 .left {
 	float: left;
 	margin-right: 1em;
@@ -1001,6 +742,27 @@ hr.hidden {
 /* ------------------------------------------------------------
 	11. PAGES SPECIFIQUES
 ------------------------------------------------------------- */
+/* ------------------------------------------------------------- home */
+.une {
+	text-align: center;
+	}
+.une img {
+	padding: 6px;
+	background: #e5e5e5;
+	border: 1px solid #bbb;
+	max-width: 90%;
+	max-height: 600px;
+	vertical-align: middle;
+	}
+.une a:hover, .une a:focus {
+	zoom: 1;
+	filter: alpha(opacity=80);
+	opacity: 0.8;
+	}
+.une h2 {
+	color: #666;
+	}
+
 /* ---------------------------------------------------------------- archives */
 .arch-block {
 	display: inline-block;
