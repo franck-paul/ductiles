@@ -125,6 +125,9 @@ td, th, tr,
 hr.hidden {
 	border-color: #fff;
 	}
+blockquote {
+	border: 1px dotted #999;
+	}
 
 
 /* autres */
