@@ -791,7 +791,8 @@ ul ul .category-current {
 	font-weight: normal;
 	background-color: #14709e;
 	}
-/* ------------------------------------------------------- recherche */
+/* ------------------------------------------------------- recherche
+déjà présente dans le header, on la supprime dans le sidebar */
 #search {
 	display: none;
 	}

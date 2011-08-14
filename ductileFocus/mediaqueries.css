@@ -308,7 +308,7 @@
 		}
 	.photo.focus1 img {
 		max-width: 98%;
-x		}
+		}
 	.post:before, .post:after {
 		content: "";
 		display: table;
@@ -354,7 +354,7 @@ x		}
 		border-right: 1px solid #bbb;
 		}
 	.post.short:nth-child(2n) {
-  		border-right: none;
+  	border-right: none;
 		}
 	#blognav > div, #blogextra > div {
 		width: 300px;
@@ -368,7 +368,7 @@ x		}
 		}
 	#blognav h2, #blogextra h2 {
 		margin-top: 0;
-	}
+		}
 }
 
 /* ------------------------------------------------------ règles communes > 1060px */
@@ -418,7 +418,7 @@ x		}
 		border-right: 1px solid #bbb;
 		}
 	.post.short:nth-child(3n) {
-  		border-right: none;
+  	border-right: none;
 		}
 }
 

@@ -7,23 +7,24 @@
 	<!-- # --BEHAVIOR-- publicEntryBeforeContent -->
 	{{tpl:SysBehavior behavior="publicEntryBeforeContent"}}
 	
+	<tpl:EntryIf focus_cat_image="0">
 		<div class="post-content">
-			<tpl:EntryIf focus_cat_image="0">
 			{{tpl:EntryFirstImage size="t" class="post-icon"}}
 			<p>
 				{{tpl:EntryContent full="1" encode_html="1" remove_html="1" cut_string="300"}}<tpl:EntryIfContentIsCut encode_html="1" remove_html="1" cut_string="300">&nbsp;[…]</tpl:EntryIfContentIsCut>
 			</p>
+			<tpl:EntryIfContentIsCut encode_html="1" remove_html="1" cut_string="300">
+				<p class="read-it"><a href="{{tpl:EntryURL}}"
+			 		title="{{tpl:lang Continue reading}} {{tpl:EntryTitle encode_html="1"}}">{{tpl:lang Continue reading}}</a></p>
+			</tpl:EntryIfContentIsCut>
 		</div>
-		<tpl:EntryIfContentIsCut encode_html="1" remove_html="1" cut_string="300">
-			<p class="read-it"><a href="{{tpl:EntryURL}}"
-			 title="{{tpl:lang Continue reading}} {{tpl:EntryTitle encode_html="1"}}">{{tpl:lang Continue reading}}</a></p>
-		</tpl:EntryIfContentIsCut>
-		</tpl:EntryIf>
+	</tpl:EntryIf>
 		
-		<tpl:EntryIf  focus_cat_image="1">
+	<tpl:EntryIf  focus_cat_image="1">
+		<div class="post-content">
 			<p class="short-photo">{{tpl:EntryFirstImage size="s" class="photo-icon"}}</p>
-			</div>
-		</tpl:EntryIf>
+		</div>
+	</tpl:EntryIf>
 	
 	<!-- # --BEHAVIOR-- publicEntryAfterContent -->
 	{{tpl:SysBehavior behavior="publicEntryAfterContent"}}
