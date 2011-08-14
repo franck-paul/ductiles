@@ -812,6 +812,7 @@ widgets déjà traités (search dans le head, accueil et archives dans le menu)
 	margin: 0;
 	text-indent: -9999px;
 	background: #e5e5e5;
+	font-size: .875em;
 	}
 #stickers a img, #stickers a:hover img {
 	background: #e5e5e5;	
