@@ -1,6 +1,7 @@
 @charset "UTF-8";
 @import url(rebase.css);
 @import url(mediaqueries.css);
+@import url(light-ambiance.css);
 
 /* -- BEGIN LICENSE BLOCK ---------------------------------------
 # This file is part of Ductile, a theme for Dotclear
@@ -38,38 +39,24 @@ Micro clearfix by Nicolas Gallagher http://nicolasgallagher.com/
 ------------------------------------------------------------------ */
 /* ------------------------------------------------------- body */
 body {
-	background: #fff;
-	color: #333;
 	font-family: Frutiger, "Frutiger Linotype", Univers, Calibri, "Gill Sans", "Gill Sans MT", "Myriad Pro", Myriad, "DejaVu Sans Condensed", "Liberation Sans", "Nimbus Sans L", Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif;	}
 	}
 
 /* ------------------------------------------------------------
 	2. LIENS & Complément balises HTML
 ------------------------------------------------------------- */
-del {
-	color: #800000;
-	}
 blockquote {
 	clear: left;
-	border-left: 4px solid #ccc;
 	padding: 1px 1em .5em;
-	background: #f9f9f9;
 	margin-left: 0;
 	}
 code, pre {
-	background: #efefef;
-	border-right: 1px solid #aaa;
-	border-bottom: 1px solid #aaa;
 	font-size: .81em;
 	}
 pre {
 	white-space: normal;
 	}
-a {
-	color: #606060;
-	}
 a:hover, a:focus {
-	background-color: #eceded;
 	text-decoration: none;
 	}
 ul ul {
@@ -80,25 +67,17 @@ h2, h2 a {
 	margin-top: .75em;
 	}
 table {
-	border: 1px solid #999;
 	border-collapse: collapse;
 	}
 td, th, tr {
 	padding: 2px 8px;
-	border: 1px solid #CCC;
 	border-collapse: collapse;
 	}
 thead th, tbody th {
-	color: #555;
-	background: #f0f0f5;
 	text-align: left;
 	font-weight: normal;
 	}
-tbody tr:hover, tbody th:hover {
-	background: #eee; 
-	}
 table caption {
-	color: #14709e;
 	text-align: left;
 	margin-bottom: .33em;
 	font-weight: bold;
@@ -132,7 +111,6 @@ h1 a {
 /* recherche */
 #sf {
 	width: 14em;
-	border: 1px solid #999;
 	margin: 0;
 	padding-left: .5em;
 	height: 16px;
@@ -142,10 +120,6 @@ h1 a {
 	-ms-border-radius: 4px;
 	-khtml-border-radius: 4px;
 	border-radius: 4px;
-	background: #f5f5f5;
-	}
-#sf:focus {
-	background: #fff;
 	}
 .search-submit {
 	width: 24px;
@@ -174,7 +148,6 @@ h1 {
 	}
 h1 a {
 	text-decoration: none;
-	color: #333;
 	}
 #blogdesc {
 	display: none;
@@ -204,7 +177,6 @@ h1 a {
 	margin-bottom: 3em;
 	}
 #content-info h2 {
-	color: #14709e;
 	margin-top: 0;
 	margin-bottom: .33em;
 	}
@@ -232,9 +204,6 @@ h1 a {
 	display: inline;
 	padding-right: 1em;
 	}
-.feed-info {
-	color: #fff;
-	}
 .feed-info a {
 	font-size: .875em;
 	padding-top: .1em;
@@ -247,11 +216,6 @@ h1 a {
 	padding: 4px 8px;
 	text-align: center;
 	font-size: .875em;
-	color: #000;
-	}
-.navlinks a, 
-.pagination a {
-	color: #333;
 	}
 
 /* ------------------------------------------------------------
@@ -263,10 +227,6 @@ h1 a {
 	display: inline-block;
 	vertical-align: top;
 	}
-.entry-content img {
-	background: #e5e5e5;
-	box-shadow: 2px 2px 3px #999;
-	}
 .post-attr h2 {
 	margin: 0;
 	font-size: 2em;
@@ -275,25 +235,21 @@ h1 a {
 	font-size: 1.33em;
 	margin-bottom: .33em;
 	margin-top: .5em;
-	color: #14709e;
 	line-height: 1.17;
 	}
 .post-title a {
 	text-decoration: none;
-	color: #ab164d;
 	}
 .post h3,
 .post h4, 
 .post h5,
 .post h6 {
 	font-weight: normal;
-	color: #14709e;
 	}
 .post h3, .post h5 {
 	font-variant: small-caps;
 	}
 .post-content img {
-	border: 1px solid #ccc;
 	max-width: 96%;
 	padding: 4px;
 	}
@@ -344,13 +300,11 @@ img.smiley {
 	}
 #attachments {
 	font-size: .875em;
-	border-bottom: 1px solid #999;
 	margin: 0 0 2em;
 	}
 #attachments h3 {
 	font-variant: small-caps;
 	font-weight: normal;
-	color: #686867;
 	}
 #attachments ul {
 	list-style-type: none;
@@ -399,10 +353,8 @@ img.smiley {
 #comment-form, #ping-url, #pr {
 	padding: 1em;
 	margin: 2em 0;
-	border: 1px solid #aaa;
 	}
 #pr {
-	border: 1px dashed #14709e;
 	}
 #comments h3, 
 #ping-url h3, 
@@ -419,7 +371,6 @@ img.smiley {
 	list-style-type: none;
 	}
 #comments li {
-	border-top: 1px solid #ddd;
 	}
 .comment, .ping {
 	clear: left;
@@ -428,16 +379,11 @@ img.smiley {
 .comment-info {
 	padding-bottom: .2em;
 	line-height: 1.25;
-	color: #686867;
-	}
-#comments .me {
-	color: #14709e;
 	}
 .comment-number {
 	font-size: 1.5em;
 	font-weight: normal;
 	text-decoration: none;
-	color: #ab164d;
 	display: block;
 	width: 2em;
 	}
@@ -451,7 +397,6 @@ img.smiley {
 	background: transparent url(img/tb.png) right center no-repeat;
 	}
 #comments-feed {
-	border-top: 1px solid #bbb;
 	margin-top: 1.5em;
 	padding-top: 1em;
 	}
@@ -462,16 +407,13 @@ img.smiley {
 .field label {
 	display: block;
 	font-size: .875em;
-	color: #444;
 	text-indent: 6px;
 	}
 .field input, 
 .field textarea {
 	display: block;
 	font-size: 100%;
-	border: 1px solid #ccc;
 	padding: 4px;
-	background: #fff;
 	-webkit-border-radius: 3px;
 	-moz-border-radius: 3px;
 	-o-border-radius: 3px;
@@ -484,7 +426,6 @@ img.smiley {
 	}
 #comment-form input[type=submit], 
 #comment-form input[type=reset] {
-	color: #eee;
 	font-size: .875em;
 	display: inline-block;
 	text-transform: capitalize;
@@ -492,34 +433,15 @@ img.smiley {
 	text-align: center;
 	padding: .33em .66em;
 	text-shadow: 0 1px 1px rgba(0,0,0,.3);
-	background: rgb(119,119,119);
-	border: solid 1px #686867;
 	-webkit-border-radius: 5px;
 	-moz-border-radius: 5px;
 	-o-border-radius: 5px;
 	-ms-border-radius: 5px;
 	-khtml-border-radius: 5px;
 	border-radius: 5px;
-	-webkit-box-shadow: 0 1px 2px rgba(0,0,0,.2);
-	-moz-box-shadow: 0 1px 2px rgba(0,0,0,.2);
-	-o-box-shadow: 0 1px 2px rgba(0,0,0,.2);
-	box-shadow: 0 1px 2px rgba(0,0,0,.2);
-	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(119,119,119,1)), color-stop(100%, rgba(85,85,85,1)));
-	background: -webkit-linear-gradient(top, rgba(119,119,119,1) 0%,rgba(85,85,85,1) 100%);
-	background: -moz-linear-gradient(top, rgba(119,119,119,1) 0%,rgba(85,85,85,1) 100%);
-	background: -o-linear-gradient(top, rgba(119,119,119,1) 0%,rgba(85,85,85,1) 100%);
-	background: -ms-linear-gradient(top, rgba(119,119,119,1) 0%,rgba(85,85,85,1) 100%);
-	background: linear-gradient(top, rgba(119,119,119,1) 0%,rgba(85,85,85,1) 100%);
 	}
 #comment-form input[type=submit]:hover, #comment-form input[type=submit]:focus,
 #comment-form input[type=reset]:hover, #comment-form input[type=reset]:focus {
-	background: rgb(85,85,85);
-	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(85,85,85,1)), color-stop(100%, rgba(119,119,119,1)));
-	background: -webkit-linear-gradient(top, rgba(85,85,85,1) 0%,rgba(119,119,119,1) 100%);
-	background: -moz-linear-gradient(top, rgba(85,85,85,1) 0%,rgba(119,119,119,1) 100%);
-	background: -o-linear-gradient(top, rgba(85,85,85,1) 0%,rgba(119,119,119,1) 100%);
-	background: -ms-linear-gradient(top, rgba(85,85,85,1) 0%,rgba(119,119,119,1) 100%);
-	background: linear-gradient(top, rgba(85,85,85,1) 0%,rgba(119,119,119,1) 100%);
 	text-decoration: none;
 	}
 #c_content {
@@ -547,7 +469,6 @@ widgets déjà traités (search dans le head, accueil et archives dans le menu) 
 #footer {
 	position: relative;
 	clear: both;
-	background: #d5d5d5;
 	font-size: .875em;
 	}
 #footer img {
@@ -561,13 +482,6 @@ widgets déjà traités (search dans le head, accueil et archives dans le menu) 
 #blogcustom {
 	clear: both;
 	text-align: center;
-	background-color: #e5e5e5;
-	color: #333;
-	border-top: 1px solid #ccc;
-	border-bottom: 1px solid #ccc;
-	}
-#blogcustom a:link, #blogcustom a:visited {
-	color: #444;
 	}
 #blogcustom > div {
 	display: inline-block;
@@ -616,13 +530,9 @@ widgets déjà traités (search dans le head, accueil et archives dans le menu) 
 	font-size: .875em;
 	}
 #stickers a img, #stickers a:hover img, #stickers a:focus img {
-	background: #e5e5e5;	
 	border: none;
 	}
-}
 #stickers a:hover span, #stickers a:focus span {
-	background: #e5e5e5;
-	color: #000;
 	text-indent: 0;
 	}
 
@@ -734,9 +644,6 @@ widgets déjà traités (search dans le head, accueil et archives dans le menu) 
 	text-transform: uppercase;
 	}
 hr.hidden {
-	background: #fff;
-	color: #fff;
-	border-color: #fff;
 	margin: 0;
 	}
 /* ------------------------------------------------------------
@@ -748,8 +655,6 @@ hr.hidden {
 	}
 .une img {
 	padding: 6px;
-	background: #e5e5e5;
-	border: 1px solid #bbb;
 	max-width: 90%;
 	max-height: 600px;
 	vertical-align: middle;
@@ -758,9 +663,6 @@ hr.hidden {
 	zoom: 1;
 	filter: alpha(opacity=80);
 	opacity: 0.8;
-	}
-.une h2 {
-	color: #666;
 	}
 
 /* ---------------------------------------------------------------- archives */
@@ -778,7 +680,6 @@ hr.hidden {
 	font-style: italic;
 	font-weight: normal;
 	text-transform: lowercase;
-	color: #14709e;
 	}
 .arch-block h4 {
 	font-weight: normal;
@@ -843,47 +744,36 @@ hr.hidden {
 	padding-right: 1em;
 	}
 #by-tag .tag0 {
-	color: #909090;
 	font-size: 90%;
 	}
 #by-tag .tag10 {
-	color: #828282;
 	font-size: 92%;
 	}
 #by-tag .tag20 {
-	color: #737373;
 	font-size: 94%;
 	}
 #by-tag .tag30 {
-	color: #656565;
 	font-size: 96%;
 	}
 #by-tag .tag40 {
-	color: #484848;
 	font-size: 98%;
 	}
 #by-tag .tag50 {
-	color: #3A3A3A;
 	font-size: 100%;
 	}
 #by-tag .tag60 {
-	color: #2B2B2B;
 	font-size: 102%;
 	}
 #by-tag .tag70 {
-	color: #1D1D1D;
 	font-size: 104%;
 	}
 #by-tag .tag80 {
-	color: #0E0E0E;
 	font-size: 106%;
 	}
 #by-tag .tag90 {
-	color: #030303;
 	font-size: 108%;
 	}
 #by-tag .tag100 {
-	color: #000;
 	font-size: 110%;
 	}
 /* ---------------------------------------------------------------- 404 */
@@ -900,10 +790,7 @@ hr.hidden {
 	font-size: 1.1em;
 	font-variant: small-caps;
 	}
-/* ---------------------------------------------------------------- search */
-.dc-search #content-info em {
-	color: #14709e;
-	}
+
 /* ---------------------------------------------------
   12. ET POUR FINIR NE PAS OUBLIER LES CLEARERS
 --------------------------------------------------- */
