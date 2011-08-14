@@ -97,8 +97,8 @@
 		}
 	#searchform {
 		position: absolute;
-		top: 6px;
-		right: 16px;
+		top: 40px;
+		right: 1em;
 		}
 	.une {
 		margin-top: 24px !important;
@@ -128,9 +128,6 @@
 		display: inline-block;
 		padding: 2px 32px 2px 16px;
 		border-right: 1px solid #ccc;
-		-moz-border-radius: 0 0 0 7px;
-		-webkit-border-radius: 0 0 0 7px;
-		border-radius: 0 0 0 7px;
 		text-decoration: none;
 		white-space: nowrap;
 		margin-left: 4px;
@@ -139,7 +136,7 @@
 	.supranav li a:hover, 
 	.supranav li a:active, 
 	.supranav li a:focus {
-		background-color: #ddd;
+		background-color: #d5d5d5;
 		background-position: right -150px;
 		}
 	.supranav li.active a {
@@ -173,6 +170,25 @@
 		width:auto;
 		height:auto;
 		}
+	#wrapper {
+		padding: 1em;
+		}
+}
+
+/* ------------------------------------------------------ règles communes > 640px */
+@media only screen and (min-width:641px) {
+}
+
+/* ------------------------------------------------------ 768px */
+@media only screen and (min-width:768px) {
+	#searchform {
+		position: absolute;
+		top: 6px;
+		right: 16px;
+		}
+	#wrapper {
+		padding: 2em;
+		}
 	.entry-content, .entry-aside {
 		margin: 0 1.5%;
 		}
@@ -182,23 +198,16 @@
 	.entry-aside {
 		width: 36%;
 		}
-	.bottomnl {
-		width: 56%;
+	.field input, textarea { 
+		max-width: 80%;
 		}
-}
-
-/* ------------------------------------------------------ règles communes > 640px */
-@media only screen and (min-width:641px) {
-	#wrapper {
-		padding: 2em;
-}
-
-/* ------------------------------------------------------ 768px à 1023px */
-@media only screen and (min-width:768px) and (max-width: 1023px) {
 }
 
 /* ------------------------------------------------------ règles communes > 1024px */
 @media only screen and (min-width: 1024px) {
+	.field input, textarea { 
+		max-width: 100%;
+		}
 }
 
 /* ------------------------------------------------------ au-delà de 1280px */

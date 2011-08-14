@@ -1,57 +1,64 @@
+body {
+	background: #fff;
+	color: #222;
+	}
+a {
+	color: #666;
+	}
+a:hover, a:focus {
+	background-color: #eee;
+	color: #000;
+	}
+
 /* backgrounds */
 body,
-#sf,
+#sf:focus,
 .field input, 
 .field textarea,
+.field input:focus, 
+.field textarea:focus,
 hr.hidden {
-	background-color: #222;
+	background-color: #fff;
 	}
 code, pre,
 blockquote,
 thead th, tbody th,
 #sf {
-	background-color: #333;
+	background-color: #f5f5f5;
 	}
-#top,
-a:hover, a:focus,
-.field input:focus, 
-.field textarea:focus,
-tbody tr:hover, 
-tbody th:hover,
-#blogcustom {
-	background-color: #444; 
+tbody tr:hover, tbody th:hover {
+	background-color: #eee; 
 	}
 .une img,
 .entry-content img,
 #stickers a:hover span, 
 #stickers a:focus span,
 #stickers a img, 
-#stickers a:hover img {
-	background-color: #444;
+#stickers a:hover img,
+#blogcustom {
+	background-color: #e5e5e5;
 	}
-#sf:focus,
 #footer {
-	background-color: #666;
+	background-color: #d5d5d5;
 	}
 
 
 /* font colors */
 .feed-info,
 hr.hidden { /* same as body background color */
-	color: #222;
+	color: #fff;
 	}
-a,
 #attachments h3,
 #blogdesc, 
 .comment-info, 
 .une h2, 
 .short h2 {
-	color: #aaa;
+	color: #666;
 	}
 thead th, tbody th,
 .field label,
 #blogcustom a:link, #blogcustom a:visited {
-	color: #ddd;
+	color: #444;
 	}
 body,
 #comments, 
@@ -59,13 +66,13 @@ body,
 #comment-form,
 #comments-feed,
 #blogcustom {
-	color: #ccc;
+	color: #333;
 	}
 .navlinks, 
 .pagination,
 #stickers a:hover span, 
 #stickers a:focus span {
-	color: #bbb;
+	color: #000;
 	}
 #content-info h2, 
 .post-title,
@@ -75,20 +82,19 @@ body,
 .post h6,
 table caption,
 .arch-block h3,
+#by-date h4,
 #comments .me,
-.dc-search #content-info em,
-.field input,
-textarea {
-	color: #ccc;
+.dc-search #content-info em { /* blue */
+	color: #14709e;
 	}
 .post-title a, 
 .read-it a,
 .comment-number { /* red */
-	color: #fff;
+	color: #ab164d;
 	}
 
 /* borders */
-table {
+table, #sf {
 	border: 1px solid #999;
 	}
 td, th, tr,
@@ -97,33 +103,33 @@ td, th, tr,
 .field input, 
 .field textarea,
 #comment-form,
-#sf {
-	border: 1px solid #999;
+#ping-url {
+	border: 1px solid #ccc;
 	}
-#attachments, #top {
+#attachments {
 	border-bottom: 1px solid #999;
 	}
 #pr {
-	border: 1px dashed #666;
+	border: 1px dashed #14709e;
 	}
 #comments li {
-	border-top: 1px solid #666;
+	border-top: 1px solid #ddd;
 	}
-#comments-feed {
-	border-top: 1px solid #666;
+#comments-feed, .bottomnl {
+	border-top: 1px solid #bbb;
 	}
 #blogcustom {
-	border-top: 1px solid #666;
-	border-bottom: 1px solid #666;
+	border-top: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
 	}
 hr.hidden {
-	border-color: #222;
+	border-color: #fff;
 	}
 
 
 /* autres */
 .entry-content img {
-	box-shadow: 2px 2px 3px #000;
+	box-shadow: 2px 2px 3px #999;
 	}
 #comment-form input[type=submit], 
 #comment-form input[type=reset] {

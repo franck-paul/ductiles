@@ -1,7 +1,7 @@
 @charset "UTF-8";
 @import url(rebase.css);
 @import url(mediaqueries.css);
-@import url(dark-ambiance.css);
+@import url(light-ambiance.css);
 
 /* -- BEGIN LICENSE BLOCK ---------------------------------------
 # This file is part of Ductile, a theme for Dotclear
@@ -666,6 +666,9 @@ hr.hidden {
 	}
 
 /* ---------------------------------------------------------------- archives */
+.dc-archive #content-info {
+	margin-bottom: 1.5em;
+	}
 .arch-block {
 	display: inline-block;
 	margin: 0 0 2em 4em;
@@ -704,6 +707,7 @@ hr.hidden {
 	}
 #by-date h3 {
 	margin-bottom: 0;
+	margin-top: 0;
 	}
 .fromto {
 	margin-top: 0;
@@ -711,18 +715,27 @@ hr.hidden {
 	font-size: .875em;
 	font-style: italic;
 	}
-#by-date div {
+/*#by-date > div {
+	width: 310px;
 	display: inline-block;
 	vertical-align: top;
-	margin: 0;
-	width: 10em;
+	}*/
+#by-date h4 {
+	font-weight: bold;
 	}
 #by-date ul {
-	margin-bottom: 1.5em;
+	margin-bottom: 1em;
 	}
 #by-date span {
-	font-size: .875em;
+	font-size: 1.66em;
+	color: #fff;
+	text-shadow: 1px 1px 1px #000;
+	position: absolute;
+	top: 0;
+	left: 4px;
+	opacity: .7;
 	}
+
 #by-cat ul {
 	background: transparent url(img/vline.png) repeat-y;
 	}

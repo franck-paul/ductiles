@@ -59,8 +59,13 @@
 											<h4>{{tpl:ArchiveDate format="%Y"}}</h4>
 											<ul>
 									</tpl:ArchivesYearHeader>
-												<li><a href="{{tpl:ArchiveURL}}" title="{{tpl:ArchiveDate encode_html="1"}}">{{tpl:ArchiveDate encode_html="1" format="%B"}}</a>
-													<span>({{tpl:ArchiveEntriesCount}})</span></li>
+												<li class="thumb">
+													<tpl:Entries lastn="1">
+													<p><a href="{{tpl:ArchiveURL}}" title="{{tpl:ArchiveDate encode_html="1"}}"><img 
+														src="{{tpl:PhotoblogThumbURL}}" alt="{{tpl:EntryTitle encode_html="1"}}" />
+														<span class="month">{{tpl:ArchiveDate encode_html="1" format="%m"}}</span></a></p>
+													</tpl:Entries>
+												</li>
 									<tpl:ArchivesYearFooter>
 											</ul>
 										</div>

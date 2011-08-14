@@ -1,8 +1,20 @@
+body {
+	background: #fff;
+	color: #222;
+	}
+a {
+	color: #666;
+	}
+a:hover, a:focus {
+	background-color: #eee;
+	color: #000;
+	}
+
 /* backgrounds */
 body,
 #sf:focus,
 .field input, 
-.field textarea
+.field textarea,
 .field input:focus, 
 .field textarea:focus,
 hr.hidden {
@@ -14,7 +26,6 @@ thead th, tbody th,
 #sf {
 	background-color: #f5f5f5;
 	}
-a:hover, a:focus,
 tbody tr:hover, tbody th:hover {
 	background-color: #eee; 
 	}
@@ -28,7 +39,7 @@ tbody tr:hover, tbody th:hover {
 	background-color: #e5e5e5;
 	}
 #footer {
-	background: #d5d5d5;
+	background-color: #d5d5d5;
 	}
 
 
@@ -37,7 +48,6 @@ tbody tr:hover, tbody th:hover {
 hr.hidden { /* same as body background color */
 	color: #fff;
 	}
-a,
 #attachments h3,
 #blogdesc, 
 .comment-info, 
@@ -72,6 +82,7 @@ body,
 .post h6,
 table caption,
 .arch-block h3,
+#by-date h4,
 #comments .me,
 .dc-search #content-info em { /* blue */
 	color: #14709e;
@@ -83,14 +94,16 @@ table caption,
 	}
 
 /* borders */
-table {
+table, #sf {
 	border: 1px solid #999;
 	}
 td, th, tr,
 .post-content img, 
 .post-excerpt img,
 .field input, 
-.field textarea {
+.field textarea,
+#comment-form,
+#ping-url {
 	border: 1px solid #ccc;
 	}
 #attachments {
@@ -102,7 +115,7 @@ td, th, tr,
 #comments li {
 	border-top: 1px solid #ddd;
 	}
-#comments-feed {
+#comments-feed, .bottomnl {
 	border-top: 1px solid #bbb;
 	}
 #blogcustom {
