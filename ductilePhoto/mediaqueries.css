@@ -20,7 +20,7 @@
 		}
 	h1 {
 		font-size: 1.8em !important;
-		padding: 6px 16px;
+		padding: 8px 16px;
 		background: #e5e5e5;
 		background-image: -webkit-gradient(linear, left top, left bottom, from( #f4f4f5), to(#d7d7dC));
 		background: -webkit-linear-gradient(top,  #f4f4f5,  #d7d7dC);
@@ -33,43 +33,46 @@
 	.une {
 		margin: .5em 0 !important;
 		}
-		.supranav, #prelude, #stickers {
-			border: none;
-			margin: 8px 0 0;
-			padding-left: 0;
-			}
-		.supranav li a, #prelude li a {
-			border-right: 0;
-			display: block;
-			padding: 4px 8px;
-			border-bottom: 1px solid #ccc;
-			text-decoration: none;
-			white-space: nowrap;
-			margin-bottom: 4px;
-			}
-		#gotop li {
-			border-top: 1px solid #ccc;
-			text-transform: none;
-			padding-top: 6px;
-			}
-		#prelude {
-			margin: .5em 0 !important;
-			}
-		#prelude li a {
-			background: transparent url(img/menumobile.png) no-repeat right center;
-			 }
-		#sn-bottom li a {
-			background: transparent url(img/menumobile.png) no-repeat right top;
-			}
-		#gotop li a {
-			background: transparent url(img/menumobile.png) no-repeat right -150px;
-			}
-		#content {
-			padding: 0 .5em !important;
-			}
-		.comment-content p {
-			margin-top: .5em;
-			}
+	.supranav, #prelude, #stickers {
+		border: none;
+		margin: 8px 0 0;
+		padding-left: 0;
+		}
+	.supranav li a, #prelude li a {
+		border-right: 0;
+		display: block;
+		padding: 4px 8px;
+		border-bottom: 1px solid #ccc;
+		text-decoration: none;
+		white-space: nowrap;
+		margin-bottom: 4px;
+		}
+	#gotop li {
+		border-top: 1px solid #ccc;
+		text-transform: none;
+		padding-top: 6px;
+		}
+	#prelude {
+		margin: .5em 0 !important;
+		}
+	#prelude li a {
+		background: transparent url(img/menumobile.png) no-repeat right center;
+		 }
+	#sn-bottom li a {
+		background: transparent url(img/menumobile.png) no-repeat right top;
+		}
+	#gotop li a {
+		background: transparent url(img/menumobile.png) no-repeat right -150px;
+		}
+	#content {
+		padding: 0 .5em !important;
+		}
+	#content-info {
+		margin: 1em 0 .5em !important;
+		}
+	.comment-content p {
+		margin-top: .5em;
+		}
 }
 
 /* --------------------------------------------------------------------
@@ -81,7 +84,7 @@
 		}
 	#top {
 		background: #e5e5e5;
-		padding: 6px 0 4px 0;
+		padding: 8px 0 4px 0;
 		border-bottom: 1px solid #ddd;
 		}
 	h1, .supranav {
@@ -94,7 +97,7 @@
 		}
 	#searchform {
 		position: absolute;
-		top: 4px;
+		top: 6px;
 		right: 16px;
 		}
 	.une {
@@ -171,7 +174,7 @@
 		height:auto;
 		}
 	.entry-content, .entry-aside {
-		margin: 2em 1.5%;
+		margin: 0 1.5%;
 		}
 	.entry-content {
 		width: 56%;
@@ -179,10 +182,15 @@
 	.entry-aside {
 		width: 36%;
 		}
+	.bottomnl {
+		width: 56%;
+		}
 }
 
 /* ------------------------------------------------------ règles communes > 640px */
 @media only screen and (min-width:641px) {
+	#wrapper {
+		padding: 2em;
 }
 
 /* ------------------------------------------------------ 768px à 1023px */

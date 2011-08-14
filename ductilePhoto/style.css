@@ -127,6 +127,10 @@ h1 {
 	font-size: 1.33em;
 	margin: 0;
 	}
+h1 a {
+	padding-left: 64px;
+	background: transparent url(img/logo.png) no-repeat left center;
+}
 #searchform p {
 	margin: 0;
 	}
@@ -163,7 +167,7 @@ h1 {
 .search-submit:hover, .search-submit:focus {
 	background-image: url(img/search-hover.png);
 	}
-#main, #content, #wrapper, .une {
+#main, #content, .une {
 	margin: 0;
 	padding: 0;
 	}
@@ -296,18 +300,6 @@ h1 a {
 	margin: 0;
 	font-size: 2em;
 	}
-
-p.post-date {
-	font-size: .875em;
-	color: #14709e;
-	margin: 0;
-	-webkit-border-radius: 3px;
-	-moz-border-radius: 3px;
-	-o-border-radius: 3px;
-	-ms-border-radius: 3px;
-	-khtml-border-radius: 3px;
-	border-radius: 3px;
-	}
 .post-title {
 	font-size: 1.33em;
 	margin-bottom: .33em;
@@ -319,28 +311,20 @@ p.post-date {
 	text-decoration: none;
 	color: #ab164d;
 	}
-.post-icon, .photo-icon {
-	margin: .33em 0 .66em;
-	padding: 4px;
-	border: 1px solid #999;
-	-webkit-box-shadow: 2px 2px 3px #ccc;
-	-moz-box-shadow: 2px 2px 3px #ccc;
-	-o-box-shadow: 2px 2px 3px #ccc;
-	box-shadow: 2px 2px 3px #ccc;
-	}
-.post-icon {
-	margin-right: 1em;
-	background: #fff;
-	display: block;
-	float: left;
-	}
 .short {
-	margin-bottom: 3em;
+	margin-bottom: 1.5em;
 	display: inline-block;
 	vertical-align: top;
+	width: 260px;
 	}
+.short h2 {
+	margin: 0;
+	color: #666;
+	font-size: 1em;
+	margin-left: .25em;
+}
 .short .post-content p {
-	margin-top: 0;
+	margin-top: .5em;
 	}
 .short-photo {
 	max-width: 100%;
@@ -350,6 +334,29 @@ p.post-date {
 	max-width: 96%;
 	margin-bottom: 0;
 	}
+.thumb {
+	display: inline-block;
+	}
+.thumb p {
+	margin: 0;
+	}
+.thumb a {
+	display: block;
+	width: 98px;
+	height: 98px;
+	overflow: hidden;
+	position: relative;
+	}
+.thumb a:link img {
+	position: absolute;
+	top: 0;
+	left: 0;
+	padding: 0;
+	}
+.thumb a:hover img {
+	top: -100px;
+	}
+
 .post h3,
 .post h4, 
 .post h5,
@@ -369,14 +376,18 @@ img.smiley {
 	border: none;
 	padding: 0;
 	}
+.post-excerpt {
+	margin: 1em 0 1.5em;
+	}
 .post-info, 
 .post-tags, 
 .post-info-co {
 	margin: 0 0 .33em 0;
+	line-height: 1.2;
 	}
 .post-attr {
 	font-size: .875em;
-	margin: .5em 0;
+	margin: 0;
 	}
 .post-attr p {
 	margin-top: 0;
@@ -384,26 +395,8 @@ img.smiley {
 .post-info span + span {
 	padding-left: .5em;
 	}
-.post-breadcrumb-cat a {
-	padding-left: 24px;
-	background: transparent no-repeat left center url(img/breadcrumb-category.png);
-	}
-.post-cat a {
-	padding-left: 24px;
-	background: transparent no-repeat left center url(img/category.png);
-	}
-.permalink a {
-	padding-left: 20px;
-	background: transparent no-repeat left center url(img/link.png);
-	}
-.post-info .post-date {
-	padding-left: 28px;
-	background: transparent no-repeat 6px center url(img/date.png);
-	}
 .post-tags a {
 	padding-right: 1em;
-	padding-left: 14px;
-	background: transparent no-repeat left center url(img/tag.png);
 	}
 .post-tags li {
 	display: inline;
@@ -491,7 +484,7 @@ a.attach_count {
 	}
 #comment-form, #ping-url {
 	padding: 1em;
-	margin: 1em 0;
+	margin: 2em 0;
 	color: #333;
 	border: 1px solid #aaa;
 	}
@@ -509,9 +502,6 @@ a.attach_count {
 #comment-form h3, #ping-url h3 {
 	margin-top: 0;
 	}
-#comments {
-	border-top: 1px solid #999;
-}
 #comments > ul {
 	margin-left: 0;
 	padding-left: 0;
@@ -533,9 +523,8 @@ a.attach_count {
 	color: #14709e;
 	}
 .comment-number {
-	font-size: 2em;
+	font-size: 1.5em;
 	font-weight: normal;
-	font-style: italic;
 	text-decoration: none;
 	color: #ab164d;
 	display: block;
@@ -543,6 +532,9 @@ a.attach_count {
 	}
 .comment .comment-number {
 	background: transparent url(img/comm.png) right center no-repeat;
+	}
+.comment p:first-child {
+	margin-top: .25em;
 	}
 .ping .comment-number {
 	background: transparent url(img/tb.png) right center no-repeat;
@@ -743,8 +735,11 @@ ul ul .category-current {
 	font-weight: normal;
 	background-color: #14709e;
 	}
-/* ------------------------------------------------------- recherche */
-#search {
+/* ------------------------------------------------------- 
+widgets déjà traités (search dans le head, accueil et archives dans le menu)
+*/
+
+#footer #search, #footer #topnav {
 	display: none;
 	}
 /* ------------------------------------------------------------
@@ -1166,3 +1161,12 @@ hr.hidden {
 .post-content:after {
 	clear: both;
 	}
+
+#sidebar {
+	display: none;
+}
+/* tests mobile
+body {
+	background: url(img/vline.png) repeat-y 320px;
+}
+*/
