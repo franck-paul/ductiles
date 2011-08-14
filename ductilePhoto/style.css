@@ -64,6 +64,7 @@ blockquote {
 	border-left: 4px solid #ccc;
 	padding: 1px 1em .5em;
 	background: #f9f9f9;
+	margin-left: 0;
 	}
 code, pre {
 	background: #efefef;
