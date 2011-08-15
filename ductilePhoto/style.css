@@ -157,7 +157,7 @@ h1 a {
 .dc-home #blogdesc {
 	display: block;
 	position: absolute;
-	top: 3.5em;
+	top: 2.5em;
 	left: 16px;
 	margin: 0;
 	font-style: italic;
@@ -652,21 +652,24 @@ hr.hidden {
 	11. PAGES SPECIFIQUES
 ------------------------------------------------------------- */
 /* ------------------------------------------------------------- home */
-.une {
+.une-image, .une-info {
 	text-align: center;
 	}
-.une img {
+.une-image img {
 	padding: 6px;
 	max-width: 90%;
 	max-height: 600px;
 	vertical-align: middle;
 	}
-.une a:hover, .une a:focus {
+.une-image a:hover, .une-image a:focus {
 	zoom: 1;
 	filter: alpha(opacity=80);
 	opacity: 0.8;
 	}
-
+.une-info h2 {
+	font-size: 1.2em;
+	}
+	
 /* ---------------------------------------------------------------- archives */
 .dc-archive #content-info {
 	margin-bottom: 1.5em;

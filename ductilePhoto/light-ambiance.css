@@ -29,8 +29,8 @@ thead th, tbody th,
 tbody tr:hover, tbody th:hover {
 	background-color: #eee; 
 	}
-.une img,
 .entry-content img,
+.une-image img,
 #stickers a:hover span, 
 #stickers a:focus span,
 #stickers a img, 
@@ -48,10 +48,12 @@ tbody tr:hover, tbody th:hover {
 hr.hidden { /* same as body background color */
 	color: #fff;
 	}
+#blogdesc {
+	color: #888;
+	}
 #attachments h3,
-#blogdesc, 
 .comment-info, 
-.une h2, 
+.une-info h2, 
 .short h2 {
 	color: #666;
 	}
@@ -98,6 +100,7 @@ table, #sf {
 	border: 1px solid #999;
 	}
 td, th, tr,
+.une-image img,
 .post-content img, 
 .post-excerpt img,
 .field input, 
@@ -132,7 +135,7 @@ blockquote {
 
 /* autres */
 .entry-content img {
-	box-shadow: 2px 2px 3px #999;
+	box-shadow: 2px 2px 4px #aaa;
 	}
 #comment-form input[type=submit], 
 #comment-form input[type=reset] {
