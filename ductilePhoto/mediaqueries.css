@@ -21,7 +21,7 @@
 	#top { padding: 0 !important;}
 	h1 {
 		font-size: 1.66em !important;
-		padding: 2px 16px !important;
+		padding: 3px 16px !important;
 		background: #e5e5e5;
 		background-image: -webkit-gradient(linear, left top, left bottom, from( #f4f4f5), to(#d7d7dC));
 		background: -webkit-linear-gradient(top,  #f4f4f5,  #d7d7dC);
@@ -70,6 +70,9 @@
 		}
 	.comment-content p {
 		margin-top: .5em;
+		}
+	#blogcustom h2 {
+		font-size: 1.2em;
 		}
 }
 
@@ -239,6 +242,6 @@
 /* ------------------------------------------------------ special redimensionnement paysage */
 @media screen and (max-width:640px) and (orientation: landscape) { 
 	body { 
-		-webkit-text-size-adjust: 70%; 
+		_-webkit-text-size-adjust: 70%; 
 		}
 }
