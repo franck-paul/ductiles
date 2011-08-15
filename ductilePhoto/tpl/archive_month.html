@@ -53,9 +53,21 @@
 					</div>
 					
 					<div class="content-inner">
-						<tpl:Entries>
-							{{tpl:include src="_entry-thumb.html"}}
+
+						<tpl:Entries order="asc">
+							<tpl:EntriesHeader>
+								<ul>
+							</tpl:EntriesHeader>
+							<li class="thumb">
+								<p><a href="{{tpl:EntryURL}}" title="{{tpl:EntryTitle encode_html="1"}} - {{tpl:EntryDate}}"><img 
+									src="{{tpl:PhotoblogThumbURL}}" alt="{{tpl:EntryTitle encode_html="1"}}" />
+									<span class="day">{{tpl:EntryDate encode_html="1" format="%e"}}</span></a></p>
+							</li>
+							<tpl:EntriesFooter>
+								</ul>
+							</tpl:EntriesFooter>
 						</tpl:Entries>
+
 					</div>
 					
 					<p class="navlinks">

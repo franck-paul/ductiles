@@ -103,10 +103,10 @@ h1 a {
 	padding-left: 64px;
 	background: transparent url(img/logo.png) no-repeat left center;
 }
-#searchform p {
+.searchform p {
 	margin: 0;
 	}
-#searchform label {
+.searchform label {
 	position: absolute;
 	left: -10000px;
 	}
@@ -228,6 +228,9 @@ h1 a {
 	max-width: 100%;
 	display: inline-block;
 	vertical-align: top;
+	}
+.entry-content .post-content p:first-child {
+	margin-top: .5em;
 	}
 .post-attr h2 {
 	margin: 0;
@@ -478,8 +481,8 @@ widgets déjà traités (search dans le head, accueil et archives dans le menu) 
 #footer img {
 	max-width: 100%;
 	}
-#footer p {
-	padding: .33em 2em;
+#credit {
+	padding: .33em 3%;
 	margin: 0;
 	text-align: right;
 	}
@@ -491,7 +494,6 @@ widgets déjà traités (search dans le head, accueil et archives dans le menu) 
 	text-align: left;
 	vertical-align: top;
 	width: 296px;
-	padding: 12px 24px 12px 0;
 	}
 #blogcustom div.feed {
 	background-image: none;
@@ -724,7 +726,7 @@ hr.hidden {
 #by-date ul {
 	margin-bottom: 1em;
 	}
-#by-date span {
+.month { /*thumnail for each month */
 	font-size: 1.66em;
 	color: #fff;
 	text-shadow: 1px 1px 1px #000;
@@ -732,6 +734,15 @@ hr.hidden {
 	top: 0;
 	left: 4px;
 	opacity: .7;
+	}
+.day {
+	font-size: .92em;
+	color: #ddd;
+	position: absolute;
+	bottom: 0;
+	right: 2px;
+	line-height: 1;
+	text-shadow: 1px 1px 1px #000;
 	}
 
 #by-cat ul {
@@ -811,7 +822,7 @@ hr.hidden {
 #attachments,
 .read-it, 
 .post-info-co, 
-#comments, #footer,
+#comments, #footer, #credit
 .clearer {
 	clear: both;
 	}

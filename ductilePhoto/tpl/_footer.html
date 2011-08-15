@@ -20,7 +20,8 @@
 	</ul>
 	<!-- {{tpl:SysBehavior behavior="publicInsideFooter"}} -->
 	{{tpl:SimpleMenu id="sn-bottom" class="nobig supranav" description="title"}}
-	<p>{{tpl:SysPoweredBy}}</p>
+	<form class="searchform nobig" action="{{tpl:BlogURL}}" method="get"><p><label for="sf">{{tpl:lang Search}}</label> <input type="text" size="10" maxlength="255" id="sf" name="q" value="" /> <input class="search-submit" type="submit" value="{{tpl:lang Search}}" title="{{tpl:lang Search}}" /></p></form>
+	<p id="credit">{{tpl:SysPoweredBy}}</p>
 </div>
 
 {{tpl:SysBehavior behavior="publicFooterContent"}}

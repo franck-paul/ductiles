@@ -18,7 +18,9 @@
 	.nosmall {
 		display: none !important;
 		}
-	#top { padding: 0 !important;}
+	#top { 
+		padding: 0 !important;
+		}
 	h1 {
 		font-size: 1.66em !important;
 		padding: 3px 16px !important;
@@ -31,6 +33,12 @@
 		background: linear-gradient(top,  #f4f4f5,  #d7d7dC);
 		border-bottom: 1px solid #ccc;
 		}
+	#footer .searchform p {
+		text-align: left;
+		padding-left: 8px;
+		padding-bottom: 3px;
+		border-bottom: 1px solid #aaa;
+		}
 	.supranav, #prelude {
 		border: none;
 		margin: 8px 0 0;
@@ -40,7 +48,7 @@
 		border-right: 0;
 		display: block;
 		padding: 4px 8px;
-		border-bottom: 1px solid #ccc;
+		border-bottom: 1px solid #aaa;
 		text-decoration: none;
 		white-space: nowrap;
 		margin-bottom: 4px;
@@ -62,8 +70,8 @@
 	#gotop li a {
 		background: transparent url(img/menumobile.png) no-repeat right -150px;
 		}
-	#content {
-		padding: .5em !important;
+	#wrapper {
+		padding: 0 8px;
 		}
 	#content-info {
 		margin: 1em 0 .5em !important;
@@ -74,6 +82,9 @@
 	#blogcustom h2 {
 		font-size: 1.2em;
 		}
+	#blogcustom > div {
+		padding: 12px;
+	}
 }
 
 /* --------------------------------------------------------------------
@@ -96,7 +107,7 @@
 		padding: 0 16px;
 		border-right: 1px solid #ccc;
 		}
-	#searchform {
+	.searchform {
 		position: absolute;
 		top: 40px;
 		right: 1em;
@@ -167,6 +178,9 @@
 	#wrapper {
 		padding: 1em;
 		}
+	#blogcustom > div {
+		padding: 12px 24px 12px 0;
+		}
 }
 
 /* ------------------------------------------------------ 681px à 767px */
@@ -181,7 +195,7 @@
 
 /* ------------------------------------------------------ > 768px */
 @media only screen and (min-width:768px) {
-	#searchform {
+	.searchform {
 		position: absolute;
 		top: 6px;
 		right: 16px;
