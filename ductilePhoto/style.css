@@ -340,7 +340,7 @@ img.smiley {
 	padding: 0;
 	}
 .thumb a:hover img {
-	top: -100px;
+	top: -98px;
 	}
 
 /* ------------------------------------------------------------
@@ -491,7 +491,7 @@ widgets déjà traités (search dans le head, accueil et archives dans le menu) 
 	text-align: left;
 	vertical-align: top;
 	width: 296px;
-	padding: 12px;
+	padding: 12px 24px 12px 0;
 	}
 #blogcustom div.feed {
 	background-image: none;
@@ -677,11 +677,8 @@ hr.hidden {
 	}
 .arch-block {
 	display: inline-block;
-	margin: 0 0 2em 4em;
+	margin-bottom: 2em;
 	vertical-align: top;
-	}
-.arch-block:first-child {
-	margin-left: 0;
 	}
 .arch-block h3 {
 	margin-bottom: 1em;
@@ -721,11 +718,6 @@ hr.hidden {
 	font-size: .875em;
 	font-style: italic;
 	}
-/*#by-date > div {
-	width: 310px;
-	display: inline-block;
-	vertical-align: top;
-	}*/
 #by-date h4 {
 	font-weight: bold;
 	}
@@ -756,7 +748,7 @@ hr.hidden {
 	background-image: url(img/last-hline.png);
 	}
 #by-tag {
-	width: 18em;
+	max-width: 600px;
 	}
 #by-tag ul li {
 	display: inline;

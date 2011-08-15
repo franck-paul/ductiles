@@ -174,9 +174,12 @@
 	.une-image {
 		margin-top: 1.5em;
 		}
+	.arch-block {
+		margin-right: 2em;
+		}
 }
 
-/* ------------------------------------------------------ 768px */
+/* ------------------------------------------------------ > 768px */
 @media only screen and (min-width:768px) {
 	#searchform {
 		position: absolute;
@@ -184,13 +187,13 @@
 		right: 16px;
 		}
 	#wrapper {
-		padding: 1em 2em;
+		padding: 1em 3%;
 		}
 	.dc-home #wrapper {
 		padding: 1em 2em;
 		}
 	.une-image {
-		line-height: 614px; /* image height + paddings + borders */
+		line-height: 614px; /* image max-height + paddings + borders */
 		}
 	.une-info {
 		position: relative;
@@ -222,8 +225,11 @@
 	.field input, textarea { 
 		max-width: 80%;
 		}
+	.arch-block {
+		margin-right: 4em;
+		}
 	#blogcustom {
-		padding: 0 2em;
+		padding: 0 3%;
 		}
 }
 
