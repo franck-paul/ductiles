@@ -320,11 +320,16 @@ img.smiley {
 	padding-left: 24px;
 	background: transparent url(img/download.png) no-repeat left .3em;
 	}
-/* billets en liste */
-.thumb {
+/* thumbnails */
+.thumbnail-list { /* if thumbnail is ul, delete margin and padding */
+	margin: 0;
+	padding: 0;
+	}
+.thumb { /* li or div */
 	display: inline-block;
 	vertical-align: top;
-	margin-bottom: 4px;
+	margin: 0 0 4px;
+	padding: 0;
 	}
 .thumb p {
 	margin: 0;
@@ -344,6 +349,26 @@ img.smiley {
 	}
 .thumb a:hover img {
 	top: -98px;
+	}
+.month { /* each thumb span for a year */
+	font-size: 1.66em;
+	color: #fff;
+	text-shadow: 1px 1px 1px #000;
+	position: absolute;
+	top: 0;
+	left: 4px;
+	opacity: .7;
+	}
+.day { /* each thumb span for a month */
+	font-size: .92em;
+	color: #ddd;
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	padding-right: 2px;
+	padding-bottom: 2px;
+	line-height: 1;
+	text-shadow: 1px 1px 1px #000;
 	}
 
 /* ------------------------------------------------------------
@@ -725,24 +750,6 @@ hr.hidden {
 	}
 #by-date ul {
 	margin-bottom: 1em;
-	}
-.month { /*thumnail for each month */
-	font-size: 1.66em;
-	color: #fff;
-	text-shadow: 1px 1px 1px #000;
-	position: absolute;
-	top: 0;
-	left: 4px;
-	opacity: .7;
-	}
-.day {
-	font-size: .92em;
-	color: #ddd;
-	position: absolute;
-	bottom: 0;
-	right: 2px;
-	line-height: 1;
-	text-shadow: 1px 1px 1px #000;
 	}
 
 #by-cat ul {
