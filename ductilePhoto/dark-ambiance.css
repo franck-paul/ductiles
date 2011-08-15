@@ -1,136 +1,98 @@
+/* base */
 body {
-	background: #fff;
-	color: #222;
+	background-color: #222;
+	color: #9B9B9B;
 	}
 a {
-	color: #666;
+	color: #bbb;
 	}
 a:hover, a:focus {
-	background-color: #eee;
-	color: #000;
+	background-color: #000;
+	color: #fff;
 	}
-
+.post-content img, 
+.post-excerpt img,
+.entry-content img,
+.une img {
+	border: 2px solid #555;
+	background: #999;
+	}
+	
 /* backgrounds */
-body,
 #sf:focus,
+.field input:focus, 
+.field textarea:focus {
+	background-color: #000;
+	}
+hr.hidden {
+	background-color: #222; /* same as body background-color */
+	}
 .field input, 
 .field textarea,
-.field input:focus, 
-.field textarea:focus,
-hr.hidden {
-	background-color: #fff;
-	}
 code, pre,
 blockquote,
 thead th, tbody th,
 #sf {
-	background-color: #f5f5f5;
+	background-color: #333;
 	}
-tbody tr:hover, tbody th:hover {
-	background-color: #eee; 
-	}
-.une img,
-.entry-content img,
+tbody tr:hover, tbody th:hover,
 #stickers a:hover span, 
 #stickers a:focus span,
 #stickers a img, 
 #stickers a:hover img,
-#blogcustom {
-	background-color: #e5e5e5;
+#blogcustom, #top {
+	background-color: #000;
 	}
-#footer {
-	background-color: #d5d5d5;
-	}
-
 
 /* font colors */
 .feed-info,
-hr.hidden { /* same as body background color */
-	color: #fff;
+hr.hidden {
+	color: #222; /* same as body background color */
 	}
-#attachments h3,
-#blogdesc, 
-.comment-info, 
-.une h2, 
-.short h2 {
-	color: #666;
-	}
+h2,
+.field input, 
+.field textarea,
+code, pre,
+blockquote,
 thead th, tbody th,
-.field label,
-#blogcustom a:link, #blogcustom a:visited {
-	color: #444;
-	}
-body,
-#comments, 
-#ping-url, 
-#comment-form,
-#comments-feed,
-#blogcustom {
-	color: #333;
-	}
-.navlinks, 
-.pagination,
-#stickers a:hover span, 
-#stickers a:focus span {
-	color: #000;
-	}
-#content-info h2, 
-.post-title,
-.post h3,
-.post h4, 
-.post h5,
-.post h6,
-table caption,
-.arch-block h3,
-#by-date h4,
-#comments .me,
-.dc-search #content-info em { /* blue */
-	color: #14709e;
-	}
-.post-title a, 
-.read-it a,
-.comment-number { /* red */
-	color: #ab164d;
+#sf {
+	color: #ccc;
 	}
 
+
 /* borders */
-table, #sf {
-	border: 1px solid #999;
-	}
+table, #sf,
 td, th, tr,
 .post-content img, 
 .post-excerpt img,
 .field input, 
 .field textarea,
 #comment-form,
-#ping-url {
-	border: 1px solid #ccc;
+#ping-url
+.searchform input, input#sf,
+.une img {
+	border: 1px solid #555;
 	}
-#attachments {
-	border-bottom: 1px solid #999;
+#top, #attachments {
+	border-bottom: 1px solid #444;
 	}
 #pr {
-	border: 1px dashed #14709e;
+	border: 1px dashed #555;
 	}
-#comments li {
-	border-top: 1px solid #ddd;
-	}
+#comments li,
 #comments-feed, .bottomnl {
-	border-top: 1px solid #bbb;
+	border-top: 1px solid #555;
 	}
 #blogcustom {
-	border-top: 1px solid #ccc;
-	border-bottom: 1px solid #ccc;
+	border-top: 1px solid #444;
+	border-bottom: 1px solid #444;
 	}
 hr.hidden {
-	border-color: #fff;
+	border-color: #555;
 	}
 
 
 /* autres */
-.entry-content img {
-	box-shadow: 2px 2px 3px #999;
-	}
 #comment-form input[type=submit], 
 #comment-form input[type=reset] {
 	color: #eee;
@@ -193,3 +155,20 @@ hr.hidden {
 #by-tag .tag100 {
 	color: #000;
 	}
+
+@media only screen and (min-width: 481px) {
+	#top {
+		background-color: #000;
+		}
+	.supranav li a, h1 {
+		border-right: 1px solid #555;
+		}
+	.supranav li a:hover, 
+	.supranav li a:active, 
+	.supranav li a:focus {
+		background-color: #000;
+		}
+	.supranav li.active a {
+		color: #fff;
+		}
+}
