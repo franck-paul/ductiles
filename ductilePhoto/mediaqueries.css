@@ -18,9 +18,10 @@
 	.nosmall {
 		display: none !important;
 		}
+	#top { padding: 0 !important;}
 	h1 {
-		font-size: 1.8em !important;
-		padding: 6px 16px;
+		font-size: 1.66em !important;
+		padding: 2px 16px !important;
 		background: #e5e5e5;
 		background-image: -webkit-gradient(linear, left top, left bottom, from( #f4f4f5), to(#d7d7dC));
 		background: -webkit-linear-gradient(top,  #f4f4f5,  #d7d7dC);
@@ -29,9 +30,6 @@
 		background: -ms-linear-gradient(top,  #f4f4f5,  #d7d7dC);
 		background: linear-gradient(top,  #f4f4f5,  #d7d7dC);
 		border-bottom: 1px solid #ccc;
-		}
-	.une-image {
-		margin: .5em 0 !important;
 		}
 	.supranav, #prelude {
 		border: none;
@@ -65,7 +63,7 @@
 		background: transparent url(img/menumobile.png) no-repeat right -150px;
 		}
 	#content {
-		padding: 0 .5em !important;
+		padding: .5em !important;
 		}
 	#content-info {
 		margin: 1em 0 .5em !important;

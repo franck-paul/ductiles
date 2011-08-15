@@ -483,13 +483,12 @@ widgets déjà traités (search dans le head, accueil et archives dans le menu) 
 	}
 #blogcustom {
 	clear: both;
-	text-align: center;
 	}
 #blogcustom > div {
 	display: inline-block;
 	text-align: left;
 	vertical-align: top;
-	width: 294px;
+	width: 296px;
 	padding: 12px;
 	}
 #blogcustom div.feed {
