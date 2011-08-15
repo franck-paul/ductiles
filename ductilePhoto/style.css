@@ -320,6 +320,8 @@ img.smiley {
 /* billets en liste */
 .thumb {
 	display: inline-block;
+	vertical-align: top;
+	margin-bottom: 4px;
 	}
 .thumb p {
 	margin: 0;

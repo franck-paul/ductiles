@@ -184,7 +184,7 @@
 		right: 16px;
 		}
 	#wrapper {
-		padding: 2em;
+		padding: 1em 2em;
 		}
 	.dc-home #wrapper {
 		padding: 1em 2em;
@@ -210,10 +210,10 @@
 	.dc-home .pagination span {
 		display: none;
 		}
-	.entry-content, .entry-aside {
+	.entry-content, .entry-aside, .simple .navlinks {
 		margin: 0 1.5%;
 		}
-	.entry-content {
+	.entry-content, .simple .navlinks {
 		width: 56%;
 		}
 	.entry-aside {
@@ -221,6 +221,9 @@
 		}
 	.field input, textarea { 
 		max-width: 80%;
+		}
+	#blogcustom {
+		padding: 0 2em;
 		}
 }
 
