@@ -193,7 +193,7 @@
 		}
 }
 
-/* ------------------------------------------------------ > 768px */
+/* ------------------------------------------------------ min 768px */
 @media only screen and (min-width:768px) {
 	.searchform {
 		position: absolute;
@@ -227,17 +227,9 @@
 	.dc-home .pagination span {
 		display: none;
 		}
-	.entry-content, .entry-aside, .simple .navlinks {
-		margin: 0 1.5%;
-		}
-	.entry-content, .simple .navlinks {
-		width: 56%;
-		}
 	.entry-aside {
-		width: 36%;
-		}
-	.field input, textarea { 
-		max-width: 80%;
+		max-width: 610px !important;
+		margin: .5em;
 		}
 	.arch-block {
 		margin-right: 4em;
@@ -247,10 +239,24 @@
 		}
 }
 
-/* ------------------------------------------------------ règles communes > 1024px */
+/* ------------------------------------------------------  max 1024px */
+@media only screen and (max-width: 1023px) {
+	.simple {
+		max-width: 630px;
+		margin: 0 auto;
+		}
+}
+
+/* ------------------------------------------------------  > 1024px */
 @media only screen and (min-width: 1024px) {
-	.field input, textarea { 
-		max-width: 100%;
+	.entry-content, .entry-aside, .simple .navlinks {
+		margin: 0 1.5%;
+		}
+	.entry-content, .simple .navlinks {
+		width: 56%;
+		}
+	.entry-aside {
+		width: 36%;
 		}
 }
 
