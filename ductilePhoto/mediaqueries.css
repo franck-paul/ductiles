@@ -242,6 +242,6 @@
 /* ------------------------------------------------------ special redimensionnement paysage */
 @media screen and (max-width:640px) and (orientation: landscape) { 
 	body { 
-		_-webkit-text-size-adjust: 70%; 
+		-webkit-text-size-adjust: none; 
 		}
 }
