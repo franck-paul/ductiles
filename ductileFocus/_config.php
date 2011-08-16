@@ -265,7 +265,7 @@ if (!is_array($ductile_focuses)) {
 		array(
 			'cat' => '',
 			'selected' => false,
-			'subcat' => false),
+			'subcat' => false)
 	);
 }
 
