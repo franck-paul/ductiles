@@ -10,12 +10,15 @@ a:hover, a:focus {
 	background-color: #000;
 	color: #fff;
 	}
+#wrapper {
+	background:  #222 url(img/dark.gif);
+	}
 .post-content img, 
 .post-excerpt img,
 .entry-content img,
-.une img {
-	border: 2px solid #555;
-	background: #999;
+.une-image img {
+	border: 2px solid #444;
+	background: #555;
 	}
 	
 /* backgrounds */
