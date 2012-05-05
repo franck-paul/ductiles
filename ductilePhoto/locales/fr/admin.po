@@ -13,29 +13,53 @@ msgstr "Cacher la description du blog :"
 msgid "To configure the top menu go to the <a href=\"%s\">Simple Menu administration page</a>."
 msgstr "Pour configurer le menu allez à la <a href=\"%s\">page d'administration de l'extension Menu Simple</a>."
 
+msgid "Logo URL:"
+msgstr "URL du logo :"
+
 msgid "Stickers"
 msgstr "Étiquettes"
 
 msgid "Stickers (footer)"
 msgstr "Étiquettes (pied de page)"
 
-msgid "Focus on text"
-msgstr "Focus textes"
+msgid "Entries list limits"
+msgstr "Limites des listes de billets"
 
-msgid "Focus on picture"
-msgstr "Focus images"
+msgid "Entries lists"
+msgstr "Listes de billets"
 
-msgid "Including sub-categories:"
-msgstr "Inclure les sous-catégories :"
+msgid "Context"
+msgstr "Contexte"
 
-msgid "Only selected posts:"
-msgstr "Seulement les billets sélectionnés :"
+msgid "Number of entries"
+msgstr "Nombre de billets"
+
+msgid "Entries for a category"
+msgstr "Billets d'une catégorie"
+
+msgid "Entries for a tag"
+msgstr "Billets pour un mot-clé"
+
+msgid "Search result entries"
+msgstr "Billets résultants d'une recherche"
 
 msgid "Presentation"
 msgstr "Présentation"
 
 msgid "General settings"
 msgstr "Paramètres généraux"
+
+msgid "Ambiance"
+msgstr "Ambiance"
+
+msgid "Ambiance:"
+msgstr "Ambiance :"
+
+msgid "Light ambiance"
+msgstr "Ambiance claire"
+
+msgid "Dark ambiance"
+msgstr "Ambiance sombre"
 
 msgid "Mobile specific settings"
 msgstr "Paramètres spécifiques pour les mobiles"
@@ -72,15 +96,6 @@ msgstr "Polices de caractère"
 
 msgid "Main:"
 msgstr "Principale :"
-
-msgid "Secondary:"
-msgstr "Secondaire :"
-
-msgid "Ductile Focus primary"
-msgstr "Principale de Ductile Focus"
-
-msgid "Ductile Focus secondary"
-msgstr "Secondaire de Ductile Focus"
 
 msgid "Times New Roman"
 msgstr "Times New Roman"

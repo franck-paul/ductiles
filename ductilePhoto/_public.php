@@ -14,50 +14,48 @@ if (!defined('DC_RC_PATH')) { return; }
 l10n::set(dirname(__FILE__).'/locales/'.$_lang.'/main');
 
 # Behaviors
-$core->addBehavior('publicHeadContent',array('tplDuctileFocusTheme','publicHeadContent'));
-$core->addBehavior('publicInsideFooter',array('tplDuctileFocusTheme','publicInsideFooter'));
-$core->addBehavior('tplIfConditions',array('tplDuctileFocusTheme','tplIfConditions'));
+$core->addBehavior('publicHeadContent',array('tplDuctilePhotoTheme','publicHeadContent'));
+$core->addBehavior('publicInsideFooter',array('tplDuctilePhotoTheme','publicInsideFooter'));
+$core->addBehavior('tplIfConditions',array('tplDuctilePhotoTheme','tplIfConditions'));
 
 # Templates
-$core->tpl->addBlock('EntryIfContentIsCut',array('tplDuctileFocusTheme','EntryIfContentIsCut'));
-$core->tpl->addValue('focusEntries',array('tplDuctileFocusTheme','focusEntries'));
+$core->tpl->addValue('ductileNbEntryPerPage',array('tplDuctilePhotoTheme','ductileNbEntryPerPage'));
+$core->tpl->addBlock('EntryIfContentIsCut',array('tplDuctilePhotoTheme','EntryIfContentIsCut'));
 
-class tplDuctileFocusTheme
+class tplDuctilePhotoTheme
 {
-	public static function focusEntries($attr)
+	public static function ductileNbEntryPerPage($attr)
 	{
 		global $core;
-		
-		$case = !empty($attr['focus']) ? (integer) $attr['focus'] : 1;
-		$case--;
-		if ($case < 0) $case++;
-		
-		$s = $core->blog->settings->themes->get($core->blog->settings->system->theme.'_focus');
-		$s = @unserialize($s);
-		if (is_array($s)) {
-			if (isset($s[$case])) {
-				$f = $s[$case];
-				if (is_array($f)) {
-					$cat = (isset($f['cat']) ? $f['cat'] : '');
-					$selected = (isset($f['selected']) ? (boolean) $f['selected'] : false);
-					$subcat = (isset($f['subcat']) ? (boolean) $f['subcat'] : false);
-					$ret = '';
-					if ($cat != '') {
-						$ret .= "\$params['cat_url'] = '".$cat;
-						if ($subcat) {
-							$ret .= " ?sub";
-						}
-						$ret .= "';\n";
+
+		$nb = 0;
+		$s = $core->blog->settings->themes->get($core->blog->settings->system->theme.'_entries_counts');
+		if ($s !== null) {
+			$s = @unserialize($s);
+			if (is_array($s)) {
+				if (isset($s[$core->url->type])) {
+					// Nb de billets par page défini par la config du thème
+					$nb = (integer) $s[$core->url->type];
+				} else {
+					if (($core->url->type == 'default-page') && (isset($s['default']))) {
+						// Les pages 2 et suivantes de la home ont le même nombre de billet que la première page
+						$nb = (integer) $s['default'];
 					}
-					if ($selected) {
-						$ret .= "\$params['post_selected'] = 1;\n";
-					}
-					return "<?php ".$ret." ?>\n";
 				}
 			}
 		}
-	}
 
+		if ($nb == 0) {
+			if (!empty($attr['nb'])) {
+				// Nb de billets par page défini par défaut dans le template
+				$nb = (integer) $attr['nb'];
+			}
+		}
+
+		if ($nb > 0)
+			return '<?php $_ctx->nb_entry_per_page = '.$nb.' ; ?>';
+	}
+	
 	public static function tplIfConditions($tag,$attr,$content,$if)
 	{
 		global $core;
@@ -121,7 +119,7 @@ class tplDuctileFocusTheme
 			'strlen('.sprintf($short,'$_ctx->posts->getContent('.$urls.')').')) : ?>'.
 			$content.
 			'<?php endif; ?>';
-	}	
+	}
 	
 	public static function publicInsideFooter($core)
 	{
@@ -138,7 +136,7 @@ class tplDuctileFocusTheme
 			if (!is_array($s)) {
 				$default = true;
 			} else {
-				$s = array_filter($s,"tplDuctileFocusTheme::cleanStickers");
+				$s = array_filter($s,"self::cleanStickers");
 				if (count($s) == 0) {
 					$default = true;
 				} else {
@@ -185,19 +183,49 @@ class tplDuctileFocusTheme
 
 	public static function publicHeadContent($core)
 	{
-		return;
+		
 		echo 
 			'<style type="text/css">'."\n".
 			'/* '.__('Additionnal style directives').' */'."\n".
 			self::ductileStyleHelper().
 			"</style>\n";
 			
+		$ambiance_src = self::ambianceCssSrc();
+		if ($ambiance_src != '') {
+			echo '<link media="screen" href="'.$ambiance_src.'" type="text/css" rel="stylesheet">'."\n";
+		}
+		
 		echo
 			'<script type="text/javascript" src="'.
 			$core->blog->settings->system->themes_url.'/'.$core->blog->settings->system->theme.
 			'/ductile.js"></script>'."\n";
 	}
 	
+	protected static function ambianceCssSrc()
+	{
+		$s = $GLOBALS['core']->blog->settings->themes->get($GLOBALS['core']->blog->settings->system->theme.'_style');
+		if ($s === null) {
+			return;
+		}
+		$s = @unserialize($s);
+		if (!is_array($s)) {
+			return;
+		}
+		
+		$css_src = $GLOBALS['core']->blog->settings->system->themes_url.'/'.$GLOBALS['core']->blog->settings->system->theme;
+		if (isset($s['ambiance'])) {
+			if ($s['ambiance'] !== null) {
+				if ($s['ambiance'] != '') {
+					$css_src .= '/'.$s['ambiance'].'-ambiance.css';
+				}
+			}
+		} else {
+			return;
+		}
+		
+		return $css_src;
+	}
+
 	public static function ductileStyleHelper()
 	{
 		$s = $GLOBALS['core']->blog->settings->themes->get($GLOBALS['core']->blog->settings->system->theme.'_style');
@@ -215,19 +243,19 @@ class tplDuctileFocusTheme
 
 		# Properties
 		
+		# Blog logo
+		$selectors = 'h1 a';
+		$logoSrc = self::logoSrc();
+		if ($logoSrc != '') self::prop($css,$selectors,'background','transparent url("'.$logoSrc.'") no-repeat left center');
+		
 		# Blog description
 		$selectors = '#blogdesc';
 		if (isset($s['subtitle_hidden'])) self::prop($css,$selectors,'display',($s['subtitle_hidden'] ? 'none' : null));
 
 		# Main font
-		$selectors = 'body, .supranav li a span, .comment-info, #comments .me, .comment-number';
+		$selectors = 'body';
 		if (isset($s['body_font'])) self::prop($css,$selectors,'font-family',self::fontDef($s['body_font']));
 
-		# Secondary font
-		$selectors = '#blogdesc, .supranav, #prelude, #submenu, #content-info, #subcategories, p.post-date, #comments, #ping-url, #comment-form, #comments-feed, '.
-			'.field input, .field textarea, #sidebar, #footer p, .arch-block h4';
-		if (isset($s['alternate_font'])) self::prop($css,$selectors,'font-family',self::fontDef($s['alternate_font']));
-		
 		# Inside posts links font weight
 		$selectors = '.post-excerpt a, .post-content a';
 		if (isset($s['post_link_w'])) self::prop($css,$selectors,'font-weight',($s['post_link_w'] ? 'bold' : 'normal'));
@@ -336,12 +364,37 @@ class tplDuctileFocusTheme
 		
 		return $res;
 	}
-
+	
+	protected static function logoSrc()
+	{
+		$s = $GLOBALS['core']->blog->settings->themes->get($GLOBALS['core']->blog->settings->system->theme.'_style');
+		if ($s === null) {
+			return;
+		}
+		$s = @unserialize($s);
+		if (!is_array($s)) {
+			return;
+		}
+		
+		$img_url = $GLOBALS['core']->blog->settings->system->themes_url.'/'.$GLOBALS['core']->blog->settings->system->theme.'/img/logo.png';
+		if (isset($s['logo_src'])) {
+			if ($s['logo_src'] !== null) {
+				if ($s['logo_src'] != '') {
+					if ((substr($s['logo_src'],0,1) == '/') || (parse_url($s['logo_src'],PHP_URL_SCHEME) != '')) {
+						// absolute URL
+						$img_url = $s['logo_src'];
+					} else {
+						// relative URL (base = img folder of ductile photo theme)
+						$img_url = $GLOBALS['core']->blog->settings->system->themes_url.'/'.$GLOBALS['core']->blog->settings->system->theme.'/img/'.$s['logo_src'];
+					}
+				}
+			}
+		}
+		
+		return $img_url;
+	}
+	
 	protected static $fonts = array(
-		// Theme standard
-		'Ductile Focus body' => '"New Century Schoolbook", "Century Schoolbook", "Century Schoolbook L", Georgia, serif',
-		'Ductile Focus alternate' => '"DejaVu Sans", "helvetica neue", helvetica, sans-serif',
-
 		// Serif families
 		'Times New Roman' => 'Cambria, "Hoefler Text", Utopia, "Liberation Serif", "Nimbus Roman No9 L Regular", Times, "Times New Roman", serif',
 		'Georgia' => 'Constantia, "Lucida Bright", Lucidabright, "Lucida Serif", Lucida, "DejaVu Serif", "Bitstream Vera Serif", "Liberation Serif", Georgia, serif',
