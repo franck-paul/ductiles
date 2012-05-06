@@ -159,6 +159,12 @@ hr.hidden {
 	color: #000;
 	}
 
+@media only screen and (max-width: 480px) {
+	h1 a {
+		color: #666666;
+	}
+}
+
 @media only screen and (min-width: 481px) {
 	#top {
 		background-color: #000;

@@ -477,7 +477,7 @@ form::field('blog_title_s',7,7,$ductile_user['blog_title_s']).'</p>'.
 
 '<p class="field picker"><label for="blog_title_c">'.__('Color:').'</label> '.
 form::field('blog_title_c',7,7,$ductile_user['blog_title_c'],'colorpicker').
-contrastRatio($ductile_user['blog_title_c'],'#ffffff',
+contrastRatio($ductile_user['blog_title_c'],($ductile_user['ambiance'] == 'light' ? '#ffffff' : '#222222'),
 	(!empty($ductile_user['blog_title_s']) ? $ductile_user['blog_title_s'] : '2em'),
 	$ductile_user['blog_title_w']).
 '</p>'.
@@ -495,7 +495,7 @@ form::field('post_title_s',7,7,$ductile_user['post_title_s']).'</p>'.
 
 '<p class="field picker"><label for="post_title_c">'.__('Color:').'</label> '.
 form::field('post_title_c',7,7,$ductile_user['post_title_c'],'colorpicker').
-contrastRatio($ductile_user['post_title_c'],'#ffffff',
+contrastRatio($ductile_user['post_title_c'],($ductile_user['ambiance'] == 'light' ? '#ffffff' : '#222222'),
 	(!empty($ductile_user['post_title_s']) ? $ductile_user['post_title_s'] : '2.5em'),
 	$ductile_user['post_title_w']).
 '</p>'.
@@ -508,7 +508,7 @@ echo '<fieldset><legend>'.__('Titles without link').'</legend>'.
 
 '<p class="field picker"><label for="post_simple_title_c">'.__('Color:').'</label> '.
 form::field('post_simple_title_c',7,7,$ductile_user['post_simple_title_c'],'colorpicker').
-contrastRatio($ductile_user['post_simple_title_c'],'#ffffff',
+contrastRatio($ductile_user['post_simple_title_c'],($ductile_user['ambiance'] == 'light' ? '#ffffff' : '#222222'),
 	'1.1em',	// H5 minimum size
 	false).
 '</p>'.
@@ -520,14 +520,14 @@ form::checkbox('post_link_w',1,$ductile_user['post_link_w']).'</label>'.'</p>'.
 
 '<p class="field picker"><label for="post_link_v_c">'.__('Normal and visited links color:').'</label> '.
 form::field('post_link_v_c',7,7,$ductile_user['post_link_v_c'],'colorpicker').
-contrastRatio($ductile_user['post_link_v_c'],'#ffffff',
+contrastRatio($ductile_user['post_link_v_c'],($ductile_user['ambiance'] == 'light' ? '#ffffff' : '#222222'),
 	'1em',
 	$ductile_user['post_link_w']).
 '</p>'.
 
 '<p class="field picker"><label for="post_link_f_c">'.__('Active, hover and focus links color:').'</label> '.
 form::field('post_link_f_c',7,7,$ductile_user['post_link_f_c'],'colorpicker').
-contrastRatio($ductile_user['post_link_f_c'],'#ebebee',
+contrastRatio($ductile_user['post_link_f_c'],($ductile_user['ambiance'] == 'light' ? '#ffffff' : '#222222'),
 	'1em',
 	$ductile_user['post_link_w']).
 '</p>'.
@@ -547,7 +547,7 @@ form::field('blog_title_s_m',7,7,$ductile_user['blog_title_s_m']).'</p>'.
 
 '<p class="field picker"><label for="blog_title_c_m">'.__('Color:').'</label> '.
 form::field('blog_title_c_m',7,7,$ductile_user['blog_title_c_m'],'colorpicker').
-contrastRatio($ductile_user['blog_title_c_m'],'#d7d7dc',
+contrastRatio($ductile_user['blog_title_c_m'],($ductile_user['ambiance'] == 'light' ? '#ffffff' : '#d7d7d7'),
 	(!empty($ductile_user['blog_title_s_m']) ? $ductile_user['blog_title_s_m'] : '1.8em'),
 	$ductile_user['blog_title_w_m']).
 '</p>'.
@@ -565,7 +565,7 @@ form::field('post_title_s_m',7,7,$ductile_user['post_title_s_m']).'</p>'.
 
 '<p class="field picker"><label for="post_title_c_m">'.__('Color:').'</label> '.
 form::field('post_title_c_m',7,7,$ductile_user['post_title_c_m'],'colorpicker').
-contrastRatio($ductile_user['post_title_c_m'],'#ffffff',
+contrastRatio($ductile_user['post_title_c_m'],($ductile_user['ambiance'] == 'light' ? '#ffffff' : '#222222'),
 	(!empty($ductile_user['post_title_s_m']) ? $ductile_user['post_title_s_m'] : '1.5em'),
 	$ductile_user['post_title_w_m']).
 '</p>'.
