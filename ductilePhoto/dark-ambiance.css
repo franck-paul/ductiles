@@ -20,6 +20,13 @@ a:hover, a:focus {
 	border: 2px solid #444;
 	background: #555;
 	}
+.comment .comment-number {
+	background: transparent url(img/comm-dark.png) right center no-repeat;
+	}
+.ping .comment-number {
+	background: transparent url(img/tb-dark.png) right center no-repeat;
+	}
+
 	
 /* backgrounds */
 #sf:focus,
