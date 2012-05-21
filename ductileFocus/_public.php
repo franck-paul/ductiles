@@ -26,13 +26,21 @@ class tplDuctileFocusTheme
 {
 	public static function focusEntries($attr)
 	{
-		global $core;
-		
 		$case = !empty($attr['focus']) ? (integer) $attr['focus'] : 1;
 		$case--;
 		if ($case < 0) $case++;
 		
-		$s = $core->blog->settings->themes->get($core->blog->settings->system->theme.'_focus');
+		return '<?php '."\n".
+			'	if (!isset($params)) $params = array();'."\n".
+			'	$params = new ArrayObject($params);'."\n".
+			'	tplDuctileFocusTheme::focusEntriesHelper('.$case.',$params);'."\n".
+			'	$params = (array)$params;'."\n".
+			' ?>';
+	}
+	
+	public static function focusEntriesHelper($case,$params)
+	{
+		$s = $GLOBALS['core']->blog->settings->themes->get($GLOBALS['core']->blog->settings->system->theme.'_focus');
 		$s = @unserialize($s);
 		if (is_array($s)) {
 			if (isset($s[$case])) {
@@ -43,16 +51,11 @@ class tplDuctileFocusTheme
 					$subcat = (isset($f['subcat']) ? (boolean) $f['subcat'] : false);
 					$ret = '';
 					if ($cat != '') {
-						$ret .= "\$params['cat_url'] = '".$cat;
-						if ($subcat) {
-							$ret .= " ?sub";
-						}
-						$ret .= "';\n";
+						$params['cat_url'] = $cat.($subcat ? ' ?sub' : '');
 					}
 					if ($selected) {
-						$ret .= "\$params['post_selected'] = 1;\n";
+						$params['post_selected'] = 1;
 					}
-					return "<?php ".$ret." ?>\n";
 				}
 			}
 		}
