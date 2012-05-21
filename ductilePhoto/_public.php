@@ -26,18 +26,23 @@ class tplDuctilePhotoTheme
 {
 	public static function ductileNbEntryPerPage($attr)
 	{
-		global $core;
-
+		return '<?php tplDuctilePhotoTheme::ductileNbEntryPerPageHelper(); ?>';
+	}
+	
+	public static function ductileNbEntryPerPageHelper()
+	{
+		global $_ctx;
+		
 		$nb = 0;
-		$s = $core->blog->settings->themes->get($core->blog->settings->system->theme.'_entries_counts');
+		$s = $GLOBALS['core']->blog->settings->themes->get($GLOBALS['core']->blog->settings->system->theme.'_entries_counts');
 		if ($s !== null) {
 			$s = @unserialize($s);
 			if (is_array($s)) {
-				if (isset($s[$core->url->type])) {
+				if (isset($s[$GLOBALS['core']->url->type])) {
 					// Nb de billets par page défini par la config du thème
-					$nb = (integer) $s[$core->url->type];
+					$nb = (integer) $s[$GLOBALS['core']->url->type];
 				} else {
-					if (($core->url->type == 'default-page') && (isset($s['default']))) {
+					if (($GLOBALS['core']->url->type == 'default-page') && (isset($s['default']))) {
 						// Les pages 2 et suivantes de la home ont le même nombre de billet que la première page
 						$nb = (integer) $s['default'];
 					}
@@ -53,7 +58,7 @@ class tplDuctilePhotoTheme
 		}
 
 		if ($nb > 0)
-			return '<?php $_ctx->nb_entry_per_page = '.$nb.' ; ?>';
+			$_ctx->nb_entry_per_page = $nb;
 	}
 	
 	public static function tplIfConditions($tag,$attr,$content,$if)
