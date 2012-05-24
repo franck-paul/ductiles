@@ -21,6 +21,7 @@ $core->addBehavior('tplIfConditions',array('tplDuctileFocusTheme','tplIfConditio
 # Templates
 $core->tpl->addBlock('EntryIfContentIsCut',array('tplDuctileFocusTheme','EntryIfContentIsCut'));
 $core->tpl->addValue('focusEntries',array('tplDuctileFocusTheme','focusEntries'));
+$core->tpl->addValue('ductileLogoSrc',array('tplDuctileFocusTheme','ductileLogoSrc'));
 
 class tplDuctileFocusTheme
 {
@@ -126,6 +127,40 @@ class tplDuctileFocusTheme
 			'<?php endif; ?>';
 	}	
 	
+	public static function ductileLogoSrc($attr)
+	{
+		return '<?php echo tplDuctileFocusTheme::ductileLogoSrcHelper(); ?>';
+	}
+
+	public static function ductileLogoSrcHelper()
+	{
+		$s = $GLOBALS['core']->blog->settings->themes->get($GLOBALS['core']->blog->settings->system->theme.'_style');
+		if ($s === null) {
+			return;
+		}
+		$s = @unserialize($s);
+		if (!is_array($s)) {
+			return;
+		}
+		
+		$img_url = $GLOBALS['core']->blog->settings->system->themes_url.'/'.$GLOBALS['core']->blog->settings->system->theme.'/img/logo.png';
+		if (isset($s['logo_src'])) {
+			if ($s['logo_src'] !== null) {
+				if ($s['logo_src'] != '') {
+					if ((substr($s['logo_src'],0,1) == '/') || (parse_url($s['logo_src'],PHP_URL_SCHEME) != '')) {
+						// absolute URL
+						$img_url = $s['logo_src'];
+					} else {
+						// relative URL (base = img folder of ductile focus theme)
+						$img_url = $GLOBALS['core']->blog->settings->system->themes_url.'/'.$GLOBALS['core']->blog->settings->system->theme.'/img/'.$s['logo_src'];
+					}
+				}
+			}
+		}
+		
+		return $img_url;
+	}
+
 	public static function publicInsideFooter($core)
 	{
 		$res = '';
