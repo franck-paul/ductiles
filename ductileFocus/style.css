@@ -494,9 +494,11 @@ a.comment_count {
 		}
 a.ping_count {
 		background: url(img/info-co.png) no-repeat left center;
+		padding-left: 20px;
 		}
 a.attach_count {
 		background: url(img/info-co.png) no-repeat left -126px;
+		padding-left: 20px;
 		}
 #attachments {
 	font-size: .875em;
