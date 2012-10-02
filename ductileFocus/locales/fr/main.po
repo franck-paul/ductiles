@@ -4,6 +4,21 @@ msgstr "Directives CSS supplémentaires"
 msgid "reactions"
 msgstr "réactions"
 
+msgid "Reactions"
+msgstr "Réactions"
+
+msgid "Reactions:"
+msgstr "Réactions :"
+
+msgid "no reactions"
+msgstr "pas de réaction"
+
+msgid "one reaction"
+msgstr "une réaction"
+
+msgid "%s reactions"
+msgstr "%s réactions"
+
 msgid "Add ping"
 msgstr "Ajouter un rétrolien"
 
@@ -39,3 +54,9 @@ msgstr "Par tag"
 
 msgid "URL you've tried has typos, or the page has been deleted or moved."
 msgstr "L'adresse URL est erronée ou bien la page a été supprimée ou déplacée."
+
+msgid "Previous entry"
+msgstr "Billet précédent"
+
+msgid "Next entry"
+msgstr "Billet suivant"
