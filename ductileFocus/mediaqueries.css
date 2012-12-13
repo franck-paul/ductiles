@@ -182,8 +182,6 @@
 		padding: 8px 32px 8px 28px;
 		border-right: 1px solid #ccc;
 		min-height: 2.5em;
-		-moz-border-radius: 0 0 0 7px;
-		-webkit-border-radius: 0 0 0 7px;
 		border-radius: 0 0 0 7px;
 	 	}
 	.supranav li a span {
@@ -234,8 +232,6 @@
 		width : 236px;
 		margin-right: 2.2em;
 		background: #f2f2ff;
-		-moz-border-radius: 0 0 12px 12px;
-		-webkit-border-radius: 0 0 12px 12px;
 		border-radius: 0 0 12px 12px;
 		}
 	.topnl a {
