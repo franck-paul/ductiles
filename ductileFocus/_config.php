@@ -21,6 +21,11 @@ $img_path = dirname(__FILE__).'/img/';
 
 $standalone_config = (boolean) $core->themes->moduleInfo($core->blog->settings->system->theme,'standalone_config');
 
+// Load contextual help
+if (file_exists(dirname(__FILE__).'/locales/'.$_lang.'/resources.php')) {
+	require dirname(__FILE__).'/locales/'.$_lang.'/resources.php';
+}
+
 $fonts = array(
 	__('default') => '',
 	__('Ductile Focus primary') => 'Ductile Focus body',
@@ -72,7 +77,7 @@ $font_families = array(
 function fontDef($c)
 {
 	global $font_families;
-	
+
 	return isset($font_families[$c]) ? '<span style="position:absolute;top:0;left:32em;">'.$font_families[$c].'</span>' : '';
 }
 
@@ -102,12 +107,12 @@ function adjustColor($c)
 function computeContrastRatio($color,$background)
 {
 	// Compute contrast ratio between two colors
-	
+
 	$color = adjustColor($color);
 	if (($color == '') || (strlen($color) != 7)) return 0;
 	$background = adjustColor($background);
 	if (($background == '') || (strlen($background) != 7)) return 0;
-	
+
 	$l1 = (0.2126 * pow(hexdec(substr($color,1,2))/255,2.2)) +
 		(0.7152 * pow(hexdec(substr($color,3,2))/255,2.2)) +
 		(0.0722 * pow(hexdec(substr($color,5,2))/255,2.2));
@@ -159,7 +164,7 @@ function contrastRatioLevel($ratio,$size,$bold)
 	}
 
 	$large = ((($s > 1.5) && ($bold == false)) || (($s > 1.2) && ($bold == true)));
-	
+
 	// Check ratio
 	if ($ratio > 7) {
 		return 'AAA';
@@ -178,7 +183,7 @@ function contrastRatio($color,$background,$size='',$bold=false)
 	if (($color != '') && ($background != '')) {
 		$ratio = computeContrastRatio($color,$background);
 		$level = contrastRatioLevel($ratio,$size,$bold);
-		return 
+		return
 			'<span style="position:absolute;top:0;left:23em;">'.
 			sprintf(__('ratio %.1f'),$ratio).
 			($level != '' ? ' '.sprintf(__('(%s)'),$level) : '').
@@ -325,7 +330,7 @@ if (!empty($_POST))
 				}
 				$ductile_stickers = $new_ductile_stickers;
 			}
-			
+
 			$ductile_focuses = array();
 			$ductile_focuses[] = array(
 				'cat' => '',
@@ -343,7 +348,7 @@ if (!empty($_POST))
 				'subcat' => (integer) !empty($_POST['focus3_subcat'])
 			);
 		}
-		
+
 		# CSS
 		if ($conf_tab == 'css') {
 			$ductile_user['body_font'] = $_POST['body_font'];
@@ -352,26 +357,26 @@ if (!empty($_POST))
 			$ductile_user['blog_title_w'] = (integer) !empty($_POST['blog_title_w']);
 			$ductile_user['blog_title_s'] = adjustFontSize($_POST['blog_title_s']);
 			$ductile_user['blog_title_c'] = adjustColor($_POST['blog_title_c']);
-		
+
 			$ductile_user['post_title_w'] = (integer) !empty($_POST['post_title_w']);
 			$ductile_user['post_title_s'] = adjustFontSize($_POST['post_title_s']);
 			$ductile_user['post_title_c'] = adjustColor($_POST['post_title_c']);
-		
+
 			$ductile_user['post_link_w'] = (integer) !empty($_POST['post_link_w']);
 			$ductile_user['post_link_v_c'] = adjustColor($_POST['post_link_v_c']);
 			$ductile_user['post_link_f_c'] = adjustColor($_POST['post_link_f_c']);
-		
+
 			$ductile_user['post_simple_title_c'] = adjustColor($_POST['post_simple_title_c']);
-		
+
 			$ductile_user['blog_title_w_m'] = (integer) !empty($_POST['blog_title_w_m']);
 			$ductile_user['blog_title_s_m'] = adjustFontSize($_POST['blog_title_s_m']);
 			$ductile_user['blog_title_c_m'] = adjustColor($_POST['blog_title_c_m']);
-		
+
 			$ductile_user['post_title_w_m'] = (integer) !empty($_POST['post_title_w_m']);
 			$ductile_user['post_title_s_m'] = adjustFontSize($_POST['post_title_s_m']);
 			$ductile_user['post_title_c_m'] = adjustColor($_POST['post_title_c_m']);
 		}
-		
+
 		$core->blog->settings->addNamespace('themes');
 		$core->blog->settings->themes->put($core->blog->settings->system->theme.'_style',serialize($ductile_user));
 		$core->blog->settings->themes->put($core->blog->settings->system->theme.'_stickers',serialize($ductile_stickers));
@@ -382,7 +387,7 @@ if (!empty($_POST))
 
 		// Template cache reset
 		$core->emptyTemplatesCache();
-		
+
 		echo
 		'<div class="message"><p>'.
 		__('Theme configuration upgraded.').
@@ -429,7 +434,7 @@ echo '<table class="dragable">'.'<caption>'.__('Stickers (footer)').'</caption>'
 $count = 0;
 foreach ($ductile_stickers as $i => $v) {
 	$count++;
-	echo 
+	echo
 	'<tr class="line" id="l_'.$i.'">'.
 	'<td class="handle minimal">'.form::field(array('order['.$i.']'),2,3,$count,'position','',false).
 		form::hidden(array('dynorder[]','dynorder-'.$i),$i).'</td>'.
