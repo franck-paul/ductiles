@@ -14,11 +14,10 @@ $this->registerModule(
 	/* Name */				"Ductile Focus",
 	/* Description*/		"Variation de Ductile pour un blog mixte de textes et photos",
 	/* Author */			"Kozlika et Franck Paul",
-	/* Version */			'0.2.2'
-	/* Properties (uncomment for 2.4 compliance only : add a / at the end of this line -> ) *
-							,array(
-								'standalone_config' => true
+	/* Version */			'0.3',
+	/* Properties */		array(
+								'standalone_config' => true,
+								'type' => 'theme'
 							)
-	*/
 );
 ?>
