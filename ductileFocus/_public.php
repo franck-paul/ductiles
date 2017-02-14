@@ -87,7 +87,7 @@ class tplDuctileFocusTheme
 			$ret = 'in_array($_ctx->posts->cat_id,array('.($c->cat_id ? $c->cat_id : 'null');
 			if ($cc) {
 				while ($cc->fetch()) {
-					$ret .= ','.$cc->cat_id;
+					$ret .= ','.($c->cat_id ? $c->cat_id : 'null');
 				}
 			}
 			$ret .= '))';
