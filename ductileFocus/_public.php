@@ -1,4 +1,6 @@
 <?php
+namespace themes\ductile_focus;
+
 # -- BEGIN LICENSE BLOCK ---------------------------------------
 # This file is part of Ductile, a theme for Dotclear
 #
@@ -11,17 +13,17 @@
 
 if (!defined('DC_RC_PATH')) { return; }
 
-l10n::set(dirname(__FILE__).'/locales/'.$_lang.'/main');
+\l10n::set(dirname(__FILE__).'/locales/'.$_lang.'/main');
 
 # Behaviors
-$core->addBehavior('publicHeadContent',array('tplDuctileFocusTheme','publicHeadContent'));
-$core->addBehavior('publicInsideFooter',array('tplDuctileFocusTheme','publicInsideFooter'));
-$core->addBehavior('tplIfConditions',array('tplDuctileFocusTheme','tplIfConditions'));
+$core->addBehavior('publicHeadContent',array(__NAMESPACE__.'\tplDuctileFocusTheme','publicHeadContent'));
+$core->addBehavior('publicInsideFooter',array(__NAMESPACE__.'\tplDuctileFocusTheme','publicInsideFooter'));
+$core->addBehavior('tplIfConditions',array(__NAMESPACE__.'\tplDuctileFocusTheme','tplIfConditions'));
 
 # Templates
-$core->tpl->addBlock('EntryIfContentIsCut',array('tplDuctileFocusTheme','EntryIfContentIsCut'));
-$core->tpl->addValue('focusEntries',array('tplDuctileFocusTheme','focusEntries'));
-$core->tpl->addValue('ductileLogoSrc',array('tplDuctileFocusTheme','ductileLogoSrc'));
+$core->tpl->addBlock('EntryIfContentIsCut',array(__NAMESPACE__.'\tplDuctileFocusTheme','EntryIfContentIsCut'));
+$core->tpl->addValue('focusEntries',array(__NAMESPACE__.'\tplDuctileFocusTheme','focusEntries'));
+$core->tpl->addValue('ductileLogoSrc',array(__NAMESPACE__.'\tplDuctileFocusTheme','ductileLogoSrc'));
 
 class tplDuctileFocusTheme
 {
@@ -34,7 +36,7 @@ class tplDuctileFocusTheme
 		return '<?php '."\n".
 			'	if (!isset($params)) $params = array();'."\n".
 			'	$params = new ArrayObject($params);'."\n".
-			'	tplDuctileFocusTheme::focusEntriesHelper('.$case.',$params);'."\n".
+			'	'.__NAMESPACE__.'\tplDuctileFocusTheme::focusEntriesHelper('.$case.',$params);'."\n".
 			'	$params = (array)$params;'."\n".
 			' ?>';
 	}
@@ -70,7 +72,7 @@ class tplDuctileFocusTheme
 
 			$sign = (boolean) $attr['has_img'] ? '' : '!';
 			$with_category = !empty($attr['with_category']) ? 'true' : 'false';
-			$if[] = $sign.'(tplDuctileFocusTheme::tplIfConditionsHelper('.$with_category.'))';
+			$if[] = $sign.'('.__NAMESPACE__.'\tplDuctileFocusTheme::tplIfConditionsHelper('.$with_category.'))';
 
 		} elseif ($tag == 'EntryIf' && isset($attr['focus_cat_image'])) {
 
@@ -98,7 +100,7 @@ class tplDuctileFocusTheme
 	public static function tplIfConditionsHelper($with_category = false)
 	{
 		$ret = '';
-		$ret = context::EntryFirstImageHelper('s',$with_category);
+		$ret = \context::EntryFirstImageHelper('s',$with_category);
 		return ($ret != '');
 	}
 
@@ -129,7 +131,7 @@ class tplDuctileFocusTheme
 
 	public static function ductileLogoSrc($attr)
 	{
-		return '<?php echo tplDuctileFocusTheme::ductileLogoSrcHelper(); ?>';
+		return '<?php echo '.__NAMESPACE__.'\tplDuctileFocusTheme::ductileLogoSrcHelper(); ?>';
 	}
 
 	public static function ductileLogoSrcHelper()
@@ -176,7 +178,7 @@ class tplDuctileFocusTheme
 			if (!is_array($s)) {
 				$default = true;
 			} else {
-				$s = array_filter($s,"tplDuctileFocusTheme::cleanStickers");
+				$s = array_filter($s,__NAMESPACE__.'\tplDuctileFocusTheme::cleanStickers');
 				if (count($s) == 0) {
 					$default = true;
 				} else {
@@ -190,7 +192,7 @@ class tplDuctileFocusTheme
 		}
 
 		if ($default || $res == '') {
-			$res = self::setSticker(1,true,__('Subscribe'),$core->blog->url.$core->url->getBase('feed').'/atom',$img_url.'sticker-feed.png');
+			$res = self::setSticker(1,true,__('Subscribe'),$core->blog->url.$core->url->getURLFor('feed').'/atom',$img_url.'sticker-feed.png');
 		}
 
 		if ($res != '') {
@@ -254,28 +256,28 @@ class tplDuctileFocusTheme
 
 		# Blog description
 		$selectors = '#blogdesc';
-		if (isset($s['subtitle_hidden'])) self::prop($css,$selectors,'display',($s['subtitle_hidden'] ? 'none' : null));
+		if (isset($s['subtitle_hidden'])) \dcThemeConfig::prop($css,$selectors,'display',($s['subtitle_hidden'] ? 'none' : null));
 
 		# Main font
 		$selectors = 'body, .supranav li a span, .comment-info, #comments .me, .comment-number';
-		if (isset($s['body_font'])) self::prop($css,$selectors,'font-family',self::fontDef($s['body_font']));
+		if (isset($s['body_font'])) \dcThemeConfig::prop($css,$selectors,'font-family',self::fontDef($s['body_font']));
 
 		# Secondary font
 		$selectors = '#blogdesc, .supranav, #prelude, #submenu, #content-info, #subcategories, p.post-date, #comments, #ping-url, #comment-form, #comments-feed, '.
 			'.field input, .field textarea, #sidebar, #footer p, .arch-block h4';
-		if (isset($s['alternate_font'])) self::prop($css,$selectors,'font-family',self::fontDef($s['alternate_font']));
+		if (isset($s['alternate_font'])) \dcThemeConfig::prop($css,$selectors,'font-family',self::fontDef($s['alternate_font']));
 
 		# Inside posts links font weight
 		$selectors = '.post-excerpt a, .post-content a';
-		if (isset($s['post_link_w'])) self::prop($css,$selectors,'font-weight',($s['post_link_w'] ? 'bold' : 'normal'));
+		if (isset($s['post_link_w'])) \dcThemeConfig::prop($css,$selectors,'font-weight',($s['post_link_w'] ? 'bold' : 'normal'));
 
 		# Inside posts links colors (normal, visited)
 		$selectors = '.post-excerpt a:link, .post-excerpt a:visited, .post-content a:link, .post-content a:visited';
-		if (isset($s['post_link_v_c'])) self::prop($css,$selectors,'color',$s['post_link_v_c']);
+		if (isset($s['post_link_v_c'])) \dcThemeConfig::prop($css,$selectors,'color',$s['post_link_v_c']);
 
 		# Inside posts links colors (hover, active, focus)
 		$selectors = '.post-excerpt a:hover, .post-excerpt a:active, .post-excerpt a:focus, .post-content a:hover, .post-content a:active, .post-content a:focus';
-		if (isset($s['post_link_f_c'])) self::prop($css,$selectors,'color',$s['post_link_f_c']);
+		if (isset($s['post_link_f_c'])) \dcThemeConfig::prop($css,$selectors,'color',$s['post_link_f_c']);
 
 		# Style directives
 		$res = '';
@@ -292,31 +294,31 @@ class tplDuctileFocusTheme
 
 		# Blog title font weight
 		$selectors = 'h1, h1 a:link, h1 a:visited, h1 a:hover, h1 a:visited, h1 a:focus';
-		if (isset($s['blog_title_w'])) self::prop($css_large,$selectors,'font-weight',($s['blog_title_w'] ? 'bold' : 'normal'));
+		if (isset($s['blog_title_w'])) \dcThemeConfig::prop($css_large,$selectors,'font-weight',($s['blog_title_w'] ? 'bold' : 'normal'));
 
 		# Blog title font size
 		$selectors = 'h1';
-		if (isset($s['blog_title_s'])) self::prop($css_large,$selectors,'font-size',$s['blog_title_s']);
+		if (isset($s['blog_title_s'])) \dcThemeConfig::prop($css_large,$selectors,'font-size',$s['blog_title_s']);
 
 		# Blog title color
 		$selectors = 'h1 a:link, h1 a:visited, h1 a:hover, h1 a:visited, h1 a:focus';
-		if (isset($s['blog_title_c'])) self::prop($css_large,$selectors,'color',$s['blog_title_c']);
+		if (isset($s['blog_title_c'])) \dcThemeConfig::prop($css_large,$selectors,'color',$s['blog_title_c']);
 
 		# Post title font weight
 		$selectors = 'h2.post-title, h2.post-title a:link, h2.post-title a:visited, h2.post-title a:hover, h2.post-title a:visited, h2.post-title a:focus';
-		if (isset($s['post_title_w'])) self::prop($css_large,$selectors,'font-weight',($s['post_title_w'] ? 'bold' : 'normal'));
+		if (isset($s['post_title_w'])) \dcThemeConfig::prop($css_large,$selectors,'font-weight',($s['post_title_w'] ? 'bold' : 'normal'));
 
 		# Post title font size
 		$selectors = 'h2.post-title';
-		if (isset($s['post_title_s'])) self::prop($css_large,$selectors,'font-size',$s['post_title_s']);
+		if (isset($s['post_title_s'])) \dcThemeConfig::prop($css_large,$selectors,'font-size',$s['post_title_s']);
 
 		# Post title color
 		$selectors = 'h2.post-title a:link, h2.post-title a:visited, h2.post-title a:hover, h2.post-title a:visited, h2.post-title a:focus';
-		if (isset($s['post_title_c'])) self::prop($css_large,$selectors,'color',$s['post_title_c']);
+		if (isset($s['post_title_c'])) \dcThemeConfig::prop($css_large,$selectors,'color',$s['post_title_c']);
 
 		# Simple title color (title without link)
 		$selectors = '#content-info h2, .post-title, .post h3, .post h4, .post h5, .post h6, .arch-block h3';
-		if (isset($s['post_simple_title_c'])) self::prop($css_large,$selectors,'color',$s['post_simple_title_c']);
+		if (isset($s['post_simple_title_c'])) \dcThemeConfig::prop($css_large,$selectors,'color',$s['post_simple_title_c']);
 
 		# Style directives for large screens
 		if (count($css_large)) {
@@ -336,27 +338,27 @@ class tplDuctileFocusTheme
 
 		# Blog title font weight
 		$selectors = 'h1, h1 a:link, h1 a:visited, h1 a:hover, h1 a:visited, h1 a:focus';
-		if (isset($s['blog_title_w_m'])) self::prop($css_small,$selectors,'font-weight',($s['blog_title_w_m'] ? 'bold' : 'normal'));
+		if (isset($s['blog_title_w_m'])) \dcThemeConfig::prop($css_small,$selectors,'font-weight',($s['blog_title_w_m'] ? 'bold' : 'normal'));
 
 		# Blog title font size
 		$selectors = 'h1';
-		if (isset($s['blog_title_s_m'])) self::prop($css_small,$selectors,'font-size',$s['blog_title_s_m']);
+		if (isset($s['blog_title_s_m'])) \dcThemeConfig::prop($css_small,$selectors,'font-size',$s['blog_title_s_m']);
 
 		# Blog title color
 		$selectors = 'h1 a:link, h1 a:visited, h1 a:hover, h1 a:visited, h1 a:focus';
-		if (isset($s['blog_title_c_m'])) self::prop($css_small,$selectors,'color',$s['blog_title_c_m']);
+		if (isset($s['blog_title_c_m'])) \dcThemeConfig::prop($css_small,$selectors,'color',$s['blog_title_c_m']);
 
 		# Post title font weight
 		$selectors = 'h2.post-title, h2.post-title a:link, h2.post-title a:visited, h2.post-title a:hover, h2.post-title a:visited, h2.post-title a:focus';
-		if (isset($s['post_title_w_m'])) self::prop($css_small,$selectors,'font-weight',($s['post_title_w_m'] ? 'bold' : 'normal'));
+		if (isset($s['post_title_w_m'])) \dcThemeConfig::prop($css_small,$selectors,'font-weight',($s['post_title_w_m'] ? 'bold' : 'normal'));
 
 		# Post title font size
 		$selectors = 'h2.post-title';
-		if (isset($s['post_title_s_m'])) self::prop($css_small,$selectors,'font-size',$s['post_title_s_m']);
+		if (isset($s['post_title_s_m'])) \dcThemeConfig::prop($css_small,$selectors,'font-size',$s['post_title_s_m']);
 
 		# Post title color
 		$selectors = 'h2.post-title a:link, h2.post-title a:visited, h2.post-title a:hover, h2.post-title a:visited, h2.post-title a:focus';
-		if (isset($s['post_title_c_m'])) self::prop($css_small,$selectors,'color',$s['post_title_c_m']);
+		if (isset($s['post_title_c_m'])) \dcThemeConfig::prop($css_small,$selectors,'color',$s['post_title_c_m']);
 
 		# Style directives for small screens
 		if (count($css_small)) {
@@ -400,12 +402,4 @@ class tplDuctileFocusTheme
 	{
 		return isset(self::$fonts[$c]) ? self::$fonts[$c] : null;
 	}
-
-	protected static function prop(&$css,$selector,$prop,$value)
-	{
-		if ($value) {
-			$css[$selector][$prop] = $value;
-		}
-	}
 }
-?>

@@ -14,7 +14,7 @@ $this->registerModule(
 	/* Name */				"Ductile Photo",
 	/* Description*/		"Variation de Ductile pour un photoblog",
 	/* Author */			"Kozlika et Franck Paul",
-	/* Version */			'0.6',
+	/* Version */			'0.7',
 	/* Properties */		array(
 								'standalone_config' => true,
 								'type' => 'theme'

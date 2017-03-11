@@ -1,4 +1,6 @@
 <?php
+namespace themes\ductile_focus;
+
 # -- BEGIN LICENSE BLOCK ---------------------------------------
 # This file is part of Ductile, a theme for Dotclear
 #
@@ -16,7 +18,7 @@ if (!defined('DC_CONTEXT_ADMIN')) { return false; }
 // admin part below
 
 # Behaviors
-$GLOBALS['core']->addBehavior('adminPageHTMLHead',array('tplDuctileMagThemeAdmin','adminPageHTMLHead'));
+$GLOBALS['core']->addBehavior('adminPageHTMLHead',array(__NAMESPACE__.'\tplDuctileMagThemeAdmin','adminPageHTMLHead'));
 
 class tplDuctileMagThemeAdmin
 {
@@ -29,8 +31,8 @@ class tplDuctileMagThemeAdmin
 		$core->auth->user_prefs->addWorkspace('accessibility');
 		if (!$core->auth->user_prefs->accessibility->nodragdrop) {
 			echo
-				dcPage::jsLoad('js/jquery/jquery-ui.custom.js').
-				dcPage::jsLoad('js/jquery/jquery.ui.touch-punch.js');
+				\dcPage::jsLoad('js/jquery/jquery-ui.custom.js').
+				\dcPage::jsLoad('js/jquery/jquery.ui.touch-punch.js');
 				echo <<<EOT
 <script type="text/javascript">
 $(function() {
@@ -57,4 +59,3 @@ EOT;
 
 	}
 }
-?>
