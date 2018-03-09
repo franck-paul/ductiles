@@ -1,13 +1,17 @@
 <?php
-# -- BEGIN LICENSE BLOCK ---------------------------------------
-# This file is part of Ductile, a theme for Dotclear
-#
-# Copyright (c) 2011 - Association Dotclear
-# Licensed under the GPL version 2.0 license.
-# See LICENSE file or
-# http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
-#
-# -- END LICENSE BLOCK -----------------------------------------
+/**
+ * @brief ductileFocus, a theme for Dotclear 2
+ *
+ * @package Dotclear
+ * @subpackage Themes
+ *
+ * @author Kozlika
+ * @author Franck Paul
+ *
+ * @copyright Kozlika and Franck Paul
+ * @copyright GPL-2.0-only
+ */
+
 if (!defined('DC_CONTEXT_ADMIN')) { return; }
 
 l10n::set(dirname(__FILE__).'/locales/'.$_lang.'/admin');

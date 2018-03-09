@@ -1,18 +1,17 @@
 <?php
-# -- BEGIN LICENSE BLOCK ---------------------------------------
-#
-# This file is part of Dotclear 2.
-#
-# Copyright (c) 2003-2013 Olivier Meunier & Association Dotclear
-# Licensed under the GPL version 2.0 license.
-# See LICENSE file or
-# http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
-#
-# -- END LICENSE BLOCK -----------------------------------------
+/**
+ * @brief ductileFocus, a theme for Dotclear 2
+ *
+ * @package Dotclear
+ * @subpackage Themes
+ *
+ * @author Kozlika
+ * @author Franck Paul
+ *
+ * @copyright Kozlika and Franck Paul
+ * @copyright GPL-2.0-only
+ */
 
-if (!isset($__resources['help']['ductileFocus']))
-{
-	$__resources['help']['ductileFocus'] = dirname(__FILE__).'/help/help.html';
+if (!isset($__resources['help']['ductileFocus'])) {
+    $__resources['help']['ductileFocus'] = dirname(__FILE__) . '/help/help.html';
 }
-
-?>
