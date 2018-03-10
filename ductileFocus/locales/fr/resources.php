@@ -9,7 +9,7 @@
  * @author Franck Paul
  *
  * @copyright Kozlika and Franck Paul
- * @copyright GPL-2.0-only
+ * @copyright GPL-2.0
  */
 
 if (!isset($__resources['help']['ductileFocus'])) {

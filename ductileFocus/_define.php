@@ -9,7 +9,7 @@
  * @author Franck Paul
  *
  * @copyright Kozlika and Franck Paul
- * @copyright GPL-2.0-only
+ * @copyright GPL-2.0
  */
 
 if (!defined('DC_RC_PATH')) {return;}

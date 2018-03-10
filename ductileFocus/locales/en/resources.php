@@ -9,7 +9,7 @@
  * @author Franck Paul
  *
  * @copyright Olivier Meunier & Association Dotclear
- * @copyright GPL-2.0-only
+ * @copyright GPL-2.0
  */
 
 if (!isset($__resources['help']['ductileFocus'])) {
