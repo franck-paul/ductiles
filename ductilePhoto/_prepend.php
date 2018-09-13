@@ -21,7 +21,7 @@ if (!defined('DC_CONTEXT_ADMIN')) {return false;}
 // admin part below
 
 # Behaviors
-$GLOBALS['core']->addBehavior('adminPageHTMLHead', array(__NAMESPACE__ . '\tplDuctilePhotoThemeAdmin', 'adminPageHTMLHead'));
+$GLOBALS['core']->addBehavior('adminPageHTMLHead', [__NAMESPACE__ . '\tplDuctilePhotoThemeAdmin', 'adminPageHTMLHead']);
 
 class tplDuctilePhotoThemeAdmin
 {

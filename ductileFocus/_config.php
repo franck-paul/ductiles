@@ -30,7 +30,7 @@ if (file_exists(dirname(__FILE__).'/locales/'.$_lang.'/resources.php')) {
 	require dirname(__FILE__).'/locales/'.$_lang.'/resources.php';
 }
 
-$fonts = array(
+$fonts = [
 	__('default') => '',
 	__('Ductile Focus primary') => 'Ductile Focus body',
 	__('Ductile Focus secondary') => 'Ductile Focus alternate',
@@ -42,7 +42,7 @@ $fonts = array(
 	__('Trebuchet MS') => 'Trebuchet MS',
 	__('Impact') => 'Impact',
 	__('Monospace') => 'Monospace'
-);
+];
 
 function adjustFontSize($s)
 {
@@ -56,7 +56,7 @@ function adjustFontSize($s)
 	return null;
 }
 
-$font_families = array(
+$font_families = [
 	// Theme standard
 	'Ductile Focus body' => '"New Century Schoolbook", "Century Schoolbook", "Century Schoolbook L", Georgia, serif',
 	'Ductile Focus alternate' => '"DejaVu Sans", "helvetica neue", helvetica, sans-serif',
@@ -76,7 +76,7 @@ $font_families = array(
 
 	// Monospace families
 	'Monospace' => 'Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier, monospace'
-);
+];
 
 function fontDef($c)
 {
@@ -196,7 +196,7 @@ function contrastRatio($color,$background,$size='',$bold=false)
 	return '';
 }
 
-$ductile_base = array(
+$ductile_base = [
 	// HTML
 	'subtitle_hidden' => null,
 	'logo_src' => null,
@@ -219,12 +219,12 @@ $ductile_base = array(
 	'post_title_s_m' => null,
 	'post_title_c_m' => null,
 	'post_simple_title_c' => null
-);
+];
 
 $ductile_user = $core->blog->settings->themes->get($core->blog->settings->system->theme.'_style');
 $ductile_user = @unserialize($ductile_user);
 if (!is_array($ductile_user)) {
-	$ductile_user = array();
+	$ductile_user = [];
 }
 $ductile_user = array_merge($ductile_base,$ductile_user);
 
@@ -233,14 +233,14 @@ $ductile_stickers = @unserialize($ductile_stickers);
 
 // If no stickers defined, add feed Atom one
 if (!is_array($ductile_stickers)) {
-	$ductile_stickers = array(array(
+	$ductile_stickers = [[
 		'label' => __('Subscribe'),
 		'url' => $core->blog->url.$core->url->getURLFor('feed').'/atom',
 		'image' => 'sticker-feed.png'
-		));
+		]];
 }
 
-$ductile_stickers_full = array();
+$ductile_stickers_full = [];
 // Get all sticker images already used
 if (is_array($ductile_stickers)) {
 	foreach ($ductile_stickers as $v) {
@@ -254,10 +254,10 @@ if (is_array($ductile_stickers_images)) {
 		if (preg_match('/^sticker\-(.*)\.png$/',$v)) {
 			if (!in_array($v,$ductile_stickers_full)) {
 				// image not already used
-				$ductile_stickers[] = array(
+				$ductile_stickers[] = [
 					'label' => null,
 					'url' => null,
-					'image' => $v);
+					'image' => $v];
 			}
 		}
 	}
@@ -266,29 +266,29 @@ if (is_array($ductile_stickers_images)) {
 $ductile_focuses = $core->blog->settings->themes->get($core->blog->settings->system->theme.'_focus');
 $ductile_focuses = @unserialize($ductile_focuses);
 if (!is_array($ductile_focuses)) {
-	$ductile_focuses = array(
-		array(
+	$ductile_focuses = [
+		[
 			'cat' => '',
 			'selected' => false,
-			'subcat' => false),
-		array(
+			'subcat' => false],
+		[
 			'cat' => '',
 			'selected' => true,
-			'subcat' => false),
-		array(
+			'subcat' => false],
+		[
 			'cat' => '',
 			'selected' => false,
-			'subcat' => false)
-	);
+			'subcat' => false]
+	];
 }
 
 // Categories list
-$categories_combo = array();
-$categories_combo_all = array(
+$categories_combo = [];
+$categories_combo_all = [
 	__('All categories') => ''
-);
+];
 try {
-	$rs = $core->blog->getCategories(array('post_type'=>'post'));
+	$rs = $core->blog->getCategories(['post_type'=>'post']);
 	while ($rs->fetch()) {
 		$categories_combo[] = $categories_combo_all[] = new formSelectOption(
 			str_repeat('&nbsp;&nbsp;',$rs->level-1).($rs->level-1 == 0 ? '' : '&bull; ').html::escapeHTML($rs->cat_title),
@@ -308,49 +308,49 @@ if (!empty($_POST))
 			$ductile_user['subtitle_hidden'] = (integer) !empty($_POST['subtitle_hidden']);
 			$ductile_user['logo_src'] = $_POST['logo_src'];
 
-			$ductile_stickers = array();
+			$ductile_stickers = [];
 			for ($i = 0; $i < count($_POST['sticker_image']); $i++) {
-				$ductile_stickers[] = array(
+				$ductile_stickers[] = [
 					'label' => $_POST['sticker_label'][$i],
 					'url' => $_POST['sticker_url'][$i],
 					'image' => $_POST['sticker_image'][$i]
-				);
+				];
 			}
 
-			$order = array();
+			$order = [];
 			if (empty($_POST['ds_order']) && !empty($_POST['order'])) {
 				$order = $_POST['order'];
 				asort($order);
 				$order = array_keys($order);
 			}
 			if (!empty($order)) {
-				$new_ductile_stickers = array();
+				$new_ductile_stickers = [];
 				foreach ($order as $i => $k) {
-					$new_ductile_stickers[] = array(
+					$new_ductile_stickers[] = [
 						'label' => $ductile_stickers[$k]['label'],
 						'url' => $ductile_stickers[$k]['url'],
 						'image' => $ductile_stickers[$k]['image']
-					);
+					];
 				}
 				$ductile_stickers = $new_ductile_stickers;
 			}
 
-			$ductile_focuses = array();
-			$ductile_focuses[] = array(
+			$ductile_focuses = [];
+			$ductile_focuses[] = [
 				'cat' => '',
 				'selected' => (integer) false,
 				'subcat' => (integer) false
-			);
-			$ductile_focuses[] = array(
+			];
+			$ductile_focuses[] = [
 				'cat' => $_POST['focus2_cat'],
 				'selected' => (integer) !empty($_POST['focus2_selected']),
 				'subcat' => (integer) !empty($_POST['focus2_subcat'])
-			);
-			$ductile_focuses[] = array(
+			];
+			$ductile_focuses[] = [
 				'cat' => $_POST['focus3_cat'],
 				'selected' => (integer) !empty($_POST['focus3_selected']),
 				'subcat' => (integer) !empty($_POST['focus3_subcat'])
-			);
+			];
 		}
 
 		# CSS
@@ -440,11 +440,11 @@ foreach ($ductile_stickers as $i => $v) {
 	$count++;
 	echo
 	'<tr class="line" id="l_'.$i.'">'.
-	'<td class="handle minimal">'.form::field(array('order['.$i.']'),2,3,$count,'position','',false).
-		form::hidden(array('dynorder[]','dynorder-'.$i),$i).'</td>'.
-	'<td>'.form::hidden(array('sticker_image[]'),$v['image']).'<img src="'.$img_url.$v['image'].'" /> '.'</td>'.
-	'<td scope="raw">'.form::field(array('sticker_label[]','dsl-'.$i),20,255,$v['label']).'</td>'.
-	'<td>'.form::field(array('sticker_url[]','dsu-'.$i),40,255,$v['url']).'</td>'.
+	'<td class="handle minimal">'.form::field(['order['.$i.']'],2,3,$count,'position','',false).
+		form::hidden(['dynorder[]','dynorder-'.$i],$i).'</td>'.
+	'<td>'.form::hidden(['sticker_image[]'],$v['image']).'<img src="'.$img_url.$v['image'].'" /> '.'</td>'.
+	'<td scope="raw">'.form::field(['sticker_label[]','dsl-'.$i],20,255,$v['label']).'</td>'.
+	'<td>'.form::field(['sticker_url[]','dsu-'.$i],40,255,$v['url']).'</td>'.
 	'</tr>';
 }
 echo

@@ -19,13 +19,13 @@ if (!defined('DC_RC_PATH')) {return;}
 \l10n::set(dirname(__FILE__) . '/locales/' . $_lang . '/main');
 
 # Behaviors
-$core->addBehavior('publicHeadContent', array(__NAMESPACE__ . '\tplDuctilePhotoTheme', 'publicHeadContent'));
-$core->addBehavior('publicInsideFooter', array(__NAMESPACE__ . '\tplDuctilePhotoTheme', 'publicInsideFooter'));
-$core->addBehavior('tplIfConditions', array(__NAMESPACE__ . '\tplDuctilePhotoTheme', 'tplIfConditions'));
+$core->addBehavior('publicHeadContent', [__NAMESPACE__ . '\tplDuctilePhotoTheme', 'publicHeadContent']);
+$core->addBehavior('publicInsideFooter', [__NAMESPACE__ . '\tplDuctilePhotoTheme', 'publicInsideFooter']);
+$core->addBehavior('tplIfConditions', [__NAMESPACE__ . '\tplDuctilePhotoTheme', 'tplIfConditions']);
 
 # Templates
-$core->tpl->addValue('ductileNbEntryPerPage', array(__NAMESPACE__ . '\tplDuctilePhotoTheme', 'ductileNbEntryPerPage'));
-$core->tpl->addBlock('EntryIfContentIsCut', array(__NAMESPACE__ . '\tplDuctilePhotoTheme', 'EntryIfContentIsCut'));
+$core->tpl->addValue('ductileNbEntryPerPage', [__NAMESPACE__ . '\tplDuctilePhotoTheme', 'ductileNbEntryPerPage']);
+$core->tpl->addBlock('EntryIfContentIsCut', [__NAMESPACE__ . '\tplDuctilePhotoTheme', 'EntryIfContentIsCut']);
 
 class tplDuctilePhotoTheme
 {
@@ -99,15 +99,15 @@ class tplDuctilePhotoTheme
                 return;
             }
 
-            $c   = $core->blog->getCategories(array('cat_url' => $s[2]['cat']));
+            $c   = $core->blog->getCategories(['cat_url' => $s[2]['cat']]);
             $cc  = $core->blog->getCategoryFirstChildren($c->cat_id);
-            $ret = 'in_array($_ctx->posts->cat_id,array(' . $c->cat_id;
+            $ret = 'in_array($_ctx->posts->cat_id,[' . $c->cat_id;
             if ($cc) {
                 while ($cc->fetch()) {
                     $ret .= ',' . $cc->cat_id;
                 }
             }
-            $ret .= '))';
+            $ret .= '])';
             $if[] = $sign . $ret;
         }
     }
@@ -262,7 +262,7 @@ class tplDuctilePhotoTheme
             return;
         }
 
-        $css = array();
+        $css = [];
 
         # Properties
 
@@ -314,7 +314,7 @@ class tplDuctilePhotoTheme
         }
 
         # Large screens
-        $css_large = array();
+        $css_large = [];
 
         # Blog title font weight
         $selectors = 'h1, h1 a:link, h1 a:visited, h1 a:hover, h1 a:visited, h1 a:focus';
@@ -372,7 +372,7 @@ class tplDuctilePhotoTheme
         }
 
         # Small screens
-        $css_small = array();
+        $css_small = [];
 
         # Blog title font weight
         $selectors = 'h1, h1 a:link, h1 a:visited, h1 a:hover, h1 a:visited, h1 a:focus';
@@ -455,7 +455,7 @@ class tplDuctilePhotoTheme
         return $img_url;
     }
 
-    protected static $fonts = array(
+    protected static $fonts = [
         // Serif families
         'Times New Roman' => 'Cambria, "Hoefler Text", Utopia, "Liberation Serif", "Nimbus Roman No9 L Regular", Times, "Times New Roman", serif',
         'Georgia'         => 'Constantia, "Lucida Bright", Lucidabright, "Lucida Serif", Lucida, "DejaVu Serif", "Bitstream Vera Serif", "Liberation Serif", Georgia, serif',
@@ -471,7 +471,7 @@ class tplDuctilePhotoTheme
 
         // Monospace families
         'Monospace'       => 'Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier, monospace'
-    );
+    ];
 
     protected static function fontDef($c)
     {

@@ -19,14 +19,14 @@ if (!defined('DC_RC_PATH')) {return;}
 \l10n::set(dirname(__FILE__) . '/locales/' . $_lang . '/main');
 
 # Behaviors
-$core->addBehavior('publicHeadContent', array(__NAMESPACE__ . '\tplDuctileFocusTheme', 'publicHeadContent'));
-$core->addBehavior('publicInsideFooter', array(__NAMESPACE__ . '\tplDuctileFocusTheme', 'publicInsideFooter'));
-$core->addBehavior('tplIfConditions', array(__NAMESPACE__ . '\tplDuctileFocusTheme', 'tplIfConditions'));
+$core->addBehavior('publicHeadContent', [__NAMESPACE__ . '\tplDuctileFocusTheme', 'publicHeadContent']);
+$core->addBehavior('publicInsideFooter', [__NAMESPACE__ . '\tplDuctileFocusTheme', 'publicInsideFooter']);
+$core->addBehavior('tplIfConditions', [__NAMESPACE__ . '\tplDuctileFocusTheme', 'tplIfConditions']);
 
 # Templates
-$core->tpl->addBlock('EntryIfContentIsCut', array(__NAMESPACE__ . '\tplDuctileFocusTheme', 'EntryIfContentIsCut'));
-$core->tpl->addValue('focusEntries', array(__NAMESPACE__ . '\tplDuctileFocusTheme', 'focusEntries'));
-$core->tpl->addValue('ductileLogoSrc', array(__NAMESPACE__ . '\tplDuctileFocusTheme', 'ductileLogoSrc'));
+$core->tpl->addBlock('EntryIfContentIsCut', [__NAMESPACE__ . '\tplDuctileFocusTheme', 'EntryIfContentIsCut']);
+$core->tpl->addValue('focusEntries', [__NAMESPACE__ . '\tplDuctileFocusTheme', 'focusEntries']);
+$core->tpl->addValue('ductileLogoSrc', [__NAMESPACE__ . '\tplDuctileFocusTheme', 'ductileLogoSrc']);
 
 class tplDuctileFocusTheme
 {
@@ -39,7 +39,7 @@ class tplDuctileFocusTheme
         }
 
         return '<?php ' . "\n" .
-        '   if (!isset($params)) $params = array();' . "\n" .
+        '   if (!isset($params)) $params = [];' . "\n" .
         '   $params = new ArrayObject($params);' . "\n" .
         '   ' . __NAMESPACE__ . '\tplDuctileFocusTheme::focusEntriesHelper(' . $case . ',$params);' . "\n" .
             '   $params = (array)$params;' . "\n" .
@@ -100,15 +100,15 @@ class tplDuctileFocusTheme
                 return;
             }
 
-            $c   = $core->blog->getCategories(array('cat_url' => $s[2]['cat']));
+            $c   = $core->blog->getCategories(['cat_url' => $s[2]['cat']]);
             $cc  = $core->blog->getCategoryFirstChildren($c->cat_id);
-            $ret = 'in_array($_ctx->posts->cat_id,array(' . ($c->cat_id ? $c->cat_id : 'null');
+            $ret = 'in_array($_ctx->posts->cat_id,[' . ($c->cat_id ? $c->cat_id : 'null');
             if ($cc) {
                 while ($cc->fetch()) {
                     $ret .= ',' . ($c->cat_id ? $c->cat_id : 'null');
                 }
             }
-            $ret .= '))';
+            $ret .= '])';
             $if[] = $sign . $ret;
         }
     }
@@ -266,7 +266,7 @@ class tplDuctileFocusTheme
             return;
         }
 
-        $css = array();
+        $css = [];
 
         # Properties
 
@@ -318,7 +318,7 @@ class tplDuctileFocusTheme
         }
 
         # Large screens
-        $css_large = array();
+        $css_large = [];
 
         # Blog title font weight
         $selectors = 'h1, h1 a:link, h1 a:visited, h1 a:hover, h1 a:visited, h1 a:focus';
@@ -376,7 +376,7 @@ class tplDuctileFocusTheme
         }
 
         # Small screens
-        $css_small = array();
+        $css_small = [];
 
         # Blog title font weight
         $selectors = 'h1, h1 a:link, h1 a:visited, h1 a:hover, h1 a:visited, h1 a:focus';
@@ -430,7 +430,7 @@ class tplDuctileFocusTheme
         return $res;
     }
 
-    protected static $fonts = array(
+    protected static $fonts = [
         // Theme standard
         'Ductile Focus body'      => '"New Century Schoolbook", "Century Schoolbook", "Century Schoolbook L", Georgia, serif',
         'Ductile Focus alternate' => '"DejaVu Sans", "helvetica neue", helvetica, sans-serif',
@@ -450,7 +450,7 @@ class tplDuctileFocusTheme
 
         // Monospace families
         'Monospace'               => 'Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier, monospace'
-    );
+    ];
 
     protected static function fontDef($c)
     {

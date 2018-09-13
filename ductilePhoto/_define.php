@@ -15,12 +15,13 @@
 if (!defined('DC_RC_PATH')) {return;}
 
 $this->registerModule(
-    "Ductile Photo",                          // Name
-    "Variation de Ductile pour un photoblog", // Description
-    "Kozlika et Franck Paul",                 // Author
-    '0.7',                                    // Version
-    array(                                    // Properties
+    "Ductile Photo",                           // Name
+    "Variation de Ductile pour un photoblog",  // Description
+    "Kozlika et Franck Paul",                  // Author
+    '0.8',                                     // Version
+    [                                          // Properties
+        'requires'          => [['core', '2.13']], // Dependencies
         'standalone_config' => true,
         'type'              => 'theme'
-    )
+    ]
 );

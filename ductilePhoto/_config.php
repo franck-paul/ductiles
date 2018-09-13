@@ -32,13 +32,13 @@ if (file_exists(dirname(__FILE__) . '/locales/' . $_lang . '/resources.php')) {
     require dirname(__FILE__) . '/locales/' . $_lang . '/resources.php';
 }
 
-$contexts = array(
+$contexts = [
     'category' => __('Entries for a category'),
     'tag'      => __('Entries for a tag'),
     'search'   => __('Search result entries')
-);
+];
 
-$fonts = array(
+$fonts = [
     __('default')         => '',
     __('Times New Roman') => 'Times New Roman',
     __('Georgia')         => 'Georgia',
@@ -48,12 +48,12 @@ $fonts = array(
     __('Trebuchet MS')    => 'Trebuchet MS',
     __('Impact')          => 'Impact',
     __('Monospace')       => 'Monospace'
-);
+];
 
-$ambiances = array(
+$ambiances = [
     __('Light ambiance') => 'light',
     __('Dark ambiance')  => 'dark'
-);
+];
 
 function adjustFontSize($s)
 {
@@ -67,7 +67,7 @@ function adjustFontSize($s)
     return;
 }
 
-$font_families = array(
+$font_families = [
     // Serif families
     'Times New Roman' => 'Cambria, "Hoefler Text", Utopia, "Liberation Serif", "Nimbus Roman No9 L Regular", Times, "Times New Roman", serif',
     'Georgia'         => 'Constantia, "Lucida Bright", Lucidabright, "Lucida Serif", Lucida, "DejaVu Serif", "Bitstream Vera Serif", "Liberation Serif", Georgia, serif',
@@ -83,7 +83,7 @@ $font_families = array(
 
     // Monospace families
     'Monospace'       => 'Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier, monospace'
-);
+];
 
 function fontDef($c)
 {
@@ -208,7 +208,7 @@ function contrastRatio($color, $background, $size = '', $bold = false)
     return '';
 }
 
-$ductile_base = array(
+$ductile_base = [
     // HTML
     'subtitle_hidden'     => null,
     'logo_src'            => null,
@@ -231,18 +231,18 @@ $ductile_base = array(
     'post_title_s_m'      => null,
     'post_title_c_m'      => null,
     'post_simple_title_c' => null
-);
+];
 
-$ductile_counts_base = array(
+$ductile_counts_base = [
     'category' => null,
     'tag'      => null,
     'search'   => null
-);
+];
 
 $ductile_user = $core->blog->settings->themes->get($core->blog->settings->system->theme . '_style');
 $ductile_user = @unserialize($ductile_user);
 if (!is_array($ductile_user)) {
-    $ductile_user = array();
+    $ductile_user = [];
 }
 $ductile_user = array_merge($ductile_base, $ductile_user);
 
@@ -257,15 +257,15 @@ $ductile_stickers = @unserialize($ductile_stickers);
 
 // If no stickers defined, add feed Atom one
 if (!is_array($ductile_stickers)) {
-    $ductile_stickers = array(array(
+    $ductile_stickers = [[
         'label' => __('Subscribe'),
         'url'   => $core->blog->url .
         $core->url->getURLFor('feed', 'atom'),
         'image' => 'sticker-feed.png'
-    ));
+    ]];
 }
 
-$ductile_stickers_full = array();
+$ductile_stickers_full = [];
 // Get all sticker images already used
 if (is_array($ductile_stickers)) {
     foreach ($ductile_stickers as $v) {
@@ -279,10 +279,10 @@ if (is_array($ductile_stickers_images)) {
         if (preg_match('/^sticker\-(.*)\.png$/', $v)) {
             if (!in_array($v, $ductile_stickers_full)) {
                 // image not already used
-                $ductile_stickers[] = array(
+                $ductile_stickers[] = [
                     'label' => null,
                     'url'   => null,
-                    'image' => $v);
+                    'image' => $v];
             }
         }
     }
@@ -298,29 +298,29 @@ if (!empty($_POST)) {
             $ductile_user['subtitle_hidden'] = (integer) !empty($_POST['subtitle_hidden']);
             $ductile_user['logo_src']        = $_POST['logo_src'];
 
-            $ductile_stickers = array();
+            $ductile_stickers = [];
             for ($i = 0; $i < count($_POST['sticker_image']); $i++) {
-                $ductile_stickers[] = array(
+                $ductile_stickers[] = [
                     'label' => $_POST['sticker_label'][$i],
                     'url'   => $_POST['sticker_url'][$i],
                     'image' => $_POST['sticker_image'][$i]
-                );
+                ];
             }
 
-            $order = array();
+            $order = [];
             if (empty($_POST['ds_order']) && !empty($_POST['order'])) {
                 $order = $_POST['order'];
                 asort($order);
                 $order = array_keys($order);
             }
             if (!empty($order)) {
-                $new_ductile_stickers = array();
+                $new_ductile_stickers = [];
                 foreach ($order as $i => $k) {
-                    $new_ductile_stickers[] = array(
+                    $new_ductile_stickers[] = [
                         'label' => $ductile_stickers[$k]['label'],
                         'url'   => $ductile_stickers[$k]['url'],
                         'image' => $ductile_stickers[$k]['image']
-                    );
+                    ];
                 }
                 $ductile_stickers = $new_ductile_stickers;
             }
@@ -417,11 +417,11 @@ foreach ($ductile_stickers as $i => $v) {
     $count++;
     echo
     '<tr class="line" id="l_' . $i . '">' .
-    '<td class="handle minimal">' . form::field(array('order[' . $i . ']'), 2, 3, $count, 'position', '', false) .
-    form::hidden(array('dynorder[]', 'dynorder-' . $i), $i) . '</td>' .
-    '<td>' . form::hidden(array('sticker_image[]'), $v['image']) . '<img src="' . $img_url . $v['image'] . '" /> ' . '</td>' .
-    '<td scope="raw">' . form::field(array('sticker_label[]', 'dsl-' . $i), 20, 255, $v['label']) . '</td>' .
-    '<td>' . form::field(array('sticker_url[]', 'dsu-' . $i), 40, 255, $v['url']) . '</td>' .
+    '<td class="handle minimal">' . form::field(['order[' . $i . ']'], 2, 3, $count, 'position', '', false) .
+    form::hidden(['dynorder[]', 'dynorder-' . $i], $i) . '</td>' .
+    '<td>' . form::hidden(['sticker_image[]'], $v['image']) . '<img src="' . $img_url . $v['image'] . '" /> ' . '</td>' .
+    '<td scope="raw">' . form::field(['sticker_label[]', 'dsl-' . $i], 20, 255, $v['label']) . '</td>' .
+    '<td>' . form::field(['sticker_url[]', 'dsu-' . $i], 40, 255, $v['url']) . '</td>' .
         '</tr>';
 }
 echo
@@ -444,7 +444,7 @@ foreach ($ductile_counts as $k => $v) {
     echo
     '<tr>' .
     '<td scope="raw">' . $contexts[$k] . '</td>' .
-    '<td>' . form::hidden(array('count_ctx[]'), $k) . form::field(array('count_nb[]'), 2, 3, $ductile_counts[$k]) . '</td>' .
+    '<td>' . form::hidden(['count_ctx[]'], $k) . form::field(['count_nb[]'], 2, 3, $ductile_counts[$k]) . '</td>' .
         '</tr>';
 }
 echo
