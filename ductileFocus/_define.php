@@ -18,9 +18,9 @@ $this->registerModule(
     "Ductile Focus",                                               // Name
     "Variation de Ductile pour un blog mixte de textes et photos", // Description
     "Kozlika et Franck Paul",                                      // Author
-    '0.5',                                                         // Version
+    '0.6',                                                         // Version
     [                                                              // Properties
-        'requires'          => [['core', '2.13']],                     // Dependencies
+        'requires'          => [['core', '2.15']],                     // Dependencies
         'standalone_config' => true,
         'type'              => 'theme'
     ]

@@ -18,9 +18,9 @@ $this->registerModule(
     "Ductile Photo",                           // Name
     "Variation de Ductile pour un photoblog",  // Description
     "Kozlika et Franck Paul",                  // Author
-    '0.8',                                     // Version
+    '0.9',                                     // Version
     [                                          // Properties
-        'requires'          => [['core', '2.13']], // Dependencies
+        'requires'          => [['core', '2.15']], // Dependencies
         'standalone_config' => true,
         'type'              => 'theme'
     ]
