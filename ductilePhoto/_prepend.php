@@ -11,13 +11,16 @@
  * @copyright Kozlika and Franck Paul
  * @copyright GPL-2.0
  */
-
 namespace themes\DuctilePhoto;
 
-if (!defined('DC_RC_PATH')) {return;}
+if (!defined('DC_RC_PATH')) {
+    return;
+}
 // public part below
 
-if (!defined('DC_CONTEXT_ADMIN')) {return false;}
+if (!defined('DC_CONTEXT_ADMIN')) {
+    return false;
+}
 // admin part below
 
 # Behaviors
@@ -28,7 +31,9 @@ class tplDuctilePhotoThemeAdmin
     public static function adminPageHTMLHead()
     {
         global $core;
-        if ($core->blog->settings->system->theme != 'ductilePhoto') {return;}
+        if ($core->blog->settings->system->theme != 'ductilePhoto') {
+            return;
+        }
 
         echo "\n" . '<!-- Header directives for Ductile Photo configuration -->' . "\n";
         $core->auth->user_prefs->addWorkspace('accessibility');
@@ -37,7 +42,7 @@ class tplDuctilePhotoThemeAdmin
             \dcPage::jsLoad('js/jquery/jquery-ui.custom.js') .
             \dcPage::jsLoad('js/jquery/jquery.ui.touch-punch.js');
             echo <<<EOT
-<script type="text/javascript">
+<script>
 $(function() {
     $("#stickerslist").sortable({'cursor':'move'});
     $("#stickerslist tr").hover(function () {
@@ -59,6 +64,5 @@ $(function() {
 </script>
 EOT;
         }
-
     }
 }

@@ -11,10 +11,11 @@
  * @copyright Kozlika and Franck Paul
  * @copyright GPL-2.0
  */
-
 namespace themes\ductile_focus;
 
-if (!defined('DC_RC_PATH')) {return;}
+if (!defined('DC_RC_PATH')) {
+    return;
+}
 
 \l10n::set(dirname(__FILE__) . '/locales/' . $_lang . '/main');
 
@@ -54,7 +55,7 @@ class tplDuctileFocusTheme
             if (isset($s[$case])) {
                 $f = $s[$case];
                 if (is_array($f)) {
-                    $cat      = (isset($f['cat']) ? $f['cat'] : '');
+                    $cat      = ($f['cat'] ?? '');
                     $selected = (isset($f['selected']) ? (boolean) $f['selected'] : false);
                     $subcat   = (isset($f['subcat']) ? (boolean) $f['subcat'] : false);
                     $ret      = '';
@@ -74,13 +75,10 @@ class tplDuctileFocusTheme
         global $core;
 
         if ($tag == 'EntryIf' && isset($attr['has_img'])) {
-
             $sign          = (boolean) $attr['has_img'] ? '' : '!';
             $with_category = !empty($attr['with_category']) ? 'true' : 'false';
             $if[]          = $sign . '(' . __NAMESPACE__ . '\tplDuctileFocusTheme::tplIfConditionsHelper(' . $with_category . '))';
-
         } elseif ($tag == 'EntryIf' && isset($attr['focus_cat_image'])) {
-
             $sign = (boolean) $attr['focus_cat_image'] ? '' : '!';
             $s    = $core->blog->settings->themes->get($core->blog->settings->system->theme . '_focus');
             if ($s === null) {
@@ -117,6 +115,7 @@ class tplDuctileFocusTheme
     {
         $ret = '';
         $ret = \context::EntryFirstImageHelper('s', $with_category);
+
         return ($ret != '');
     }
 
@@ -226,6 +225,7 @@ class tplDuctileFocusTheme
                 }
             }
         }
+
         return false;
     }
 
@@ -248,7 +248,7 @@ class tplDuctileFocusTheme
             "</style>\n";
 
         echo
-        '<script type="text/javascript" src="' .
+        '<script src="' .
         $core->blog->settings->system->themes_url . '/' . $core->blog->settings->system->theme .
             '/ductile.js"></script>' . "\n";
     }
@@ -436,24 +436,24 @@ class tplDuctileFocusTheme
         'Ductile Focus alternate' => '"DejaVu Sans", "helvetica neue", helvetica, sans-serif',
 
         // Serif families
-        'Times New Roman'         => 'Cambria, "Hoefler Text", Utopia, "Liberation Serif", "Nimbus Roman No9 L Regular", Times, "Times New Roman", serif',
-        'Georgia'                 => 'Constantia, "Lucida Bright", Lucidabright, "Lucida Serif", Lucida, "DejaVu Serif", "Bitstream Vera Serif", "Liberation Serif", Georgia, serif',
-        'Garamond'                => '"Palatino Linotype", Palatino, Palladio, "URW Palladio L", "Book Antiqua", Baskerville, "Bookman Old Style", "Bitstream Charter", "Nimbus Roman No9 L", Garamond, "Apple Garamond", "ITC Garamond Narrow", "New Century Schoolbook", "Century Schoolbook", "Century Schoolbook L", Georgia, serif',
+        'Times New Roman' => 'Cambria, "Hoefler Text", Utopia, "Liberation Serif", "Nimbus Roman No9 L Regular", Times, "Times New Roman", serif',
+        'Georgia'         => 'Constantia, "Lucida Bright", Lucidabright, "Lucida Serif", Lucida, "DejaVu Serif", "Bitstream Vera Serif", "Liberation Serif", Georgia, serif',
+        'Garamond'        => '"Palatino Linotype", Palatino, Palladio, "URW Palladio L", "Book Antiqua", Baskerville, "Bookman Old Style", "Bitstream Charter", "Nimbus Roman No9 L", Garamond, "Apple Garamond", "ITC Garamond Narrow", "New Century Schoolbook", "Century Schoolbook", "Century Schoolbook L", Georgia, serif',
 
         // Sans-serif families
-        'Helvetica/Arial'         => 'Frutiger, "Frutiger Linotype", Univers, Calibri, "Gill Sans", "Gill Sans MT", "Myriad Pro", Myriad, "DejaVu Sans Condensed", "Liberation Sans", "Nimbus Sans L", Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif',
-        'Verdana'                 => 'Corbel, "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", "DejaVu Sans", "Bitstream Vera Sans", "Liberation Sans", Verdana, "Verdana Ref", sans-serif',
-        'Trebuchet MS'            => '"Segoe UI", Candara, "Bitstream Vera Sans", "DejaVu Sans", "Bitstream Vera Sans", "Trebuchet MS", Verdana, "Verdana Ref", sans-serif',
+        'Helvetica/Arial' => 'Frutiger, "Frutiger Linotype", Univers, Calibri, "Gill Sans", "Gill Sans MT", "Myriad Pro", Myriad, "DejaVu Sans Condensed", "Liberation Sans", "Nimbus Sans L", Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif',
+        'Verdana'         => 'Corbel, "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", "DejaVu Sans", "Bitstream Vera Sans", "Liberation Sans", Verdana, "Verdana Ref", sans-serif',
+        'Trebuchet MS'    => '"Segoe UI", Candara, "Bitstream Vera Sans", "DejaVu Sans", "Bitstream Vera Sans", "Trebuchet MS", Verdana, "Verdana Ref", sans-serif',
 
         // Cursive families
-        'Impact'                  => 'Impact, Haettenschweiler, "Franklin Gothic Bold", Charcoal, "Helvetica Inserat", "Bitstream Vera Sans Bold", "Arial Black", sans-serif',
+        'Impact' => 'Impact, Haettenschweiler, "Franklin Gothic Bold", Charcoal, "Helvetica Inserat", "Bitstream Vera Sans Bold", "Arial Black", sans-serif',
 
         // Monospace families
-        'Monospace'               => 'Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier, monospace'
+        'Monospace' => 'Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier, monospace'
     ];
 
     protected static function fontDef($c)
     {
-        return isset(self::$fonts[$c]) ? self::$fonts[$c] : null;
+        return self::$fonts[$c] ?? null;
     }
 }

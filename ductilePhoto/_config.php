@@ -11,8 +11,9 @@
  * @copyright Kozlika and Franck Paul
  * @copyright GPL-2.0
  */
-
-if (!defined('DC_CONTEXT_ADMIN')) {return;}
+if (!defined('DC_CONTEXT_ADMIN')) {
+    return;
+}
 
 l10n::set(dirname(__FILE__) . '/locales/' . $_lang . '/admin');
 
@@ -61,10 +62,9 @@ function adjustFontSize($s)
         if (empty($m[2])) {
             $m[2] = 'em';
         }
+
         return $m[1] . $m[2];
     }
-
-    return;
 }
 
 $font_families = [
@@ -79,10 +79,10 @@ $font_families = [
     'Trebuchet MS'    => '"Segoe UI", Candara, "Bitstream Vera Sans", "DejaVu Sans", "Bitstream Vera Sans", "Trebuchet MS", Verdana, "Verdana Ref", sans-serif',
 
     // Cursive families
-    'Impact'          => 'Impact, Haettenschweiler, "Franklin Gothic Bold", Charcoal, "Helvetica Inserat", "Bitstream Vera Sans Bold", "Arial Black", sans-serif',
+    'Impact' => 'Impact, Haettenschweiler, "Franklin Gothic Bold", Charcoal, "Helvetica Inserat", "Bitstream Vera Sans Bold", "Arial Black", sans-serif',
 
     // Monospace families
-    'Monospace'       => 'Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier, monospace'
+    'Monospace' => 'Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier, monospace'
 ];
 
 function fontDef($c)
@@ -129,19 +129,16 @@ function computeContrastRatio($color, $background)
         return 0;
     }
 
-    $l1 = (0.2126 * pow(hexdec(substr($color, 1, 2)) / 255, 2.2)) +
-        (0.7152 * pow(hexdec(substr($color, 3, 2)) / 255, 2.2)) +
-        (0.0722 * pow(hexdec(substr($color, 5, 2)) / 255, 2.2));
+    $l1 = (0.2126 * pow(hexdec(substr($color, 1, 2)) / 255, 2.2)) + (0.7152 * pow(hexdec(substr($color, 3, 2)) / 255, 2.2)) + (0.0722 * pow(hexdec(substr($color, 5, 2)) / 255, 2.2));
 
-    $l2 = (0.2126 * pow(hexdec(substr($background, 1, 2)) / 255, 2.2)) +
-        (0.7152 * pow(hexdec(substr($background, 3, 2)) / 255, 2.2)) +
-        (0.0722 * pow(hexdec(substr($background, 5, 2)) / 255, 2.2));
+    $l2 = (0.2126 * pow(hexdec(substr($background, 1, 2)) / 255, 2.2)) + (0.7152 * pow(hexdec(substr($background, 3, 2)) / 255, 2.2)) + (0.0722 * pow(hexdec(substr($background, 5, 2)) / 255, 2.2));
 
     if ($l1 > $l2) {
         $ratio = ($l1 + 0.05) / ($l2 + 0.05);
     } else {
         $ratio = ($l2 + 0.05) / ($l1 + 0.05);
     }
+
     return $ratio;
 }
 
@@ -162,18 +159,23 @@ function contrastRatioLevel($ratio, $size, $bold)
     switch ($m[2]) {
         case '%':
             $s = (float) $m[1] / 100;
+
             break;
         case 'pt':
             $s = (float) $m[1] / 12;
+
             break;
         case 'px':
             $s = (float) $m[1] / 16;
+
             break;
         case 'em':
             $s = (float) $m[1];
+
             break;
         case 'ex':
             $s = (float) $m[1] / 2;
+
             break;
         default:
             return '';
@@ -191,6 +193,7 @@ function contrastRatioLevel($ratio, $size, $bold)
     } elseif (($ratio > 3) && $large) {
         return 'AA';
     }
+
     return '';
 }
 
@@ -199,19 +202,21 @@ function contrastRatio($color, $background, $size = '', $bold = false)
     if (($color != '') && ($background != '')) {
         $ratio = computeContrastRatio($color, $background);
         $level = contrastRatioLevel($ratio, $size, $bold);
+
         return
         '<span style="position:absolute;top:0;left:23em;">' .
         sprintf(__('ratio %.1f'), $ratio) .
             ($level != '' ? ' ' . sprintf(__('(%s)'), $level) : '') .
             '</span>';
     }
+
     return '';
 }
 
 $ductile_base = [
     // HTML
-    'subtitle_hidden'     => null,
-    'logo_src'            => null,
+    'subtitle_hidden' => null,
+    'logo_src'        => null,
     // CSS
     'ambiance'            => 'light',
     'body_font'           => null,
@@ -288,11 +293,10 @@ if (is_array($ductile_stickers_images)) {
     }
 }
 
-$conf_tab = isset($_POST['conf_tab']) ? $_POST['conf_tab'] : 'html';
+$conf_tab = $_POST['conf_tab'] ?? 'html';
 
 if (!empty($_POST)) {
-    try
-    {
+    try {
         # HTML
         if ($conf_tab == 'html') {
             $ductile_user['subtitle_hidden'] = (integer) !empty($_POST['subtitle_hidden']);
@@ -328,7 +332,6 @@ if (!empty($_POST)) {
             for ($i = 0; $i < count($_POST['count_nb']); $i++) {
                 $ductile_counts[$_POST['count_ctx'][$i]] = $_POST['count_nb'][$i];
             }
-
         }
 
         # CSS

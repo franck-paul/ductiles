@@ -34,48 +34,65 @@ body {
   font-family: Frutiger, "Frutiger Linotype", Univers, Calibri, "Gill Sans", "Gill Sans MT", "Myriad Pro", Myriad, "DejaVu Sans Condensed", "Liberation Sans", "Nimbus Sans L", Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 }
+
 /* ------------------------------------------------------------
   2. LIENS & Complément balises HTML
 ------------------------------------------------------------- */
 
-code, pre {
+code,
+pre {
   font-size: .81em;
 }
+
 pre {
   white-space: normal;
 }
+
 blockquote {
   clear: left;
   padding: 1px 1em .33em;
   margin-left: 0;
   margin-right: 0;
 }
-a:hover, a:focus {
+
+a:hover,
+a:focus {
   text-decoration: none;
 }
+
 ul ul {
   margin-top: 0;
 }
-h2, h2 a {
+
+h2,
+h2 a {
   font-weight: normal;
   margin-top: .75em;
 }
+
 table {
   border-collapse: collapse;
 }
-td, th, tr {
+
+td,
+th,
+tr {
   padding: 2px 8px;
   border-collapse: collapse;
 }
-thead th, tbody th {
+
+thead th,
+tbody th {
   text-align: left;
   font-weight: normal;
 }
+
 table caption {
   text-align: left;
   margin-bottom: .33em;
   font-weight: bold;
 }
+
 /* ------------------------------------------------------------
   3. PAGE
 ------------------------------------------------------------- */
@@ -84,24 +101,30 @@ table caption {
   position: relative;
   width: 100%;
 }
+
 #top {
   line-height: 1;
 }
+
 h1 {
   font-size: 1.33em;
   margin: 0;
 }
+
 h1 a {
   padding-left: 64px;
   background: transparent url(img/logo.png) no-repeat left center;
 }
+
 .searchform p {
   margin: 0;
 }
+
 .searchform label {
   position: absolute;
   left: -10000px;
 }
+
 /* recherche */
 
 #sf {
@@ -111,6 +134,7 @@ h1 a {
   height: 16px;
   border-radius: 4px;
 }
+
 .search-submit {
   width: 24px;
   height: 24px;
@@ -120,9 +144,12 @@ h1 a {
   padding: 0;
   background: transparent url(img/search.png) no-repeat center left;
 }
-.search-submit:hover, .search-submit:focus {
+
+.search-submit:hover,
+.search-submit:focus {
   background-image: url(img/search-hover.png);
 }
+
 /* ------------------------------------------------------------
   4. HAUT DE PAGE
 ------------------------------------------------------------- */
@@ -133,15 +160,19 @@ h1 a {
   text-shadow: 0 1px 1px rgba(0, 0, 0, .2);
   line-height: 1;
 }
+
 h1 {
   font-variant: small-caps;
 }
+
 h1 a {
   text-decoration: none;
 }
+
 #blogdesc {
   display: none;
 }
+
 .dc-home #blogdesc {
   display: block;
   position: absolute;
@@ -150,6 +181,7 @@ h1 a {
   margin: 0;
   font-style: italic;
 }
+
 /* ------------------------------------------------------------
   5. WRAPPER MAIN CONTENT
 ------------------------------------------------------------- */
@@ -158,152 +190,198 @@ h1 a {
   clear: both;
   position: relative;
 }
+
 #content {
   padding-bottom: 2em;
 }
+
 /* ------------------------------------------------------- content-info */
 
 #content-info {
   font-size: .875em;
   margin-bottom: 3em;
 }
+
 #content-info h2 {
   margin-top: 0;
   margin-bottom: .33em;
 }
+
 #subcategories {
   padding-top: 1em;
   font-size: .875em;
 }
-#subcategories h3, #subcategories ul {
+
+#subcategories h3,
+#subcategories ul {
   display: inline;
   padding-right: 1em;
 }
+
 #subcategories h3 {
   font-size: 1.1em;
   font-variant: small-caps;
 }
-#content-info p, #content-info ul, #subcategories ul {
+
+#content-info p,
+#content-info ul,
+#subcategories ul {
   margin: .5em 0;
   padding: 0;
   list-style-type: none;
 }
+
 #subcategories li {
   margin: 0;
   display: inline;
   padding-right: 1em;
 }
+
 .feed-info a {
   font-size: .875em;
   padding-top: .1em;
   padding-bottom: .1em;
 }
+
 /* ------------------------------------------------------- pagination, navlinks */
 
-.navlinks, .pagination {
+.navlinks,
+.pagination {
   margin: 0;
   padding: 4px 8px;
   text-align: center;
   font-size: .875em;
 }
+
 /* ------------------------------------------------------------
   6. BILLETS
 ------------------------------------------------------------- */
 
 /* billet seul */
 
-.entry-content, .entry-aside {
+.entry-content,
+.entry-aside {
   max-width: 100%;
   display: inline-block;
   vertical-align: top;
 }
+
 .entry-content .post-content p:first-child {
   margin-top: .5em;
 }
+
 .post-attr h2 {
   margin: 0;
   font-size: 2em;
 }
+
 .post-title {
   font-size: 1.33em;
   margin-bottom: .33em;
   margin-top: .5em;
   line-height: 1.17;
 }
+
 .post-title a {
   text-decoration: none;
 }
-.post h3, .post h4, .post h5, .post h6 {
+
+.post h3,
+.post h4,
+.post h5,
+.post h6 {
   font-weight: normal;
 }
-.post h3, .post h5 {
+
+.post h3,
+.post h5 {
   font-variant: small-caps;
 }
+
 .post-content img {
   max-width: 96%;
   padding: 4px;
 }
+
 img.smiley {
   border: none;
   padding: 0;
 }
+
 .post-excerpt {
   margin: 1em 0 1.5em;
 }
+
 .post-excerpt img {
   max-width: 100%;
 }
-.post-info, .post-tags {
+
+.post-info,
+.post-tags {
   margin: 0 0 .33em 0;
   line-height: 1.2;
 }
+
 .post-attr {
   font-size: .875em;
   margin: 0;
 }
+
 .post-attr p {
   margin-top: 0;
 }
+
 .post-info span+span {
   padding-left: .5em;
 }
+
 .post-tags a {
   padding-right: 1em;
 }
+
 .post-tags li {
   display: inline;
 }
+
 .post ul {
   list-style-type: square;
   margin-left: 0;
 }
+
 .post ol {
   margin-left: 0;
 }
+
 .footnotes {
   font-size: .875em;
 }
+
 .footnotes h4 {
   font-variant: normal;
   font-weight: bold;
 }
+
 #attachments {
   font-size: .875em;
   margin: 0 0 2em;
 }
+
 #attachments h3 {
   font-variant: small-caps;
   font-weight: normal;
 }
+
 #attachments ul {
   list-style-type: none;
   margin: 0 0 1em;
   padding: 0;
 }
+
 #attachments ul li {
   padding-left: 24px;
   background: transparent url(img/download.png) no-repeat left .3em;
 }
+
 /* thumbnails */
 
 .thumbnail-list {
@@ -311,6 +389,7 @@ img.smiley {
   margin: 0;
   padding: 0;
 }
+
 .thumb {
   /* li or div */
   display: inline-block;
@@ -318,9 +397,11 @@ img.smiley {
   margin: 0 0 4px;
   padding: 0;
 }
+
 .thumb p {
   margin: 0;
 }
+
 .thumb a {
   display: block;
   width: 98px;
@@ -328,15 +409,18 @@ img.smiley {
   overflow: hidden;
   position: relative;
 }
+
 .thumb a:link img {
   position: absolute;
   top: 0;
   left: 0;
   padding: 0;
 }
+
 .thumb a:hover img {
   top: -98px;
 }
+
 .month {
   /* each thumb span for a year */
   font-size: 1.66em;
@@ -347,6 +431,7 @@ img.smiley {
   left: 4px;
   opacity: .7;
 }
+
 .day {
   /* each thumb span for a month */
   font-size: .92em;
@@ -359,41 +444,61 @@ img.smiley {
   line-height: 1;
   text-shadow: 1px 1px 1px #000;
 }
+
 /* ------------------------------------------------------------
   7. COMMENTAIRES, PINGS
 ------------------------------------------------------------- */
 
 /* ------------------------------------------------------- commentaires et rétroliens */
 
-#comments, #ping-url, #comment-form, #comments-feed {
+#comments,
+#ping-url,
+#comment-form,
+#comments-feed {
   font-size: .875em;
   clear: both;
 }
-#comment-form, #ping-url, #pr {
+
+#comment-form,
+#ping-url,
+#pr {
   padding: 1em;
   margin: 2em 0;
 }
+
 #pr {}
-#comments h3, #ping-url h3, #pr h3, #comment-form h3 {
+
+#comments h3,
+#ping-url h3,
+#pr h3,
+#comment-form h3 {
   margin-top: 2em;
 }
-#comment-form h3, #ping-url h3 {
+
+#comment-form h3,
+#ping-url h3 {
   margin-top: 0;
 }
+
 #comments>ul {
   margin-left: 0;
   padding-left: 0;
   list-style-type: none;
 }
+
 #comments li {}
-.comment, .ping {
+
+.comment,
+.ping {
   clear: left;
   margin-left: 0;
 }
+
 .comment-info {
   padding-bottom: .2em;
   line-height: 1.25;
 }
+
 .comment-number {
   font-size: 1.5em;
   font-weight: normal;
@@ -401,39 +506,50 @@ img.smiley {
   display: block;
   width: 2em;
 }
+
 .comment .comment-number {
   background: transparent url(img/comm.png) right center no-repeat;
 }
+
 .comment p:first-child {
   margin-top: .25em;
 }
+
 .ping .comment-number {
   background: transparent url(img/tb.png) right center no-repeat;
 }
+
 #comments-feed {
   margin-top: 1.5em;
   padding-top: 1em;
 }
+
 /* ------------------------------------------------------- formulaire des commentaires */
 
 .field {
   margin-bottom: 1em;
 }
+
 .field label {
   display: block;
   font-size: .875em;
   text-indent: 6px;
 }
-.field input, .field textarea {
+
+.field input,
+.field textarea {
   display: block;
   font-size: 100%;
   padding: 4px;
   border-radius: 3px;
 }
+
 .field textarea {
   padding: .5em 1em;
 }
-#comment-form input[type=submit], #comment-form input[type=reset] {
+
+#comment-form input[type=submit],
+#comment-form input[type=reset] {
   font-size: .875em;
   display: inline-block;
   text-transform: capitalize;
@@ -443,21 +559,29 @@ img.smiley {
   text-shadow: 0 1px 1px rgba(0, 0, 0, .3);
   border-radius: 5px;
 }
-#comment-form input[type=submit]:hover, #comment-form input[type=submit]:focus, #comment-form input[type=reset]:hover, #comment-form input[type=reset]:focus {
+
+#comment-form input[type=submit]:hover,
+#comment-form input[type=submit]:focus,
+#comment-form input[type=reset]:hover,
+#comment-form input[type=reset]:focus {
   text-decoration: none;
 }
+
 #c_content {
   width: 95%;
   padding: 4px;
 }
+
 .form-help {
   margin-top: 0;
   font-size: .875em;
   font-style: italic;
 }
+
 #comments-feed {
   margin-top: 2em;
 }
+
 /* ------------------------------------------------------------
   9. FOOTER - Tous les widgets sont dans #blogcustom
 ------------------------------------------------------------- */
@@ -465,51 +589,64 @@ img.smiley {
 /* -------------------------------------------------------
 widgets déjà traités (search dans le head, accueil et archives dans le menu) */
 
-#footer #search, #footer #topnav {
+#footer #search,
+#footer #topnav {
   display: none;
 }
+
 #footer {
   position: relative;
   clear: both;
   font-size: .875em;
 }
+
 #footer img {
   max-width: 100%;
 }
+
 #credit {
   padding: .33em 3%;
   margin: 0;
   text-align: right;
 }
+
 #blogcustom {
   clear: both;
 }
+
 #blogcustom>div {
   display: inline-block;
   text-align: left;
   vertical-align: top;
   width: 296px;
 }
+
 #blogcustom div.feed {
   background-image: none;
 }
+
 #blogcustom img {
   max-width: 100%;
 }
+
 #blogcustom ul {
   padding: .66em 1em 0;
   margin: 0;
   text-align: left;
   line-height: 1.75;
 }
+
 #blogcustom li {
   padding-left: 0;
   margin-left: 0;
 }
-#blogcustom .syndicate ul, #blogcustom .tags ul {
+
+#blogcustom .syndicate ul,
+#blogcustom .tags ul {
   list-style-type: none;
   padding-left: 0;
 }
+
 #stickers {
   list-style-type: none;
   margin: 0;
@@ -517,23 +654,31 @@ widgets déjà traités (search dans le head, accueil et archives dans le menu) 
   top: 0;
   right: 0;
 }
+
 #stickers li {
   display: inline-block;
   width: 60px;
   top: 0;
 }
+
 #stickers a span {
   display: block;
   margin: 0;
   text-indent: -9999px;
   font-size: .875em;
 }
-#stickers a img, #stickers a:hover img, #stickers a:focus img {
+
+#stickers a img,
+#stickers a:hover img,
+#stickers a:focus img {
   border: none;
 }
-#stickers a:hover span, #stickers a:focus span {
+
+#stickers a:hover span,
+#stickers a:focus span {
   text-indent: 0;
 }
+
 /* ------------------------------------------------------------
   10. CLASSES COMMUNES
 ------------------------------------------------------------- */
@@ -544,14 +689,22 @@ widgets déjà traités (search dans le head, accueil et archives dans le menu) 
   padding-left: 22px;
   background: transparent url(img/feed.png) no-repeat left center;
 }
+
 /* ------------------------------------------------------- tags */
 
-.dc-tags .content-inner, .dc-tags .content-inner ul {
+.dc-tags .content-inner,
+.dc-tags .content-inner ul {
   font-size: 1.25em;
   margin: 0;
   padding: 0;
 }
-.dc-tags #content ul li, .dc-tags #content ul li a, #blogcustom .tags ul li, #blogcustom .tags ul li a, #sidebar .tags ul li, #sidebar .tags ul li a {
+
+.dc-tags #content ul li,
+.dc-tags #content ul li a,
+#blogcustom .tags ul li,
+#blogcustom .tags ul li a,
+#sidebar .tags ul li,
+#sidebar .tags ul li a {
   display: inline;
   width: auto;
   padding-left: 0;
@@ -561,42 +714,66 @@ widgets déjà traités (search dans le head, accueil et archives dans le menu) 
   text-decoration: none;
   line-height: 1.5em;
 }
+
 .tags ul li a:hover {
   background-image: none;
 }
-.dc-tags .tag0, .tags .tag0 {
+
+.dc-tags .tag0,
+.tags .tag0 {
   font-size: 85%;
 }
-.dc-tags .tag10, .tags .tag10 {
+
+.dc-tags .tag10,
+.tags .tag10 {
   font-size: 90%;
 }
-.dc-tags .tag20, .tags .tag20 {
+
+.dc-tags .tag20,
+.tags .tag20 {
   font-size: 95%;
 }
-.dc-tags .tag30, .tags .tag30 {
+
+.dc-tags .tag30,
+.tags .tag30 {
   font-size: 100%;
 }
-.dc-tags .tag40, .tags .tag40 {
+
+.dc-tags .tag40,
+.tags .tag40 {
   font-size: 105%;
 }
-.dc-tags .tag50, .tags .tag50 {
+
+.dc-tags .tag50,
+.tags .tag50 {
   font-size: 110%;
 }
-.dc-tags .tag60, .tags .tag60 {
+
+.dc-tags .tag60,
+.tags .tag60 {
   font-size: 115%;
 }
-.dc-tags .tag70, .tags .tag70 {
+
+.dc-tags .tag70,
+.tags .tag70 {
   font-size: 120%;
 }
-.dc-tags .tag80, .tags .tag80 {
+
+.dc-tags .tag80,
+.tags .tag80 {
   font-size: 125%;
 }
-.dc-tags .tag90, .tags .tag90 {
+
+.dc-tags .tag90,
+.tags .tag90 {
   font-size: 130%;
 }
-.dc-tags .tag100, .tags .tag100 {
+
+.dc-tags .tag100,
+.tags .tag100 {
   font-size: 135%;
 }
+
 /* ------------------------------------------------------- messages d'erreur */
 
 .error {
@@ -604,78 +781,98 @@ widgets déjà traités (search dans le head, accueil et archives dans le menu) 
   background: #df0;
   padding: 0.5em;
 }
+
 .error ul {
   padding-left: 20px;
 }
+
 .error li {
   list-style: square;
 }
+
 /* ------------------------------------------------------- class à dispo pour billets */
 
 .left {
   float: left;
   margin-right: 1em;
 }
+
 .right {
   float: right;
   margin-left: 1em;
 }
+
 .center {
   margin-left: auto;
   margin-right: auto;
 }
+
 .left-text {
   text-align: left;
 }
+
 .right-text {
   text-align: right;
 }
+
 .center-text {
   text-align: center;
 }
+
 .little-text {
   font-size: .875em;
 }
+
 .little-upper-text {
   font-size: .875em;
   text-transform: uppercase;
 }
+
 hr.hidden {
   margin: 0;
 }
+
 /* ------------------------------------------------------------
   11. PAGES SPECIFIQUES
 ------------------------------------------------------------- */
 
 /* ------------------------------------------------------------- home */
 
-.une-image, .une-info {
+.une-image,
+.une-info {
   text-align: center;
 }
+
 .une-image img {
   padding: 6px;
   max-width: 90%;
   max-height: 600px;
   vertical-align: middle;
 }
-.une-image a:hover, .une-image a:focus {
+
+.une-image a:hover,
+.une-image a:focus {
   zoom: 1;
   filter: alpha(opacity=80);
   opacity: 0.8;
 }
+
 .une-info h2 {
   font-size: 1.2em;
 }
+
 /* ---------------------------------------------------------------- archives */
 
 .dc-archive #content-info {
   margin-bottom: 1.5em;
 }
+
 .arch-block {
   display: inline-block;
   margin-bottom: 2em;
   vertical-align: top;
 }
+
 .arch-block h3 {
   margin-bottom: 1em;
   font-size: 1.2em;
@@ -683,128 +880,171 @@ hr.hidden {
   font-weight: normal;
   text-transform: lowercase;
 }
+
 .arch-block h4 {
   font-weight: normal;
   font-size: 1.1em;
   margin-bottom: 0;
   margin-top: 0;
 }
+
 .arch-block ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
 }
+
 .arch-block ul ul {
   margin-left: 20px;
 }
+
 #time-criteria h3:first-child {
   margin-top: 0;
 }
+
 #by-date {
   margin-right: 0;
   margin-bottom: 1em;
 }
+
 #by-date h3 {
   margin-bottom: 0;
   margin-top: 0;
 }
+
 .fromto {
   margin-top: 0;
   margin-bottom: 1.5em;
   font-size: .875em;
   font-style: italic;
 }
+
 #by-date h4 {
   font-weight: bold;
 }
+
 #by-date ul {
   margin-bottom: 1em;
 }
+
 #by-cat ul {
   background: transparent url(img/vline.png) repeat-y;
 }
+
 #by-cat ul ul {
   margin: .5em 0 0 .5em;
 }
+
 #by-cat ul li {
   padding: .2em .2em .2em 20px;
   background: transparent url(img/hline.png) no-repeat left .82em;
 }
+
 #by-cat ul li:last-child {
   background-image: url(img/last-hline.png);
 }
+
 #by-tag {
   max-width: 600px;
 }
+
 #by-tag ul li {
   display: inline;
   padding-right: 1em;
 }
+
 #by-tag .tag0 {
   font-size: 90%;
 }
+
 #by-tag .tag10 {
   font-size: 92%;
 }
+
 #by-tag .tag20 {
   font-size: 94%;
 }
+
 #by-tag .tag30 {
   font-size: 96%;
 }
+
 #by-tag .tag40 {
   font-size: 98%;
 }
+
 #by-tag .tag50 {
   font-size: 100%;
 }
+
 #by-tag .tag60 {
   font-size: 102%;
 }
+
 #by-tag .tag70 {
   font-size: 104%;
 }
+
 #by-tag .tag80 {
   font-size: 106%;
 }
+
 #by-tag .tag90 {
   font-size: 108%;
 }
+
 #by-tag .tag100 {
   font-size: 110%;
 }
+
 /* ---------------------------------------------------------------- 404 */
 
 .dc-404 #content-info {
   padding-bottom: 200px;
   background: transparent url(img/404.png) no-repeat bottom center;
 }
+
 .dc-404 .content-inner ul {
   margin-left: 0;
   padding-left: 0;
   list-style-type: none;
 }
+
 .dc-404 .content-inner h3 {
   font-size: 1.1em;
   font-variant: small-caps;
 }
+
 /* ---------------------------------------------------
   12. ET POUR FINIR NE PAS OUBLIER LES CLEARERS
 --------------------------------------------------- */
 
-.pagination, .navlinks, .footnotes, #attachments, .read-it, .post-info-co, #comments, #footer, #credit .clearer {
+.pagination,
+.navlinks,
+.footnotes,
+#attachments,
+.read-it,
+.post-info-co,
+#comments,
+#footer,
+#credit .clearer {
   clear: both;
 }
-.post-content:before, .post-content:after {
+
+.post-content:before,
+.post-content:after {
   content: "";
   display: table;
 }
+
 .post-content:after {
   clear: both;
 }
+
 #sidebar {
   display: none;
 }
+
 /* tests mobile
 body {
   background: url(img/vline.png) repeat-y 320px;
