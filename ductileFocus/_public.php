@@ -248,7 +248,7 @@ class tplDuctileFocusTheme
             "</style>\n";
 
         echo
-        '<script type="text/javascript" src="' .
+        '<script src="' .
         $core->blog->settings->system->themes_url . '/' . $core->blog->settings->system->theme .
             '/ductile.js"></script>' . "\n";
     }
