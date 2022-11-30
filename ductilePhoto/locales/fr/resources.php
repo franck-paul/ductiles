@@ -11,7 +11,6 @@
  * @copyright Kozlika and Franck Paul
  * @copyright GPL-2.0
  */
-
-if (!isset($__resources['help']['ductilePhoto'])) {
-    $__resources['help']['ductilePhoto'] = dirname(__FILE__) . '/help/help.html';
+if (!isset(dcCore::app()->resources['help']['ductilePhoto'])) {
+    dcCore::app()->resources['help']['ductilePhoto'] = __DIR__ . '/help/help.html';
 }

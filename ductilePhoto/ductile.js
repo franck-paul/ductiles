@@ -1,27 +1,25 @@
 /*global $ */
 'use strict';
 
-$(function () {
-  const create_name = (text) => {
-    return (
-      text
-        // Convert text to lower case.
-        .toLowerCase()
+$(() => {
+  const create_name = (text) => (
+    text
+      // Convert text to lower case.
+      .toLowerCase()
 
-        // Remove leading and trailing spaces, and any non-alphanumeric
-        // characters except for ampersands, spaces and dashes.
-        .replace(/^\s+|\s+$|[^a-z0-9&\s-]/g, '')
+      // Remove leading and trailing spaces, and any non-alphanumeric
+      // characters except for ampersands, spaces and dashes.
+      .replace(/^\s+|\s+$|[^a-z0-9&\s-]/g, '')
 
-        // Replace '&' with 'and'.
-        .replace(/&/g, 'and')
+      // Replace '&' with 'and'.
+      .replace(/&/g, 'and')
 
-        // Replaces spaces with dashes.
-        .replace(/\s/g, '-')
+      // Replaces spaces with dashes.
+      .replace(/\s/g, '-')
 
-        // Squash any duplicate dashes.
-        .replace(/(-)+\1/g, '$1')
-    );
-  };
+      // Squash any duplicate dashes.
+      .replace(/(-)+\1/g, '$1')
+  );
 
   const add_link = function () {
     // Convert the h2 element text into a value that
@@ -35,7 +33,7 @@ $(function () {
     // Replace the h2.toggle element with a link to the
     // fragment anchor.  Use the h2 text to create the
     // link title attribute.
-    $(this).html('<a href="#' + name + '" title="Reveal ' + $(this).text() + ' content">' + $(this).html() + '</a>');
+    $(this).html(`<a href="#${name}" title="Reveal ${$(this).text()} content">${$(this).html()}</a>`);
   };
 
   const toggle = function (event) {
@@ -52,7 +50,7 @@ $(function () {
     $(this).blur();
   };
 
-  $(document).ready(function () {
+  $(document).ready(() => {
     if ($(window).width() < 1024) {
       // Set toggle class to each #sidebar h2
       $('#sidebar div div h2').addClass('toggle');

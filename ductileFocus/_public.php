@@ -11,29 +11,30 @@
  * @copyright Kozlika and Franck Paul
  * @copyright GPL-2.0
  */
+
 namespace themes\ductile_focus;
 
 if (!defined('DC_RC_PATH')) {
     return;
 }
 
-\l10n::set(dirname(__FILE__) . '/locales/' . $_lang . '/main');
+\l10n::set(__DIR__ . '/locales/' . \dcCore::app()->lang . '/main');
 
 # Behaviors
-$core->addBehavior('publicHeadContent', [__NAMESPACE__ . '\tplDuctileFocusTheme', 'publicHeadContent']);
-$core->addBehavior('publicInsideFooter', [__NAMESPACE__ . '\tplDuctileFocusTheme', 'publicInsideFooter']);
-$core->addBehavior('tplIfConditions', [__NAMESPACE__ . '\tplDuctileFocusTheme', 'tplIfConditions']);
+\dcCore::app()->addBehavior('publicHeadContent', [__NAMESPACE__ . '\tplDuctileFocusTheme', 'publicHeadContent']);
+\dcCore::app()->addBehavior('publicInsideFooter', [__NAMESPACE__ . '\tplDuctileFocusTheme', 'publicInsideFooter']);
+\dcCore::app()->addBehavior('tplIfConditions', [__NAMESPACE__ . '\tplDuctileFocusTheme', 'tplIfConditions']);
 
 # Templates
-$core->tpl->addBlock('EntryIfContentIsCut', [__NAMESPACE__ . '\tplDuctileFocusTheme', 'EntryIfContentIsCut']);
-$core->tpl->addValue('focusEntries', [__NAMESPACE__ . '\tplDuctileFocusTheme', 'focusEntries']);
-$core->tpl->addValue('ductileLogoSrc', [__NAMESPACE__ . '\tplDuctileFocusTheme', 'ductileLogoSrc']);
+\dcCore::app()->tpl->addBlock('EntryIfContentIsCut', [__NAMESPACE__ . '\tplDuctileFocusTheme', 'EntryIfContentIsCut']);
+\dcCore::app()->tpl->addValue('focusEntries', [__NAMESPACE__ . '\tplDuctileFocusTheme', 'focusEntries']);
+\dcCore::app()->tpl->addValue('ductileLogoSrc', [__NAMESPACE__ . '\tplDuctileFocusTheme', 'ductileLogoSrc']);
 
 class tplDuctileFocusTheme
 {
     public static function focusEntries($attr)
     {
-        $case = !empty($attr['focus']) ? (integer) $attr['focus'] : 1;
+        $case = empty($attr['focus']) ? 1 : (int) $attr['focus'];
         $case--;
         if ($case < 0) {
             $case++;
@@ -49,22 +50,20 @@ class tplDuctileFocusTheme
 
     public static function focusEntriesHelper($case, $params)
     {
-        $s = $GLOBALS['core']->blog->settings->themes->get($GLOBALS['core']->blog->settings->system->theme . '_focus');
+        $s = \dcCore::app()->blog->settings->themes->get(\dcCore::app()->blog->settings->system->theme . '_focus');
         $s = @unserialize($s);
-        if (is_array($s)) {
-            if (isset($s[$case])) {
-                $f = $s[$case];
-                if (is_array($f)) {
-                    $cat      = ($f['cat'] ?? '');
-                    $selected = (isset($f['selected']) ? (boolean) $f['selected'] : false);
-                    $subcat   = (isset($f['subcat']) ? (boolean) $f['subcat'] : false);
-                    $ret      = '';
-                    if ($cat != '') {
-                        $params['cat_url'] = $cat . ($subcat ? ' ?sub' : '');
-                    }
-                    if ($selected) {
-                        $params['post_selected'] = 1;
-                    }
+        if (is_array($s) && isset($s[$case])) {
+            $f = $s[$case];
+            if (is_array($f)) {
+                $cat      = ($f['cat'] ?? '');
+                $selected = (isset($f['selected']) ? (bool) $f['selected'] : false);
+                $subcat   = (isset($f['subcat']) ? (bool) $f['subcat'] : false);
+                $ret      = '';
+                if ($cat != '') {
+                    $params['cat_url'] = $cat . ($subcat ? ' ?sub' : '');
+                }
+                if ($selected) {
+                    $params['post_selected'] = 1;
                 }
             }
         }
@@ -72,15 +71,13 @@ class tplDuctileFocusTheme
 
     public static function tplIfConditions($tag, $attr, $content, $if)
     {
-        global $core;
-
         if ($tag == 'EntryIf' && isset($attr['has_img'])) {
-            $sign          = (boolean) $attr['has_img'] ? '' : '!';
-            $with_category = !empty($attr['with_category']) ? 'true' : 'false';
+            $sign          = (bool) $attr['has_img'] ? '' : '!';
+            $with_category = empty($attr['with_category']) ? 'false' : 'true';
             $if[]          = $sign . '(' . __NAMESPACE__ . '\tplDuctileFocusTheme::tplIfConditionsHelper(' . $with_category . '))';
         } elseif ($tag == 'EntryIf' && isset($attr['focus_cat_image'])) {
-            $sign = (boolean) $attr['focus_cat_image'] ? '' : '!';
-            $s    = $core->blog->settings->themes->get($core->blog->settings->system->theme . '_focus');
+            $sign = (bool) $attr['focus_cat_image'] ? '' : '!';
+            $s    = \dcCore::app()->blog->settings->themes->get(\dcCore::app()->blog->settings->system->theme . '_focus');
             if ($s === null) {
                 return;
             }
@@ -98,12 +95,12 @@ class tplDuctileFocusTheme
                 return;
             }
 
-            $c   = $core->blog->getCategories(['cat_url' => $s[2]['cat']]);
-            $cc  = $core->blog->getCategoryFirstChildren($c->cat_id);
-            $ret = 'in_array($_ctx->posts->cat_id,[' . ($c->cat_id ? $c->cat_id : 'null');
+            $c   = \dcCore::app()->blog->getCategories(['cat_url' => $s[2]['cat']]);
+            $cc  = \dcCore::app()->blog->getCategoryFirstChildren($c->cat_id);
+            $ret = 'in_array(dcCore::app()->ctx->posts->cat_id,[' . ($c->cat_id ?: 'null');
             if ($cc) {
                 while ($cc->fetch()) {
-                    $ret .= ',' . ($c->cat_id ? $c->cat_id : 'null');
+                    $ret .= ',' . ($c->cat_id ?: 'null');
                 }
             }
             $ret .= '])';
@@ -121,8 +118,6 @@ class tplDuctileFocusTheme
 
     public static function EntryIfContentIsCut($attr, $content)
     {
-        global $core;
-
         if (empty($attr['cut_string']) || !empty($attr['full'])) {
             return '';
         }
@@ -132,14 +127,14 @@ class tplDuctileFocusTheme
             $urls = '1';
         }
 
-        $short              = $core->tpl->getFilters($attr);
+        $short              = \dcCore::app()->tpl->getFilters($attr);
         $cut                = $attr['cut_string'];
         $attr['cut_string'] = 0;
-        $full               = $core->tpl->getFilters($attr);
+        $full               = \dcCore::app()->tpl->getFilters($attr);
         $attr['cut_string'] = $cut;
 
-        return '<?php if (strlen(' . sprintf($full, '$_ctx->posts->getContent(' . $urls . ')') . ') > ' .
-        'strlen(' . sprintf($short, '$_ctx->posts->getContent(' . $urls . ')') . ')) : ?>' .
+        return '<?php if (strlen(' . sprintf($full, 'dcCore::app()->ctx->posts->getContent(' . $urls . ')') . ') > ' .
+        'strlen(' . sprintf($short, 'dcCore::app()->ctx->posts->getContent(' . $urls . ')') . ')) : ?>' .
             $content .
             '<?php endif; ?>';
     }
@@ -151,7 +146,7 @@ class tplDuctileFocusTheme
 
     public static function ductileLogoSrcHelper()
     {
-        $s = $GLOBALS['core']->blog->settings->themes->get($GLOBALS['core']->blog->settings->system->theme . '_style');
+        $s = \dcCore::app()->blog->settings->themes->get(\dcCore::app()->blog->settings->system->theme . '_style');
         if ($s === null) {
             return;
         }
@@ -160,31 +155,27 @@ class tplDuctileFocusTheme
             return;
         }
 
-        $img_url = $GLOBALS['core']->blog->settings->system->themes_url . '/' . $GLOBALS['core']->blog->settings->system->theme . '/img/logo.png';
-        if (isset($s['logo_src'])) {
-            if ($s['logo_src'] !== null) {
-                if ($s['logo_src'] != '') {
-                    if ((substr($s['logo_src'], 0, 1) == '/') || (parse_url($s['logo_src'], PHP_URL_SCHEME) != '')) {
-                        // absolute URL
-                        $img_url = $s['logo_src'];
-                    } else {
-                        // relative URL (base = img folder of ductile focus theme)
-                        $img_url = $GLOBALS['core']->blog->settings->system->themes_url . '/' . $GLOBALS['core']->blog->settings->system->theme . '/img/' . $s['logo_src'];
-                    }
-                }
+        $img_url = \dcCore::app()->blog->settings->system->themes_url . '/' . \dcCore::app()->blog->settings->system->theme . '/img/logo.png';
+        if (isset($s['logo_src']) && $s['logo_src'] !== null && $s['logo_src'] != '') {
+            if ((substr($s['logo_src'], 0, 1) == '/') || (parse_url($s['logo_src'], PHP_URL_SCHEME) != '')) {
+                // absolute URL
+                $img_url = $s['logo_src'];
+            } else {
+                // relative URL (base = img folder of ductile focus theme)
+                $img_url = \dcCore::app()->blog->settings->system->themes_url . '/' . \dcCore::app()->blog->settings->system->theme . '/img/' . $s['logo_src'];
             }
         }
 
         return $img_url;
     }
 
-    public static function publicInsideFooter($core)
+    public static function publicInsideFooter()
     {
         $res     = '';
         $default = false;
-        $img_url = $core->blog->settings->system->themes_url . '/' . $core->blog->settings->system->theme . '/img/';
+        $img_url = \dcCore::app()->blog->settings->system->themes_url . '/' . \dcCore::app()->blog->settings->system->theme . '/img/';
 
-        $s = $core->blog->settings->themes->get($core->blog->settings->system->theme . '_stickers');
+        $s = \dcCore::app()->blog->settings->themes->get(\dcCore::app()->blog->settings->system->theme . '_stickers');
 
         if ($s === null) {
             $default = true;
@@ -199,7 +190,7 @@ class tplDuctileFocusTheme
                 } else {
                     $count = 1;
                     foreach ($s as $sticker) {
-                        $res .= self::setSticker($count, ($count == count($s)), $sticker['label'], $sticker['url'], $img_url . $sticker['image']);
+                        $res .= self::setSticker($count, ($count === count($s)), $sticker['label'], $sticker['url'], $img_url . $sticker['image']);
                         $count++;
                     }
                 }
@@ -207,7 +198,7 @@ class tplDuctileFocusTheme
         }
 
         if ($default || $res == '') {
-            $res = self::setSticker(1, true, __('Subscribe'), $core->blog->url . $core->url->getURLFor('feed') . '/atom', $img_url . 'sticker-feed.png');
+            $res = self::setSticker(1, true, __('Subscribe'), \dcCore::app()->blog->url . \dcCore::app()->url->getURLFor('feed') . '/atom', $img_url . 'sticker-feed.png');
         }
 
         if ($res != '') {
@@ -218,15 +209,7 @@ class tplDuctileFocusTheme
 
     protected static function cleanStickers($s)
     {
-        if (is_array($s)) {
-            if (isset($s['label']) && isset($s['url']) && isset($s['image'])) {
-                if ($s['label'] != null && $s['url'] != null && $s['image'] != null) {
-                    return true;
-                }
-            }
-        }
-
-        return false;
+        return is_array($s) && (isset($s['label']) && isset($s['url']) && isset($s['image'])) && ($s['label'] != null && $s['url'] != null && $s['image'] != null);
     }
 
     protected static function setSticker($position, $last, $label, $url, $image)
@@ -239,7 +222,7 @@ class tplDuctileFocusTheme
             '</li>' . "\n";
     }
 
-    public static function publicHeadContent($core)
+    public static function publicHeadContent()
     {
         echo
         '<style type="text/css">' . "\n" .
@@ -249,13 +232,13 @@ class tplDuctileFocusTheme
 
         echo
         '<script src="' .
-        $core->blog->settings->system->themes_url . '/' . $core->blog->settings->system->theme .
+        \dcCore::app()->blog->settings->system->themes_url . '/' . \dcCore::app()->blog->settings->system->theme .
             '/ductile.js"></script>' . "\n";
     }
 
     public static function ductileStyleHelper()
     {
-        $s = $GLOBALS['core']->blog->settings->themes->get($GLOBALS['core']->blog->settings->system->theme . '_style');
+        $s = \dcCore::app()->blog->settings->themes->get(\dcCore::app()->blog->settings->system->theme . '_style');
 
         if ($s === null) {
             return;
@@ -363,7 +346,7 @@ class tplDuctileFocusTheme
         }
 
         # Style directives for large screens
-        if (count($css_large)) {
+        if ($css_large !== []) {
             $res .= '@media only screen and (min-width: 481px) {' . "\n";
             foreach ($css_large as $selector => $values) {
                 $res .= $selector . " {\n";
@@ -415,7 +398,7 @@ class tplDuctileFocusTheme
         }
 
         # Style directives for small screens
-        if (count($css_small)) {
+        if ($css_small !== []) {
             $res .= '@media only screen and (max-width: 480px) {' . "\n";
             foreach ($css_small as $selector => $values) {
                 $res .= $selector . " {\n";
@@ -449,7 +432,7 @@ class tplDuctileFocusTheme
         'Impact' => 'Impact, Haettenschweiler, "Franklin Gothic Bold", Charcoal, "Helvetica Inserat", "Bitstream Vera Sans Bold", "Arial Black", sans-serif',
 
         // Monospace families
-        'Monospace' => 'Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier, monospace'
+        'Monospace' => 'Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier, monospace',
     ];
 
     protected static function fontDef($c)

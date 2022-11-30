@@ -11,7 +11,6 @@
  * @copyright Kozlika and Franck Paul
  * @copyright GPL-2.0
  */
-
-if (!isset($__resources['help']['ductileFocus'])) {
-    $__resources['help']['ductileFocus'] = dirname(__FILE__) . '/help/help.html';
+if (!isset(dcCore::app()->resources['help']['ductileFocus'])) {
+    dcCore::app()->resources['help']['ductileFocus'] = __DIR__ . '/help/help.html';
 }

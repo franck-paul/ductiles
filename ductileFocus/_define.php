@@ -16,13 +16,13 @@ if (!defined('DC_RC_PATH')) {
 }
 
 $this->registerModule(
-    'Ductile Focus',                                               // Name
-    'Variation de Ductile pour un blog mixte de textes et photos', // Description
-    'Kozlika et Franck Paul',                                      // Author
-    '0.6',                                                         // Version
-    [                                                              // Properties
-        'requires'          => [['core', '2.19']],                     // Dependencies
+    'Ductile Focus',
+    'Variation de Ductile pour un blog mixte de textes et photos',
+    'Kozlika et Franck Paul',
+    '1.0',
+    [
+        'requires'          => [['core', '2.24']],
         'standalone_config' => true,
-        'type'              => 'theme'
+        'type'              => 'theme',
     ]
 );
