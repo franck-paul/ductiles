@@ -51,21 +51,22 @@ $(() => {
   };
 
   $(document).ready(() => {
-    if ($(window).width() < 1024) {
-      // Set toggle class to each #sidebar h2
-      $('#sidebar div div h2').addClass('toggle');
-
-      // Hide all h2.toggle siblings
-      $('#sidebar div div h2').nextAll().hide();
-
-      // Add a link to each h2.toggle element.
-      $('h2.toggle').each(add_link);
-
-      // Add a click event handler to all h2.toggle elements.
-      $('h2.toggle').on('click', toggle);
-
-      // Remove the focus from the link tag when accessed with a mouse.
-      $('h2.toggle a').on('mouseup', remove_focus);
+    if ($(window).width() >= 1024) {
+      return;
     }
+    // Set toggle class to each #sidebar h2
+    $('#sidebar div div h2').addClass('toggle');
+
+    // Hide all h2.toggle siblings
+    $('#sidebar div div h2').nextAll().hide();
+
+    // Add a link to each h2.toggle element.
+    $('h2.toggle').each(add_link);
+
+    // Add a click event handler to all h2.toggle elements.
+    $('h2.toggle').on('click', toggle);
+
+    // Remove the focus from the link tag when accessed with a mouse.
+    $('h2.toggle a').on('mouseup', remove_focus);
   });
 });

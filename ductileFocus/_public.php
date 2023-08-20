@@ -12,23 +12,23 @@
  * @copyright GPL-2.0
  */
 
-namespace themes\ductile_focus;
+namespace Dotclear\Theme\DuctileFocus;
 
-if (!defined('DC_RC_PATH')) {
-    return;
-}
-
-\l10n::set(__DIR__ . '/locales/' . \dcCore::app()->lang . '/main');
+use context;
+use dcCore;
+use dcThemeConfig;
 
 # Behaviors
-\dcCore::app()->addBehavior('publicHeadContent', [__NAMESPACE__ . '\tplDuctileFocusTheme', 'publicHeadContent']);
-\dcCore::app()->addBehavior('publicInsideFooter', [__NAMESPACE__ . '\tplDuctileFocusTheme', 'publicInsideFooter']);
-\dcCore::app()->addBehavior('tplIfConditions', [__NAMESPACE__ . '\tplDuctileFocusTheme', 'tplIfConditions']);
+dcCore::app()->addBehaviors([
+    'publicHeadContent'  => [__NAMESPACE__ . '\tplDuctileFocusTheme', 'publicHeadContent'],
+    'publicInsideFooter' => [__NAMESPACE__ . '\tplDuctileFocusTheme', 'publicInsideFooter'],
+    'tplIfConditions'    => [__NAMESPACE__ . '\tplDuctileFocusTheme', 'tplIfConditions'],
+]);
 
 # Templates
-\dcCore::app()->tpl->addBlock('EntryIfContentIsCut', [__NAMESPACE__ . '\tplDuctileFocusTheme', 'EntryIfContentIsCut']);
-\dcCore::app()->tpl->addValue('focusEntries', [__NAMESPACE__ . '\tplDuctileFocusTheme', 'focusEntries']);
-\dcCore::app()->tpl->addValue('ductileLogoSrc', [__NAMESPACE__ . '\tplDuctileFocusTheme', 'ductileLogoSrc']);
+dcCore::app()->tpl->addBlock('EntryIfContentIsCut', [__NAMESPACE__ . '\tplDuctileFocusTheme', 'EntryIfContentIsCut']);
+dcCore::app()->tpl->addValue('focusEntries', [__NAMESPACE__ . '\tplDuctileFocusTheme', 'focusEntries']);
+dcCore::app()->tpl->addValue('ductileLogoSrc', [__NAMESPACE__ . '\tplDuctileFocusTheme', 'ductileLogoSrc']);
 
 class tplDuctileFocusTheme
 {
@@ -50,7 +50,7 @@ class tplDuctileFocusTheme
 
     public static function focusEntriesHelper($case, $params)
     {
-        $s = \dcCore::app()->blog->settings->themes->get(\dcCore::app()->blog->settings->system->theme . '_focus');
+        $s = dcCore::app()->blog->settings->themes->get(dcCore::app()->blog->settings->system->theme . '_focus');
         $s = @unserialize($s);
         if (is_array($s) && isset($s[$case])) {
             $f = $s[$case];
@@ -77,7 +77,7 @@ class tplDuctileFocusTheme
             $if[]          = $sign . '(' . __NAMESPACE__ . '\tplDuctileFocusTheme::tplIfConditionsHelper(' . $with_category . '))';
         } elseif ($tag == 'EntryIf' && isset($attr['focus_cat_image'])) {
             $sign = (bool) $attr['focus_cat_image'] ? '' : '!';
-            $s    = \dcCore::app()->blog->settings->themes->get(\dcCore::app()->blog->settings->system->theme . '_focus');
+            $s    = dcCore::app()->blog->settings->themes->get(dcCore::app()->blog->settings->system->theme . '_focus');
             if ($s === null) {
                 return;
             }
@@ -95,8 +95,8 @@ class tplDuctileFocusTheme
                 return;
             }
 
-            $c   = \dcCore::app()->blog->getCategories(['cat_url' => $s[2]['cat']]);
-            $cc  = \dcCore::app()->blog->getCategoryFirstChildren($c->cat_id);
+            $c   = dcCore::app()->blog->getCategories(['cat_url' => $s[2]['cat']]);
+            $cc  = dcCore::app()->blog->getCategoryFirstChildren($c->cat_id);
             $ret = 'in_array(dcCore::app()->ctx->posts->cat_id,[' . ($c->cat_id ?: 'null');
             if ($cc) {
                 while ($cc->fetch()) {
@@ -111,7 +111,7 @@ class tplDuctileFocusTheme
     public static function tplIfConditionsHelper($with_category = false)
     {
         $ret = '';
-        $ret = \context::EntryFirstImageHelper('s', $with_category);
+        $ret = context::EntryFirstImageHelper('s', $with_category);
 
         return ($ret != '');
     }
@@ -127,10 +127,10 @@ class tplDuctileFocusTheme
             $urls = '1';
         }
 
-        $short              = \dcCore::app()->tpl->getFilters($attr);
+        $short              = dcCore::app()->tpl->getFilters($attr);
         $cut                = $attr['cut_string'];
         $attr['cut_string'] = 0;
-        $full               = \dcCore::app()->tpl->getFilters($attr);
+        $full               = dcCore::app()->tpl->getFilters($attr);
         $attr['cut_string'] = $cut;
 
         return '<?php if (strlen(' . sprintf($full, 'dcCore::app()->ctx->posts->getContent(' . $urls . ')') . ') > ' .
@@ -146,7 +146,7 @@ class tplDuctileFocusTheme
 
     public static function ductileLogoSrcHelper()
     {
-        $s = \dcCore::app()->blog->settings->themes->get(\dcCore::app()->blog->settings->system->theme . '_style');
+        $s = dcCore::app()->blog->settings->themes->get(dcCore::app()->blog->settings->system->theme . '_style');
         if ($s === null) {
             return;
         }
@@ -155,14 +155,14 @@ class tplDuctileFocusTheme
             return;
         }
 
-        $img_url = \dcCore::app()->blog->settings->system->themes_url . '/' . \dcCore::app()->blog->settings->system->theme . '/img/logo.png';
+        $img_url = dcCore::app()->blog->settings->system->themes_url . '/' . dcCore::app()->blog->settings->system->theme . '/img/logo.png';
         if (isset($s['logo_src']) && $s['logo_src'] !== null && $s['logo_src'] != '') {
             if ((substr($s['logo_src'], 0, 1) == '/') || (parse_url($s['logo_src'], PHP_URL_SCHEME) != '')) {
                 // absolute URL
                 $img_url = $s['logo_src'];
             } else {
                 // relative URL (base = img folder of ductile focus theme)
-                $img_url = \dcCore::app()->blog->settings->system->themes_url . '/' . \dcCore::app()->blog->settings->system->theme . '/img/' . $s['logo_src'];
+                $img_url = dcCore::app()->blog->settings->system->themes_url . '/' . dcCore::app()->blog->settings->system->theme . '/img/' . $s['logo_src'];
             }
         }
 
@@ -173,9 +173,9 @@ class tplDuctileFocusTheme
     {
         $res     = '';
         $default = false;
-        $img_url = \dcCore::app()->blog->settings->system->themes_url . '/' . \dcCore::app()->blog->settings->system->theme . '/img/';
+        $img_url = dcCore::app()->blog->settings->system->themes_url . '/' . dcCore::app()->blog->settings->system->theme . '/img/';
 
-        $s = \dcCore::app()->blog->settings->themes->get(\dcCore::app()->blog->settings->system->theme . '_stickers');
+        $s = dcCore::app()->blog->settings->themes->get(dcCore::app()->blog->settings->system->theme . '_stickers');
 
         if ($s === null) {
             $default = true;
@@ -198,7 +198,7 @@ class tplDuctileFocusTheme
         }
 
         if ($default || $res == '') {
-            $res = self::setSticker(1, true, __('Subscribe'), \dcCore::app()->blog->url . \dcCore::app()->url->getURLFor('feed') . '/atom', $img_url . 'sticker-feed.png');
+            $res = self::setSticker(1, true, __('Subscribe'), dcCore::app()->blog->url . dcCore::app()->url->getURLFor('feed') . '/atom', $img_url . 'sticker-feed.png');
         }
 
         if ($res != '') {
@@ -232,13 +232,13 @@ class tplDuctileFocusTheme
 
         echo
         '<script src="' .
-        \dcCore::app()->blog->settings->system->themes_url . '/' . \dcCore::app()->blog->settings->system->theme .
+        dcCore::app()->blog->settings->system->themes_url . '/' . dcCore::app()->blog->settings->system->theme .
             '/ductile.js"></script>' . "\n";
     }
 
     public static function ductileStyleHelper()
     {
-        $s = \dcCore::app()->blog->settings->themes->get(\dcCore::app()->blog->settings->system->theme . '_style');
+        $s = dcCore::app()->blog->settings->themes->get(dcCore::app()->blog->settings->system->theme . '_style');
 
         if ($s === null) {
             return;
@@ -256,38 +256,38 @@ class tplDuctileFocusTheme
         # Blog description
         $selectors = '#blogdesc';
         if (isset($s['subtitle_hidden'])) {
-            \dcThemeConfig::prop($css, $selectors, 'display', ($s['subtitle_hidden'] ? 'none' : null));
+            dcThemeConfig::prop($css, $selectors, 'display', ($s['subtitle_hidden'] ? 'none' : null));
         }
 
         # Main font
         $selectors = 'body, .supranav li a span, .comment-info, #comments .me, .comment-number';
         if (isset($s['body_font'])) {
-            \dcThemeConfig::prop($css, $selectors, 'font-family', self::fontDef($s['body_font']));
+            dcThemeConfig::prop($css, $selectors, 'font-family', self::fontDef($s['body_font']));
         }
 
         # Secondary font
         $selectors = '#blogdesc, .supranav, #prelude, #submenu, #content-info, #subcategories, p.post-date, #comments, #ping-url, #comment-form, #comments-feed, ' .
             '.field input, .field textarea, #sidebar, #footer p, .arch-block h4';
         if (isset($s['alternate_font'])) {
-            \dcThemeConfig::prop($css, $selectors, 'font-family', self::fontDef($s['alternate_font']));
+            dcThemeConfig::prop($css, $selectors, 'font-family', self::fontDef($s['alternate_font']));
         }
 
         # Inside posts links font weight
         $selectors = '.post-excerpt a, .post-content a';
         if (isset($s['post_link_w'])) {
-            \dcThemeConfig::prop($css, $selectors, 'font-weight', ($s['post_link_w'] ? 'bold' : 'normal'));
+            dcThemeConfig::prop($css, $selectors, 'font-weight', ($s['post_link_w'] ? 'bold' : 'normal'));
         }
 
         # Inside posts links colors (normal, visited)
         $selectors = '.post-excerpt a:link, .post-excerpt a:visited, .post-content a:link, .post-content a:visited';
         if (isset($s['post_link_v_c'])) {
-            \dcThemeConfig::prop($css, $selectors, 'color', $s['post_link_v_c']);
+            dcThemeConfig::prop($css, $selectors, 'color', $s['post_link_v_c']);
         }
 
         # Inside posts links colors (hover, active, focus)
         $selectors = '.post-excerpt a:hover, .post-excerpt a:active, .post-excerpt a:focus, .post-content a:hover, .post-content a:active, .post-content a:focus';
         if (isset($s['post_link_f_c'])) {
-            \dcThemeConfig::prop($css, $selectors, 'color', $s['post_link_f_c']);
+            dcThemeConfig::prop($css, $selectors, 'color', $s['post_link_f_c']);
         }
 
         # Style directives
@@ -306,43 +306,43 @@ class tplDuctileFocusTheme
         # Blog title font weight
         $selectors = 'h1, h1 a:link, h1 a:visited, h1 a:hover, h1 a:visited, h1 a:focus';
         if (isset($s['blog_title_w'])) {
-            \dcThemeConfig::prop($css_large, $selectors, 'font-weight', ($s['blog_title_w'] ? 'bold' : 'normal'));
+            dcThemeConfig::prop($css_large, $selectors, 'font-weight', ($s['blog_title_w'] ? 'bold' : 'normal'));
         }
 
         # Blog title font size
         $selectors = 'h1';
         if (isset($s['blog_title_s'])) {
-            \dcThemeConfig::prop($css_large, $selectors, 'font-size', $s['blog_title_s']);
+            dcThemeConfig::prop($css_large, $selectors, 'font-size', $s['blog_title_s']);
         }
 
         # Blog title color
         $selectors = 'h1 a:link, h1 a:visited, h1 a:hover, h1 a:visited, h1 a:focus';
         if (isset($s['blog_title_c'])) {
-            \dcThemeConfig::prop($css_large, $selectors, 'color', $s['blog_title_c']);
+            dcThemeConfig::prop($css_large, $selectors, 'color', $s['blog_title_c']);
         }
 
         # Post title font weight
         $selectors = 'h2.post-title, h2.post-title a:link, h2.post-title a:visited, h2.post-title a:hover, h2.post-title a:visited, h2.post-title a:focus';
         if (isset($s['post_title_w'])) {
-            \dcThemeConfig::prop($css_large, $selectors, 'font-weight', ($s['post_title_w'] ? 'bold' : 'normal'));
+            dcThemeConfig::prop($css_large, $selectors, 'font-weight', ($s['post_title_w'] ? 'bold' : 'normal'));
         }
 
         # Post title font size
         $selectors = 'h2.post-title';
         if (isset($s['post_title_s'])) {
-            \dcThemeConfig::prop($css_large, $selectors, 'font-size', $s['post_title_s']);
+            dcThemeConfig::prop($css_large, $selectors, 'font-size', $s['post_title_s']);
         }
 
         # Post title color
         $selectors = 'h2.post-title a:link, h2.post-title a:visited, h2.post-title a:hover, h2.post-title a:visited, h2.post-title a:focus';
         if (isset($s['post_title_c'])) {
-            \dcThemeConfig::prop($css_large, $selectors, 'color', $s['post_title_c']);
+            dcThemeConfig::prop($css_large, $selectors, 'color', $s['post_title_c']);
         }
 
         # Simple title color (title without link)
         $selectors = '#content-info h2, .post-title, .post h3, .post h4, .post h5, .post h6, .arch-block h3';
         if (isset($s['post_simple_title_c'])) {
-            \dcThemeConfig::prop($css_large, $selectors, 'color', $s['post_simple_title_c']);
+            dcThemeConfig::prop($css_large, $selectors, 'color', $s['post_simple_title_c']);
         }
 
         # Style directives for large screens
@@ -364,37 +364,37 @@ class tplDuctileFocusTheme
         # Blog title font weight
         $selectors = 'h1, h1 a:link, h1 a:visited, h1 a:hover, h1 a:visited, h1 a:focus';
         if (isset($s['blog_title_w_m'])) {
-            \dcThemeConfig::prop($css_small, $selectors, 'font-weight', ($s['blog_title_w_m'] ? 'bold' : 'normal'));
+            dcThemeConfig::prop($css_small, $selectors, 'font-weight', ($s['blog_title_w_m'] ? 'bold' : 'normal'));
         }
 
         # Blog title font size
         $selectors = 'h1';
         if (isset($s['blog_title_s_m'])) {
-            \dcThemeConfig::prop($css_small, $selectors, 'font-size', $s['blog_title_s_m']);
+            dcThemeConfig::prop($css_small, $selectors, 'font-size', $s['blog_title_s_m']);
         }
 
         # Blog title color
         $selectors = 'h1 a:link, h1 a:visited, h1 a:hover, h1 a:visited, h1 a:focus';
         if (isset($s['blog_title_c_m'])) {
-            \dcThemeConfig::prop($css_small, $selectors, 'color', $s['blog_title_c_m']);
+            dcThemeConfig::prop($css_small, $selectors, 'color', $s['blog_title_c_m']);
         }
 
         # Post title font weight
         $selectors = 'h2.post-title, h2.post-title a:link, h2.post-title a:visited, h2.post-title a:hover, h2.post-title a:visited, h2.post-title a:focus';
         if (isset($s['post_title_w_m'])) {
-            \dcThemeConfig::prop($css_small, $selectors, 'font-weight', ($s['post_title_w_m'] ? 'bold' : 'normal'));
+            dcThemeConfig::prop($css_small, $selectors, 'font-weight', ($s['post_title_w_m'] ? 'bold' : 'normal'));
         }
 
         # Post title font size
         $selectors = 'h2.post-title';
         if (isset($s['post_title_s_m'])) {
-            \dcThemeConfig::prop($css_small, $selectors, 'font-size', $s['post_title_s_m']);
+            dcThemeConfig::prop($css_small, $selectors, 'font-size', $s['post_title_s_m']);
         }
 
         # Post title color
         $selectors = 'h2.post-title a:link, h2.post-title a:visited, h2.post-title a:hover, h2.post-title a:visited, h2.post-title a:focus';
         if (isset($s['post_title_c_m'])) {
-            \dcThemeConfig::prop($css_small, $selectors, 'color', $s['post_title_c_m']);
+            dcThemeConfig::prop($css_small, $selectors, 'color', $s['post_title_c_m']);
         }
 
         # Style directives for small screens

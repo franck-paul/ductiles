@@ -11,16 +11,22 @@
  * @copyright Kozlika and Franck Paul
  * @copyright GPL-2.0
  */
+
+use Dotclear\Helper\File\Files;
+use Dotclear\Helper\Html\Html;
+use Dotclear\Helper\L10n;
+use Dotclear\Helper\Network\Http;
+
 if (!defined('DC_CONTEXT_ADMIN')) {
     return;
 }
 
-l10n::set(__DIR__ . '/locales/' . dcCore::app()->lang . '/admin');
+L10n::set(__DIR__ . '/locales/' . dcCore::app()->lang . '/admin');
 
-if (preg_match('#^http(s)?://#', dcCore::app()->blog->settings->system->themes_url)) {
-    $img_url = http::concatURL(dcCore::app()->blog->settings->system->themes_url, '/' . dcCore::app()->blog->settings->system->theme . '/img/');
+if (preg_match('#^http(s)?://#', (string) dcCore::app()->blog->settings->system->themes_url)) {
+    $img_url = Http::concatURL(dcCore::app()->blog->settings->system->themes_url, '/' . dcCore::app()->blog->settings->system->theme . '/img/');
 } else {
-    $img_url = http::concatURL(dcCore::app()->blog->url, dcCore::app()->blog->settings->system->themes_url . '/' . dcCore::app()->blog->settings->system->theme . '/img/');
+    $img_url = Http::concatURL(dcCore::app()->blog->url, dcCore::app()->blog->settings->system->themes_url . '/' . dcCore::app()->blog->settings->system->theme . '/img/');
 }
 $img_path = __DIR__ . '/img/';
 
@@ -248,7 +254,7 @@ if (is_array($ductile_stickers)) {
     }
 }
 // Get all sticker-*.png in img folder of theme
-$ductile_stickers_images = files::scandir($img_path);
+$ductile_stickers_images = Files::scandir($img_path);
 if (is_array($ductile_stickers_images)) {
     foreach ($ductile_stickers_images as $v) {
         if (preg_match('/^sticker\-(.*)\.png$/', $v) && !in_array($v, $ductile_stickers_full)) {
@@ -290,19 +296,19 @@ try {
     $rs = dcCore::app()->blog->getCategories(['post_type' => 'post']);
     while ($rs->fetch()) {
         $categories_combo[] = $categories_combo_all[] = new formSelectOption(
-            str_repeat('&nbsp;&nbsp;', $rs->level - 1) . ($rs->level - 1 == 0 ? '' : '&bull; ') . html::escapeHTML($rs->cat_title),
+            str_repeat('&nbsp;&nbsp;', $rs->level - 1) . ($rs->level - 1 == 0 ? '' : '&bull; ') . Html::escapeHTML($rs->cat_title),
             $rs->cat_url
         );
     }
 } catch (Exception $e) {
 }
 
-$conf_tab = $_POST['conf_tab'] ?? \html::class;
+$conf_tab = $_POST['conf_tab'] ?? 'html';
 
 if (!empty($_POST)) {
     try {
         # HTML
-        if ($conf_tab == \html::class) {
+        if ($conf_tab == 'html') {
             $ductile_user['subtitle_hidden'] = (int) !empty($_POST['subtitle_hidden']);
             $ductile_user['logo_src']        = $_POST['logo_src'];
 
@@ -380,7 +386,6 @@ if (!empty($_POST)) {
             $ductile_user['post_title_c_m'] = adjustColor($_POST['post_title_c_m']);
         }
 
-        dcCore::app()->blog->settings->addNamespace('themes');
         dcCore::app()->blog->settings->themes->put(dcCore::app()->blog->settings->system->theme . '_style', serialize($ductile_user));
         dcCore::app()->blog->settings->themes->put(dcCore::app()->blog->settings->system->theme . '_stickers', serialize($ductile_stickers));
         dcCore::app()->blog->settings->themes->put(dcCore::app()->blog->settings->system->theme . '_focus', serialize($ductile_focuses));
@@ -407,7 +412,7 @@ if (!$standalone_config) {
 
 # HTML Tab
 
-echo '<div class="multi-part" id="themes-list' . ($conf_tab == \html::class ? '' : '-html') . '" title="' . __('Content') . '">';
+echo '<div class="multi-part" id="themes-list' . ($conf_tab == 'html' ? '' : '-html') . '" title="' . __('Content') . '">';
 
 echo '<form id="theme_config" action="blog_theme.php?conf=1" method="post" enctype="multipart/form-data">';
 

@@ -1,6 +1,51 @@
 <?php
 /**
- * @brief ductilePhoto, a theme for Dotclear 2
+ * @brief ductileFocus, a plugin for Dotclear 2
+ *
+ * @package Dotclear
+ * @subpackage Plugins
+ *
+ * @author Franck Paul and contributors
+ *
+ * @copyright Franck Paul carnet.franck.paul@gmail.com
+ * @copyright GPL-2.0 https://www.gnu.org/licenses/gpl-2.0.html
+ */
+declare(strict_types=1);
+
+namespace Dotclear\Plugin\ductileFocus;
+
+use dcCore;
+use Dotclear\Core\Process;
+
+class Frontend extends Process
+{
+    public static function init(): bool
+    {
+        return self::status(My::checkContext(My::FRONTEND));
+    }
+
+    public static function process(): bool
+    {
+        if (!self::status()) {
+            return false;
+        }
+
+        // Don't do things in frontend if plugin disabled
+        $settings = dcCore::app()->blog->settings->get(My::id());
+        if (!(bool) $settings->active) {
+            return false;
+        }
+
+        // ToDo
+
+        return true;
+    }
+}
+
+// --- old code below ---
+
+/**
+ * @brief ductileFocus, a theme for Dotclear 2
  *
  * @package Dotclear
  * @subpackage Themes
@@ -12,7 +57,7 @@
  * @copyright GPL-2.0
  */
 
-namespace Dotclear\Theme\DuctilePhoto;
+namespace Dotclear\Theme\DuctileFocus;
 
 use context;
 use dcCore;
@@ -20,48 +65,52 @@ use dcThemeConfig;
 
 # Behaviors
 dcCore::app()->addBehaviors([
-    'publicHeadContent'  => [__NAMESPACE__ . '\tplDuctilePhotoTheme', 'publicHeadContent'],
-    'publicInsideFooter' => [__NAMESPACE__ . '\tplDuctilePhotoTheme', 'publicInsideFooter'],
-    'tplIfConditions'    => [__NAMESPACE__ . '\tplDuctilePhotoTheme', 'tplIfConditions'],
+    'publicHeadContent'  => [__NAMESPACE__ . '\tplDuctileFocusTheme', 'publicHeadContent'],
+    'publicInsideFooter' => [__NAMESPACE__ . '\tplDuctileFocusTheme', 'publicInsideFooter'],
+    'tplIfConditions'    => [__NAMESPACE__ . '\tplDuctileFocusTheme', 'tplIfConditions'],
 ]);
 
 # Templates
-dcCore::app()->tpl->addValue('ductileNbEntryPerPage', [__NAMESPACE__ . '\tplDuctilePhotoTheme', 'ductileNbEntryPerPage']);
-dcCore::app()->tpl->addBlock('EntryIfContentIsCut', [__NAMESPACE__ . '\tplDuctilePhotoTheme', 'EntryIfContentIsCut']);
+dcCore::app()->tpl->addBlock('EntryIfContentIsCut', [__NAMESPACE__ . '\tplDuctileFocusTheme', 'EntryIfContentIsCut']);
+dcCore::app()->tpl->addValue('focusEntries', [__NAMESPACE__ . '\tplDuctileFocusTheme', 'focusEntries']);
+dcCore::app()->tpl->addValue('ductileLogoSrc', [__NAMESPACE__ . '\tplDuctileFocusTheme', 'ductileLogoSrc']);
 
-class tplDuctilePhotoTheme
+class tplDuctileFocusTheme
 {
-    public static function ductileNbEntryPerPage($attr)
+    public static function focusEntries($attr)
     {
-        return '<?php ' . __NAMESPACE__ . '\tplDuctilePhotoTheme::ductileNbEntryPerPageHelper(); ?>';
+        $case = empty($attr['focus']) ? 1 : (int) $attr['focus'];
+        $case--;
+        if ($case < 0) {
+            $case++;
+        }
+
+        return '<?php ' . "\n" .
+        '   if (!isset($params)) $params = [];' . "\n" .
+        '   $params = new ArrayObject($params);' . "\n" .
+        '   ' . __NAMESPACE__ . '\tplDuctileFocusTheme::focusEntriesHelper(' . $case . ',$params);' . "\n" .
+            '   $params = (array)$params;' . "\n" .
+            ' ?>';
     }
 
-    public static function ductileNbEntryPerPageHelper()
+    public static function focusEntriesHelper($case, $params)
     {
-        $attr = [];
-
-        $nb = 0;
-        $s  = dcCore::app()->blog->settings->themes->get(dcCore::app()->blog->settings->system->theme . '_entries_counts');
-        if ($s !== null) {
-            $s = @unserialize($s);
-            if (is_array($s)) {
-                if (isset($s[dcCore::app()->url->type])) {
-                    // Nb de billets par page défini par la config du thème
-                    $nb = (int) $s[dcCore::app()->url->type];
-                } elseif ((dcCore::app()->url->type == 'default-page') && (isset($s['default']))) {
-                    // Les pages 2 et suivantes de la home ont le même nombre de billet que la première page
-                    $nb = (int) $s['default'];
+        $s = dcCore::app()->blog->settings->themes->get(dcCore::app()->blog->settings->system->theme . '_focus');
+        $s = @unserialize($s);
+        if (is_array($s) && isset($s[$case])) {
+            $f = $s[$case];
+            if (is_array($f)) {
+                $cat      = ($f['cat'] ?? '');
+                $selected = (isset($f['selected']) ? (bool) $f['selected'] : false);
+                $subcat   = (isset($f['subcat']) ? (bool) $f['subcat'] : false);
+                $ret      = '';
+                if ($cat != '') {
+                    $params['cat_url'] = $cat . ($subcat ? ' ?sub' : '');
+                }
+                if ($selected) {
+                    $params['post_selected'] = 1;
                 }
             }
-        }
-
-        if ($nb == 0 && !empty($attr['nb'])) {
-            // Nb de billets par page défini par défaut dans le template
-            $nb = (int) $attr['nb'];
-        }
-
-        if ($nb > 0) {
-            dcCore::app()->ctx->nb_entry_per_page = $nb;
         }
     }
 
@@ -93,10 +142,10 @@ class tplDuctilePhotoTheme
 
             $c   = dcCore::app()->blog->getCategories(['cat_url' => $s[2]['cat']]);
             $cc  = dcCore::app()->blog->getCategoryFirstChildren($c->cat_id);
-            $ret = 'in_array(dcCore::app()->ctx->posts->cat_id,[' . $c->cat_id;
+            $ret = 'in_array(dcCore::app()->ctx->posts->cat_id,[' . ($c->cat_id ?: 'null');
             if ($cc) {
                 while ($cc->fetch()) {
-                    $ret .= ',' . $cc->cat_id;
+                    $ret .= ',' . ($c->cat_id ?: 'null');
                 }
             }
             $ret .= '])';
@@ -135,6 +184,36 @@ class tplDuctilePhotoTheme
             '<?php endif; ?>';
     }
 
+    public static function ductileLogoSrc($attr)
+    {
+        return '<?php echo ' . __NAMESPACE__ . '\tplDuctileFocusTheme::ductileLogoSrcHelper(); ?>';
+    }
+
+    public static function ductileLogoSrcHelper()
+    {
+        $s = dcCore::app()->blog->settings->themes->get(dcCore::app()->blog->settings->system->theme . '_style');
+        if ($s === null) {
+            return;
+        }
+        $s = @unserialize($s);
+        if (!is_array($s)) {
+            return;
+        }
+
+        $img_url = dcCore::app()->blog->settings->system->themes_url . '/' . dcCore::app()->blog->settings->system->theme . '/img/logo.png';
+        if (isset($s['logo_src']) && $s['logo_src'] !== null && $s['logo_src'] != '') {
+            if ((substr($s['logo_src'], 0, 1) == '/') || (parse_url($s['logo_src'], PHP_URL_SCHEME) != '')) {
+                // absolute URL
+                $img_url = $s['logo_src'];
+            } else {
+                // relative URL (base = img folder of ductile focus theme)
+                $img_url = dcCore::app()->blog->settings->system->themes_url . '/' . dcCore::app()->blog->settings->system->theme . '/img/' . $s['logo_src'];
+            }
+        }
+
+        return $img_url;
+    }
+
     public static function publicInsideFooter()
     {
         $res     = '';
@@ -150,7 +229,7 @@ class tplDuctilePhotoTheme
             if (!is_array($s)) {
                 $default = true;
             } else {
-                $s = array_filter($s, 'self::cleanStickers');
+                $s = array_filter($s, __NAMESPACE__ . '\tplDuctileFocusTheme::cleanStickers');
                 if (count($s) == 0) {
                     $default = true;
                 } else {
@@ -196,38 +275,10 @@ class tplDuctilePhotoTheme
         self::ductileStyleHelper() .
             "</style>\n";
 
-        $ambiance_src = self::ambianceCssSrc();
-        if ($ambiance_src != '') {
-            echo '<link media="screen" href="' . $ambiance_src . '" type="text/css" rel="stylesheet">' . "\n";
-        }
-
         echo
         '<script src="' .
         dcCore::app()->blog->settings->system->themes_url . '/' . dcCore::app()->blog->settings->system->theme .
             '/ductile.js"></script>' . "\n";
-    }
-
-    protected static function ambianceCssSrc()
-    {
-        $s = dcCore::app()->blog->settings->themes->get(dcCore::app()->blog->settings->system->theme . '_style');
-        if ($s === null) {
-            return;
-        }
-        $s = @unserialize($s);
-        if (!is_array($s)) {
-            return;
-        }
-
-        $css_src = dcCore::app()->blog->settings->system->themes_url . '/' . dcCore::app()->blog->settings->system->theme;
-        if (isset($s['ambiance'])) {
-            if ($s['ambiance'] !== null && $s['ambiance'] != '') {
-                $css_src .= '/' . $s['ambiance'] . '-ambiance.css';
-            }
-        } else {
-            return;
-        }
-
-        return $css_src;
     }
 
     public static function ductileStyleHelper()
@@ -247,13 +298,6 @@ class tplDuctilePhotoTheme
 
         # Properties
 
-        # Blog logo
-        $selectors = 'h1 a';
-        $logoSrc   = self::logoSrc();
-        if ($logoSrc != '') {
-            dcThemeConfig::prop($css, $selectors, 'background', 'transparent url("' . $logoSrc . '") no-repeat left center');
-        }
-
         # Blog description
         $selectors = '#blogdesc';
         if (isset($s['subtitle_hidden'])) {
@@ -261,9 +305,16 @@ class tplDuctilePhotoTheme
         }
 
         # Main font
-        $selectors = 'body';
+        $selectors = 'body, .supranav li a span, .comment-info, #comments .me, .comment-number';
         if (isset($s['body_font'])) {
             dcThemeConfig::prop($css, $selectors, 'font-family', self::fontDef($s['body_font']));
+        }
+
+        # Secondary font
+        $selectors = '#blogdesc, .supranav, #prelude, #submenu, #content-info, #subcategories, p.post-date, #comments, #ping-url, #comment-form, #comments-feed, ' .
+            '.field input, .field textarea, #sidebar, #footer p, .arch-block h4';
+        if (isset($s['alternate_font'])) {
+            dcThemeConfig::prop($css, $selectors, 'font-family', self::fontDef($s['alternate_font']));
         }
 
         # Inside posts links font weight
@@ -407,32 +458,11 @@ class tplDuctilePhotoTheme
         return $res;
     }
 
-    protected static function logoSrc()
-    {
-        $s = dcCore::app()->blog->settings->themes->get(dcCore::app()->blog->settings->system->theme . '_style');
-        if ($s === null) {
-            return;
-        }
-        $s = @unserialize($s);
-        if (!is_array($s)) {
-            return;
-        }
-
-        $img_url = dcCore::app()->blog->settings->system->themes_url . '/' . dcCore::app()->blog->settings->system->theme . '/img/logo.png';
-        if (isset($s['logo_src']) && $s['logo_src'] !== null && $s['logo_src'] != '') {
-            if ((substr($s['logo_src'], 0, 1) == '/') || (parse_url($s['logo_src'], PHP_URL_SCHEME) != '')) {
-                // absolute URL
-                $img_url = $s['logo_src'];
-            } else {
-                // relative URL (base = img folder of ductile photo theme)
-                $img_url = dcCore::app()->blog->settings->system->themes_url . '/' . dcCore::app()->blog->settings->system->theme . '/img/' . $s['logo_src'];
-            }
-        }
-
-        return $img_url;
-    }
-
     protected static $fonts = [
+        // Theme standard
+        'Ductile Focus body'      => '"New Century Schoolbook", "Century Schoolbook", "Century Schoolbook L", Georgia, serif',
+        'Ductile Focus alternate' => '"DejaVu Sans", "helvetica neue", helvetica, sans-serif',
+
         // Serif families
         'Times New Roman' => 'Cambria, "Hoefler Text", Utopia, "Liberation Serif", "Nimbus Roman No9 L Regular", Times, "Times New Roman", serif',
         'Georgia'         => 'Constantia, "Lucida Bright", Lucidabright, "Lucida Serif", Lucida, "DejaVu Serif", "Bitstream Vera Serif", "Liberation Serif", Georgia, serif',

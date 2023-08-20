@@ -11,10 +11,6 @@
  * @copyright Kozlika and Franck Paul
  * @copyright GPL-2.0
  */
-if (!defined('DC_RC_PATH')) {
-    return;
-}
-
 $this->registerModule(
     'Ductile Photo',
     'Variation de Ductile pour un photoblog',

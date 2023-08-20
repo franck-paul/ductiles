@@ -1,4 +1,5 @@
 <?php
+
 # -- BEGIN LICENSE BLOCK ---------------------------------------
 #
 # Copyright (c) Association Dotclear
@@ -7,12 +8,13 @@
 # http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 #
 # -- END LICENSE BLOCK -----------------------------------------
-if (!defined('DC_RC_PATH')) { return; }
-
 $this->registerModule(
-	/* Name */			"Plip",
-	/* Description*/		"Chantier pour un nouveau theme",
-	/* Author */			"Dotclear Team",
-	/* Version */			'0.1'
+    /* Name */			
+    'Plip',
+    /* Description*/		
+    'Chantier pour un nouveau theme',
+    /* Author */			
+    'Dotclear Team',
+    /* Version */			
+    '0.1'
 );
-?>
