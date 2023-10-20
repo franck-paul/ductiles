@@ -14,7 +14,7 @@ declare(strict_types=1);
 
 namespace Dotclear\Plugin\ductileFocus;
 
-use dcCore;
+use Dotclear\App;
 use Dotclear\Core\Process;
 
 class Frontend extends Process
@@ -31,7 +31,7 @@ class Frontend extends Process
         }
 
         // Don't do things in frontend if plugin disabled
-        $settings = dcCore::app()->blog->settings->get(My::id());
+        $settings = App::blog()->settings()->get(My::id());
         if (!(bool) $settings->active) {
             return false;
         }
@@ -59,21 +59,21 @@ class Frontend extends Process
 
 namespace Dotclear\Theme\DuctileFocus;
 
-use context;
-use dcCore;
 use dcThemeConfig;
+use Dotclear\App;
+use Dotclear\Core\Frontend\Ctx;
 
 # Behaviors
-dcCore::app()->addBehaviors([
+App::behavior()->addBehaviors([
     'publicHeadContent'  => [__NAMESPACE__ . '\tplDuctileFocusTheme', 'publicHeadContent'],
     'publicInsideFooter' => [__NAMESPACE__ . '\tplDuctileFocusTheme', 'publicInsideFooter'],
     'tplIfConditions'    => [__NAMESPACE__ . '\tplDuctileFocusTheme', 'tplIfConditions'],
 ]);
 
 # Templates
-dcCore::app()->tpl->addBlock('EntryIfContentIsCut', [__NAMESPACE__ . '\tplDuctileFocusTheme', 'EntryIfContentIsCut']);
-dcCore::app()->tpl->addValue('focusEntries', [__NAMESPACE__ . '\tplDuctileFocusTheme', 'focusEntries']);
-dcCore::app()->tpl->addValue('ductileLogoSrc', [__NAMESPACE__ . '\tplDuctileFocusTheme', 'ductileLogoSrc']);
+App::frontend()->template()->addBlock('EntryIfContentIsCut', [__NAMESPACE__ . '\tplDuctileFocusTheme', 'EntryIfContentIsCut']);
+App::frontend()->template()->addValue('focusEntries', [__NAMESPACE__ . '\tplDuctileFocusTheme', 'focusEntries']);
+App::frontend()->template()->addValue('ductileLogoSrc', [__NAMESPACE__ . '\tplDuctileFocusTheme', 'ductileLogoSrc']);
 
 class tplDuctileFocusTheme
 {
@@ -95,7 +95,7 @@ class tplDuctileFocusTheme
 
     public static function focusEntriesHelper($case, $params)
     {
-        $s = dcCore::app()->blog->settings->themes->get(dcCore::app()->blog->settings->system->theme . '_focus');
+        $s = App::blog()->settings()->themes->get(App::blog()->settings()->system->theme . '_focus');
         $s = @unserialize($s);
         if (is_array($s) && isset($s[$case])) {
             $f = $s[$case];
@@ -122,7 +122,7 @@ class tplDuctileFocusTheme
             $if[]          = $sign . '(' . __NAMESPACE__ . '\tplDuctileFocusTheme::tplIfConditionsHelper(' . $with_category . '))';
         } elseif ($tag == 'EntryIf' && isset($attr['focus_cat_image'])) {
             $sign = (bool) $attr['focus_cat_image'] ? '' : '!';
-            $s    = dcCore::app()->blog->settings->themes->get(dcCore::app()->blog->settings->system->theme . '_focus');
+            $s    = App::blog()->settings()->themes->get(App::blog()->settings()->system->theme . '_focus');
             if ($s === null) {
                 return;
             }
@@ -140,9 +140,9 @@ class tplDuctileFocusTheme
                 return;
             }
 
-            $c   = dcCore::app()->blog->getCategories(['cat_url' => $s[2]['cat']]);
-            $cc  = dcCore::app()->blog->getCategoryFirstChildren($c->cat_id);
-            $ret = 'in_array(dcCore::app()->ctx->posts->cat_id,[' . ($c->cat_id ?: 'null');
+            $c   = App::blog()->getCategories(['cat_url' => $s[2]['cat']]);
+            $cc  = App::blog()->getCategoryFirstChildren($c->cat_id);
+            $ret = 'in_array(App::frontend()->context()->posts->cat_id,[' . ($c->cat_id ?: 'null');
             if ($cc) {
                 while ($cc->fetch()) {
                     $ret .= ',' . ($c->cat_id ?: 'null');
@@ -156,7 +156,7 @@ class tplDuctileFocusTheme
     public static function tplIfConditionsHelper($with_category = false)
     {
         $ret = '';
-        $ret = context::EntryFirstImageHelper('s', $with_category);
+        $ret = Ctx::EntryFirstImageHelper('s', $with_category);
 
         return ($ret != '');
     }
@@ -172,14 +172,14 @@ class tplDuctileFocusTheme
             $urls = '1';
         }
 
-        $short              = dcCore::app()->tpl->getFilters($attr);
+        $short              = App::frontend()->template()->getFilters($attr);
         $cut                = $attr['cut_string'];
         $attr['cut_string'] = 0;
-        $full               = dcCore::app()->tpl->getFilters($attr);
+        $full               = App::frontend()->template()->getFilters($attr);
         $attr['cut_string'] = $cut;
 
-        return '<?php if (strlen(' . sprintf($full, 'dcCore::app()->ctx->posts->getContent(' . $urls . ')') . ') > ' .
-        'strlen(' . sprintf($short, 'dcCore::app()->ctx->posts->getContent(' . $urls . ')') . ')) : ?>' .
+        return '<?php if (strlen(' . sprintf($full, 'App::frontend()->context()->posts->getContent(' . $urls . ')') . ') > ' .
+        'strlen(' . sprintf($short, 'App::frontend()->context()->posts->getContent(' . $urls . ')') . ')) : ?>' .
             $content .
             '<?php endif; ?>';
     }
@@ -191,7 +191,7 @@ class tplDuctileFocusTheme
 
     public static function ductileLogoSrcHelper()
     {
-        $s = dcCore::app()->blog->settings->themes->get(dcCore::app()->blog->settings->system->theme . '_style');
+        $s = App::blog()->settings()->themes->get(App::blog()->settings()->system->theme . '_style');
         if ($s === null) {
             return;
         }
@@ -200,14 +200,14 @@ class tplDuctileFocusTheme
             return;
         }
 
-        $img_url = dcCore::app()->blog->settings->system->themes_url . '/' . dcCore::app()->blog->settings->system->theme . '/img/logo.png';
+        $img_url = App::blog()->settings()->system->themes_url . '/' . App::blog()->settings()->system->theme . '/img/logo.png';
         if (isset($s['logo_src']) && $s['logo_src'] !== null && $s['logo_src'] != '') {
             if ((substr($s['logo_src'], 0, 1) == '/') || (parse_url($s['logo_src'], PHP_URL_SCHEME) != '')) {
                 // absolute URL
                 $img_url = $s['logo_src'];
             } else {
                 // relative URL (base = img folder of ductile focus theme)
-                $img_url = dcCore::app()->blog->settings->system->themes_url . '/' . dcCore::app()->blog->settings->system->theme . '/img/' . $s['logo_src'];
+                $img_url = App::blog()->settings()->system->themes_url . '/' . App::blog()->settings()->system->theme . '/img/' . $s['logo_src'];
             }
         }
 
@@ -218,9 +218,9 @@ class tplDuctileFocusTheme
     {
         $res     = '';
         $default = false;
-        $img_url = dcCore::app()->blog->settings->system->themes_url . '/' . dcCore::app()->blog->settings->system->theme . '/img/';
+        $img_url = App::blog()->settings()->system->themes_url . '/' . App::blog()->settings()->system->theme . '/img/';
 
-        $s = dcCore::app()->blog->settings->themes->get(dcCore::app()->blog->settings->system->theme . '_stickers');
+        $s = App::blog()->settings()->themes->get(App::blog()->settings()->system->theme . '_stickers');
 
         if ($s === null) {
             $default = true;
@@ -243,7 +243,7 @@ class tplDuctileFocusTheme
         }
 
         if ($default || $res == '') {
-            $res = self::setSticker(1, true, __('Subscribe'), dcCore::app()->blog->url . dcCore::app()->url->getURLFor('feed') . '/atom', $img_url . 'sticker-feed.png');
+            $res = self::setSticker(1, true, __('Subscribe'), App::blog()->url() . App::url()->getURLFor('feed') . '/atom', $img_url . 'sticker-feed.png');
         }
 
         if ($res != '') {
@@ -277,13 +277,13 @@ class tplDuctileFocusTheme
 
         echo
         '<script src="' .
-        dcCore::app()->blog->settings->system->themes_url . '/' . dcCore::app()->blog->settings->system->theme .
+        App::blog()->settings()->system->themes_url . '/' . App::blog()->settings()->system->theme .
             '/ductile.js"></script>' . "\n";
     }
 
     public static function ductileStyleHelper()
     {
-        $s = dcCore::app()->blog->settings->themes->get(dcCore::app()->blog->settings->system->theme . '_style');
+        $s = App::blog()->settings()->themes->get(App::blog()->settings()->system->theme . '_style');
 
         if ($s === null) {
             return;

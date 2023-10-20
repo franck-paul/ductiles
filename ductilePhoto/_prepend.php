@@ -14,8 +14,8 @@
 
 namespace Dotclear\Theme\DuctilePhoto;
 
-use dcCore;
 use dcPage;
+use Dotclear\App;
 
 if (!defined('DC_CONTEXT_ADMIN')) {
     return false;
@@ -23,18 +23,18 @@ if (!defined('DC_CONTEXT_ADMIN')) {
 // admin part below
 
 # Behaviors
-dcCore::app()->addBehavior('adminPageHTMLHead', [__NAMESPACE__ . '\tplDuctilePhotoThemeAdmin', 'adminPageHTMLHead']);
+App::behavior()->addBehavior('adminPageHTMLHead', [__NAMESPACE__ . '\tplDuctilePhotoThemeAdmin', 'adminPageHTMLHead']);
 
 class tplDuctilePhotoThemeAdmin
 {
     public static function adminPageHTMLHead()
     {
-        if (dcCore::app()->blog->settings->system->theme != 'ductilePhoto') {
+        if (App::blog()->settings()->system->theme != 'ductilePhoto') {
             return;
         }
 
         echo "\n" . '<!-- Header directives for Ductile Photo configuration -->' . "\n";
-        if (!dcCore::app()->auth->user_prefs->accessibility->nodragdrop) {
+        if (!App::auth()->prefs()->accessibility->nodragdrop) {
             echo
             dcPage::jsLoad('js/jquery/jquery-ui.custom.js') .
             dcPage::jsLoad('js/jquery/jquery.ui.touch-punch.js');

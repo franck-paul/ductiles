@@ -11,6 +11,4 @@
  * @copyright Kozlika and Franck Paul
  * @copyright GPL-2.0
  */
-if (!isset(dcCore::app()->resources['help']['ductileFocus'])) {
-    dcCore::app()->resources['help']['ductileFocus'] = __DIR__ . '/help/help.html';
-}
+\Dotclear\App::backend()->resources()->set('help', 'ductileFocus', __DIR__ . '/help/help.html');

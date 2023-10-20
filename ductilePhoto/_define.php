@@ -17,7 +17,7 @@ $this->registerModule(
     'Kozlika et Franck Paul',
     '1.0',
     [
-        'requires'          => [['core', '2.24']],
+        'requires'          => [['core', '2.28']],
         'standalone_config' => true,
         'type'              => 'theme',
     ]

@@ -15,6 +15,7 @@ declare(strict_types=1);
 namespace Dotclear\Plugin\ductilePhoto;
 
 use dcCore;
+use Dotclear\App;
 use Dotclear\Helper\L10n;
 
 /**
@@ -35,7 +36,7 @@ class My
      */
     public static function name(): string
     {
-        return __((string) dcCore::app()->plugins->moduleInfo(self::id(), 'name'));
+        return __((string) App::plugins()->moduleInfo(self::id(), 'name'));
     }
 
     /**
@@ -53,7 +54,7 @@ class My
      */
     final public static function l10n(string $process): void
     {
-        L10n::set(implode(DIRECTORY_SEPARATOR, [static::path(), 'locales', dcCore::app()->lang, $process]));
+        L10n::set(implode(DIRECTORY_SEPARATOR, [static::path(), 'locales', App::lang()->getLang(), $process]));
     }
 
     // Contexts
@@ -101,8 +102,8 @@ class My
                 // In almost all cases, only super-admin should be able to install a module
 
                 return defined('DC_CONTEXT_ADMIN')
-                    && dcCore::app()->auth->isSuperAdmin()   // Super-admin only
-                    && dcCore::app()->newVersion(self::id(), dcCore::app()->plugins->moduleInfo(self::id(), 'version'))
+                    && App::auth()->isSuperAdmin()   // Super-admin only
+                    && dcCore::app()->newVersion(self::id(), App::plugins()->moduleInfo(self::id(), 'version'))
                 ;
 
             case self::UNINSTALL:
@@ -111,7 +112,7 @@ class My
                 // In almost all cases, only super-admin should be able to uninstall a module
 
                 return defined('DC_RC_PATH')
-                    && dcCore::app()->auth->isSuperAdmin()   // Super-admin only
+                    && App::auth()->isSuperAdmin()   // Super-admin only
                 ;
 
             case self::PREPEND:
@@ -136,10 +137,10 @@ class My
 
                 return defined('DC_CONTEXT_ADMIN')
                     // Check specific permission
-                    && dcCore::app()->blog && dcCore::app()->auth->check(dcCore::app()->auth->makePermissions([
-                        dcCore::app()->auth::PERMISSION_USAGE,
-                        dcCore::app()->auth::PERMISSION_CONTENT_ADMIN,
-                    ]), dcCore::app()->blog->id)
+                    && App::blog() && App::auth()->check(App::auth()->makePermissions([
+                        App::auth()::PERMISSION_USAGE,
+                        App::auth()::PERMISSION_CONTENT_ADMIN,
+                    ]), App::blog()->id())
                 ;
 
             case self::MANAGE:
@@ -149,9 +150,9 @@ class My
 
                 return defined('DC_CONTEXT_ADMIN')
                     // Check specific permission
-                    && dcCore::app()->blog && dcCore::app()->auth->check(dcCore::app()->auth->makePermissions([
-                        dcCore::app()->auth::PERMISSION_ADMIN,  // Admin+
-                    ]), dcCore::app()->blog->id)
+                    && App::blog() && App::auth()->check(App::auth()->makePermissions([
+                        App::auth()::PERMISSION_ADMIN,  // Admin+
+                    ]), App::blog()->id())
                 ;
 
             case self::CONFIG:
@@ -160,7 +161,7 @@ class My
                 // In almost all cases, only super-admin should be able to configure a module
 
                 return defined('DC_CONTEXT_ADMIN')
-                    && dcCore::app()->auth->isSuperAdmin()   // Super-admin only
+                    && App::auth()->isSuperAdmin()   // Super-admin only
                 ;
 
             case self::MENU:
@@ -172,9 +173,9 @@ class My
 
                 return defined('DC_CONTEXT_ADMIN')
                     // Check specific permission
-                    && dcCore::app()->blog && dcCore::app()->auth->check(dcCore::app()->auth->makePermissions([
-                        dcCore::app()->auth::PERMISSION_ADMIN,  // Admin+
-                    ]), dcCore::app()->blog->id)
+                    && App::blog() && App::auth()->check(App::auth()->makePermissions([
+                        App::auth()::PERMISSION_ADMIN,  // Admin+
+                    ]), App::blog()->id())
                 ;
 
             case self::WIDGETS:
@@ -184,9 +185,9 @@ class My
 
                 return defined('DC_CONTEXT_ADMIN')
                     // Check specific permission
-                    && dcCore::app()->blog && dcCore::app()->auth->check(dcCore::app()->auth->makePermissions([
-                        dcCore::app()->auth::PERMISSION_ADMIN,  // Admin+
-                    ]), dcCore::app()->blog->id)
+                    && App::blog() && App::auth()->check(App::auth()->makePermissions([
+                        App::auth()::PERMISSION_ADMIN,  // Admin+
+                    ]), App::blog()->id())
                 ;
         }
 
@@ -246,19 +247,9 @@ class My
             $resource = '/' . $resource;
         }
         if (defined('DC_CONTEXT_ADMIN') && DC_CONTEXT_ADMIN && !$frontend) {
-            return is_null(dcCore::app()->admin?->url) ? '' : urldecode(dcCore::app()->admin->url->get('load.plugin.file', ['pf' => self::id() . $resource]));
+            return is_null(App::backend()->url()) ? '' : urldecode(App::backend()->url()->get('load.plugin.file', ['pf' => self::id() . $resource]));
         }
 
-        return is_null(dcCore::app()->blog) ? '' : urldecode(dcCore::app()->blog->getQmarkURL() . 'pf=' . self::id() . $resource);
-    }
-
-    /**
-     * Return URL regexp scheme cope by the plugin
-     *
-     * @return     string
-     */
-    public static function urlScheme(): string
-    {
-        return '/' . preg_quote(dcCore::app()->admin->url->get('admin.plugin.' . self::id())) . '(&.*)?$/';
+        return is_null(App::blog()) ? '' : urldecode(App::blog()->getQmarkURL() . 'pf=' . self::id() . $resource);
     }
 }

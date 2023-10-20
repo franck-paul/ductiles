@@ -12,6 +12,7 @@
  * @copyright GPL-2.0
  */
 
+use Dotclear\App;
 use Dotclear\Helper\File\Files;
 use Dotclear\Helper\Html\Html;
 use Dotclear\Helper\L10n;
@@ -21,20 +22,20 @@ if (!defined('DC_CONTEXT_ADMIN')) {
     return;
 }
 
-L10n::set(__DIR__ . '/locales/' . dcCore::app()->lang . '/admin');
+L10n::set(__DIR__ . '/locales/' . App::lang()->getLang() . '/admin');
 
-if (preg_match('#^http(s)?://#', (string) dcCore::app()->blog->settings->system->themes_url)) {
-    $img_url = Http::concatURL(dcCore::app()->blog->settings->system->themes_url, '/' . dcCore::app()->blog->settings->system->theme . '/img/');
+if (preg_match('#^http(s)?://#', (string) App::blog()->settings()->system->themes_url)) {
+    $img_url = Http::concatURL(App::blog()->settings()->system->themes_url, '/' . App::blog()->settings()->system->theme . '/img/');
 } else {
-    $img_url = Http::concatURL(dcCore::app()->blog->url, dcCore::app()->blog->settings->system->themes_url . '/' . dcCore::app()->blog->settings->system->theme . '/img/');
+    $img_url = Http::concatURL(App::blog()->url(), App::blog()->settings()->system->themes_url . '/' . App::blog()->settings()->system->theme . '/img/');
 }
 $img_path = __DIR__ . '/img/';
 
-$standalone_config = (bool) dcCore::app()->themes->moduleInfo(dcCore::app()->blog->settings->system->theme, 'standalone_config');
+$standalone_config = (bool) App::themes()->moduleInfo(App::blog()->settings()->system->theme, 'standalone_config');
 
 // Load contextual help
-if (file_exists(__DIR__ . '/locales/' . dcCore::app()->lang . '/resources.php')) {
-    require __DIR__ . '/locales/' . dcCore::app()->lang . '/resources.php';
+if (file_exists(__DIR__ . '/locales/' . App::lang()->getLang() . '/resources.php')) {
+    require __DIR__ . '/locales/' . App::lang()->getLang() . '/resources.php';
 }
 
 $fonts = [
@@ -227,21 +228,21 @@ $ductile_base = [
     'post_simple_title_c' => null,
 ];
 
-$ductile_user = dcCore::app()->blog->settings->themes->get(dcCore::app()->blog->settings->system->theme . '_style');
+$ductile_user = App::blog()->settings()->themes->get(App::blog()->settings()->system->theme . '_style');
 $ductile_user = @unserialize($ductile_user);
 if (!is_array($ductile_user)) {
     $ductile_user = [];
 }
 $ductile_user = array_merge($ductile_base, $ductile_user);
 
-$ductile_stickers = dcCore::app()->blog->settings->themes->get(dcCore::app()->blog->settings->system->theme . '_stickers');
+$ductile_stickers = App::blog()->settings()->themes->get(App::blog()->settings()->system->theme . '_stickers');
 $ductile_stickers = @unserialize($ductile_stickers);
 
 // If no stickers defined, add feed Atom one
 if (!is_array($ductile_stickers)) {
     $ductile_stickers = [[
         'label' => __('Subscribe'),
-        'url'   => dcCore::app()->blog->url . dcCore::app()->url->getURLFor('feed') . '/atom',
+        'url'   => App::blog()->url() . App::url()->getURLFor('feed') . '/atom',
         'image' => 'sticker-feed.png',
     ]];
 }
@@ -267,7 +268,7 @@ if (is_array($ductile_stickers_images)) {
     }
 }
 
-$ductile_focuses = dcCore::app()->blog->settings->themes->get(dcCore::app()->blog->settings->system->theme . '_focus');
+$ductile_focuses = App::blog()->settings()->themes->get(App::blog()->settings()->system->theme . '_focus');
 $ductile_focuses = @unserialize($ductile_focuses);
 if (!is_array($ductile_focuses)) {
     $ductile_focuses = [
@@ -293,7 +294,7 @@ $categories_combo_all = [
 ];
 
 try {
-    $rs = dcCore::app()->blog->getCategories(['post_type' => 'post']);
+    $rs = App::blog()->getCategories(['post_type' => 'post']);
     while ($rs->fetch()) {
         $categories_combo[] = $categories_combo_all[] = new formSelectOption(
             str_repeat('&nbsp;&nbsp;', $rs->level - 1) . ($rs->level - 1 == 0 ? '' : '&bull; ') . Html::escapeHTML($rs->cat_title),
@@ -386,22 +387,22 @@ if (!empty($_POST)) {
             $ductile_user['post_title_c_m'] = adjustColor($_POST['post_title_c_m']);
         }
 
-        dcCore::app()->blog->settings->themes->put(dcCore::app()->blog->settings->system->theme . '_style', serialize($ductile_user));
-        dcCore::app()->blog->settings->themes->put(dcCore::app()->blog->settings->system->theme . '_stickers', serialize($ductile_stickers));
-        dcCore::app()->blog->settings->themes->put(dcCore::app()->blog->settings->system->theme . '_focus', serialize($ductile_focuses));
+        App::blog()->settings()->themes->put(App::blog()->settings()->system->theme . '_style', serialize($ductile_user));
+        App::blog()->settings()->themes->put(App::blog()->settings()->system->theme . '_stickers', serialize($ductile_stickers));
+        App::blog()->settings()->themes->put(App::blog()->settings()->system->theme . '_focus', serialize($ductile_focuses));
 
         // Blog refresh
-        dcCore::app()->blog->triggerBlog();
+        App::blog()->triggerBlog();
 
         // Template cache reset
-        dcCore::app()->emptyTemplatesCache();
+        App::cache()->emptyTemplatesCache();
 
         echo
         '<div class="message"><p>' .
         __('Theme configuration upgraded.') .
         '</p></div>';
     } catch (Exception $e) {
-        dcCore::app()->error->add($e->getMessage());
+        App::error()->add($e->getMessage());
     }
 }
 
@@ -419,7 +420,7 @@ echo '<form id="theme_config" action="blog_theme.php?conf=1" method="post" encty
 echo '<fieldset><legend>' . __('Header') . '</legend>' .
 '<p class="field"><label for="subtitle_hidden">' . __('Hide blog description:') . ' ' .
 form::checkbox('subtitle_hidden', 1, $ductile_user['subtitle_hidden']) . '</label>' . '</p>';
-if (dcCore::app()->plugins->moduleExists('simpleMenu')) {
+if (App::plugins()->moduleExists('simpleMenu')) {
     echo '<p>' . sprintf(__('To configure the top menu go to the <a href="%s">Simple Menu administration page</a>.'), 'plugin.php?p=simpleMenu') . '</p>';
 }
 echo '<p class="field"><label for="logo_src">' . __('Logo URL:') . ' ' .
@@ -485,7 +486,7 @@ echo '</div>';
 echo '</div>';
 
 echo '<input type="hidden" name="conf_tab" value="html">';
-echo '<p class="clear">' . form::hidden('ds_order', '') . '<input type="submit" value="' . __('Save') . '" />' . dcCore::app()->formNonce() . '</p>';
+echo '<p class="clear">' . form::hidden('ds_order', '') . '<input type="submit" value="' . __('Save') . '" />' . App::nonce()->getFormNonce() . '</p>';
 echo '</form>';
 
 echo '</div>'; // Close tab
@@ -641,7 +642,7 @@ echo '</div>';
 echo '</div>';
 
 echo '<input type="hidden" name="conf_tab" value="css">';
-echo '<p class="clear"><input type="submit" value="' . __('Save') . '" />' . dcCore::app()->formNonce() . '</p>';
+echo '<p class="clear"><input type="submit" value="' . __('Save') . '" />' . App::nonce()->getFormNonce() . '</p>';
 echo '</form>';
 
 echo '</div>'; // Close tab
