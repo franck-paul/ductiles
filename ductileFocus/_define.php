@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @brief ductileFocus, a theme for Dotclear 2
  *
@@ -17,6 +18,7 @@ $this->registerModule(
     'Kozlika et Franck Paul',
     '1.0',
     [
+        'date'              => '2003-08-13T13:42:00+0100',
         'requires'          => [['core', '2.28']],
         'standalone_config' => true,
         'type'              => 'theme',
