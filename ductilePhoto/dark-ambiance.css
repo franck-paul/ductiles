@@ -2,7 +2,7 @@
 
 body {
   background-color: #222;
-  color: #9B9B9B;
+  color: #9b9b9b;
 }
 
 a {
@@ -16,7 +16,7 @@ a:focus {
 }
 
 #wrapper {
-  background: #222 url(img/dark.gif);
+  background: #222 url(index.php?tf=img/dark.gif);
 }
 
 .post-content img,
@@ -28,11 +28,11 @@ a:focus {
 }
 
 .comment .comment-number {
-  background: transparent url(img/comm-dark.png) right center no-repeat;
+  background: transparent url(index.php?tf=img/comm-dark.png) right center no-repeat;
 }
 
 .ping .comment-number {
-  background: transparent url(img/tb-dark.png) right center no-repeat;
+  background: transparent url(index.php?tf=img/tb-dark.png) right center no-repeat;
 }
 
 /* backgrounds */
@@ -134,14 +134,20 @@ hr.hidden {
 
 /* autres */
 
-#comment-form input[type=submit],
-#comment-form input[type=reset] {
+#comment-form input[type='submit'],
+#comment-form input[type='reset'] {
   color: #eee;
-  text-shadow: 0 1px 1px rgba(0, 0, 0, .3);
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
   background: rgb(119, 119, 119);
   border: solid 1px #686867;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, .2);
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(119, 119, 119, 1)), color-stop(100%, rgba(85, 85, 85, 1)));
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  background-image: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    color-stop(0%, rgba(119, 119, 119, 1)),
+    color-stop(100%, rgba(85, 85, 85, 1))
+  );
   background: -webkit-linear-gradient(top, rgba(119, 119, 119, 1) 0%, rgba(85, 85, 85, 1) 100%);
   background: -moz-linear-gradient(top, rgba(119, 119, 119, 1) 0%, rgba(85, 85, 85, 1) 100%);
   background: -o-linear-gradient(top, rgba(119, 119, 119, 1) 0%, rgba(85, 85, 85, 1) 100%);
@@ -149,12 +155,18 @@ hr.hidden {
   background: linear-gradient(top, rgba(119, 119, 119, 1) 0%, rgba(85, 85, 85, 1) 100%);
 }
 
-#comment-form input[type=submit]:hover,
-#comment-form input[type=submit]:focus,
-#comment-form input[type=reset]:hover,
-#comment-form input[type=reset]:focus {
+#comment-form input[type='submit']:hover,
+#comment-form input[type='submit']:focus,
+#comment-form input[type='reset']:hover,
+#comment-form input[type='reset']:focus {
   background: rgb(85, 85, 85);
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(85, 85, 85, 1)), color-stop(100%, rgba(119, 119, 119, 1)));
+  background-image: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    color-stop(0%, rgba(85, 85, 85, 1)),
+    color-stop(100%, rgba(119, 119, 119, 1))
+  );
   background: -webkit-linear-gradient(top, rgba(85, 85, 85, 1) 0%, rgba(119, 119, 119, 1) 100%);
   background: -moz-linear-gradient(top, rgba(85, 85, 85, 1) 0%, rgba(119, 119, 119, 1) 100%);
   background: -o-linear-gradient(top, rgba(85, 85, 85, 1) 0%, rgba(119, 119, 119, 1) 100%);

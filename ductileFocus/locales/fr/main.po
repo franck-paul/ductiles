@@ -56,7 +56,7 @@ msgid "URL you've tried has typos, or the page has been deleted or moved."
 msgstr "L'adresse URL est erronée ou bien la page a été supprimée ou déplacée."
 
 msgid "Previous entry"
-msgstr "Billet précédent"
+msgstr "Entrée précédente"
 
 msgid "Next entry"
-msgstr "Billet suivant"
+msgstr "Entrée suivante"

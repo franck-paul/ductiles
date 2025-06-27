@@ -16,11 +16,13 @@ $this->registerModule(
     'Ductile Photo',
     'Variation de Ductile pour un photoblog',
     'Kozlika et Franck Paul',
-    '1.0',
+    '2.0',
     [
         'date'              => '2003-08-13T13:42:00+0100',
-        'requires'          => [['core', '2.28']],
+        'requires'          => [['core', '2.35']],
         'standalone_config' => true,
         'type'              => 'theme',
+        'license'           => 'gpl2',
+        'overload'          => true,
     ]
 );

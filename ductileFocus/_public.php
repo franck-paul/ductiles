@@ -141,7 +141,7 @@ class tplDuctileFocusTheme
 
     public static function ductileLogoSrc($attr)
     {
-        return '<?php echo ' . __NAMESPACE__ . '\tplDuctileFocusTheme::ductileLogoSrcHelper(); ?>';
+        return '<?= ' . __NAMESPACE__ . '\tplDuctileFocusTheme::ductileLogoSrcHelper() ?>';
     }
 
     public static function ductileLogoSrcHelper()
@@ -216,7 +216,7 @@ class tplDuctileFocusTheme
     {
         return '<li id="sticker' . $position . '"' . ($last ? ' class="last"' : '') . '>' . "\n" .
             '<a href="' . $url . '">' . "\n" .
-            '<img alt="" src="' . $image . '" />' . "\n" .
+            '<img alt="" src="' . $image . '">' . "\n" .
             '<span>' . $label . '</span>' . "\n" .
             '</a>' . "\n" .
             '</li>' . "\n";

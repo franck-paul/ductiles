@@ -90,10 +90,10 @@ class tplDuctilePhotoTheme
         if ($s !== null) {
             $s = @unserialize($s);
             if (is_array($s)) {
-                if (isset($s[App::url()->type])) {
+                if (isset($s[App::url()->getType()])) {
                     // Nb de billets par page défini par la config du thème
-                    $nb = (int) $s[App::url()->type];
-                } elseif ((App::url()->type == 'default-page') && (isset($s['default']))) {
+                    $nb = (int) $s[App::url()->getType()];
+                } elseif ((App::url()->getType() == 'default-page') && (isset($s['default']))) {
                     // Les pages 2 et suivantes de la home ont le même nombre de billet que la première page
                     $nb = (int) $s['default'];
                 }
@@ -227,7 +227,7 @@ class tplDuctilePhotoTheme
     {
         return '<li id="sticker' . $position . '"' . ($last ? ' class="last"' : '') . '>' . "\n" .
             '<a href="' . $url . '">' . "\n" .
-            '<img alt="" src="' . $image . '" />' . "\n" .
+            '<img alt="" src="' . $image . '">' . "\n" .
             '<span>' . $label . '</span>' . "\n" .
             '</a>' . "\n" .
             '</li>' . "\n";

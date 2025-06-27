@@ -1,7 +1,7 @@
 @charset "UTF-8";
-@import url(rebase.css);
-@import url(mediaqueries.css);
-/* @import url(light-ambiance.css); */
+@import url(index.php?tf=rebase.css);
+@import url(index.php?tf=mediaqueries.css);
+/* @import url(index.php?tf=light-ambiance.css); */
 
 /* Infos
 Plan de cette feuille :
@@ -31,8 +31,9 @@ Micro clearfix by Nicolas Gallagher http://nicolasgallagher.com/
 /* ------------------------------------------------------- body */
 
 body {
-  font-family: Frutiger, 'Frutiger Linotype', Univers, Calibri, 'Gill Sans', 'Gill Sans MT', 'Myriad Pro', Myriad,
-    'DejaVu Sans Condensed', 'Liberation Sans', 'Nimbus Sans L', Tahoma, Geneva, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family:
+    Frutiger, 'Frutiger Linotype', Univers, Calibri, 'Gill Sans', 'Gill Sans MT', 'Myriad Pro', Myriad, 'DejaVu Sans Condensed',
+    'Liberation Sans', 'Nimbus Sans L', Tahoma, Geneva, 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
 /* ------------------------------------------------------------
@@ -113,7 +114,7 @@ h1 {
 
 h1 a {
   padding-left: 64px;
-  background: transparent url(img/logo.png) no-repeat left center;
+  background: transparent url(index.php?tf=img/logo.png) no-repeat left center;
 }
 
 .searchform p {
@@ -142,12 +143,12 @@ h1 a {
   border: none;
   cursor: pointer;
   padding: 0;
-  background: transparent url(img/search.png) no-repeat center left;
+  background: transparent url(index.php?tf=img/search.png) no-repeat center left;
 }
 
 .search-submit:hover,
 .search-submit:focus {
-  background-image: url(img/search-hover.png);
+  background-image: url(index.php?tf=img/search-hover.png);
 }
 
 /* ------------------------------------------------------------
@@ -379,7 +380,7 @@ img.smiley {
 
 #attachments ul li {
   padding-left: 24px;
-  background: transparent url(img/download.png) no-repeat left 0.3em;
+  background: transparent url(index.php?tf=img/download.png) no-repeat left 0.3em;
 }
 
 /* thumbnails */
@@ -504,7 +505,7 @@ img.smiley {
 }
 
 .comment .comment-number {
-  background: transparent url(img/comm.png) right center no-repeat;
+  background: transparent url(index.php?tf=img/comm.png) right center no-repeat;
 }
 
 .comment p:first-child {
@@ -512,7 +513,7 @@ img.smiley {
 }
 
 .ping .comment-number {
-  background: transparent url(img/tb.png) right center no-repeat;
+  background: transparent url(index.php?tf=img/tb.png) right center no-repeat;
 }
 
 #comments-feed {
@@ -683,7 +684,7 @@ widgets déjà traités (search dans le head, accueil et archives dans le menu) 
 
 .feed {
   padding-left: 22px;
-  background: transparent url(img/feed.png) no-repeat left center;
+  background: transparent url(index.php?tf=img/feed.png) no-repeat left center;
 }
 
 /* ------------------------------------------------------- tags */
@@ -923,7 +924,7 @@ hr.hidden {
 }
 
 #by-cat ul {
-  background: transparent url(img/vline.png) repeat-y;
+  background: transparent url(index.php?tf=img/vline.png) repeat-y;
 }
 
 #by-cat ul ul {
@@ -932,11 +933,11 @@ hr.hidden {
 
 #by-cat ul li {
   padding: 0.2em 0.2em 0.2em 20px;
-  background: transparent url(img/hline.png) no-repeat left 0.82em;
+  background: transparent url(index.php?tf=img/hline.png) no-repeat left 0.82em;
 }
 
 #by-cat ul li:last-child {
-  background-image: url(img/last-hline.png);
+  background-image: url(index.php?tf=img/last-hline.png);
 }
 
 #by-tag {
@@ -996,7 +997,7 @@ hr.hidden {
 
 .dc-404 #content-info {
   padding-bottom: 200px;
-  background: transparent url(img/404.png) no-repeat bottom center;
+  background: transparent url(index.php?tf=img/404.png) no-repeat bottom center;
 }
 
 .dc-404 .content-inner ul {
@@ -1042,6 +1043,6 @@ hr.hidden {
 
 /* tests mobile
 body {
-  background: url(img/vline.png) repeat-y 320px;
+  background: url(index.php?tf=img/vline.png) repeat-y 320px;
 }
 */

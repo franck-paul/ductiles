@@ -1,7 +1,7 @@
 <div id="header">
 	
 	<div id="top">
-		<p id="logo" class="nosmall"><a href="{{tpl:BlogURL}}"><img src="{{tpl:ductileLogoSrc}}" alt="{{tpl:lang Home}}" /></a></p>
+		<p id="logo" class="nosmall"><a href="{{tpl:BlogURL}}"><img src="{{tpl:ductileLogoSrc}}" alt="{{tpl:lang Home}}"></a></p>
 		<h1><span><a href="{{tpl:BlogURL}}">{{tpl:BlogName encode_html="1"}}</a></span></h1>
 		<p id="blogdesc" class="nosmall">{{tpl:BlogDescription}}</p>
 	</div>
@@ -19,7 +19,7 @@
 
 </div>
 <div id="submenu">
-	<form id="searchform" action="{{tpl:BlogURL}}" method="get"><p><label for="sf">{{tpl:lang Search}}</label> <input type="text" size="10" maxlength="255" id="sf" name="q" value="" /> <input class="search-submit" type="submit" value="{{tpl:lang Search}}" title="{{tpl:lang Search}}" /></p></form>
+	<form id="searchform" action="{{tpl:BlogURL}}" method="get"><p><label for="sf">{{tpl:lang Search}}</label> <input type="text" size="10" maxlength="255" id="sf" name="q" value=""> <input class="search-submit" type="submit" value="{{tpl:lang Search}}" title="{{tpl:lang Search}}"></p></form>
 	<tpl:SysIf current_mode="!default">
 	<p id="breadcrumb" class="nosmall">{{tpl:Breadcrumb separator="&nbsp;›&nbsp;"}}</p>
 	</tpl:SysIf>

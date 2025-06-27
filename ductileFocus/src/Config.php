@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @brief ductileFocus, a plugin for Dotclear 2
  *
@@ -89,7 +90,7 @@ if (!defined('DC_CONTEXT_ADMIN')) {
 L10n::set(__DIR__ . '/locales/' . App::lang()->getLang() . '/admin');
 
 if (preg_match('#^http(s)?://#', (string) App::blog()->settings()->system->themes_url)) {
-    $img_url = Http::concatURL(App::blog()->settings()->system->themes_url, '/' . App::blog()->settings()->system->theme . '/img/');
+    $img_url = Http::concatURL(App::blog()->settings()->system->themes_url, App::blog()->settings()->system->theme . '/img/');
 } else {
     $img_url = Http::concatURL(App::blog()->url(), App::blog()->settings()->system->themes_url . '/' . App::blog()->settings()->system->theme . '/img/');
 }
@@ -508,9 +509,9 @@ foreach ($ductile_stickers as $i => $v) {
     $count++;
     echo
     '<tr class="line" id="l_' . $i . '">' .
-    '<td class="handle minimal">' . form::field(['order[' . $i . ']'], 2, 3, $count, 'position', '', false) .
+    '<td class="' . (App::auth()->prefs()->accessibility->nodragdrop ? '' : 'handle ') . 'minimal">' . form::field(['order[' . $i . ']'], 2, 3, $count, 'position', '', false) .
         form::hidden(['dynorder[]','dynorder-' . $i], $i) . '</td>' .
-    '<td>' . form::hidden(['sticker_image[]'], $v['image']) . '<img src="' . $img_url . $v['image'] . '" /> ' . '</td>' .
+    '<td>' . form::hidden(['sticker_image[]'], $v['image']) . '<img src="' . $img_url . $v['image'] . '"> ' . '</td>' .
     '<td scope="raw">' . form::field(['sticker_label[]','dsl-' . $i], 20, 255, $v['label']) . '</td>' .
     '<td>' . form::field(['sticker_url[]','dsu-' . $i], 40, 255, $v['url']) . '</td>' .
     '</tr>';
@@ -550,7 +551,7 @@ echo '</div>';
 echo '</div>';
 
 echo '<input type="hidden" name="conf_tab" value="html">';
-echo '<p class="clear">' . form::hidden('ds_order', '') . '<input type="submit" value="' . __('Save') . '" />' . App::nonce()->getFormNonce() . '</p>';
+echo '<p class="clear">' . form::hidden('ds_order', '') . '<input type="submit" value="' . __('Save') . '">' . App::nonce()->getFormNonce() . '</p>';
 echo '</form>';
 
 echo '</div>'; // Close tab
@@ -706,7 +707,7 @@ echo '</div>';
 echo '</div>';
 
 echo '<input type="hidden" name="conf_tab" value="css">';
-echo '<p class="clear"><input type="submit" value="' . __('Save') . '" />' . App::nonce()->getFormNonce() . '</p>';
+echo '<p class="clear"><input type="submit" value="' . __('Save') . '">' . App::nonce()->getFormNonce() . '</p>';
 echo '</form>';
 
 echo '</div>'; // Close tab

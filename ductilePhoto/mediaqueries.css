@@ -5,7 +5,7 @@
   Moins de 480px (téléphones)
 -------------------------------------------------------------------- */
 
-@media only screen and (max-width:480px) {
+@media only screen and (max-width: 480px) {
   .nosmall {
     display: none !important;
   }
@@ -18,12 +18,12 @@
     font-size: 1.66em !important;
     padding: 3px 16px !important;
     background: #e5e5e5;
-    background-image: -webkit-gradient(linear, left top, left bottom, from(#f4f4f5), to(#d7d7dC));
-    background: -webkit-linear-gradient(top, #f4f4f5, #d7d7dC);
-    background: -moz-linear-gradient(top, #f4f4f5, #d7d7dC);
-    background: -o-linear-gradient(top, #f4f4f5, #d7d7dC);
-    background: -ms-linear-gradient(top, #f4f4f5, #d7d7dC);
-    background: linear-gradient(top, #f4f4f5, #d7d7dC);
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#f4f4f5), to(#d7d7dc));
+    background: -webkit-linear-gradient(top, #f4f4f5, #d7d7dc);
+    background: -moz-linear-gradient(top, #f4f4f5, #d7d7dc);
+    background: -o-linear-gradient(top, #f4f4f5, #d7d7dc);
+    background: -ms-linear-gradient(top, #f4f4f5, #d7d7dc);
+    background: linear-gradient(top, #f4f4f5, #d7d7dc);
     border-bottom: 1px solid #ccc;
   }
 
@@ -59,7 +59,7 @@
   }
 
   #prelude {
-    margin: .5em 0 !important;
+    margin: 0.5em 0 !important;
   }
 
   #prelude li a {
@@ -79,18 +79,18 @@
   }
 
   #content-info {
-    margin: 1em 0 .5em !important;
+    margin: 1em 0 0.5em !important;
   }
 
   .comment-content p {
-    margin-top: .5em;
+    margin-top: 0.5em;
   }
 
   #blogcustom h2 {
     font-size: 1.2em;
   }
 
-  #blogcustom>div {
+  #blogcustom > div {
     padding: 12px;
   }
 }
@@ -131,7 +131,7 @@
   #prelude {
     list-style-type: none;
     line-height: 1.25;
-    font-size: .875em;
+    font-size: 0.875em;
   }
 
   .supranav li,
@@ -209,14 +209,14 @@
     padding: 1em;
   }
 
-  #blogcustom>div {
+  #blogcustom > div {
     padding: 12px 24px 12px 0;
   }
 }
 
 /* ------------------------------------------------------ 681px à 767px */
 
-@media only screen and (min-width:481px) and (max-width:767px) {
+@media only screen and (min-width: 481px) and (max-width: 767px) {
   .une-image {
     margin-top: 1.5em;
   }
@@ -228,7 +228,7 @@
 
 /* ------------------------------------------------------ min 768px */
 
-@media only screen and (min-width:768px) {
+@media only screen and (min-width: 768px) {
   .searchform {
     position: absolute;
     top: 6px;
@@ -274,7 +274,7 @@
 
   .entry-aside {
     max-width: 610px !important;
-    margin: .5em;
+    margin: 0.5em;
   }
 
   .arch-block {
@@ -298,7 +298,6 @@
 /* ------------------------------------------------------  > 1024px */
 
 @media only screen and (min-width: 1024px) {
-
   .entry-content,
   .entry-aside,
   .simple .navlinks {
@@ -317,15 +316,17 @@
 
 /* ------------------------------------------------------ au-delà de 1280px */
 
-@media only screen and (min-width: 1280px) {}
+@media only screen and (min-width: 1280px) {
+}
 
 /* ------------------------------------------------------ au-delà de 1600px */
 
-@media only screen and (min-width: 1600px) {}
+@media only screen and (min-width: 1600px) {
+}
 
 /* ------------------------------------------------------ special redimensionnement paysage */
 
-@media screen and (max-width:640px) and (orientation: landscape) {
+@media screen and (max-width: 640px) and (orientation: landscape) {
   body {
     -webkit-text-size-adjust: none;
   }

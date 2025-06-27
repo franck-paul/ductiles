@@ -23,7 +23,7 @@ h5,
 h6 {
   line-height: 1.2;
   font-weight: bold;
-  margin: 1em 0 .5em 0;
+  margin: 1em 0 0.5em 0;
 }
 
 h1 {
@@ -52,7 +52,7 @@ h6 {
 }
 
 p {
-  margin: 1em 0 .5em 0;
+  margin: 1em 0 0.5em 0;
 }
 
 img a {
@@ -61,8 +61,18 @@ img a {
 
 sup,
 sub {
-  font-size: .7em;
-  line-height: .7em;
+  font-size: calc(0.5em + 4px);
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sup {
+  top: calc(-0.83 * (1em - 4px));
+}
+
+sub {
+  top: calc(0.415 * (1em - 4px));
 }
 
 abbr,
@@ -72,7 +82,7 @@ acronym {
 }
 
 strong {
-  font-size: .94em;
+  font-size: 0.94em;
 }
 
 blockquote,
@@ -86,24 +96,24 @@ q em {
 }
 
 cite {
-  font-size: .9em;
+  font-size: 0.9em;
 }
 
 ul,
 ol,
 dd {
-  margin: 1em 0 .5em 1.5em;
+  margin: 1em 0 0.5em 1.5em;
 }
 
 ul ul,
 ol ol {
-  margin-top: .5em;
+  margin-top: 0.5em;
 }
 
 code,
 pre {
-  font-family: "Andale mono", "Courier New", Courier, mono;
-  font-size: .875em;
+  font-family: 'Andale mono', 'Courier New', Courier, mono;
+  font-size: 0.875em;
 }
 
 code {
@@ -113,7 +123,7 @@ code {
 pre {
   margin: 1em;
   overflow: auto;
-  padding: 1px .5em;
+  padding: 1px 0.5em;
   line-height: 1.2;
 }
 
