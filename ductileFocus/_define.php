@@ -19,7 +19,7 @@ $this->registerModule(
     '2.0',
     [
         'date'              => '2003-08-13T13:42:00+0100',
-        'requires'          => [['core', '2.35']],
+        'requires'          => [['core', '2.36']],
         'standalone_config' => true,
         'type'              => 'theme',
         'license'           => 'gpl2',

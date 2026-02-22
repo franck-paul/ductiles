@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @brief ductilePhoto, a plugin for Dotclear 2
  *
@@ -16,7 +17,6 @@ namespace Dotclear\Plugin\ductilePhoto;
 
 use dcCore;
 use Dotclear\App;
-use Dotclear\Helper\L10n;
 
 /**
  * Plugin definitions
@@ -54,7 +54,7 @@ class My
      */
     final public static function l10n(string $process): void
     {
-        L10n::set(implode(DIRECTORY_SEPARATOR, [static::path(), 'locales', App::lang()->getLang(), $process]));
+        App::lang()->set(implode(DIRECTORY_SEPARATOR, [static::path(), 'locales', App::lang()->getLang(), $process]));
     }
 
     // Contexts
@@ -201,7 +201,7 @@ class My
      *
      * @param   string    $suffix   Optionnal suffix (will be prefixed by - if any)
      *
-     * @return  array<int,string>   The module icons URLs
+     * @return  string[]   The module icons URLs
      */
     public static function icons(string $suffix = ''): array
     {

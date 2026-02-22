@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @brief ductilePhoto, a plugin for Dotclear 2
  *
@@ -14,10 +15,12 @@ declare(strict_types=1);
 
 namespace Dotclear\Plugin\ductilePhoto;
 
-use Dotclear\Core\Process;
+use Dotclear\Helper\Process\TraitProcess;
 
-class Install extends Process
+class Install
 {
+    use TraitProcess;
+
     public static function init(): bool
     {
         return self::status(My::checkContext(My::INSTALL));

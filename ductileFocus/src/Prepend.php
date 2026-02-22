@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @brief ductileFocus, a plugin for Dotclear 2
  *
@@ -14,10 +15,12 @@ declare(strict_types=1);
 
 namespace Dotclear\Plugin\ductileFocus;
 
-use Dotclear\Core\Process;
+use Dotclear\Helper\Process\TraitProcess;
 
-class Prepend extends Process
+class Prepend
 {
+    use TraitProcess;
+
     public static function init(): bool
     {
         return self::status(My::checkContext(My::PREPEND));
@@ -79,7 +82,7 @@ class tplDuctileMagThemeAdmin
             echo <<<EOT
                 <script>
                 $(function() {
-                    $("#stickerslist").sortable({'cursor':'move'});
+                    $("#stickerslist").sortable({'cursor':'move', handle: '.handle' });
                     $("#stickerslist tr").hover(function () {
                         $(this).css({'cursor':'move'});
                     }, function () {

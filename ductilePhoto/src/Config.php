@@ -17,11 +17,13 @@ namespace Dotclear\Plugin\ductilePhoto;
 
 use dcPage;
 use Dotclear\App;
-use Dotclear\Core\Process;
+use Dotclear\Helper\Process\TraitProcess;
 use Exception;
 
-class Config extends Process
+class Config
 {
+    use TraitProcess;
+
     public static function init(): bool
     {
         return self::status(My::checkContext(My::CONFIG));
@@ -77,7 +79,6 @@ class Config extends Process
  */
 
 use Dotclear\Helper\File\Files;
-use Dotclear\Helper\L10n;
 use Dotclear\Helper\Network\Http;
 use form;
 
@@ -85,7 +86,7 @@ if (!defined('DC_CONTEXT_ADMIN')) {
     return;
 }
 
-L10n::set(__DIR__ . '/locales/' . App::lang()->getLang() . '/admin');
+App::lang()->set(__DIR__ . '/locales/' . App::lang()->getLang() . '/admin');
 
 if (preg_match('#^http(s)?://#', (string) App::blog()->settings()->system->themes_url)) {
     $img_url = Http::concatURL(App::blog()->settings()->system->themes_url, App::blog()->settings()->system->theme . '/img/');
@@ -97,11 +98,6 @@ $img_path = __DIR__ . '/img/';
 $tpl_path = __DIR__ . '/tpl/';
 
 $standalone_config = (bool) App::themes()->moduleInfo(App::blog()->settings()->system->theme, 'standalone_config');
-
-// Load contextual help
-if (file_exists(__DIR__ . '/locales/' . App::lang()->getLang() . '/resources.php')) {
-    require __DIR__ . '/locales/' . App::lang()->getLang() . '/resources.php';
-}
 
 $contexts = [
     'category' => __('Entries for a category'),

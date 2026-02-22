@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @brief ductilePhoto, a theme for Dotclear 2
  *
@@ -41,7 +42,7 @@ class tplDuctilePhotoThemeAdmin
             echo <<<EOT
                 <script>
                 $(function() {
-                    $("#stickerslist").sortable({'cursor':'move'});
+                    $("#stickerslist").sortable({ cursor: 'move', handle: '.handle' });
                     $("#stickerslist tr").hover(function () {
                         $(this).css({'cursor':'move'});
                     }, function () {
